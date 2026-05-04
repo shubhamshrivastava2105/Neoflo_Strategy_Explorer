@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neoflo — FinOps Strategy Explorer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design_tokens.css" />
+<script src="data.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family-plus-jakarta-sans);
+    background: var(--surface-pagecard-page);
+    color: var(--text-default-body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  a { color: var(--text-primary-default); text-decoration: none; }
+  a:hover { color: var(--text-primary-hover); }
+  code { font-family: var(--font-family-inter); font-size: 13px; background: var(--grey-100); padding: 2px 6px; border-radius: 4px; }
+  strong { font-weight: 600; color: var(--text-default-heading); }
+  em { font-family: var(--font-family-instrument-serif); font-style: italic; font-weight: 400; }
+
+  /* layout */
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  @media (max-width: 920px) { .app { grid-template-columns: 1fr; } }
+
+  /* sidebar */
+  .sidebar {
+    background: var(--grey-1000);
+    color: var(--text-on-colour-body);
+    padding: var(--scale-500) var(--scale-400);
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    border-right: 1px solid var(--border-call-out-card-1);
+  }
+  .sidebar .brand {
+    display: flex; align-items: center; gap: var(--scale-200);
+    color: var(--text-on-colour-heading);
+    margin-bottom: var(--scale-500);
+  }
+  .sidebar .brand .mark {
+    width: 32px; height: 32px; border-radius: var(--radius-sm);
+    background: var(--surface-primary-default);
+    display: grid; place-items: center;
+    color: white; font-weight: 700; font-size: 16px;
+  }
+  .sidebar .brand .name { font-size: 18px; font-weight: 600; letter-spacing: -0.5px; }
+  .sidebar .brand .sub { font-size: 11px; color: var(--text-on-colour-caption); }
+
+  .nav { display: flex; flex-direction: column; gap: 2px; }
+  .nav-section { padding: var(--scale-200) var(--scale-100); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-on-colour-placeholder); margin-top: var(--scale-300); }
+  .nav a {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--scale-200) var(--scale-250);
+    border-radius: var(--radius-sm);
+    color: var(--text-on-colour-body);
+    font-size: 14px; font-weight: 500;
+    transition: background 120ms ease;
+  }
+  .nav a:hover { background: var(--border-call-out-card-1); color: var(--text-on-colour-heading); }
+  .nav a.active { background: var(--surface-primary-default); color: white; }
+  .nav a .badge { font-size: 10px; opacity: .6; }
+
+  /* main */
+  main { padding: var(--scale-800) var(--scale-800); max-width: 1100px; }
+  @media (max-width: 920px) { main { padding: var(--scale-500) var(--scale-300); } }
+  section { margin-bottom: var(--scale-1125); scroll-margin-top: var(--scale-400); }
+
+  .eyebrow {
+    font-family: var(--font-family-plus-jakarta-sans);
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-primary-default);
+    margin-bottom: var(--scale-200);
+  }
+  h1.title {
+    font-family: var(--font-family-instrument-serif);
+    font-weight: 400; font-size: 64px; line-height: 1.05;
+    letter-spacing: -2px; margin: 0 0 var(--scale-300);
+    color: var(--text-default-heading);
+  }
+  h1.title em { font-style: italic; }
+  h2.section-title {
+    font-size: 36px; font-weight: 600; line-height: 1.15;
+    letter-spacing: -1px; margin: 0 0 var(--scale-300);
+    color: var(--text-default-heading);
+    font-family: var(--font-family-plus-jakarta-sans);
+  }
+  h3 { font-size: 20px; font-weight: 600; margin: var(--scale-400) 0 var(--scale-200); color: var(--text-default-heading); }
+  h4 { font-size: 16px; font-weight: 600; margin: var(--scale-300) 0 var(--scale-100); color: var(--text-default-heading); }
+  p { margin: 0 0 var(--scale-250); }
+  ul { margin: 0 0 var(--scale-250); padding-left: var(--scale-400); }
+  li { margin-bottom: var(--scale-100); }
+
+  .lede {
+    font-size: 18px; line-height: 1.55; color: var(--text-default-body);
+    border-left: 3px solid var(--border-primary-default);
+    padding-left: var(--scale-300);
+    margin-bottom: var(--scale-500);
+  }
+
+  /* cards */
+  .card {
+    background: var(--surface-pagecard-card-1);
+    border: 1px solid var(--border-pagecard-card-1);
+    border-radius: var(--radius-md);
+    padding: var(--scale-400);
+    box-shadow: var(--shadow-small);
+  }
+  .card + .card { margin-top: var(--scale-300); }
+
+  .grid { display: grid; gap: var(--scale-300); }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  /* stat cards */
+  .stat {
+    background: var(--surface-pagecard-card-1);
+    border: 1px solid var(--border-pagecard-card-1);
+    border-radius: var(--radius-md); padding: var(--scale-300);
+  }
+  .stat .label { font-size: 12px; color: var(--text-default-caption); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .stat .value { font-size: 28px; font-weight: 700; color: var(--text-default-heading); margin-top: var(--scale-100); letter-spacing: -1px; }
+  .stat .note { font-size: 13px; color: var(--text-default-caption); margin-top: var(--scale-100); }
+
+  /* tables */
+  table {
+    width: 100%; border-collapse: collapse; margin: var(--scale-300) 0;
+    background: var(--surface-pagecard-card-1);
+    border-radius: var(--radius-md); overflow: hidden;
+    border: 1px solid var(--border-pagecard-card-1);
+    font-size: 14px;
+  }
+  th, td {
+    text-align: left; padding: var(--scale-250) var(--scale-300);
+    border-bottom: 1px solid var(--border-pagecard-card-1);
+    vertical-align: top;
+  }
+  th { background: var(--grey-75); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-default-caption); font-weight: 600; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--grey-50); }
+  td.highlight { background: var(--surface-warning-subtle); }
+
+  /* tabs */
+  .tabs { display: flex; gap: var(--scale-100); margin-bottom: var(--scale-300); flex-wrap: wrap; }
+  .tab {
+    padding: var(--scale-200) var(--scale-300);
+    border: 1px solid var(--border-default-default); border-radius: 999px;
+    background: var(--surface-pagecard-card-1);
+    cursor: pointer; font-size: 14px; font-weight: 500;
+    color: var(--text-default-body);
+    transition: all 120ms ease;
+    font-family: inherit;
+  }
+  .tab:hover { border-color: var(--border-default-default-hover); }
+  .tab.active { background: var(--surface-primary-default); color: white; border-color: var(--border-primary-default); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* badges */
+  .badge {
+    display: inline-block; padding: 2px var(--scale-200);
+    border-radius: 999px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .badge-primary { background: var(--surface-primary-subtle); color: var(--text-primary-default); }
+  .badge-success { background: var(--surface-success-subtle); color: var(--text-success-on-color); }
+  .badge-warning { background: var(--surface-warning-subtle); color: var(--text-warning-on-color); }
+  .badge-error { background: var(--surface-error-subtle); color: var(--text-error-on-color); }
+  .badge-info { background: var(--surface-information-subtle); color: var(--text-information-default); }
+  .badge-neutral { background: var(--grey-100); color: var(--text-default-caption); }
+
+  /* process flow */
+  .flow {
+    display: flex; flex-wrap: wrap; gap: var(--scale-100); align-items: center;
+    background: var(--grey-50); border: 1px solid var(--border-pagecard-card-1);
+    border-radius: var(--radius-md); padding: var(--scale-300);
+    margin-bottom: var(--scale-400);
+  }
+  .flow-step {
+    background: white; border: 1px solid var(--border-pagecard-card-1);
+    border-radius: var(--radius-sm); padding: var(--scale-200) var(--scale-250);
+    font-size: 13px; font-weight: 500;
+    box-shadow: var(--shadow-small);
+  }
+  .flow-arrow { color: var(--text-default-placeholder); font-size: 18px; }
+
+  /* stages */
+  .stage {
+    border-left: 3px solid var(--border-primary-default);
+    padding-left: var(--scale-400); margin-bottom: var(--scale-500);
+    position: relative;
+  }
+  .stage::before {
+    content: attr(data-num);
+    position: absolute; left: -18px; top: 0;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--surface-primary-default); color: white;
+    display: grid; place-items: center; font-weight: 700; font-size: 13px;
+    border: 3px solid var(--surface-pagecard-page);
+  }
+  .stage h3 { margin-top: 0; }
+  .stage-grid { display: grid; grid-template-columns: 120px 1fr; gap: var(--scale-200); margin-top: var(--scale-200); }
+  .stage-grid dt { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-default-caption); font-weight: 600; padding-top: 2px; }
+  .stage-grid dd { margin: 0; font-size: 14px; }
+  @media (max-width: 600px) { .stage-grid { grid-template-columns: 1fr; gap: 4px; } }
+
+  /* gap grid */
+  .gap-grid { display: grid; grid-template-columns: 200px repeat(4, 1fr); gap: 1px; background: var(--border-pagecard-card-1); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-pagecard-card-1); }
+  .gap-cell { background: var(--surface-pagecard-card-1); padding: var(--scale-250); font-size: 13px; }
+  .gap-cell.header { background: var(--grey-100); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-default-caption); }
+  .gap-cell.row-label { background: var(--grey-75); font-weight: 600; font-size: 13px; color: var(--text-default-heading); }
+  .gap-cell.highlight { background: var(--surface-warning-subtle); border: 2px solid var(--border-warning-default); }
+  @media (max-width: 760px) { .gap-grid { grid-template-columns: 1fr; } .gap-cell.row-label { background: var(--grey-1000); color: white; } }
+
+  /* phase cards */
+  .phase {
+    background: var(--surface-pagecard-card-1); border: 1px solid var(--border-pagecard-card-1);
+    border-radius: var(--radius-md); padding: var(--scale-400);
+  }
+  .phase .phase-num { font-family: var(--font-family-instrument-serif); font-style: italic; font-size: 48px; color: var(--text-primary-default); line-height: 1; margin-bottom: var(--scale-200); }
+  .phase .phase-title { font-weight: 600; font-size: 18px; margin-bottom: var(--scale-100); }
+  .phase .phase-time { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-primary-default); margin-bottom: var(--scale-200); font-weight: 600; }
+
+  /* risks */
+  .risk { background: var(--surface-error-subtle); border-left: 3px solid var(--border-error-default); padding: var(--scale-300); border-radius: var(--radius-sm); margin-bottom: var(--scale-200); }
+  .risk h4 { color: var(--text-error-on-color); margin-top: 0; display: flex; align-items: center; gap: var(--scale-200); }
+  .risk h4 .num { background: var(--surface-error-default); color: white; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; font-size: 12px; font-weight: 700; }
+  .risk .counter { font-size: 13px; color: var(--text-default-body); margin-top: var(--scale-200); padding-top: var(--scale-200); border-top: 1px solid var(--surface-error-subtle-pressed); }
+  .risk .counter::before { content: "Counter: "; font-weight: 600; color: var(--text-success-on-color); }
+
+  /* signal */
+  .signal { margin-bottom: var(--scale-500); }
+  .signal-num { display: inline-block; background: var(--surface-information-default); color: white; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; font-size: 13px; margin-right: var(--scale-200); }
+  .evidence { background: var(--grey-50); border: 1px solid var(--border-pagecard-card-1); border-radius: var(--radius-sm); padding: var(--scale-300); margin-bottom: var(--scale-200); }
+  .evidence .ev-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: var(--scale-100); flex-wrap: wrap; gap: var(--scale-100); }
+  .evidence .ev-company { font-weight: 600; color: var(--text-default-heading); }
+  .evidence .ev-when { font-size: 12px; color: var(--text-default-caption); }
+  .evidence .ev-quote { font-family: var(--font-family-instrument-serif); font-size: 17px; font-style: italic; color: var(--text-default-heading); padding: var(--scale-200) 0; border-left: 2px solid var(--border-information-default); padding-left: var(--scale-200); margin: var(--scale-200) 0; }
+  .evidence .ev-meta { font-size: 13px; color: var(--text-default-caption); }
+  .what-it-means { background: var(--surface-primary-background); border-radius: var(--radius-sm); padding: var(--scale-300); border-left: 3px solid var(--border-primary-default); }
+  .what-it-means::before { content: "What it means → "; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px; color: var(--text-primary-default); display: block; margin-bottom: var(--scale-100); }
+
+  /* divider */
+  hr { border: none; border-top: 1px solid var(--border-pagecard-card-1); margin: var(--scale-500) 0; }
+
+  /* hero */
+  .hero {
+    padding: var(--scale-800) 0 var(--scale-1025);
+    border-bottom: 1px solid var(--border-pagecard-card-1);
+    margin-bottom: var(--scale-800);
+  }
+  .hero .meta { display: flex; gap: var(--scale-300); margin-top: var(--scale-300); flex-wrap: wrap; font-size: 13px; color: var(--text-default-caption); }
+  .hero .meta span::before { content: "•"; margin-right: var(--scale-200); color: var(--text-default-placeholder); }
+  .hero .meta span:first-child::before { content: ""; margin: 0; }
+
+  /* mobile sidebar toggle */
+  .menu-toggle { display: none; }
+  @media (max-width: 920px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: fixed; top: 0; left: 0; right: 0; height: auto; max-height: 100vh; z-index: 100; transform: translateY(-100%); transition: transform 200ms ease; }
+    .sidebar.open { transform: translateY(0); }
+    .menu-toggle {
+      display: inline-flex; position: fixed; top: var(--scale-300); right: var(--scale-300); z-index: 101;
+      background: var(--grey-1000); color: white; border: none; padding: var(--scale-200) var(--scale-300);
+      border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; font-family: inherit;
+      box-shadow: var(--shadow-medium);
+    }
+    main { padding-top: var(--scale-800); }
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menuToggle">☰ Menu</button>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="mark">N</div>
+      <div>
+        <div class="name">Neoflo</div>
+        <div class="sub">FinOps Strategy Explorer</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="nav-section">Strategy</div>
+      <a href="#tldr">TL;DR</a>
+      <a href="#market">Market sizing</a>
+      <a href="#landscape">Competitive landscape</a>
+      <a href="#gap">The gap</a>
+      <a href="#recommendation">Recommendation</a>
+      <a href="#risks">Risks</a>
+      <div class="nav-section">Customer evidence</div>
+      <a href="#signals">Signals (v2)</a>
+      <a href="#patterns">Patterns</a>
+      <div class="nav-section">Process explainers</div>
+      <a href="#p2p">P2P — Procure-to-Pay</a>
+      <a href="#o2c">O2C — Order-to-Cash</a>
+      <a href="#r2r">R2R — Record-to-Report</a>
+      <div class="nav-section">Reference</div>
+      <a href="#changemymind">Change my mind</a>
+      <a href="#openquestions">Open questions</a>
+      <a href="#appendix">Appendix</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="hero">
+      <div class="eyebrow">Neoflo · Strategy memo v2</div>
+      <h1 class="title">The multi-workflow <em>FinOps platform</em><br>built for SEA mid-market.</h1>
+      <p class="lede" id="hero-lede"></p>
+      <div class="meta">
+        <span>Geography: SEA mid-market focus</span>
+        <span>Wedge: P2P invoice processing</span>
+        <span>Built on customer evidence v2</span>
+      </div>
+    </header>
+
+    <section id="tldr">
+      <div class="eyebrow">01 — TL;DR</div>
+      <h2 class="section-title">The bet, in one paragraph.</h2>
+      <div id="tldr-body"></div>
+    </section>
+
+    <section id="market">
+      <div class="eyebrow">02 — Market sizing</div>
+      <h2 class="section-title">Three categories. Different shapes.</h2>
+      <div id="market-intro"></div>
+      <div class="grid grid-3" id="market-stats"></div>
+      <div id="market-table"></div>
+      <div class="card" id="market-headline"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="market-segment"></div>
+    </section>
+
+    <section id="landscape">
+      <div class="eyebrow">03 — Competitive landscape</div>
+      <h2 class="section-title">Four cohorts per category.</h2>
+      <div class="tabs" id="landscape-tabs"></div>
+      <div id="landscape-panels"></div>
+    </section>
+
+    <section id="gap">
+      <div class="eyebrow">04 — The gap</div>
+      <h2 class="section-title">Where nobody is winning yet.</h2>
+      <div id="gap-intro"></div>
+      <div class="gap-grid" id="gap-grid"></div>
+      <div style="margin-top: var(--scale-400);" id="gap-takeaways"></div>
+    </section>
+
+    <section id="recommendation">
+      <div class="eyebrow">05 — Recommendation</div>
+      <h2 class="section-title" id="rec-headline"></h2>
+      <div class="grid grid-3" id="rec-phases"></div>
+      <div style="margin-top: var(--scale-400);" id="rec-rest"></div>
+    </section>
+
+    <section id="risks">
+      <div class="eyebrow">06 — Risks</div>
+      <h2 class="section-title">What could break the bet.</h2>
+      <div id="risks-list"></div>
+    </section>
+
+    <section id="signals">
+      <div class="eyebrow">07 — Customer evidence v2</div>
+      <h2 class="section-title">What 12+ buyers actually told us.</h2>
+      <div id="signals-intro"></div>
+      <div id="signals-list"></div>
+    </section>
+
+    <section id="patterns">
+      <div class="eyebrow">08 — Patterns</div>
+      <h2 class="section-title">Cross-cutting patterns &amp; strategy changes.</h2>
+      <div id="patterns-list"></div>
+      <h3 style="margin-top: var(--scale-500);">What changed in v2</h3>
+      <div id="changes-list"></div>
+    </section>
+
+    <section id="p2p">
+      <div class="eyebrow">Process explainer</div>
+      <h2 class="section-title" id="p2p-title"></h2>
+      <div id="p2p-body"></div>
+    </section>
+
+    <section id="o2c">
+      <div class="eyebrow">Process explainer</div>
+      <h2 class="section-title" id="o2c-title"></h2>
+      <div id="o2c-body"></div>
+    </section>
+
+    <section id="r2r">
+      <div class="eyebrow">Process explainer</div>
+      <h2 class="section-title" id="r2r-title"></h2>
+      <div id="r2r-body"></div>
+    </section>
+
+    <section id="changemymind">
+      <div class="eyebrow">09 — Change my mind</div>
+      <h2 class="section-title">What would flip this thesis.</h2>
+      <div id="cmm-list"></div>
+    </section>
+
+    <section id="openquestions">
+      <div class="eyebrow">10 — Open questions</div>
+      <h2 class="section-title">Where evidence is still thin.</h2>
+      <ul id="oq-list"></ul>
+    </section>
+
+    <section id="appendix">
+      <div class="eyebrow">11 — Appendix</div>
+      <h2 class="section-title">Sources &amp; gaps.</h2>
+      <div id="appendix-body"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+// ───────── Data (inlined from content/) ─────────
+const DATA = {
+  strategy: null,
+  p2p: null,
+  o2c: null,
+  r2r: null,
+  customers: null,
+};
+
+DATA.strategy = window.STRATEGY_DATA;
+DATA.p2p = window.P2P_DATA;
+DATA.o2c = window.O2C_DATA;
+DATA.r2r = window.R2R_DATA;
+DATA.customers = window.CUSTOMER_DATA;
+
+// ───────── Markdown-lite rendering ─────────
+function md(s) {
+  if (!s) return '';
+  return s
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^\*]+)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n- /g, '\n• ')
+    .replace(/^/, '<p>').concat('</p>');
+}
+function mdInline(s) {
+  if (!s) return '';
+  return s
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/\*\*([^\*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^\*]+)\*/g, '<em>$1</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+
+// ───────── Render: Hero & TL;DR ─────────
+const tldrFirstLine = DATA.strategy.tldr.split('.')[0] + '.';
+document.getElementById('hero-lede').innerHTML = mdInline(tldrFirstLine);
+document.getElementById('tldr-body').innerHTML = `<div class="card" style="font-size: 16px; line-height: 1.65;">${md(DATA.strategy.tldr)}</div>`;
+
+// ───────── Render: Market ─────────
+document.getElementById('market-intro').innerHTML = `<p class="lede">${mdInline(DATA.strategy.marketSizing.intro)}</p>`;
+
+const statsHtml = DATA.strategy.marketSizing.rows.map(r => `
+  <div class="stat">
+    <div class="label">${r.process}</div>
+    <div class="value">${r.tam2026}</div>
+    <div class="note"><strong>${r.cagr}</strong> CAGR · ${r.forecast2031} by 2031</div>
+  </div>
+`).join('');
+document.getElementById('market-stats').innerHTML = statsHtml;
+
+const tableRows = DATA.strategy.marketSizing.rows.map(r => `
+  <tr>
+    <td><strong>${r.process}</strong></td>
+    <td>${r.tam2026}</td>
+    <td>${r.forecast2031}</td>
+    <td>${r.cagr}</td>
+    <td>${r.notes}</td>
+  </tr>
+`).join('');
+document.getElementById('market-table').innerHTML = `
+  <table>
+    <thead><tr><th>Process</th><th>TAM 2026</th><th>2031 forecast</th><th>CAGR</th><th>Notes</th></tr></thead>
+    <tbody>${tableRows}</tbody>
+  </table>`;
+
+document.getElementById('market-headline').innerHTML = md(DATA.strategy.marketSizing.headline);
+document.getElementById('market-segment').innerHTML = `<h4>Who we sell to</h4>${md(DATA.strategy.marketSizing.segmentNote)}`;
+
+// ───────── Render: Competitive landscape ─────────
+const landscapes = [
+  { key: 'p2p', label: 'P2P', data: DATA.strategy.landscapes.p2p },
+  { key: 'o2c', label: 'O2C', data: DATA.strategy.landscapes.o2c },
+  { key: 'r2r', label: 'R2R', data: DATA.strategy.landscapes.r2r },
+];
+const tabs = document.getElementById('landscape-tabs');
+const panels = document.getElementById('landscape-panels');
+landscapes.forEach((l, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'tab' + (i === 0 ? ' active' : '');
+  btn.dataset.tab = l.key;
+  btn.textContent = l.data.title;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#landscape-tabs .tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('#landscape-panels .tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + l.key).classList.add('active');
+  });
+  tabs.appendChild(btn);
+
+  const panel = document.createElement('div');
+  panel.id = 'panel-' + l.key;
+  panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
+  panel.innerHTML = `
+    <p class="lede">${mdInline(l.data.intro)}</p>
+    ${l.data.cohorts.map(c => `
+      <div style="margin-bottom: var(--scale-500);">
+        <h3>
+          <span class="badge badge-primary">Cohort ${c.letter}</span>
+          ${c.title}
+        </h3>
+        ${c.intro ? `<p>${mdInline(c.intro)}</p>` : ''}
+        <table>
+          <thead>
+            <tr>${c.columns.map(col => `<th>${col.replace(/([A-Z])/g, ' $1').replace(/^./, x => x.toUpperCase())}</th>`).join('')}</tr>
+          </thead>
+          <tbody>
+            ${c.competitors.map(comp => `
+              <tr>${c.columns.map(col => `<td>${col === 'name' ? '<strong>' + (comp[col] || '—') + '</strong>' : mdInline(comp[col] || '—')}</td>`).join('')}</tr>
+            `).join('')}
+          </tbody>
+        </table>
+        <div class="what-it-means">${mdInline(c.read)}</div>
+      </div>
+    `).join('')}
+  `;
+  panels.appendChild(panel);
+});
+
+// ───────── Render: Gap ─────────
+document.getElementById('gap-intro').innerHTML = `<p class="lede">${mdInline(DATA.strategy.gap.intro)}</p>`;
+
+const categories = ['P2P only', 'O2C only', 'R2R only', 'Multi-process platform'];
+const geos = ['USA mid-market', 'Southeast Asia mid-market'];
+let gridHtml = '<div class="gap-cell header"></div>';
+categories.forEach(c => gridHtml += `<div class="gap-cell header">${c}</div>`);
+geos.forEach(geo => {
+  gridHtml += `<div class="gap-cell row-label">${geo}</div>`;
+  categories.forEach(cat => {
+    const cell = DATA.strategy.gap.grid.find(g => g.geography === geo && g.category === cat);
+    gridHtml += `<div class="gap-cell ${cell && cell.highlight ? 'highlight' : ''}">${cell ? mdInline(cell.contents) : '—'}</div>`;
+  });
+});
+document.getElementById('gap-grid').innerHTML = gridHtml;
+
+const takeawaysHtml = DATA.strategy.gap.takeaways.map(t => `<div class="card">${mdInline(t)}</div>`).join('');
+document.getElementById('gap-takeaways').innerHTML = `<h3>Takeaways</h3>${takeawaysHtml}`;
+
+// ───────── Render: Recommendation ─────────
+document.getElementById('rec-headline').innerHTML = mdInline(DATA.strategy.recommendation.headline);
+const phasesHtml = DATA.strategy.recommendation.sequencing.map((p, i) => `
+  <div class="phase">
+    <div class="phase-num">0${i + 1}</div>
+    <div class="phase-time">${p.timeline}</div>
+    <div class="phase-title">${p.phase}</div>
+    <div style="font-size: 14px; color: var(--text-default-caption);">${mdInline(p.description)}</div>
+  </div>
+`).join('');
+document.getElementById('rec-phases').innerHTML = phasesHtml;
+
+document.getElementById('rec-rest').innerHTML = `
+  <div class="card">
+    <h4>The non-negotiable</h4>
+    ${md(DATA.strategy.recommendation.nonNegotiable)}
+  </div>
+  <div class="card">
+    <h4>Geography</h4>
+    ${md(DATA.strategy.recommendation.geography)}
+  </div>
+  <div class="card">
+    <h4>Where this is heading</h4>
+    ${md(DATA.strategy.recommendation.futureVision)}
+  </div>
+`;
+
+// ───────── Render: Risks ─────────
+const risksHtml = DATA.strategy.risks.map(r => `
+  <div class="risk">
+    <h4><span class="num">${r.number}</span> ${r.title}</h4>
+    <div>${mdInline(r.description)}</div>
+    <div class="counter">${mdInline(r.counter)}</div>
+  </div>
+`).join('');
+document.getElementById('risks-list').innerHTML = risksHtml;
+
+// ───────── Render: Customer evidence ─────────
+document.getElementById('signals-intro').innerHTML = `<p class="lede">${mdInline(DATA.customers.intro)}</p>`;
+const signalsHtml = DATA.customers.signals.map(s => `
+  <div class="signal">
+    <h3><span class="signal-num">${s.number}</span>${s.title}</h3>
+    <p>${mdInline(s.summary)}</p>
+    ${s.evidence.map(e => `
+      <div class="evidence">
+        <div class="ev-head">
+          <span class="ev-company">${e.company}${e.role ? ' — ' + e.role : ''}</span>
+          ${e.when ? `<span class="ev-when">${e.when}</span>` : ''}
+        </div>
+        ${e.quote ? `<div class="ev-quote">"${mdInline(e.quote)}"</div>` : ''}
+        ${e.context ? `<div class="ev-meta"><strong>Context:</strong> ${mdInline(e.context)}</div>` : ''}
+        ${e.outcome ? `<div class="ev-meta"><strong>Outcome:</strong> ${mdInline(e.outcome)}</div>` : ''}
+      </div>
+    `).join('')}
+    <div class="what-it-means">${mdInline(s.whatItMeans)}</div>
+  </div>
+`).join('');
+document.getElementById('signals-list').innerHTML = signalsHtml;
+
+// patterns
+const patternsHtml = DATA.customers.patterns.map(p => `
+  <div class="card">
+    <h4>${p.title}</h4>
+    <p>${mdInline(p.description)}</p>
+    ${p.data ? `
+      <table>
+        <tbody>
+          ${p.data.map(d => `<tr><td><strong>${d.label}</strong></td><td>${mdInline(d.value)}</td></tr>`).join('')}
+        </tbody>
+      </table>` : ''}
+  </div>
+`).join('');
+document.getElementById('patterns-list').innerHTML = patternsHtml;
+
+const changesHtml = DATA.customers.changesToStrategy.map(c => `
+  <div class="evidence">
+    <div class="ev-head"><span class="ev-company">${c.change}</span><span class="badge badge-info">${c.signal}</span></div>
+  </div>
+`).join('');
+document.getElementById('changes-list').innerHTML = changesHtml;
+
+// ───────── Render: Process explainers ─────────
+function renderProcess(data, prefix) {
+  document.getElementById(prefix + '-title').innerHTML = `${data.emoji} ${data.title}`;
+  const flowHtml = `
+    <div class="flow">
+      ${data.stageOrder.map((s, i) => `
+        <div class="flow-step">${s}</div>
+        ${i < data.stageOrder.length - 1 ? '<span class="flow-arrow">→</span>' : ''}
+      `).join('')}
+    </div>`;
+
+  const stagesHtml = data.stages.map(s => `
+    <div class="stage" data-num="${s.number}">
+      <h3>${s.title}</h3>
+      <dl class="stage-grid">
+        <dt>What it is</dt><dd>${mdInline(s.whatItIs)}</dd>
+        <dt>What happens</dt><dd>${mdInline(s.whatHappens)}</dd>
+        <dt>Example</dt><dd>${mdInline(s.example)}</dd>
+        <dt>Analogy</dt><dd><em>${mdInline(s.analogy)}</em></dd>
+        <dt>Where it breaks</dt><dd>${mdInline(s.whereItBreaks)}</dd>
+      </dl>
+    </div>
+  `).join('');
+
+  document.getElementById(prefix + '-body').innerHTML = `
+    <p class="lede">${mdInline(data.oneLiner)}</p>
+    <div class="card"><h4>Running example</h4>${md(data.runningExample)}</div>
+    <h3>Happy path</h3>
+    ${flowHtml}
+    <h3>The seven stages</h3>
+    ${stagesHtml}
+    <div class="card"><h4>Loops &amp; connections</h4>${md(data.loopsAndConnections)}</div>
+    <div class="card" style="background: var(--surface-primary-background); border-color: var(--border-primary-default);"><h4>Why it matters for Neoflo</h4>${md(data.whyItMattersForNeoflo)}</div>
+  `;
+}
+renderProcess(DATA.p2p, 'p2p');
+renderProcess(DATA.o2c, 'o2c');
+renderProcess(DATA.r2r, 'r2r');
+
+// ───────── Change my mind / Open questions / Appendix ─────────
+document.getElementById('cmm-list').innerHTML = DATA.strategy.changeMyMind.map(c => `<div class="card">${mdInline(c)}</div>`).join('');
+document.getElementById('oq-list').innerHTML = DATA.customers.openQuestions.map(q => `<li>${mdInline(q)}</li>`).join('');
+document.getElementById('appendix-body').innerHTML = `<div class="card">${md(DATA.strategy.appendix)}</div>`;
+
+// ───────── Active nav highlighting ─────────
+const navLinks = document.querySelectorAll('.nav a');
+const sections = Array.from(document.querySelectorAll('section'));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.nav a[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// mobile toggle
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('sidebar').classList.remove('open');
+}));
+</script>
+
+</body>
+</html>
