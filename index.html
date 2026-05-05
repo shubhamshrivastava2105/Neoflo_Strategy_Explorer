@@ -298,6 +298,13 @@
       <div class="nav-section">Customer evidence</div>
       <a href="#signals">Signals (v2)</a>
       <a href="#patterns">Patterns</a>
+      <div class="nav-section">Deep insights</div>
+      <a href="#pricing">Pricing benchmarks</a>
+      <a href="#regulatory">Regulatory tailwinds</a>
+      <a href="#defensibility">Defensibility</a>
+      <a href="#jobmap">Buyer job map</a>
+      <a href="#gtm">GTM playbook</a>
+      <a href="#actions">90-day actions</a>
       <div class="nav-section">Process explainers</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
@@ -380,6 +387,53 @@
       <div id="changes-list"></div>
     </section>
 
+    <section id="pricing">
+      <div class="eyebrow">Deep insight 01 — Pricing</div>
+      <h2 class="section-title">What competitors charge. What we should.</h2>
+      <div id="pricing-intro"></div>
+      <div id="pricing-table"></div>
+      <h3>Proposed Neoflo price ladder</h3>
+      <div class="grid grid-3" id="pricing-tiers"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="pricing-logic"></div>
+    </section>
+
+    <section id="regulatory">
+      <div class="eyebrow">Deep insight 02 — Regulatory tailwinds</div>
+      <h2 class="section-title">ASEAN e-invoicing is forced buying.</h2>
+      <div id="reg-intro"></div>
+      <div id="reg-list"></div>
+      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default); border-left: 3px solid var(--border-warning-default);" id="reg-headline"></div>
+    </section>
+
+    <section id="defensibility">
+      <div class="eyebrow">Deep insight 03 — Defensibility</div>
+      <h2 class="section-title">What stops a competitor from copying us.</h2>
+      <div id="def-intro"></div>
+      <div id="def-table"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="def-summary"></div>
+    </section>
+
+    <section id="jobmap">
+      <div class="eyebrow">Deep insight 04 — Buyer job map</div>
+      <h2 class="section-title">What the buyer is actually doing.</h2>
+      <div id="jm-intro"></div>
+      <div id="jm-list"></div>
+    </section>
+
+    <section id="gtm">
+      <div class="eyebrow">Deep insight 05 — GTM playbook</div>
+      <h2 class="section-title">Segment × geography × channel.</h2>
+      <div id="gtm-intro"></div>
+      <div id="gtm-table"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="gtm-sequencing"></div>
+    </section>
+
+    <section id="actions">
+      <div class="eyebrow">Deep insight 06 — 90-day actions</div>
+      <h2 class="section-title">What to do in the next quarter.</h2>
+      <div id="actions-list"></div>
+    </section>
+
     <section id="p2p">
       <div class="eyebrow">Process explainer</div>
       <h2 class="section-title" id="p2p-title"></h2>
@@ -433,6 +487,7 @@ DATA.p2p = window.P2P_DATA;
 DATA.o2c = window.O2C_DATA;
 DATA.r2r = window.R2R_DATA;
 DATA.customers = window.CUSTOMER_DATA;
+DATA.insights = window.INSIGHTS_DATA;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -683,6 +738,135 @@ renderProcess(DATA.r2r, 'r2r');
 document.getElementById('cmm-list').innerHTML = DATA.strategy.changeMyMind.map(c => `<div class="card">${mdInline(c)}</div>`).join('');
 document.getElementById('oq-list').innerHTML = DATA.customers.openQuestions.map(q => `<li>${mdInline(q)}</li>`).join('');
 document.getElementById('appendix-body').innerHTML = `<div class="card">${md(DATA.strategy.appendix)}</div>`;
+
+// ───────── Render: Deep insights ─────────
+const ins = DATA.insights;
+
+// 1. Pricing
+document.getElementById('pricing-intro').innerHTML = `<p class="lede">${mdInline(ins.pricing.intro)}</p>`;
+document.getElementById('pricing-table').innerHTML = `
+  <table>
+    <thead><tr><th>Vendor</th><th>Segment</th><th>Pricing model</th><th>Typical ARR</th><th>Implementation</th><th>Notes</th></tr></thead>
+    <tbody>
+      ${ins.pricing.benchmarks.map(b => `
+        <tr>
+          <td><strong>${b.vendor}</strong></td>
+          <td>${b.segment}</td>
+          <td>${b.pricingModel}</td>
+          <td>${b.typicalARR}</td>
+          <td>${b.implementation}</td>
+          <td>${mdInline(b.notes)}</td>
+        </tr>`).join('')}
+    </tbody>
+  </table>`;
+document.getElementById('pricing-tiers').innerHTML = `
+  <div class="phase">
+    <div class="phase-num">01</div>
+    <div class="phase-time">Wedge</div>
+    <div class="phase-title">P2P invoice processing</div>
+    <div style="font-size: 14px; color: var(--text-default-caption);">${mdInline(ins.pricing.proposedNeoflo.wedge)}</div>
+  </div>
+  <div class="phase">
+    <div class="phase-num">02</div>
+    <div class="phase-time">Platform</div>
+    <div class="phase-title">P2P + O2C bundle</div>
+    <div style="font-size: 14px; color: var(--text-default-caption);">${mdInline(ins.pricing.proposedNeoflo.platform)}</div>
+  </div>
+  <div class="phase">
+    <div class="phase-num">03</div>
+    <div class="phase-time">Per-txn floor</div>
+    <div class="phase-title">Volume add-on</div>
+    <div style="font-size: 14px; color: var(--text-default-caption);">${mdInline(ins.pricing.proposedNeoflo.perTransactionFloor)}</div>
+  </div>`;
+document.getElementById('pricing-logic').innerHTML = `<h4>The pricing logic</h4>${md(ins.pricing.proposedNeoflo.logic)}`;
+
+// 2. Regulatory
+document.getElementById('reg-intro').innerHTML = `<p class="lede">${mdInline(ins.regulatory.intro)}</p>`;
+document.getElementById('reg-list').innerHTML = ins.regulatory.windows.map(w => `
+  <div class="card">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200); margin-bottom: var(--scale-200);">
+      <h3 style="margin: 0;">${w.jurisdiction}</h3>
+      <span class="badge badge-warning">${w.mandate}</span>
+    </div>
+    <dl class="stage-grid">
+      <dt>Status</dt><dd>${mdInline(w.status)}</dd>
+      <dt>Who must comply</dt><dd>${mdInline(w.whoMustComply)}</dd>
+      <dt>What it forces</dt><dd>${mdInline(w.whatItForces)}</dd>
+      <dt>Our play</dt><dd>${mdInline(w.ourPlay)}</dd>
+    </dl>
+  </div>
+`).join('');
+document.getElementById('reg-headline').innerHTML = `<h4 style="margin-top: 0;">Headline</h4>${md(ins.regulatory.headline)}`;
+
+// 3. Defensibility
+document.getElementById('def-intro').innerHTML = `<p class="lede">${mdInline(ins.defensibility.intro)}</p>`;
+function durabilityBadge(d) {
+  const map = { 'Low': 'badge-error', 'Medium': 'badge-warning', 'Medium-High': 'badge-info', 'Low → Medium (compounds with time)': 'badge-info', 'High': 'badge-success' };
+  return `<span class="badge ${map[d] || 'badge-neutral'}">${d}</span>`;
+}
+document.getElementById('def-table').innerHTML = `
+  <table>
+    <thead><tr><th>Layer</th><th>Description</th><th>Durability</th><th>How to reinforce</th></tr></thead>
+    <tbody>
+      ${ins.defensibility.layers.map(l => `
+        <tr>
+          <td><strong>${l.layer}</strong></td>
+          <td>${mdInline(l.description)}</td>
+          <td>${durabilityBadge(l.durability)}</td>
+          <td>${mdInline(l.howToReinforce)}</td>
+        </tr>`).join('')}
+    </tbody>
+  </table>`;
+document.getElementById('def-summary').innerHTML = `<h4>Summary</h4>${md(ins.defensibility.summary)}`;
+
+// 4. Buyer job map
+document.getElementById('jm-intro').innerHTML = `<p class="lede">${mdInline(ins.buyerJobMap.intro)}</p>`;
+document.getElementById('jm-list').innerHTML = ins.buyerJobMap.steps.map(s => `
+  <div class="stage" data-num="${s.number}">
+    <h3>${s.step}</h3>
+    <dl class="stage-grid">
+      <dt>CFO asks</dt><dd>${mdInline(s.cfoQuestion)}</dd>
+      <dt>Controller asks</dt><dd>${mdInline(s.controllerQuestion)}</dd>
+      <dt>IT asks</dt><dd>${mdInline(s.itQuestion)}</dd>
+      <dt>What wins</dt><dd><strong>${mdInline(s.whatWins)}</strong></dd>
+    </dl>
+  </div>
+`).join('');
+
+// 5. GTM
+document.getElementById('gtm-intro').innerHTML = `<p class="lede">${mdInline(ins.gtmPlaybook.intro)}</p>`;
+function statusBadge(s) {
+  const map = { 'Active': 'badge-success', 'Test': 'badge-warning', 'Future': 'badge-neutral' };
+  return `<span class="badge ${map[s] || 'badge-neutral'}">${s}</span>`;
+}
+document.getElementById('gtm-table').innerHTML = `
+  <table>
+    <thead><tr><th>Segment</th><th>Geo</th><th>Channel</th><th>Cycle</th><th>ACV</th><th>Status</th></tr></thead>
+    <tbody>
+      ${ins.gtmPlaybook.plays.map(p => `
+        <tr>
+          <td><strong>${p.segment}</strong><div style="font-size: 12px; color: var(--text-default-caption); margin-top: 4px;">${mdInline(p.evidence)}</div></td>
+          <td>${p.geography}</td>
+          <td>${mdInline(p.channel)}</td>
+          <td>${p.cycleLength}</td>
+          <td>${p.acvRange}</td>
+          <td>${statusBadge(p.status)}</td>
+        </tr>`).join('')}
+    </tbody>
+  </table>`;
+document.getElementById('gtm-sequencing').innerHTML = `<h4>Sequencing</h4>${md(ins.gtmPlaybook.sequencing)}`;
+
+// 6. 90-day actions
+document.getElementById('actions-list').innerHTML = ins.ninetyDayActions.map(a => `
+  <div class="stage" data-num="${a.number}">
+    <h3>${a.action}</h3>
+    <dl class="stage-grid">
+      <dt>Owner</dt><dd>${mdInline(a.owner)}</dd>
+      <dt>Why</dt><dd>${mdInline(a.why)}</dd>
+      <dt>Success metric</dt><dd><strong>${mdInline(a.successMetric)}</strong></dd>
+    </dl>
+  </div>
+`).join('');
 
 // ───────── Active nav highlighting ─────────
 const navLinks = document.querySelectorAll('.nav a');

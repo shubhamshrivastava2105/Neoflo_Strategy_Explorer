@@ -7,6 +7,7 @@ const files = [
   { src: 'content/o2c.ts',       exp: 'o2cData',              global: 'O2C_DATA' },
   { src: 'content/r2r.ts',       exp: 'r2rData',              global: 'R2R_DATA' },
   { src: 'content/customers.ts', exp: 'customerEvidenceData', global: 'CUSTOMER_DATA' },
+  { src: 'content/insights.ts',  exp: 'insightsData',          global: 'INSIGHTS_DATA' },
 ];
 
 let out = '// Auto-generated from content/*.ts — do not edit\n';
