@@ -593,15 +593,19 @@ export const strategyData: StrategyData = {
     `A US enterprise inbound that's willing to be a $500K+ ARR design partner — in that case, follow the money short-term but don't redirect strategy.`,
   ],
 
-  appendix: `This memo is **desk research v1**. It draws from public sources: G2, Gartner Peer Insights, Mordor Intelligence, Forrester market sizing, vendor websites, recent press releases (Brex/Capital One Jan 2026, Brex Accounting API launch Jan 2026, Brex/OpenAI Mar 2026), and competitive teardown blogs from incumbents (Stampli, Peakflo, Stuut, ChatFin).
+  appendix: `**Memo provenance.** v1 was desk research. **v2 (current)** integrates direct customer evidence from 12+ documented buyer conversations (Zalora, Spectrum Brands, Hitachi Vantara, Welspun, Coca-Cola, Apparel Group, JLand Group, Agro Corp, Flipkart, Boomerang Catapult / Rehmann CPA, plus competitor / market touchpoints). Sources combined: customer interview transcripts in Notion, public market data (G2, Gartner Peer Insights, Mordor Intelligence, Forrester), vendor websites, regulatory portals (LHDN MyInvois, IMDA InvoiceNow, DGT e-Faktur, BIR EIS), and recent press releases (Brex/Capital One acquisition Jan 2026, Brex Accounting API Jan 2026, Brex/OpenAI Mar 2026).
 
-The biggest holes in this draft:
+**Holes still in v2:**
 
-1. **Direct customer evidence.** The strongest version of this memo includes 5–7 conversations with mid-market finance teams (in SEA + 1–2 in USA) about their tool stack, what they considered, what they rejected, and why.
+1. **Direct Peakflo win/loss data.** We have inferred competitive risk; we don\'t have a documented loss to Peakflo or a documented win against them. Talking to 3 Peakflo customers + 1 deal they lost is a 90-day action item (#8).
 
-2. **Real win/loss data.** I don't have hard data on what Peakflo wins and loses on. We should debrief any deal we've competed with them on.
+2. **Per-transaction unit economics for Neoflo at scale.** Internal financial analysis to confirm wedge / platform tier pricing holds margin. Currently a guideline; needs modeling.
 
-3. **R2R India context.** I have been Singapore-heavy on SEA. The Indian mid-market R2R reality (Ind AS 116 lease accounting, GST reconciliation, MCA filings) deserves its own slice that I haven't done justice to here.
+3. **R2R India-specific context.** Ind AS 116 lease accounting, GST reconciliation under quarterly returns, MCA filings, India-specific consolidation under SEBI rules — the Indian mid-market R2R reality is under-developed in this memo. Needed if we re-enter India for non-AP scope.
 
-4. **Pricing precision.** Most of the public pricing for enterprise/upper-mid players is quote-based. Numbers in the tables are best-available estimates from third-party benchmarks, not vendor-confirmed.`,
+4. **Pricing precision on competitor side.** Most enterprise/upper-mid pricing is quote-based. Numbers in tables are best-available estimates from third-party benchmarks (G2 reviews mentioning ARR, Capterra, Gartner Peer Insights, leaked RFP responses) — not vendor-confirmed.
+
+5. **Quantified pipeline patterns.** Pattern 1 ("dominantly warm") is qualitative; we should number it (warm vs outbound %, win rate by channel, ACV by channel) once 6 months of CRM data is in.
+
+6. **R2R workflow content depth.** P2P and O2C process explainers are well-developed. R2R explainer is solid but the Phase 3 product roadmap (close orchestration + JE workflow + recs as MVP) needs the same level of detail with build-vs-partner decisions per sub-workflow before Q3 2026.`,
 };

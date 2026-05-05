@@ -335,6 +335,8 @@
       </div>
     </div>
     <nav class="nav" id="nav">
+      <div class="nav-section">Top of memo</div>
+      <a href="#snapshot">Executive snapshot</a>
       <div class="nav-section">Strategy</div>
       <a href="#tldr">TL;DR</a>
       <a href="#market">Market sizing</a>
@@ -358,6 +360,10 @@
       <a href="#workflow">Workflow map</a>
       <a href="#vendor-coverage">Vendor coverage</a>
       <a href="#pipemap">Pipeline competitive map</a>
+      <div class="nav-section">Personas &amp; targeting</div>
+      <a href="#personas">Buyer personas</a>
+      <a href="#geo-targeting">Geography decisions</a>
+      <a href="#target-rec">Target recommendation</a>
       <div class="nav-section">Process explainers</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
@@ -383,14 +389,66 @@
       </div>
     </header>
 
+    <section id="snapshot" style="margin-bottom: var(--scale-800);">
+      <div class="eyebrow">Executive snapshot</div>
+      <h2 class="section-title">The whole memo, on one screen.</h2>
+      <div class="grid grid-3">
+        <div class="stat">
+          <div class="label">Wedge</div>
+          <div class="value" style="font-size: 18px;">P2P invoice processing</div>
+          <div class="note">Live with Zalora · 2 more SEA references existential by Q4 2026</div>
+        </div>
+        <div class="stat">
+          <div class="label">Critical competitor</div>
+          <div class="value" style="font-size: 18px;">Peakflo</div>
+          <div class="note">4-year head start in SEA · PSG-subsidized in SG · build/partner voice AI for collections</div>
+        </div>
+        <div class="stat">
+          <div class="label">Other critical threat</div>
+          <div class="value" style="font-size: 18px;">SAP VIM / ERP-native</div>
+          <div class="note">In every SAP-shop deal · Coca-Cola, Spectrum, Welspun, Hitachi all SAP</div>
+        </div>
+        <div class="stat">
+          <div class="label">Forced-buy tailwind</div>
+          <div class="value" style="font-size: 18px;">ASEAN e-invoicing mandates</div>
+          <div class="note">MyInvois (MY), InvoiceNow (SG), e-Faktur (ID) — must ship native by mid-2026</div>
+        </div>
+        <div class="stat">
+          <div class="label">Top 90-day action</div>
+          <div class="value" style="font-size: 18px;">Apply for PSG approval</div>
+          <div class="note">Single biggest distribution gap vs Peakflo · structural ~50% pricing penalty without it</div>
+        </div>
+        <div class="stat">
+          <div class="label">Validation deal in flight</div>
+          <div class="value" style="font-size: 18px;">Spectrum Brands</div>
+          <div class="note">$2.8B NYSE-listed · rejected $1.2–1.5M HighRadius quote · validates "AP+AR+close at 1/10 cost"</div>
+        </div>
+        <div class="stat">
+          <div class="label">Coverage analyzed</div>
+          <div class="value" style="font-size: 18px;">28 workflows · 27 vendors</div>
+          <div class="note">P2P (10) + O2C (10) + R2R (8) sub-workflows mapped to who plays + how they monetize</div>
+        </div>
+        <div class="stat">
+          <div class="label">Pipeline accounts mapped</div>
+          <div class="value" style="font-size: 18px;">10 documented</div>
+          <div class="note">2 active · 1 live · 2 stalled · 1 lost · 3 exploratory · 1 channel test</div>
+        </div>
+        <div class="stat">
+          <div class="label">Single biggest risk</div>
+          <div class="value" style="font-size: 18px;">Zalora dependency</div>
+          <div class="note">Convert Spectrum + Apparel + 1 SEA enterprise to closed by Q4 2026 to de-risk</div>
+        </div>
+      </div>
+    </section>
+
     <section id="tldr">
-      <div class="eyebrow">01 — TL;DR</div>
+      <div class="eyebrow">Section 01 · Strategy</div>
       <h2 class="section-title">The bet, in one paragraph.</h2>
       <div id="tldr-body"></div>
     </section>
 
     <section id="market">
-      <div class="eyebrow">02 — Market sizing</div>
+      <div class="eyebrow">Section 02 · Strategy</div>
       <h2 class="section-title">Three categories. Different shapes.</h2>
       <div id="market-intro"></div>
       <div class="grid grid-3" id="market-stats"></div>
@@ -400,14 +458,14 @@
     </section>
 
     <section id="landscape">
-      <div class="eyebrow">03 — Competitive landscape</div>
+      <div class="eyebrow">Section 03 · Strategy</div>
       <h2 class="section-title">Four cohorts per category.</h2>
       <div class="tabs" id="landscape-tabs"></div>
       <div id="landscape-panels"></div>
     </section>
 
     <section id="gap">
-      <div class="eyebrow">04 — The gap</div>
+      <div class="eyebrow">Section 04 · Strategy</div>
       <h2 class="section-title">Where nobody is winning yet.</h2>
       <div id="gap-intro"></div>
       <div class="gap-grid" id="gap-grid"></div>
@@ -415,27 +473,27 @@
     </section>
 
     <section id="recommendation">
-      <div class="eyebrow">05 — Recommendation</div>
+      <div class="eyebrow">Section 05 · Strategy</div>
       <h2 class="section-title" id="rec-headline"></h2>
       <div class="grid grid-3" id="rec-phases"></div>
       <div style="margin-top: var(--scale-400);" id="rec-rest"></div>
     </section>
 
     <section id="risks">
-      <div class="eyebrow">06 — Risks</div>
+      <div class="eyebrow">Section 06 · Strategy</div>
       <h2 class="section-title">What could break the bet.</h2>
       <div id="risks-list"></div>
     </section>
 
     <section id="signals">
-      <div class="eyebrow">07 — Customer evidence v2</div>
+      <div class="eyebrow">Section 07 · Customer evidence v2</div>
       <h2 class="section-title">What 12+ buyers actually told us.</h2>
       <div id="signals-intro"></div>
       <div id="signals-list"></div>
     </section>
 
     <section id="patterns">
-      <div class="eyebrow">08 — Patterns</div>
+      <div class="eyebrow">Section 08 · Customer evidence v2</div>
       <h2 class="section-title">Cross-cutting patterns &amp; strategy changes.</h2>
       <div id="patterns-list"></div>
       <h3 style="margin-top: var(--scale-500);">What changed in v2</h3>
@@ -443,7 +501,7 @@
     </section>
 
     <section id="pricing">
-      <div class="eyebrow">Deep insight 01 — Pricing</div>
+      <div class="eyebrow">Section 09 · Deep insights</div>
       <h2 class="section-title">What competitors charge. What we should.</h2>
       <div id="pricing-intro"></div>
       <div id="pricing-table"></div>
@@ -453,7 +511,7 @@
     </section>
 
     <section id="regulatory">
-      <div class="eyebrow">Deep insight 02 — Regulatory tailwinds</div>
+      <div class="eyebrow">Section 10 · Deep insights</div>
       <h2 class="section-title">ASEAN e-invoicing is forced buying.</h2>
       <div id="reg-intro"></div>
       <div id="reg-list"></div>
@@ -461,7 +519,7 @@
     </section>
 
     <section id="defensibility">
-      <div class="eyebrow">Deep insight 03 — Defensibility</div>
+      <div class="eyebrow">Section 11 · Deep insights</div>
       <h2 class="section-title">What stops a competitor from copying us.</h2>
       <div id="def-intro"></div>
       <div id="def-table"></div>
@@ -469,14 +527,14 @@
     </section>
 
     <section id="jobmap">
-      <div class="eyebrow">Deep insight 04 — Buyer job map</div>
+      <div class="eyebrow">Section 12 · Deep insights</div>
       <h2 class="section-title">What the buyer is actually doing.</h2>
       <div id="jm-intro"></div>
       <div id="jm-list"></div>
     </section>
 
     <section id="gtm">
-      <div class="eyebrow">Deep insight 05 — GTM playbook</div>
+      <div class="eyebrow">Section 13 · Deep insights</div>
       <h2 class="section-title">Segment × geography × channel.</h2>
       <div id="gtm-intro"></div>
       <div id="gtm-table"></div>
@@ -484,20 +542,20 @@
     </section>
 
     <section id="actions">
-      <div class="eyebrow">Deep insight 06 — 90-day actions</div>
+      <div class="eyebrow">Section 14 · Deep insights</div>
       <h2 class="section-title">What to do in the next quarter.</h2>
       <div id="actions-list"></div>
     </section>
 
     <section id="h2h">
-      <div class="eyebrow">Competitive deep-dive 01</div>
+      <div class="eyebrow">Section 15 · Competitive deep-dive</div>
       <h2 class="section-title">Head-to-head profiles.</h2>
       <div id="h2h-intro"></div>
       <div id="h2h-list"></div>
     </section>
 
     <section id="matrix">
-      <div class="eyebrow">Competitive deep-dive 02</div>
+      <div class="eyebrow">Section 16 · Competitive deep-dive</div>
       <h2 class="section-title">Feature matrix — capability vs vendor.</h2>
       <div id="matrix-intro"></div>
       <div id="matrix-legend" class="grid grid-3" style="margin-bottom: var(--scale-300);"></div>
@@ -506,15 +564,20 @@
     </section>
 
     <section id="workflow">
-      <div class="eyebrow">Competitive deep-dive 03</div>
+      <div class="eyebrow">Section 17 · Competitive deep-dive</div>
       <h2 class="section-title">Workflow-by-workflow map.</h2>
       <div id="workflow-intro"></div>
       <div class="tabs" id="workflow-tabs"></div>
+      <div style="display: flex; gap: var(--scale-200); margin-bottom: var(--scale-300); flex-wrap: wrap; align-items: center;">
+        <input id="wf-filter" type="search" placeholder="Filter workflows by name, vendor, or text…" style="flex: 1; min-width: 240px; padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);" />
+        <button class="tab" id="wf-expand-all" type="button">Expand all</button>
+        <button class="tab" id="wf-collapse-all" type="button">Collapse all</button>
+      </div>
       <div id="workflow-panels"></div>
     </section>
 
     <section id="vendor-coverage">
-      <div class="eyebrow">Competitive deep-dive 04</div>
+      <div class="eyebrow">Section 18 · Competitive deep-dive</div>
       <h2 class="section-title">Vendor coverage — who plays where.</h2>
       <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape.</p>
       <div id="vc-table" style="overflow-x: auto;"></div>
@@ -522,48 +585,79 @@
     </section>
 
     <section id="pipemap">
-      <div class="eyebrow">Competitive deep-dive 05</div>
+      <div class="eyebrow">Section 19 · Competitive deep-dive</div>
       <h2 class="section-title">Pipeline competitive map.</h2>
       <div id="pm-intro"></div>
       <div id="pm-list"></div>
       <div class="card" style="margin-top: var(--scale-300);" id="pm-readout"></div>
     </section>
 
+    <section id="personas">
+      <div class="eyebrow">Section 20 · Personas &amp; targeting</div>
+      <h2 class="section-title">Who we sell to.</h2>
+      <div id="personas-intro"></div>
+      <div id="personas-list"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="buying-committee"></div>
+    </section>
+
+    <section id="geo-targeting">
+      <div class="eyebrow">Section 21 · Personas &amp; targeting</div>
+      <h2 class="section-title">Where we sell — and where we deliberately don't.</h2>
+      <div id="geo-list"></div>
+    </section>
+
+    <section id="target-rec">
+      <div class="eyebrow">Section 22 · Personas &amp; targeting</div>
+      <h2 class="section-title" id="target-rec-headline"></h2>
+      <div class="grid grid-2" id="target-rec-time"></div>
+      <div class="card" style="margin-top: var(--scale-400); background: var(--surface-error-subtle); border-left: 3px solid var(--border-error-default);" id="target-rec-pitfalls"></div>
+    </section>
+
     <section id="p2p">
-      <div class="eyebrow">Process explainer</div>
+      <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="p2p-title"></h2>
       <div id="p2p-body"></div>
     </section>
 
     <section id="o2c">
-      <div class="eyebrow">Process explainer</div>
+      <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="o2c-title"></h2>
       <div id="o2c-body"></div>
     </section>
 
     <section id="r2r">
-      <div class="eyebrow">Process explainer</div>
+      <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="r2r-title"></h2>
       <div id="r2r-body"></div>
     </section>
 
     <section id="changemymind">
-      <div class="eyebrow">09 — Change my mind</div>
+      <div class="eyebrow">Section 23 · Reference</div>
       <h2 class="section-title">What would flip this thesis.</h2>
       <div id="cmm-list"></div>
     </section>
 
     <section id="openquestions">
-      <div class="eyebrow">10 — Open questions</div>
+      <div class="eyebrow">Section 24 · Reference</div>
       <h2 class="section-title">Where evidence is still thin.</h2>
       <ul id="oq-list"></ul>
     </section>
 
     <section id="appendix">
-      <div class="eyebrow">11 — Appendix</div>
+      <div class="eyebrow">Section 25 · Reference</div>
       <h2 class="section-title">Sources &amp; gaps.</h2>
       <div id="appendix-body"></div>
     </section>
+
+    <footer style="margin-top: var(--scale-1125); padding-top: var(--scale-500); border-top: 1px solid var(--border-pagecard-card-1); font-size: 12px; color: var(--text-default-caption); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-300);">
+      <div>
+        <strong style="color: var(--text-default-body);">Neoflo Strategy Explorer</strong> · v2 (customer evidence integrated)<br/>
+        Last updated 2026-05-05 · 25 sections · 28 workflows · 27 vendors · 10 pipeline accounts · 5 buyer personas · 7 geography decisions
+      </div>
+      <div>
+        Internal · do not distribute externally
+      </div>
+    </footer>
   </main>
 </div>
 
@@ -585,6 +679,9 @@ DATA.customers = window.CUSTOMER_DATA;
 DATA.insights = window.INSIGHTS_DATA;
 DATA.comparisons = window.COMPARISONS_DATA;
 DATA.workflowDeep = window.WORKFLOW_DEEP;
+DATA.workflowPersonas = window.WORKFLOW_PERSONAS;
+DATA.stageDeep = window.STAGE_DEEP;
+DATA.personas = window.PERSONAS_DATA;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -803,6 +900,31 @@ function renderProcess(data, prefix) {
       `).join('')}
     </div>`;
 
+  function stageDeepBlock(processSlug, stageNumber) {
+    const procKey = processSlug.toUpperCase();
+    const key = procKey + '_' + stageNumber;
+    const dx = DATA.stageDeep && DATA.stageDeep[key];
+    if (!dx) return '';
+    return `
+      <details class="wf-deep" style="margin-top: var(--scale-200);">
+        <summary>Operational deep dive — roles, KPIs, variations, regulatory, judgment calls</summary>
+        <div class="wf-deep-body">
+          <h5>How it really happens</h5>
+          <p>${mdInline(dx.howItReallyHappens)}</p>
+          <h5>Who does what</h5>
+          <ul>${dx.whoDoesWhat.map(r => `<li><strong>${r.actor}:</strong> ${mdInline(r.responsibility)}</li>`).join('')}</ul>
+          <h5>How success is measured</h5>
+          <ul>${dx.howSuccessIsMeasured.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+          <h5>How it varies (industry / size / geography)</h5>
+          <ul>${dx.howItVaries.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+          <h5>Regulatory &amp; compliance</h5>
+          <ul>${dx.regulatoryAndCompliance.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+          <h5>Key judgment calls</h5>
+          <ul>${dx.keyJudgmentCalls.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+        </div>
+      </details>`;
+  }
+
   const stagesHtml = data.stages.map(s => `
     <div class="stage" data-num="${s.number}">
       <h3>${s.title}</h3>
@@ -813,6 +935,7 @@ function renderProcess(data, prefix) {
         <dt>Analogy</dt><dd><em>${mdInline(s.analogy)}</em></dd>
         <dt>Where it breaks</dt><dd>${mdInline(s.whereItBreaks)}</dd>
       </dl>
+      ${stageDeepBlock(data.slug, s.number)}
     </div>
   `).join('');
 
@@ -1093,6 +1216,21 @@ wfProcesses.forEach((proc, i) => {
     return `<span class="badge badge-neutral">${c}</span>`;
   }
 
+  function personaBlock(w) {
+    const key = w.process + '_' + w.number;
+    const px = DATA.workflowPersonas && DATA.workflowPersonas[key];
+    if (!px) return '';
+    return `
+      <div class="evidence" style="background: var(--surface-information-subtle); border-left-color: var(--border-information-default); margin-top: var(--scale-200);">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-information-default); font-weight: 600; margin-bottom: var(--scale-100);">Who this solves for</div>
+        <div style="font-weight: 600; font-size: 15px; color: var(--text-default-heading);">${px.primaryPersona}</div>
+        <div style="font-size: 13px; color: var(--text-default-caption); margin-top: 2px;">${mdInline(px.primaryRole)}</div>
+        <div style="font-size: 13px; margin-top: var(--scale-200);"><strong>What it relieves:</strong> ${mdInline(px.whatItRelievesForThem)}</div>
+        <div style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-100);"><strong>Also useful for:</strong> ${px.secondaryPersonas.join(' · ')}</div>
+        <div style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-100);"><strong>Buyer of this:</strong> ${mdInline(px.buyerOfThisFeature)}</div>
+      </div>`;
+  }
+
   function deepBlock(w) {
     const key = w.process + '_' + w.number;
     const dx = DATA.workflowDeep && DATA.workflowDeep[key];
@@ -1142,6 +1280,7 @@ wfProcesses.forEach((proc, i) => {
         <strong style="color: var(--text-primary-default); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Neoflo</strong>
         <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(w.ourNote)}</div>
       </div>
+      ${personaBlock(w)}
       ${deepBlock(w)}
       <h4 style="margin-top: var(--scale-300);">Players (${w.players.length})</h4>
       <table style="font-size: 12px;">
@@ -1215,6 +1354,184 @@ document.getElementById('pm-list').innerHTML = cmp.pipelineMap.accounts.map(a =>
   </div>
 `).join('');
 document.getElementById('pm-readout').innerHTML = `<h4>Portfolio readout</h4>${md(cmp.pipelineMap.portfolioReadout)}`;
+
+// ───────── Render: Personas ─────────
+const persData = DATA.personas;
+document.getElementById('personas-intro').innerHTML = `<p class="lede">${mdInline(persData.intro)}</p>`;
+
+function classBadge(c) {
+  const map = { 'Primary buyer': 'badge-primary', 'Champion': 'badge-success', 'Economic buyer': 'badge-warning', 'Veto authority': 'badge-error', 'Influencer': 'badge-info' };
+  return `<span class="badge ${map[c] || 'badge-neutral'}">${c}</span>`;
+}
+document.getElementById('personas-list').innerHTML = persData.buyerPersonas.map(p => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${p.role}</h3>
+      ${classBadge(p.classification)}
+    </div>
+    <p style="font-size: 13px; color: var(--text-default-caption); margin: var(--scale-100) 0 var(--scale-300);">${p.level}</p>
+    <dl class="stage-grid">
+      <dt>What they own</dt><dd>${mdInline(p.whatTheyOwn)}</dd>
+      <dt>Daily pain</dt><dd>${mdInline(p.dailyPain)}</dd>
+      <dt>Motivations</dt><dd><ul style="margin: 0; padding-left: 20px;">${p.motivations.map(m => `<li>${mdInline(m)}</li>`).join('')}</ul></dd>
+      <dt>Authority</dt><dd>${mdInline(p.decisionAuthority)}</dd>
+      <dt>Blockers</dt><dd><ul style="margin: 0; padding-left: 20px;">${p.blockers.map(b => `<li>${mdInline(b)}</li>`).join('')}</ul></dd>
+      <dt>What they ask first</dt><dd><ul style="margin: 0; padding-left: 20px;">${p.whatTheyAskFirst.map(q => `<li>${mdInline(q)}</li>`).join('')}</ul></dd>
+      <dt>Our talk track</dt><dd><strong>${mdInline(p.ourTalkTrack)}</strong></dd>
+    </dl>
+  </div>
+`).join('');
+document.getElementById('buying-committee').innerHTML = `<h4>The realistic buying committee</h4>${md(persData.buyingCommittee)}`;
+
+// Geography decisions
+function decisionBadge(d) {
+  if (d.startsWith('TARGET — primary')) return `<span class="badge badge-success">${d}</span>`;
+  if (d.startsWith('TARGET — secondary')) return `<span class="badge badge-info">${d}</span>`;
+  if (d === 'OPPORTUNISTIC') return `<span class="badge badge-warning">${d}</span>`;
+  if (d.startsWith('DO NOT TARGET YET')) return `<span class="badge badge-warning">${d}</span>`;
+  if (d.startsWith('DO NOT TARGET')) return `<span class="badge badge-error">${d}</span>`;
+  return `<span class="badge badge-neutral">${d}</span>`;
+}
+document.getElementById('geo-list').innerHTML = persData.geographyDecisions.map(g => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${g.geography}</h3>
+      ${decisionBadge(g.decision)}
+    </div>
+    <dl class="stage-grid">
+      <dt>Market size</dt><dd>${mdInline(g.marketSize)}</dd>
+      <dt>Buyer profile</dt><dd>${mdInline(g.buyerProfile)}</dd>
+      <dt>Why / why not</dt><dd><ul style="margin: 0; padding-left: 20px;">${g.whyOrWhyNot.map(r => `<li>${mdInline(r)}</li>`).join('')}</ul></dd>
+      <dt>Competition</dt><dd>${mdInline(g.competitiveDynamics)}</dd>
+      <dt>Proof points</dt><dd>${g.proofPoints.length ? g.proofPoints.map(p => `<span class="badge badge-info" style="margin-right: 4px;">${mdInline(p)}</span>`).join(' ') : '—'}</dd>
+      <dt>Resourcing</dt><dd><strong>${mdInline(g.resourceCommitment)}</strong></dd>
+    </dl>
+  </div>
+`).join('');
+
+// Recommendation
+document.getElementById('target-rec-headline').innerHTML = mdInline(persData.recommendation.headline);
+document.getElementById('target-rec-time').innerHTML = `
+  <div class="phase">
+    <div class="phase-num">12m</div>
+    <div class="phase-time">12-month focus</div>
+    <div class="phase-title">Primary motion</div>
+    <div style="font-size: 14px; color: var(--text-default-caption);">${mdInline(persData.recommendation.twelveMonthFocus)}</div>
+  </div>
+  <div class="phase">
+    <div class="phase-num">24m</div>
+    <div class="phase-time">12–24 months</div>
+    <div class="phase-title">Expansion motion</div>
+    <div style="font-size: 14px; color: var(--text-default-caption);">${mdInline(persData.recommendation.twelveTo24Months)}</div>
+  </div>`;
+document.getElementById('target-rec-pitfalls').innerHTML = `<h4 style="margin-top: 0; color: var(--text-error-on-color);">Avoid these pitfalls</h4><ul>${persData.recommendation.avoidThesePitfalls.map(p => `<li>${mdInline(p)}</li>`).join('')}</ul>`;
+
+// ───────── Cross-links: vendor name → head-to-head profile ─────────
+const h2hMap = {};
+cmp.headToHead.profiles.forEach(p => {
+  const slug = p.vendor.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const id = 'h2h-' + slug;
+  h2hMap[p.vendor] = id;
+  // Add inline anchor inside h2h for direct linking
+});
+// Re-render h2h list with anchor IDs so cross-links resolve
+document.getElementById('h2h-list').innerHTML = cmp.headToHead.profiles.map(p => {
+  const slug = p.vendor.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `
+  <div class="card" id="h2h-${slug}" style="margin-bottom: var(--scale-400); scroll-margin-top: var(--scale-400);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${p.vendor}</h3>
+      ${threatBadge(p.threatLevel)}
+    </div>
+    <p style="font-size: 13px; color: var(--text-default-caption); margin: var(--scale-100) 0 var(--scale-300);">${mdInline(p.category)}</p>
+    <dl class="stage-grid">
+      <dt>HQ</dt><dd>${p.hq}</dd>
+      <dt>Founded</dt><dd>${p.founded}</dd>
+      <dt>Funding</dt><dd>${mdInline(p.funding)}</dd>
+      <dt>Customers</dt><dd>${mdInline(p.customers)}</dd>
+      <dt>Pricing</dt><dd>${mdInline(p.pricing)}</dd>
+      <dt>Implementation</dt><dd>${mdInline(p.implementation)}</dd>
+    </dl>
+    <div class="grid grid-2" style="margin-top: var(--scale-300);">
+      <div>
+        <h4 style="color: var(--text-success-on-color);">Where they win</h4>
+        <ul>${p.whereTheyWin.map(b => `<li>${mdInline(b)}</li>`).join('')}</ul>
+      </div>
+      <div>
+        <h4 style="color: var(--text-error-on-color);">Where they lose</h4>
+        <ul>${p.whereTheyLose.map(b => `<li>${mdInline(b)}</li>`).join('')}</ul>
+      </div>
+    </div>
+    <div class="grid grid-2" style="margin-top: var(--scale-300);">
+      <div class="evidence" style="margin: 0;">
+        <strong style="color: var(--text-primary-default);">How we beat them</strong>
+        <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(p.howWeBeatThem)}</div>
+      </div>
+      <div class="evidence" style="margin: 0; background: var(--surface-error-subtle);">
+        <strong style="color: var(--text-error-on-color);">How they beat us (honest)</strong>
+        <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(p.howTheyBeatUs)}</div>
+      </div>
+    </div>
+    <div style="margin-top: var(--scale-300);">
+      <h4>Typical deal frame</h4>
+      <p style="font-size: 14px;">${mdInline(p.typicalDealFrame)}</p>
+    </div>
+    <div style="margin-top: var(--scale-300);">
+      <h4>Buyer decision criteria</h4>
+      <ul>${p.buyerDecisionCriteria.map(c => `<li>${mdInline(c)}</li>`).join('')}</ul>
+    </div>
+    <div class="what-it-means" style="margin-top: var(--scale-300);">${mdInline(p.ourCounterPlay)}</div>
+  </div>`;
+}).join('');
+
+// Linkify vendor names in the workflow map and vendor coverage table
+function linkifyVendor(name) {
+  // Match against any h2h profile vendor (substring or exact)
+  for (const [vendor, id] of Object.entries(h2hMap)) {
+    const head = vendor.split(/[\/(]/)[0].trim(); // e.g. "Brex / Ramp" → "Brex"
+    if (name === vendor || name === head || name.startsWith(head)) {
+      return `<a href="#${id}" style="color: var(--text-primary-default); text-decoration: none; border-bottom: 1px dashed var(--border-primary-default);">${name}</a>`;
+    }
+  }
+  return name;
+}
+
+document.querySelectorAll('#workflow-panels table tbody tr td:first-child strong').forEach(el => {
+  const name = el.textContent;
+  const linked = linkifyVendor(name);
+  if (linked !== name) {
+    el.innerHTML = linked;
+  }
+});
+document.querySelectorAll('#vc-table tbody tr td:first-child strong').forEach(el => {
+  const name = el.textContent;
+  const linked = linkifyVendor(name);
+  if (linked !== name) {
+    el.innerHTML = linked;
+  }
+});
+
+// ───────── Workflow filter + expand/collapse all ─────────
+const wfFilter = document.getElementById('wf-filter');
+const expandAllBtn = document.getElementById('wf-expand-all');
+const collapseAllBtn = document.getElementById('wf-collapse-all');
+
+function applyWfFilter() {
+  const q = wfFilter.value.trim().toLowerCase();
+  document.querySelectorAll('#workflow-panels .stage').forEach(card => {
+    if (!q) { card.style.display = ''; return; }
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(q) ? '' : 'none';
+  });
+}
+wfFilter.addEventListener('input', applyWfFilter);
+
+expandAllBtn.addEventListener('click', () => {
+  document.querySelectorAll('#workflow-panels details.wf-deep').forEach(d => d.open = true);
+});
+collapseAllBtn.addEventListener('click', () => {
+  document.querySelectorAll('#workflow-panels details.wf-deep').forEach(d => d.open = false);
+});
 
 // ───────── Active nav highlighting ─────────
 const navLinks = document.querySelectorAll('.nav a');

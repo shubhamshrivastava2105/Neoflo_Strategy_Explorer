@@ -10,6 +10,9 @@ const files = [
   { src: 'content/insights.ts',  exp: 'insightsData',          global: 'INSIGHTS_DATA' },
   { src: 'content/comparisons.ts', exp: 'comparisonsData',     global: 'COMPARISONS_DATA' },
   { src: 'content/workflow-deep.ts', exp: 'workflowExplanations', global: 'WORKFLOW_DEEP' },
+  { src: 'content/workflow-personas.ts', exp: 'workflowPersonas', global: 'WORKFLOW_PERSONAS' },
+  { src: 'content/process-stages-deep.ts', exp: 'stageDeepDives', global: 'STAGE_DEEP' },
+  { src: 'content/personas.ts', exp: 'personasData', global: 'PERSONAS_DATA' },
 ];
 
 let out = '// Auto-generated from content/*.ts — do not edit\n';
