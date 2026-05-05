@@ -1,5 +1,7 @@
 export const config = {
-  matcher: ['/((?!login\\.html|api/|favicon\\.ico|_vercel/).*)'],
+  matcher: [
+    '/((?!login\\.html|login$|api/|favicon\\.ico|design_tokens\\.css|_vercel/|_next/).*)',
+  ],
 };
 
 const TOKEN = process.env.AUTH_TOKEN || 'nf-strategy-2026-3a8f9d2c1b7e6f4a';

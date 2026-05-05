@@ -1,7 +1,7 @@
 {
   "buildCommand": "node build-data.mjs",
   "outputDirectory": ".",
-  "cleanUrls": true,
+  "cleanUrls": false,
   "headers": [
     {
       "source": "/(.*)",

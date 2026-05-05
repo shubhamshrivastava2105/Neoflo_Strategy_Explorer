@@ -5,7 +5,15 @@
       "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git *)",
-      "Bash(npx --yes vercel --version)"
+      "Bash(npx --yes vercel --version)",
+      "Bash(npx --yes vercel ls neoflo-finops-prototype)",
+      "Bash(npx --yes vercel projects ls)",
+      "Bash(npx --yes vercel ls neoflo-strategy-explorer)",
+      "Bash(curl -sI https://strategy.neoflo.ai/)",
+      "Bash(curl -sI https://neoflo-strategy-explorer.vercel.app/)",
+      "Bash(curl -sI https://strategy.neoflo.ai/login.html)",
+      "Bash(curl -sI https://strategy.neoflo.ai/data.js)",
+      "Bash(curl -sI https://strategy.neoflo.ai/design_tokens.css)"
     ]
   }
 }
