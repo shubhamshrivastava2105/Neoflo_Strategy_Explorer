@@ -258,6 +258,53 @@
   .hero .meta span::before { content: "•"; margin-right: var(--scale-200); color: var(--text-default-placeholder); }
   .hero .meta span:first-child::before { content: ""; margin: 0; }
 
+  /* workflow dropdowns */
+  details.wf-deep {
+    margin-top: var(--scale-300);
+    background: var(--grey-50);
+    border: 1px solid var(--border-pagecard-card-1);
+    border-radius: var(--radius-sm);
+    padding: 0;
+    overflow: hidden;
+  }
+  details.wf-deep > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--scale-250) var(--scale-300);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary-default);
+    display: flex; align-items: center; justify-content: space-between;
+    user-select: none;
+    transition: background 120ms ease;
+  }
+  details.wf-deep > summary::-webkit-details-marker { display: none; }
+  details.wf-deep > summary::after {
+    content: "+";
+    font-size: 18px; font-weight: 400;
+    color: var(--text-default-caption);
+    transition: transform 200ms ease;
+  }
+  details.wf-deep[open] > summary::after { content: "−"; }
+  details.wf-deep > summary:hover { background: var(--grey-100); }
+  details.wf-deep > .wf-deep-body {
+    padding: var(--scale-300);
+    border-top: 1px solid var(--border-pagecard-card-1);
+    background: var(--surface-pagecard-card-1);
+  }
+  .wf-deep-body h5 {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-default-caption);
+    margin: var(--scale-300) 0 var(--scale-100);
+  }
+  .wf-deep-body h5:first-child { margin-top: 0; }
+  .wf-deep-body p { font-size: 14px; line-height: 1.6; }
+  .wf-deep-body ul { font-size: 13px; padding-left: var(--scale-400); }
+  .wf-deep-body li { margin-bottom: 4px; }
+  .wf-deep-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--scale-300); }
+  @media (max-width: 760px) { .wf-deep-cols { grid-template-columns: 1fr; } }
+
   /* mobile sidebar toggle */
   .menu-toggle { display: none; }
   @media (max-width: 920px) {
@@ -537,6 +584,7 @@ DATA.r2r = window.R2R_DATA;
 DATA.customers = window.CUSTOMER_DATA;
 DATA.insights = window.INSIGHTS_DATA;
 DATA.comparisons = window.COMPARISONS_DATA;
+DATA.workflowDeep = window.WORKFLOW_DEEP;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -1045,6 +1093,44 @@ wfProcesses.forEach((proc, i) => {
     return `<span class="badge badge-neutral">${c}</span>`;
   }
 
+  function deepBlock(w) {
+    const key = w.process + '_' + w.number;
+    const dx = DATA.workflowDeep && DATA.workflowDeep[key];
+    if (!dx) return '';
+    return `
+      <details class="wf-deep">
+        <summary>Deep dive — what this workflow really is</summary>
+        <div class="wf-deep-body">
+          <h5>What it is</h5>
+          <p>${mdInline(dx.whatItIs)}</p>
+          <h5>What happens, in detail</h5>
+          <ul>${dx.detailedSteps.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+          <div class="wf-deep-cols">
+            <div>
+              <h5>Data inputs</h5>
+              <ul>${dx.dataInputs.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+            </div>
+            <div>
+              <h5>Data outputs</h5>
+              <ul>${dx.dataOutputs.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+            </div>
+            <div>
+              <h5>Systems touched</h5>
+              <ul>${dx.systemsTouched.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+            </div>
+          </div>
+          <h5>Common pain points</h5>
+          <ul>${dx.commonPainPoints.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+          <h5>What good looks like</h5>
+          <p>${mdInline(dx.whatGoodLooksLike)}</p>
+          <h5>Industry benchmarks</h5>
+          <ul>${dx.industryBenchmarks.map(s => `<li>${mdInline(s)}</li>`).join('')}</ul>
+          <h5>Why it matters</h5>
+          <p>${mdInline(dx.whyItMatters)}</p>
+        </div>
+      </details>`;
+  }
+
   panel.innerHTML = cmp.workflowMap.workflows.filter(w => w.process === proc).map(w => `
     <div class="stage" data-num="${w.number}" style="margin-bottom: var(--scale-500);">
       <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
@@ -1056,6 +1142,7 @@ wfProcesses.forEach((proc, i) => {
         <strong style="color: var(--text-primary-default); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Neoflo</strong>
         <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(w.ourNote)}</div>
       </div>
+      ${deepBlock(w)}
       <h4 style="margin-top: var(--scale-300);">Players (${w.players.length})</h4>
       <table style="font-size: 12px;">
         <thead>

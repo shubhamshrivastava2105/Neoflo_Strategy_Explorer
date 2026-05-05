@@ -9,6 +9,7 @@ const files = [
   { src: 'content/customers.ts', exp: 'customerEvidenceData', global: 'CUSTOMER_DATA' },
   { src: 'content/insights.ts',  exp: 'insightsData',          global: 'INSIGHTS_DATA' },
   { src: 'content/comparisons.ts', exp: 'comparisonsData',     global: 'COMPARISONS_DATA' },
+  { src: 'content/workflow-deep.ts', exp: 'workflowExplanations', global: 'WORKFLOW_DEEP' },
 ];
 
 let out = '// Auto-generated from content/*.ts — do not edit\n';
