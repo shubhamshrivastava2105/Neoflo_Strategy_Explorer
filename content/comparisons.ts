@@ -1,0 +1,1245 @@
+// Drop into: content/comparisons.ts
+// Structured competitive deep-dive: per-competitor head-to-head profiles,
+// capability matrix, and pipeline-account-level competitive map.
+
+export type ThreatLevel = 'Critical' | 'High' | 'Medium' | 'Low' | 'Reference';
+
+export type HeadToHeadProfile = {
+  vendor: string;
+  category: string;
+  threatLevel: ThreatLevel;
+  hq: string;
+  founded: string;
+  funding: string;
+  customers: string;
+  pricing: string;
+  implementation: string;
+  whereTheyWin: string[];
+  whereTheyLose: string[];
+  howWeBeatThem: string;
+  howTheyBeatUs: string;
+  typicalDealFrame: string;
+  buyerDecisionCriteria: string[];
+  ourCounterPlay: string;
+};
+
+export type CapabilityRow = {
+  capability: string;
+  category: string;
+  neoflo: { score: 'Strong' | 'Parity' | 'Gap' | 'Roadmap' | 'N/A'; note: string };
+  peakflo: { score: 'Strong' | 'Parity' | 'Gap' | 'Roadmap' | 'N/A'; note: string };
+  stampli: { score: 'Strong' | 'Parity' | 'Gap' | 'Roadmap' | 'N/A'; note: string };
+  sapVim: { score: 'Strong' | 'Parity' | 'Gap' | 'Roadmap' | 'N/A'; note: string };
+  highRadius: { score: 'Strong' | 'Parity' | 'Gap' | 'Roadmap' | 'N/A'; note: string };
+  floQast: { score: 'Strong' | 'Parity' | 'Gap' | 'Roadmap' | 'N/A'; note: string };
+};
+
+export type PipelineAccount = {
+  account: string;
+  status: 'Live' | 'Active' | 'Stalled' | 'Lost' | 'Exploratory' | 'Channel test';
+  geography: string;
+  segment: string;
+  scope: string;
+  primaryCompetitor: string;
+  secondaryCompetitors: string[];
+  buyerFrame: string;
+  ourPositioning: string;
+  riskFactors: string[];
+  nextAction: string;
+};
+
+export type WorkflowPresence = {
+  vendor: string;
+  product: string;
+  strength: 'Core' | 'Has' | 'Light' | 'Adjacent';
+  monetization: string;
+  note?: string;
+};
+
+export type WorkflowEntry = {
+  process: 'P2P' | 'O2C' | 'R2R';
+  number: number;
+  workflow: string;
+  shortDescription: string;
+  ourCoverage:
+    | 'Live'
+    | 'Phase 1 — live'
+    | 'Phase 2 P0 (2026)'
+    | 'Phase 2 P1'
+    | 'Phase 3 P0 (2027)'
+    | 'Phase 3 P1'
+    | 'Out of V1 scope'
+    | 'Localization roadmap';
+  ourNote: string;
+  players: WorkflowPresence[];
+};
+
+export type VendorCoverageRow = {
+  vendor: string;
+  category: string;
+  p2pCoverage: string;
+  o2cCoverage: string;
+  r2rCoverage: string;
+  primaryMonetization: string;
+};
+
+export type ComparisonsData = {
+  headToHead: {
+    intro: string;
+    profiles: HeadToHeadProfile[];
+  };
+  featureMatrix: {
+    intro: string;
+    legend: { score: string; meaning: string }[];
+    rows: CapabilityRow[];
+    summary: string;
+  };
+  pipelineMap: {
+    intro: string;
+    accounts: PipelineAccount[];
+    portfolioReadout: string;
+  };
+  workflowMap: {
+    intro: string;
+    workflows: WorkflowEntry[];
+    vendorCoverage: VendorCoverageRow[];
+    summary: string;
+  };
+};
+
+export const comparisonsData: ComparisonsData = {
+  headToHead: {
+    intro: `Structured profiles of the eight competitors that actually show up in our deals or set the buyer's expectations. Each follows the same template: who they are, where they win, where they lose, how we beat them, **how they beat us** (the honest part), the typical deal frame, what the buyer is actually deciding on, and our counter-play.`,
+    profiles: [
+      {
+        vendor: 'Peakflo',
+        category: 'Direct overlap — SEA mid-market multi-product platform',
+        threatLevel: 'Critical',
+        hq: 'Singapore',
+        founded: '2021 (YC W22)',
+        funding: 'Seed $4M+ disclosed; Series A reported but figure not public',
+        customers: 'Lazada, Tonik (Philippines digital bank), Bukalapak, FairPrice, plus ~hundreds of SEA SMBs',
+        pricing: 'Quote-based; PSG-net ~S$15K for SG SMB; mid-market believed $25–60K ARR',
+        implementation: '4–8 weeks',
+        whereTheyWin: [
+          'PSG Pre-Approved Vendor distribution moat in Singapore (50% subsidy, S$30K cap) — structural ~50% pricing advantage we cannot match without our own PSG approval',
+          'Voice AI for collections in 12+ languages (Mandarin, Bahasa, Vietnamese, Thai) — category-defining for SEA where phone collections are culturally normal',
+          'Marketplace seller commission reconciliation — productized for Lazada/Bukalapak-style customers',
+          '4-year head start on SEA buyer trust, sales motion, integrations',
+          'PDPA, ISO 27001, SOC 2 — security/compliance posture matched',
+          'Multi-currency native across SGD/MYR/IDR/THB/PHP/VND/USD/EUR',
+        ],
+        whereTheyLose: [
+          'No R2R / close management — biggest scope gap',
+          'Workflow customization narrower (invoice + collection-centric data model, less flexible for entity-scoped multi-process workflows)',
+          'Brand and reference book tilts SME more than enterprise mid-market — no flagship customer at Zalora\'s scale',
+          'Limited audit trail and approval routing depth for >5 entity group structures',
+          'Limited evidence of clean SAP integration at enterprise scale',
+        ],
+        howWeBeatThem: `Our genuine advantages are (1) the multi-process platform extends to R2R which they don\'t have — gives a 3-year platform-expansion story they cannot match; (2) Zalora is an enterprise-grade reference at a scale they don\'t have on their public roster; (3) workflow engine generality means entity-scoped multi-process workflows we can configure that they\'d need a rewrite to match; (4) India engineering cost leverage allowing aggressive pricing if we choose to use it.`,
+        howTheyBeatUs: `Honest read: in any deal under S$2M revenue in Singapore, **we lose to PSG-net pricing alone** — a controller asked to compare a S$15K Peakflo quote with our S$45K is going to pick Peakflo unless we have a 3x value story. In Indonesia and Philippines, their voice-AI-collections demo is more compelling than our pitch deck. In every deal where the buyer\'s primary pain is collections (DSO compression), they have a stronger reference set.`,
+        typicalDealFrame: `Buyer is a SEA mid-market CFO ($50–500M rev) considering AP+AR consolidation. Both products demoed within 2 weeks. Buyer asks for pricing and references. Without PSG advantage we\'re the more expensive option; without R2R-on-roadmap and Zalora reference we don\'t look meaningfully different.`,
+        buyerDecisionCriteria: [
+          'Net price after subsidies (PSG in SG)',
+          'Time-to-live (both 4–8 weeks; tie)',
+          'AR / collections quality (their voice AI is the demo headline)',
+          'Reference customers in their geography and scale',
+          'Multi-entity / multi-currency depth (we should win this if positioned right)',
+          'R2R roadmap (we should win this — they don\'t have one)',
+        ],
+        ourCounterPlay: `(1) Submit PSG Pre-Approved Vendor application immediately — structural 90-day priority. (2) Lead every SEA mid-market pitch with the multi-process roadmap including R2R and the Zalora case study. (3) Price-test against Peakflo PSG-net specifically — we cannot be 3x for the same scope; aim for ≤1.5x with the platform-expansion story justifying the gap. (4) Get 2 more SEA enterprise references live by Q4 2026 to neutralize their reference-quantity advantage. (5) Talk to 3 of their customers and 1 deal they lost — open question we have no primary data on yet.`,
+      },
+      {
+        vendor: 'SAP VIM (OpenText) / S/4HANA Central Invoice Management',
+        category: 'ERP-native — the silent default in every SAP-shop deal',
+        threatLevel: 'Critical',
+        hq: 'OpenText (Canada) / SAP (Germany)',
+        founded: 'VIM since early 2000s; S/4 CIM rolling',
+        funding: 'Public companies; not relevant',
+        customers: 'Most large SAP-running enterprises globally have VIM. Coca-Cola, Spectrum, Welspun, Hitachi (our pipeline) all run SAP.',
+        pricing: 'Bundled with SAP/OpenText AddOn licensing',
+        implementation: '6–18 months for VIM deployment; longer for S/4 Central Invoice Management migration',
+        whereTheyWin: [
+          'Already installed — "do nothing" is the path of least resistance',
+          'IT comfort with existing SAP integration — no migration risk',
+          'Tight integration with SAP MM, SAP FI, SAP SCM — every transaction is in-system',
+          'Regulatory compliance and tax modules already certified per geography',
+          'Procurement and finance teams already trained',
+        ],
+        whereTheyLose: [
+          'OCR is template-based, brittle on non-standard formats — first-pass automation typically <60% vs Stampli/Vic.ai >80%',
+          'Painful upgrades — every 2–3 year SAP upgrade is a multi-month VIM project',
+          'Scarce certified ABAP experts; high cost when found',
+          'No AR / cash application / close — VIM is AP-only, customer still needs other tools',
+          'No agentic AI — workflow is fixed and rule-driven',
+          'Spectrum is in year 5 of S/4HANA migration; IT is fully constrained — no appetite for more SAP work',
+        ],
+        howWeBeatThem: `**The pitch frame must be VIM displacement specifically, not "AP automation."** The win story has 4 dimensions: (1) faster deploy (weeks vs 6–18 months); (2) better OCR on first-pass (target >85% vs VIM\'s 60% on real customer data); (3) **comes with AR + close in the same platform — which VIM cannot do at all**; (4) **zero IT migration cost** — we sit alongside SAP via API integration, no S/4 changes needed. Build a VIM-displacement battlecard with the 11 dimensions Coca-Cola explicitly asked about: extraction tech, first-pass automation, learning, tax/GL coding, email ingestion, customization overhead, implementation/upgrade complexity, expertise availability, country-specific compliance, fraud detection, AR.`,
+        howTheyBeatUs: `Honest read: in any account where IT has veto power and the buyer\'s framing is "what\'s the safest path," VIM wins by inertia. Spectrum is the canonical example — 5 years into S/4, IT will not approve "another vendor" easily. We have to sell the CFO on the workflow win **and** prove to IT we won\'t add to their migration burden.`,
+        typicalDealFrame: `SAP-shop enterprise ($500M–$5B rev) is in the middle of an S/4 migration or considering one. AP team is suffering with VIM but IT won\'t approve a rip-and-replace. The deal frame becomes: "we sit alongside, integrate via API, deploy in 8 weeks, and add AR + close which VIM never gave you." Buyer is CFO + Controller; objector is CIO/IT.`,
+        buyerDecisionCriteria: [
+          'IT migration risk (must be zero)',
+          'OCR accuracy on the customer\'s own invoice volume (head-to-head benchmark)',
+          'Time-to-live (must be weeks, not months)',
+          'Whether AR / cash app / close is included (VIM cannot match this)',
+          'Country-specific tax compliance (must match VIM, ideally exceed)',
+          'Cost vs the bundled-with-SAP "free" appearance of VIM',
+        ],
+        ourCounterPlay: `(1) Build the 11-dimension VIM battlecard from Coca-Cola pitch within 30 days. (2) For every SAP-shop pitch, run a head-to-head OCR benchmark on **the customer\'s own invoices** before the demo — concrete proof always beats generic claims. (3) Position pricing as "less than the cost of one VIM upgrade project" — anchors against the real cost of staying. (4) Pre-build a SAP S/4 + Oracle Fusion integration reference architecture and lead with it in pitches. (5) Always lead the demo with the AR / close included — that\'s the story VIM cannot tell.`,
+      },
+      {
+        vendor: 'Stampli',
+        category: 'US mid-market AP — the global benchmark for "modern AP"',
+        threatLevel: 'High',
+        hq: 'Mountain View, California',
+        founded: '2015',
+        funding: '~$140M total raised; Series D 2023 at $720M valuation',
+        customers: '1,500+',
+        pricing: 'Quote-based, $30–100K ARR typical, implementation included',
+        implementation: '4–6 weeks (publicly committing to 30 days)',
+        whereTheyWin: [
+          '"Communication-first" UX — every invoice is a chat thread between AP, requester, approver, vendor. Different paradigm; sticky once adopted.',
+          '70+ ERP integrations (SAP, Oracle, NetSuite, Sage Intacct, MS Dynamics) — broadest in the cohort',
+          'Highest G2 satisfaction in mid-market AP (4.6–4.8) consistently',
+          'Billy the Bot AI assistant with strong GL coding suggestions',
+          'Implementation speed — 30-day commit publicly, often beats it',
+          'Strong land-and-expand motion within accounts',
+        ],
+        whereTheyLose: [
+          'AP-only — no AR, no close, no broader FinOps. This is the Hitachi/Spectrum gap that lost them those deals (and would lose them ours by definition)',
+          'No SEA presence, no SEA-format OCR training, no PDPA / MyInvois / e-Faktur',
+          'Multi-entity handling is functional but not exceptional',
+          'Pricing starts at the upper end ($30K+); not competitive against Bill at the SMB end',
+        ],
+        howWeBeatThem: `We don\'t directly compete in their core US mid-market segment (Cohort B). We compete with them indirectly when (1) **the buyer wants AP + AR + close from one vendor** — which Hitachi told us they wanted; (2) **the buyer is in SEA** — Stampli has no localization advantage; (3) **the buyer is a SAP-shop enterprise** — Stampli\'s integrations are good but they\'re positioned as mid-market, not enterprise-grade. Our pitch beats them when Spectrum-style buyers are evaluating the full stack — Stampli sells AP-only; we sell the bundle.`,
+        howTheyBeatUs: `Honest read: in a head-to-head US mid-market AP-only deal, we lose to Stampli on (1) reference quantity, (2) ERP integration breadth, (3) demo polish, (4) brand recognition. We should not pursue these deals as direct competition; we should find the Stampli adjacency where the buyer wants more than AP. Their structural weakness only becomes our opportunity at the moment the buyer asks "and what about AR?"`,
+        typicalDealFrame: `If the buyer is US mid-market and wants AP-only, Stampli wins on home turf. Our deal-frame is: SEA buyer (Stampli has no SEA story) **or** US enterprise that wants AP + AR + deductions + cash app (Stampli is AP-only) **or** SAP-shop enterprise via warm channel (Stampli is more mid-market positioned). The framing question for our sales team: **"is this an AP-only US mid-market deal? If yes, refer or no-bid. If no, here\'s why we win."**`,
+        buyerDecisionCriteria: [
+          'AP UX quality (chat-thread paradigm vs traditional)',
+          'ERP integration depth for the customer\'s specific ERP',
+          'Time-to-live',
+          'AR / cash app / close inclusion (we win, they lose)',
+          'Geography fit (SEA: us; US mid-market AP-only: them)',
+          'Reference customers in segment',
+        ],
+        ourCounterPlay: `(1) Don\'t fight Stampli on their home turf — refer or no-bid US mid-market AP-only deals. (2) In every multi-product or non-US deal, lead with what they cannot do: AR, cash app, close. (3) Study their UX as the bar — invoice-as-conversation has set the buyer\'s expectation; our UX must at least match it for the AP module. (4) Track Stampli\'s expansion into AR / close (rumored 2026 roadmap items) — if they ship, our differentiation collapses, and we need to respond fast.`,
+      },
+      {
+        vendor: 'HighRadius',
+        category: 'Enterprise O2C — the price ceiling that creates our opening',
+        threatLevel: 'Medium',
+        hq: 'Houston',
+        founded: '2006',
+        funding: '$300M Series C 2022 at $3.1B valuation; persistent IPO rumors',
+        customers: '800+ enterprise (Fortune 1000-heavy)',
+        pricing: 'Mid-market: $35K–100K+ ARR; enterprise: $200K–$1M+; six-figure implementation typical',
+        implementation: '3–9 months',
+        whereTheyWin: [
+          'Gartner Magic Quadrant Leader for Invoice-to-Cash — the brand benchmark for enterprise O2C',
+          '18+ AI agents across credit, collections, cash app, deductions — deep AI productization',
+          'Battle-tested at Fortune 1000 scale (multi-thousand customer accounts, multi-billion AR)',
+          'Strong SAP / Oracle / Workday integration with deep enterprise IT trust',
+          'Reference quantity in regulated sectors (financial services, life sciences)',
+        ],
+        whereTheyLose: [
+          'Pricing is the killer — Spectrum told us directly: "$1.2–1.5M quote, couldn\'t justify the ROI, rejected"',
+          '3–9 month implementation is a non-starter for our segment',
+          'No P2P or R2R — pure O2C/AR play',
+          'No SEA mid-market motion — Houston/India delivery, US/EU sales',
+          'Heavy enterprise UX, hard to give to a 5-person AR team',
+        ],
+        howWeBeatThem: `**This is the deal we\'re winning right now (Spectrum).** The story is: "HighRadius capability at 1/10 the cost, deployable in weeks, plus AP + close on the same platform." Spectrum explicitly told us this is what they want. The size of the opportunity here is large — every enterprise mid-market company that got the HighRadius reject quote is a warm lead for us if we can get to them.`,
+        howTheyBeatUs: `Honest read: in a true Fortune 1000 deal where the customer can absorb $1M ARR, HighRadius wins on capability depth, AI agent maturity, and reference set. We are not credible at that scale yet. We win the **rejected-by-HighRadius mid-market enterprise** segment specifically.`,
+        typicalDealFrame: `Customer is a $1B–$5B revenue enterprise that evaluated HighRadius for cash app or deductions, rejected the quote (typically $1M+ all-in), and is now looking for an alternative. Our pitch: "everything HighRadius offers in O2C, plus AP and close on the same platform, deployable in 8–12 weeks, at 5–10x lower cost." Spectrum is the canonical example.`,
+        buyerDecisionCriteria: [
+          'Total cost of ownership (we win by 5–10x)',
+          'Time-to-live (we win on weeks vs months)',
+          'Specific AR feature gaps (cash app accuracy, deductions automation, dispute resolution)',
+          'Whether AP + close are needed in the same platform (we win)',
+          'Reference customers at similar revenue scale (they win on raw count)',
+        ],
+        ourCounterPlay: `(1) Build a "HighRadius-rejected" lead list — every public earnings call mentioning O2C / DSO problems, every LinkedIn post from a Sr Director AR who sounds frustrated, every KPMG / Big 4 advisory contact. (2) Position the Spectrum win publicly once it lands — "the company that rejected HighRadius chose us" is the strongest possible reference signal. (3) Build the cash app + deductions feature parity story in V1 — the gap to HighRadius capability matters less than the gap closing fast. (4) Don\'t pursue Fortune 1000 deals where HighRadius is genuinely the right fit; refer or no-bid.`,
+      },
+      {
+        vendor: 'FloQast',
+        category: 'Mid-market R2R — the bar for our Phase 3',
+        threatLevel: 'Medium',
+        hq: 'Los Angeles',
+        founded: '2013',
+        funding: 'Series E $100M 2022 at $1.6B valuation',
+        customers: '2,800+',
+        pricing: '$30–80K ARR typical',
+        implementation: '4–8 weeks',
+        whereTheyWin: [
+          '"Built by accountants" — strongest mid-market controller advocacy in the category',
+          'Excel-native UX — files map directly to GL accounts, no separate UI to learn',
+          '4.5 G2; consistently the highest mid-market close satisfaction',
+          'Strong reference set in US mid-market controllers (the people we\'d sell to)',
+          'AI flux analysis features rolling out',
+        ],
+        whereTheyLose: [
+          'AP / AR not on platform — close-only',
+          'No SEA presence, no SEA-format compliance',
+          'Excel-native is a US/EU pattern; SEA controllers are increasingly less Excel-dependent',
+          'Multi-entity / multi-GAAP handling is functional but not exceptional at the consolidation layer',
+        ],
+        howWeBeatThem: `Phase 3 (Q1–Q4 2027) is where we compete. The story: "FloQast capability at FloQast pricing, on the same platform that already runs your AP and AR." That\'s a switching-cost moat FloQast literally cannot match — they don\'t have AP or AR. The wedge into R2R is for accounts that already run Neoflo P2P + O2C; we don\'t pursue R2R-only deals.`,
+        howTheyBeatUs: `Honest read: in any greenfield US mid-market R2R deal where the buyer doesn\'t already run our P2P/O2C, FloQast wins on (1) brand, (2) controller community advocacy, (3) reference quantity, (4) Excel-native UX. We should not pursue these as standalone R2R sales — they\'re an expansion play only.`,
+        typicalDealFrame: `Existing Neoflo customer is on P2P + O2C; controller now has more time to focus on close compression. Pitch: "what if the same platform that does your AP and AR also coordinates your close, your JE workflow, and your recs?" Win on the platform expansion; don\'t fight on standalone R2R brand.`,
+        buyerDecisionCriteria: [
+          'Existing platform expansion vs standalone tool',
+          'Controller experience and community',
+          'Excel-native vs structured UI',
+          'Time-to-close compression (days saved per cycle)',
+          'Multi-entity consolidation depth',
+        ],
+        ourCounterPlay: `(1) Lock R2R MVP scope to close orchestration + JE workflow + reconciliations (per Risk #4). Don\'t pursue consolidation or statutory reporting in V1. (2) Make the platform expansion story the entire pitch — never compete head-to-head on R2R-only. (3) Watch Numeric (the AI-native challenger to FloQast) — they\'re the more strategically important player to track because they\'re resetting the bar.`,
+      },
+      {
+        vendor: 'Vic.ai',
+        category: 'AI-native challenger — the architectural threat',
+        threatLevel: 'High',
+        hq: 'New York / Norway origin',
+        founded: '2017',
+        funding: 'ICONIQ-led $50M+ raise (2023); ~$100M total raised',
+        customers: 'Public roster includes US enterprises, growing fast',
+        pricing: 'Per-transaction; touch ratio (% autonomous) is the key SLA',
+        implementation: '4–8 weeks',
+        whereTheyWin: [
+          'Autonomy-first architecture — claim 80–95% of invoices auto-posted with no human touch',
+          'Different category framing: "AI agent" vs "workflow tool" — narrative aligns with Brex/Ramp story',
+          'Per-transaction pricing aligns with autonomy ROI — buyers can model cost vs human-AP-FTE saved',
+          'Strong technical reputation in AI-native circles',
+        ],
+        whereTheyLose: [
+          'AP-only; no AR, no close',
+          'Per-transaction unit economics break at very high volume (>1M invoices/yr); ARR-priced models like ours win there',
+          'Limited multi-entity / multi-jurisdiction footprint',
+          'Limited regulatory localization for SEA',
+          'Customer footprint US-skewed; not a SEA threat today',
+        ],
+        howWeBeatThem: `Direct head-to-head is rare today (they\'re US-focused). The strategic threat is **architectural** — if "agentic AP" becomes the category buyer expectation, every workflow-centric tool (us, Stampli, Bill, Peakflo) has to retrofit autonomy. Our defense: design our V2 architecture (Q4 2026 onwards) with agent-first as a core primitive, not a bolt-on. Today\'s win story: we have the workflow engine they don\'t (multi-process, entity-scoped); they have the autonomy story we need to match.`,
+        howTheyBeatUs: `Honest read: their narrative is winning the category-shaping conversation. If a buyer enters the room asking "where are the agents?" — they\'re the answer. We need a credible agent story by mid-2027 or we sound like the workflow tool that didn\'t get the AI memo.`,
+        typicalDealFrame: `Not in our deals today. Watch their roster expansion — when they land their first SEA enterprise, the deal frame changes overnight. The first time we lose a deal because the buyer says "Vic.ai\'s autonomy demo was better than yours," that\'s our 18-month warning shot.`,
+        buyerDecisionCriteria: [
+          'Touch ratio / autonomy %',
+          'Per-transaction cost model vs ARR',
+          'AI agent narrative quality',
+          'AR / close coverage (we win)',
+          'Geographic and regulatory localization (we win in SEA)',
+        ],
+        ourCounterPlay: `(1) Define our autonomy roadmap with quarterly touch-ratio targets — start at our current baseline, commit to a trajectory toward 80–90% over 24 months. (2) Architect our 2027–2028 platform with agents as a first-class primitive (per the futureVision in the recommendation). (3) When buyers ask "where are the agents," show our roadmap and our touch-ratio data on a real customer (Zalora). Generic claims don\'t land; concrete numbers do.`,
+      },
+      {
+        vendor: 'Brex / Ramp (upstream spend)',
+        category: 'Adjacent / spend-management — attacks AP from above',
+        threatLevel: 'Medium',
+        hq: 'San Francisco',
+        founded: 'Brex 2017; Ramp 2019',
+        funding: 'Brex acquired by Capital One Jan 2026 for $5.15B; Ramp at $32B valuation',
+        customers: 'Brex: OpenAI, DoorDash, Anthropic, 30K+ customers. Ramp: 25K+ customers.',
+        pricing: 'Free or near-free; bundled with card interchange revenue',
+        implementation: 'Days to weeks',
+        whereTheyWin: [
+          'Own the upstream card swipe — when the GL is auto-coded from the card transaction, AP becomes a thinner workflow',
+          'Distribution moat: every venture-backed US scale-up defaults to Brex or Ramp. AP is the natural pull-along.',
+          '"Free" pricing crushes anyone trying to charge SaaS for the AP layer in those accounts',
+          'Brex Accounting API (Jan 2026 launch) and Ramp\'s "agentic" AI bill pay set the buyer\'s expectation for what AI bill pay means',
+          'Capital One\'s acquisition of Brex gives them a banking-and-spend bundle that\'s genuinely new',
+        ],
+        whereTheyLose: [
+          'Strong with US venture-backed scale-ups; weak in SEA mid-market and SAP-shop enterprise',
+          'Card-led model means non-card spend (large supplier invoices, contractor payments, intercompany) is a weaker fit',
+          'No AR, no close, no R2R',
+          'No multi-entity / multi-jurisdiction depth',
+          'Their "AP" is bill pay, not full P2P — no PR-to-PO, no 3-way match at scale',
+        ],
+        howWeBeatThem: `Geography and segment. They are not playing in SEA mid-market or SAP-shop enterprise. Where we do compete, the deal frame is: "for the 20% of spend that goes through cards, Ramp/Brex; for the 80% that goes through invoices, contracts, intercompany, supplier payments — Neoflo." This is a co-existence story, not a head-to-head story.`,
+        howTheyBeatUs: `Honest read: in any US scale-up account already on Ramp or Brex, layering Neoflo P2P on top is hard — the buyer sees the Ramp Bill Pay tile and says "we already have this." Their "free" pricing is the structural weapon. The only winning angle is: "you\'ve got 20% covered; what about the other 80%?"`,
+        typicalDealFrame: `Not in our pipeline today. Becomes relevant if we ever pursue US scale-ups directly (which the GTM playbook says we should not).`,
+        buyerDecisionCriteria: [
+          'Whether the customer is card-led or invoice-led (we win invoice-led)',
+          'Multi-entity / multi-jurisdiction (we win)',
+          'AR / close inclusion (we win)',
+          'Existing card relationship (they win lock-in)',
+        ],
+        ourCounterPlay: `(1) Don\'t enter US scale-up segment — GTM says no, and Ramp/Brex make it economically infeasible anyway. (2) Track Brex/Ramp ASEAN expansion — both have rumored APAC moves; first move would be Singapore or Indonesia and would compress our window. (3) For any US enterprise account we do pursue (warm-channel only), expect to integrate with Brex/Ramp data rather than displace it.`,
+      },
+      {
+        vendor: 'ClearTax (Clear) — e-invoicing rails',
+        category: 'Regional layer — could become horizontal under us',
+        threatLevel: 'Medium',
+        hq: 'Bengaluru, India',
+        founded: '2011',
+        funding: 'Series C 2022 ~$75M; total >$140M raised',
+        customers: '~3M+ India SMB tax filers; ~3,000 enterprise GST customers',
+        pricing: 'Per-invoice / per-return',
+        implementation: 'Days for compliance modules; longer for ERP integration',
+        whereTheyWin: [
+          'India GST mandatory e-invoicing leader — owned the moment when India\'s mandate forced every business to comply',
+          'Deep ERP integration with SAP, Oracle, NetSuite for tax workflows',
+          'Strong brand in CFO offices for compliance',
+          'Same playbook applies to MyInvois (Malaysia), e-Faktur (Indonesia), PEPPOL — they\'ve started SEA expansion',
+        ],
+        whereTheyLose: [
+          'Compliance-only — they don\'t do AP workflow, AR, close, multi-process',
+          'In a multi-product platform deal, they\'re a thin slice underneath, not a competitor',
+          'India brand may be a weakness in SEA boardroom positioning',
+        ],
+        howWeBeatThem: `Different category. They\'re a compliance rails layer; we\'re a workflow platform. The strategic question is whether they become a **horizontal layer underneath** us — invoices flow through ClearTax for tax compliance before/after Neoflo handles workflow. If they capture the tax-compliance moment, we have to integrate with them in every SEA jurisdiction or lose the regulatory wedge.`,
+        howTheyBeatUs: `Honest read: they don\'t beat us in our category. The risk is structural — if they become the default e-invoicing rails in MY/ID/PH and we haven\'t built native compliance, customers buy ClearTax for compliance and a separate AP/AR tool (Peakflo, us, Stampli). We end up bundled with them, not the platform of record.`,
+        typicalDealFrame: `Not yet in our deals. The frame becomes "ClearTax + Peakflo" vs "Neoflo native" the moment we start pitching MY/ID enterprises with both compliance and workflow needs.`,
+        buyerDecisionCriteria: [
+          'Tax compliance certification per jurisdiction (must-have)',
+          'Real-time tax authority sync',
+          'Bundled vs unbundled cost',
+          'Audit trail across compliance + workflow',
+        ],
+        ourCounterPlay: `(1) Ship MyInvois + InvoiceNow + e-Faktur native by mid-2026 — close the compliance gap before ClearTax becomes the SEA default. (2) Where regulation forces it, partner with ClearTax (e.g., for Vietnam ISeBP where building native is hard); elsewhere, build native. (3) Position the integrated audit trail (compliance + workflow + close in one platform) as the buyer\'s win — ClearTax + Peakflo + FloQast is three vendors and three audit trails.`,
+      },
+    ],
+  },
+
+  featureMatrix: {
+    intro: `Capability comparison across the six competitors that show up most often in our deals. Scored: **Strong** (clearly differentiated), **Parity** (matched), **Gap** (we lag today), **Roadmap** (we plan to ship), **N/A** (not in their product). Where we score Gap or Roadmap, the note explains the trajectory.`,
+    legend: [
+      { score: 'Strong', meaning: 'Clearly differentiated capability — defensible advantage' },
+      { score: 'Parity', meaning: 'Matched — neither side wins on this dimension' },
+      { score: 'Gap', meaning: 'We lag today; closing this gap is on the active roadmap' },
+      { score: 'Roadmap', meaning: 'Planned but not yet shipped' },
+      { score: 'N/A', meaning: 'Not in this vendor\'s product / scope' },
+    ],
+    rows: [
+      {
+        capability: 'Invoice OCR — SEA-format accuracy',
+        category: 'P2P',
+        neoflo: { score: 'Strong', note: 'Trained on Zalora invoice corpus; SEA-format-native' },
+        peakflo: { score: 'Strong', note: 'SEA-native by design' },
+        stampli: { score: 'Gap', note: 'US/EU-trained; weaker on SEA non-standard formats' },
+        sapVim: { score: 'Gap', note: 'Template-based; <60% first-pass on non-standard SEA invoices' },
+        highRadius: { score: 'N/A', note: 'O2C/AR — does not extract supplier invoices' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: '3-way match',
+        category: 'P2P',
+        neoflo: { score: 'Strong', note: 'Live with Zalora; configurable tolerances' },
+        peakflo: { score: 'Parity', note: 'Standard 3-way' },
+        stampli: { score: 'Strong', note: 'Industry-leading exception handling' },
+        sapVim: { score: 'Parity', note: 'Standard inside SAP MM/FI' },
+        highRadius: { score: 'N/A', note: 'AR side' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: 'Autonomous AP (touch-ratio)',
+        category: 'P2P',
+        neoflo: { score: 'Roadmap', note: 'V2 architecture priority for 2027 — quarterly touch-ratio targets' },
+        peakflo: { score: 'Gap', note: 'Workflow-centric, limited agentic claims' },
+        stampli: { score: 'Parity', note: 'Billy the Bot suggests; human still in loop' },
+        sapVim: { score: 'Gap', note: 'No autonomy; rule-based only' },
+        highRadius: { score: 'Strong', note: '18+ AI agents in O2C — sets the bar' },
+        floQast: { score: 'Roadmap', note: 'AI flux analysis rolling' },
+      },
+      {
+        capability: 'AR — billing & cash application',
+        category: 'O2C',
+        neoflo: { score: 'Roadmap', note: 'Phase 2 2026 P0 — must ship for Hitachi-style buyers' },
+        peakflo: { score: 'Strong', note: 'Live; voice AI for collections' },
+        stampli: { score: 'N/A', note: 'AP-only' },
+        sapVim: { score: 'N/A', note: 'AP-only' },
+        highRadius: { score: 'Strong', note: 'Category leader' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: 'Voice AI for collections',
+        category: 'O2C',
+        neoflo: { score: 'Roadmap', note: 'Should evaluate; SEA-cultural fit per Peakflo evidence' },
+        peakflo: { score: 'Strong', note: '12+ languages; category-defining' },
+        stampli: { score: 'N/A', note: 'AP-only' },
+        sapVim: { score: 'N/A', note: 'AP-only' },
+        highRadius: { score: 'Parity', note: 'AI agent for collections; less voice-centric' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: 'Close orchestration + JE workflow',
+        category: 'R2R',
+        neoflo: { score: 'Roadmap', note: 'Phase 3 2027; lock MVP scope tight' },
+        peakflo: { score: 'N/A', note: 'No R2R' },
+        stampli: { score: 'N/A', note: 'AP-only' },
+        sapVim: { score: 'N/A', note: 'AP-only' },
+        highRadius: { score: 'N/A', note: 'O2C only' },
+        floQast: { score: 'Strong', note: 'Category leader for mid-market close' },
+      },
+      {
+        capability: 'Reconciliations — automated matching',
+        category: 'R2R',
+        neoflo: { score: 'Roadmap', note: 'Phase 3' },
+        peakflo: { score: 'N/A', note: 'No R2R' },
+        stampli: { score: 'N/A', note: 'AP-only' },
+        sapVim: { score: 'N/A', note: 'AP-only' },
+        highRadius: { score: 'N/A', note: 'O2C only' },
+        floQast: { score: 'Strong', note: 'Excel-native rec workflow' },
+      },
+      {
+        capability: 'Multi-entity / intercompany',
+        category: 'Platform',
+        neoflo: { score: 'Strong', note: 'Entity-scoped workflow engine — design point' },
+        peakflo: { score: 'Parity', note: 'Functional but narrower' },
+        stampli: { score: 'Parity', note: 'Functional, not exceptional' },
+        sapVim: { score: 'Parity', note: 'SAP-native, but rigid' },
+        highRadius: { score: 'Strong', note: 'Enterprise-grade' },
+        floQast: { score: 'Parity', note: 'Functional for mid-market' },
+      },
+      {
+        capability: 'Multi-currency / FX revaluation',
+        category: 'Platform',
+        neoflo: { score: 'Strong', note: 'Native; SEA reality drives this' },
+        peakflo: { score: 'Strong', note: '7+ currencies native' },
+        stampli: { score: 'Parity', note: 'Multi-currency supported' },
+        sapVim: { score: 'Strong', note: 'SAP-native' },
+        highRadius: { score: 'Strong', note: 'Enterprise-grade' },
+        floQast: { score: 'Parity', note: 'Mid-market scope' },
+      },
+      {
+        capability: 'Cross-process audit trail (one trail across AP+AR+close)',
+        category: 'Platform',
+        neoflo: { score: 'Strong', note: 'Architecture priority — single source for compliance audits' },
+        peakflo: { score: 'Gap', note: 'AP+AR audit; no close' },
+        stampli: { score: 'Gap', note: 'AP-only audit' },
+        sapVim: { score: 'Parity', note: 'SAP audit, but bound to SAP scope' },
+        highRadius: { score: 'Gap', note: 'O2C audit only' },
+        floQast: { score: 'Gap', note: 'R2R audit only' },
+      },
+      {
+        capability: 'MyInvois (Malaysia) e-invoicing native',
+        category: 'Localization',
+        neoflo: { score: 'Roadmap', note: 'P0 by mid-2026 — forced-buy trigger' },
+        peakflo: { score: 'Roadmap', note: 'Likely on their roadmap; status unconfirmed' },
+        stampli: { score: 'N/A', note: 'No SEA' },
+        sapVim: { score: 'Parity', note: 'SAP modules support; configuration heavy' },
+        highRadius: { score: 'N/A', note: 'O2C / AR side' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: 'InvoiceNow / PEPPOL (Singapore)',
+        category: 'Localization',
+        neoflo: { score: 'Roadmap', note: 'Bundled with PSG approval push' },
+        peakflo: { score: 'Strong', note: 'Already PSG approved + InvoiceNow' },
+        stampli: { score: 'N/A', note: 'No SG' },
+        sapVim: { score: 'Parity', note: 'SAP add-on supports' },
+        highRadius: { score: 'N/A', note: 'O2C side' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: 'e-Faktur (Indonesia)',
+        category: 'Localization',
+        neoflo: { score: 'Roadmap', note: 'Non-negotiable for ID pitches' },
+        peakflo: { score: 'Strong', note: 'Live; mature regime' },
+        stampli: { score: 'N/A', note: 'No ID' },
+        sapVim: { score: 'Parity', note: 'SAP module supports' },
+        highRadius: { score: 'N/A', note: 'O2C side' },
+        floQast: { score: 'N/A', note: 'R2R only' },
+      },
+      {
+        capability: 'Time-to-live SLA (P2P)',
+        category: 'Integration',
+        neoflo: { score: 'Strong', note: '6–10 weeks Zalora; aim for 4-week SLA commit' },
+        peakflo: { score: 'Strong', note: '4–8 weeks' },
+        stampli: { score: 'Strong', note: '30-day public commit' },
+        sapVim: { score: 'Gap', note: '6–18 months — the buyer\'s pain point' },
+        highRadius: { score: 'Gap', note: '3–9 months' },
+        floQast: { score: 'Strong', note: '4–8 weeks' },
+      },
+      {
+        capability: 'SAP S/4HANA integration depth',
+        category: 'Integration',
+        neoflo: { score: 'Roadmap', note: 'Reference architecture is the 90-day deliverable' },
+        peakflo: { score: 'Parity', note: 'Functional, not enterprise-grade evidence' },
+        stampli: { score: 'Strong', note: 'Best-in-class among modern AP tools' },
+        sapVim: { score: 'Strong', note: 'Native, by design' },
+        highRadius: { score: 'Strong', note: 'Enterprise-grade' },
+        floQast: { score: 'Parity', note: 'Functional' },
+      },
+      {
+        capability: 'NetSuite integration depth',
+        category: 'Integration',
+        neoflo: { score: 'Roadmap', note: 'Critical for SEA scale-up GTM' },
+        peakflo: { score: 'Parity', note: 'NetSuite supported' },
+        stampli: { score: 'Strong', note: 'Strong NetSuite story; many shared accounts' },
+        sapVim: { score: 'N/A', note: 'SAP-only' },
+        highRadius: { score: 'Parity', note: 'NetSuite supported' },
+        floQast: { score: 'Strong', note: 'NetSuite-native — design point' },
+      },
+      {
+        capability: 'Mid-market enterprise reference (>$1B rev)',
+        category: 'Platform',
+        neoflo: { score: 'Parity', note: 'Zalora live; need 2 more by Q4 2026' },
+        peakflo: { score: 'Parity', note: 'Lazada; SME-tilted otherwise' },
+        stampli: { score: 'Strong', note: '1,500 customers, mid-to-upper-mid book' },
+        sapVim: { score: 'Strong', note: 'Most Fortune 1000 SAP shops' },
+        highRadius: { score: 'Strong', note: '800+ enterprise' },
+        floQast: { score: 'Strong', note: '2,800+ mid-market' },
+      },
+    ],
+    summary: `Reading across the matrix: **we are Strong on multi-process platform, multi-entity, multi-currency, cross-process audit, and SEA OCR.** We are **Roadmap on AR (must ship 2026), close (must ship 2027), MyInvois/PEPPOL/e-Faktur (must ship by mid-2026), and SAP S/4 + NetSuite integration depth (must close by Q3 2026)**. The Roadmap items are not optional — they are the path to converting Strong-on-paper into Strong-in-deals. The single most important conclusion: **the matrix has no row where any single competitor is Strong across all of P2P + O2C + R2R + SEA-localization. That is the platform thesis, restated as a feature comparison.**`,
+  },
+
+  pipelineMap: {
+    intro: `Account-by-account view of the documented pipeline (per the customer evidence v2). For each account: status, what we\'re selling, who the actual competitor frame is in that deal, our positioning, what could go wrong, and the next concrete action.`,
+    accounts: [
+      {
+        account: 'Zalora',
+        status: 'Live',
+        geography: 'SEA (HQ Singapore)',
+        segment: 'Enterprise mid-market — flagship reference',
+        scope: 'P2P invoice processing live; expanding to O2C billing + cash app',
+        primaryCompetitor: 'Internal status quo (Excel + ERP + manual)',
+        secondaryCompetitors: ['Peakflo (would be considered if we churn)', 'SAP-bundled tools'],
+        buyerFrame: 'Already chose us; expansion conversation is now about platform breadth, not vendor selection.',
+        ourPositioning: '**The reference customer.** Every conversation in SEA is enabled by the Zalora story. Phase 2 expansion to O2C is the platform-thesis proof.',
+        riskFactors: [
+          'Risk #3 — single-customer dependence on the flagship P2P story',
+          'O2C ship slippage damages the platform thesis externally',
+          'Peakflo could attempt account-level displacement if our O2C lags',
+        ],
+        nextAction: 'Lock O2C ship date Q3 2026 with Zalora as the design partner. Public case study by Q4 2026.',
+      },
+      {
+        account: 'Spectrum Brands',
+        status: 'Active',
+        geography: 'US (NYSE-listed, $2.8B rev)',
+        segment: 'US enterprise — warm-channel via KPMG overlap',
+        scope: 'AP + AR + deductions + cash application — the full bundle they couldn\'t get from HighRadius',
+        primaryCompetitor: 'HighRadius (already rejected at $1.2–1.5M)',
+        secondaryCompetitors: ['SAP S/4HANA Central Invoice Management (mid-migration)', 'Stampli (AP-only — wouldn\'t fit their bundle ask)'],
+        buyerFrame: '"Open territory for outsourcing/automation in AP, AR, deductions, cash app." Explicitly told us this. Year 5 of S/4 migration; IT is fully constrained.',
+        ourPositioning: '**The validation deal.** "HighRadius capability at 1/10 cost, deployable in weeks, plus AP and close on the same platform" — this is exactly what they asked for. If we close, this is the unlock for the entire HighRadius-rejected segment.',
+        riskFactors: [
+          'IT veto risk — Spectrum IT is past the line on vendor onboarding',
+          'NDA-to-demo cycle compression critical (Pattern 2)',
+          'Multi-stakeholder selling: Tammy McIntyre (Sr Dir AP) + Tom Brighton (Sr Dir AR) introductions in 2–3 weeks',
+        ],
+        nextAction: 'Schedule the Tammy + Tom intros within 2–3 weeks per Utpala. Demo with Spectrum\'s actual invoice/AR data shape, not generic. Build the IT-zero-migration story explicitly.',
+      },
+      {
+        account: 'Hitachi Vantara',
+        status: 'Stalled',
+        geography: 'SEA (HQ Singapore)',
+        segment: 'SEA enterprise',
+        scope: 'AP + AR (specifically wanted cash application, which we did not have at the time)',
+        primaryCompetitor: 'Peakflo (likely)',
+        secondaryCompetitors: ['HighRadius', 'Internal status quo'],
+        buyerFrame: '"More interested in cash application, which we did not have." They wanted the bundle, we showed up AP-only. Walked.',
+        ourPositioning: '**The lesson.** This deal validated Signal 1 — AP-only loses, the bundle wins. Pursue re-engagement once O2C cash app is live.',
+        riskFactors: [
+          'Likely landed with Peakflo or stayed on Excel',
+          'Re-engagement window may be closed if they signed elsewhere',
+          'Even with cash app live, restarting a stalled deal is harder than a fresh one',
+        ],
+        nextAction: 'Q3 2026 — once O2C cash app is live, re-approach Mathew Sia with the updated bundle and Spectrum reference. Acknowledge what we missed in November 2025.',
+      },
+      {
+        account: 'Welspun',
+        status: 'Stalled',
+        geography: 'India (with global ops)',
+        segment: 'India conglomerate — SAP shop',
+        scope: 'P2P (likely VIM-replacement frame)',
+        primaryCompetitor: 'SAP VIM',
+        secondaryCompetitors: ['Stampli (if they evaluated externally)', 'Indian regional players'],
+        buyerFrame: 'Demo done Nov 19, 2025; silent after multiple follow-ups. Pattern matches Hitachi NDA-stretching.',
+        ourPositioning: 'Mixed. Indian conglomerate with SAP raises the segment question — Indian per-transaction commodity dynamics (Signal 2) make this commercially fragile.',
+        riskFactors: [
+          'India enterprise per-transaction expectation (sub-$5/invoice) makes it economically unattractive',
+          'NDA-stretching pattern suggests they\'re shopping multiple vendors; we\'re not the lead',
+        ],
+        nextAction: 'Deprioritize. Single check-in to confirm dead, then move on. Use the time on Spectrum + Apparel + 2 SEA references.',
+      },
+      {
+        account: 'Coca-Cola',
+        status: 'Active',
+        geography: 'Global (warm intro)',
+        segment: 'Enterprise — SAP shop',
+        scope: 'P2P with explicit 11-dimension VIM head-to-head',
+        primaryCompetitor: 'SAP VIM',
+        secondaryCompetitors: ['Tipalti (global enterprise comparison)', 'Coupa (full procurement)'],
+        buyerFrame: '11-dimension explicit comparison: extraction tech, first-pass automation, learning, tax/GL coding, email ingestion, customization overhead, implementation/upgrade complexity, expertise availability, country-specific compliance, fraud detection, AR.',
+        ourPositioning: '**This is the VIM-displacement archetype.** The 11 dimensions are the battlecard structure for every SAP-shop deal we run.',
+        riskFactors: [
+          'Enterprise scale beyond our reference set today',
+          'IT veto risk',
+          'Country-specific compliance is a Coca-Cola-grade requirement that our SEA-localization roadmap addresses but US/EU regions need to be matched too',
+        ],
+        nextAction: 'Build the 11-dimension VIM battlecard within 30 days. Re-share with Coca-Cola contact. Use the same battlecard structure on Spectrum, Welspun, and any SAP-shop pitch going forward.',
+      },
+      {
+        account: 'Apparel Group (Dubai)',
+        status: 'Active',
+        geography: 'GCC / SEA (Dubai HQ, SEA ops)',
+        segment: 'Enterprise mid-market',
+        scope: 'AI in Finance — AP + AR scope',
+        primaryCompetitor: 'Internal status quo + ERP-native',
+        secondaryCompetitors: ['Peakflo (if they evaluate)', 'HighRadius (enterprise reject pattern)'],
+        buyerFrame: 'CFO Hiren Patadia explicitly wants "AI in Finance" — narrative-led buyer. Came via Evolv.ai referral.',
+        ourPositioning: 'Multi-product platform aligned with their "AI in Finance" narrative. Strong fit. GCC compliance (FATOORAH e-invoicing in Saudi) is a future-vector that aligns with our regulatory localization moat.',
+        riskFactors: [
+          'GCC compliance complexity not on our 2026 roadmap',
+          'Geography is single-deal, not segment',
+          'Buyer wants "AI" narrative-first; agentic story matters more here than other deals',
+        ],
+        nextAction: 'Lead with multi-product platform + agentic roadmap (the Vic.ai counter-positioning). Confirm AP+AR scope. Quote within 30 days.',
+      },
+      {
+        account: 'JLand Group (Malaysia)',
+        status: 'Exploratory',
+        geography: 'SEA (Malaysia)',
+        segment: 'Mid-market enterprise',
+        scope: 'TBD — Process Transformation team contact, not Finance',
+        primaryCompetitor: 'Status quo / unknown',
+        secondaryCompetitors: ['Peakflo', 'SAP-bundled'],
+        buyerFrame: 'Met at SSON Singapore. Process Transformation team (not Finance). NDA stretched 1+ month.',
+        ourPositioning: '**MyInvois timing makes this account strategically valuable.** Malaysian mid-market with Phase-2/3 MyInvois mandate = forced-buy trigger.',
+        riskFactors: [
+          'Wrong contact (Process Transformation, not Finance) means we don\'t have a budget owner yet',
+          'NDA cycle drag is the Pattern 2 risk',
+          'Without Finance head engagement, this can stall indefinitely',
+        ],
+        nextAction: 'Direct ask for Finance head intro. If not gettable in 30 days, deprioritize. If gettable, lead with MyInvois compliance as the wedge.',
+      },
+      {
+        account: 'Agro Corp (Singapore)',
+        status: 'Exploratory',
+        geography: 'SEA (Singapore)',
+        segment: 'Mid-market enterprise',
+        scope: 'Partnership / multi-product',
+        primaryCompetitor: 'Peakflo (Singapore-default)',
+        secondaryCompetitors: ['Stampli', 'Internal'],
+        buyerFrame: 'CFO + Group Controller. Exploratory. Personal network (Nipun).',
+        ourPositioning: 'Singapore deal — PSG / Peakflo is the structural competitive frame.',
+        riskFactors: [
+          'Without PSG approval, structural pricing disadvantage',
+          'Peakflo will be in the room',
+          'Partnership angle suggests they want a strategic relationship more than a vendor',
+        ],
+        nextAction: 'Hold for 90 days while PSG application is in motion. Frame the conversation as platform partnership (R2R + multi-product expansion path) — the angle Peakflo cannot match.',
+      },
+      {
+        account: 'Flipkart',
+        status: 'Lost',
+        geography: 'India',
+        segment: 'India enterprise — sub-$5/invoice commodity',
+        scope: 'P2P — RO automation',
+        primaryCompetitor: 'Uttara (chose them); Cogniquest, Nanonets in market',
+        secondaryCompetitors: [],
+        buyerFrame: 'Indian enterprise per-transaction commodity pricing (₹15/RO from Uttara, ₹1.6 from Cogniquest, ₹4 from Nanonets).',
+        ourPositioning: '**Lesson, not opportunity.** Per Signal 2, our cost structure cannot profitably compete at sub-$5/invoice.',
+        riskFactors: ['Sunk-cost fallacy — don\'t reopen this'],
+        nextAction: 'No action. Treat as data-point for Signal 2 confirmation. Possible future opening on analytics dashboard but not a priority.',
+      },
+      {
+        account: 'Boomerang Catapult / Rehmann CPA channel',
+        status: 'Channel test',
+        geography: 'US (Michigan + opportunistic)',
+        segment: 'US mid-market via CPA white-label',
+        scope: 'TBD — channel test',
+        primaryCompetitor: 'Stampli, Bill, Vic.ai (US mid-market AP)',
+        secondaryCompetitors: ['HighRadius (if AR)', 'FloQast (if R2R)'],
+        buyerFrame: 'Warner Queeny explicitly told us the path: 80/20 revenue share with mid-market CPAs. Cold outreach is dead.',
+        ourPositioning: '**The validation of the US warm-channel motion.** If Rehmann sources 1–2 customers in the next 6 months, the CPA channel is real and we scale it. If not, we deprioritize US to opportunistic-only.',
+        riskFactors: [
+          'Channel motion is unproven at scale',
+          'Resources spent here are not on SEA',
+          'CPA-led deals can be slower because the CPA is the salesperson, not us',
+        ],
+        nextAction: '6-month learning agenda. Track: customers sourced, deal velocity, ACV, margin after rev share. Decide go/no-go on US-CPA expansion based on data, not narrative.',
+      },
+    ],
+    portfolioReadout: `**Reading across the pipeline:** Two deals are existential in different ways — **Spectrum** (validates the multi-product enterprise thesis at scale; the HighRadius-reject opening is a category trigger if it lands) and **Apparel Group** (validates the SEA + AI-narrative buyer profile). **Agro Corp + JLand** are tied to PSG / MyInvois — they unlock or stall depending on our regulatory-localization execution. **Hitachi** is a re-engagement opportunity once O2C ships. **Welspun + Flipkart** are deprioritized — Indian segment is structurally non-addressable. **Coca-Cola** is the battlecard archetype — even if the deal is slow, the 11-dimension VIM teardown applies to Spectrum, JLand (Malaysian SAP shops), and every SAP-shop conversation we run. **Boomerang/Rehmann** is a 6-month channel test — data-driven decision, not a strategy commitment. **The single biggest pipeline risk is concentration in advisory/exploratory accounts that aren\'t closing — we need to convert Spectrum + Apparel + 1 SEA enterprise into closed deals by Q4 2026 to de-risk Zalora dependency (Risk #3).**`,
+  },
+
+  workflowMap: {
+    intro: `Workflow-level competitive map. Each P2P/O2C/R2R workflow gets its own row with: a one-line description, where Neoflo sits today (Live, Phase 2 P0, etc), and the vendors that have a product on it — labeled by **strength** (Core = primary product line; Has = real but not the focus; Light = checkbox-grade; Adjacent = bordering the workflow) and **how they monetize** on that workflow specifically. This is the inverse view of the competitor profiles: instead of "what does Stampli do?", it answers "for invoice extraction, who plays?"`,
+    workflows: [
+      // ─── P2P (10) ───
+      {
+        process: 'P2P',
+        number: 1,
+        workflow: 'Vendor Onboarding & Master Data',
+        shortDescription: 'KYC, bank verification, duplicate checks, vendor master setup with payment terms and tax/GL coding.',
+        ourCoverage: 'Live',
+        ourNote: 'Live with Zalora. Master data dedup + bank-verify + GST/PAN validation in product.',
+        players: [
+          { vendor: 'Tipalti', product: 'Supplier Hub', strength: 'Core', monetization: 'Bundled with AP subscription; KYC is a key value prop globally', note: 'KPMG-validated tax compliance is the differentiator' },
+          { vendor: 'Coupa', product: 'Supplier Information Management', strength: 'Core', monetization: 'Bundled in enterprise suite', note: 'Procurement-led; supplier portal is rich' },
+          { vendor: 'SAP Ariba', product: 'Ariba Supplier Lifecycle', strength: 'Core', monetization: 'Bundled with SAP licensing' },
+          { vendor: 'Stampli', product: 'Vendor Management', strength: 'Has', monetization: 'Included in AP subscription', note: 'Functional but not the lead feature' },
+          { vendor: 'Peakflo', product: 'Vendor onboarding flow', strength: 'Has', monetization: 'Bundled with AP' },
+          { vendor: 'Bill.com', product: 'Vendor Network', strength: 'Has', monetization: 'Network effect — vendors already on Bill auto-onboard' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 2,
+        workflow: 'Requisition & PO',
+        shortDescription: 'Internal request raised, budget-checked, routed for approval; converts to a binding PO sent to vendor.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'Not in V1. Customers like Zalora handle PR/PO in their ERP today and feed POs to us for matching. P1 to consider once core workflows stabilize.',
+        players: [
+          { vendor: 'Coupa', product: 'Coupa Procurement', strength: 'Core', monetization: 'Procurement is their primary revenue line', note: 'PR-PO is the wedge for Coupa\'s entire suite' },
+          { vendor: 'SAP Ariba', product: 'Ariba Buying', strength: 'Core', monetization: 'Largest share of Ariba revenue', note: 'Default for SAP-shop procurement' },
+          { vendor: 'Oracle iProcurement', product: 'Oracle Procurement Cloud', strength: 'Core', monetization: 'Bundled with Oracle Fusion' },
+          { vendor: 'Stampli', product: 'PO matching (no PR)', strength: 'Light', monetization: 'PO module add-on', note: 'They added PO recently; not a Coupa replacement' },
+          { vendor: 'Bill.com', product: 'Spend & Expense (PR-light)', strength: 'Light', monetization: 'Bundled' },
+          { vendor: 'Ramp', product: 'Procurement (acquired Pipe-Eddy?)', strength: 'Light', monetization: 'Bundled with cards', note: 'Recent move; SMB-tilted' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 3,
+        workflow: 'Goods Receipt (GRN)',
+        shortDescription: 'Confirmation that physical goods or services arrived against a PO; trigger for invoice matching.',
+        ourCoverage: 'Live',
+        ourNote: 'Standard 3-way match feeds off GRN data from ERP. Live.',
+        players: [
+          { vendor: 'SAP MM', product: 'MM Goods Receipt', strength: 'Core', monetization: 'SAP licensing; this is where most goods-receipt happens globally' },
+          { vendor: 'Oracle Fusion', product: 'SCM Receiving', strength: 'Core', monetization: 'Oracle licensing' },
+          { vendor: 'NetSuite', product: 'Item Receipt', strength: 'Core', monetization: 'NetSuite licensing' },
+          { vendor: 'Coupa', product: 'Receiving', strength: 'Has', monetization: 'Bundled' },
+          { vendor: 'Stampli', product: '3-way match (consumes ERP GRN)', strength: 'Adjacent', monetization: 'AP subscription', note: 'Doesn\'t generate GRN; consumes it' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 4,
+        workflow: 'Invoice Receipt & Extraction (OCR/AI)',
+        shortDescription: 'Capturing invoice from email/portal/EDI/paper; OCR + AI extraction; GL coding suggestion; duplicate detection.',
+        ourCoverage: 'Live',
+        ourNote: 'Trained on Zalora corpus; SEA-format-native. Touch ratio improving quarterly.',
+        players: [
+          { vendor: 'Stampli', product: 'Stampli + Billy the Bot', strength: 'Core', monetization: 'AP subscription — extraction is the wedge', note: 'Mid-market AP benchmark' },
+          { vendor: 'SAP VIM', product: 'OpenText VIM', strength: 'Core', monetization: 'OpenText AddOn licensing', note: 'Template-based; the incumbent in SAP shops' },
+          { vendor: 'Vic.ai', product: 'Vic.ai Autonomous AP', strength: 'Core', monetization: 'Per-transaction', note: 'Autonomy-first architecture; 80%+ touch claim' },
+          { vendor: 'Tipalti', product: 'AP Hub', strength: 'Core', monetization: 'AP subscription' },
+          { vendor: 'Medius', product: 'Medius AP Automation', strength: 'Core', monetization: 'AP subscription' },
+          { vendor: 'Staple.ai', product: 'Staple Extract API', strength: 'Core', monetization: 'Per-document API pricing — pure extraction primitive', note: 'Used by other AP tools as the OCR layer; SEA-format-trained' },
+          { vendor: 'Nanonets', product: 'Nanonets OCR', strength: 'Core', monetization: 'Per-document', note: 'Indian commodity (~₹4/invoice)' },
+          { vendor: 'Cogniquest', product: 'Invoice OCR service', strength: 'Core', monetization: 'Per-document (~₹1.6/invoice)' },
+          { vendor: 'Peakflo', product: 'AP extraction', strength: 'Core', monetization: 'AP subscription', note: 'SEA-format-native' },
+          { vendor: 'Bill.com', product: 'AI capture', strength: 'Has', monetization: 'Per-transaction + subscription' },
+          { vendor: 'Ramp', product: 'Bill Pay AI capture', strength: 'Has', monetization: 'Free / interchange-bundled' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 5,
+        workflow: '3-Way Match & Exception Handling',
+        shortDescription: 'PO + GRN + Invoice match; tolerance rules; exception queue routing.',
+        ourCoverage: 'Live',
+        ourNote: 'Live with Zalora; configurable tolerances. Exception handling is the time-sink for AP teams — our differentiator is the queue UX.',
+        players: [
+          { vendor: 'Stampli', product: '3-way match + collaboration', strength: 'Core', monetization: 'AP subscription', note: 'Best-in-class exception UX' },
+          { vendor: 'SAP VIM', product: 'VIM Workflow', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'Tipalti', product: 'Match & Approve', strength: 'Core', monetization: 'AP subscription' },
+          { vendor: 'Vic.ai', product: 'Autonomous Match', strength: 'Core', monetization: 'Per-transaction' },
+          { vendor: 'Medius', product: 'Match & Controls', strength: 'Core', monetization: 'AP subscription' },
+          { vendor: 'Peakflo', product: '3-way match', strength: 'Has', monetization: 'AP subscription' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 6,
+        workflow: 'Approval Workflow',
+        shortDescription: 'Multi-step approval routing based on amount, GL code, cost center, or custom rules; SLAs and escalation.',
+        ourCoverage: 'Live',
+        ourNote: 'Configurable approval engine — entity-scoped, role-based. Live with Zalora.',
+        players: [
+          { vendor: 'Stampli', product: 'In-context approval', strength: 'Core', monetization: 'AP subscription' },
+          { vendor: 'Coupa', product: 'Coupa Workflow', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'SAP', product: 'SAP Workflow / Fiori', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'Bill.com', product: 'Multi-step approval', strength: 'Has', monetization: 'Per-user' },
+          { vendor: 'Peakflo', product: 'Approval routing', strength: 'Has', monetization: 'Bundled' },
+          { vendor: 'AvidXchange', product: 'Vertical-specific approval', strength: 'Has', monetization: 'Per-transaction' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 7,
+        workflow: 'Payment Execution & Reconciliation',
+        shortDescription: 'Bank-file generation (NEFT/RTGS/ACH/SWIFT/FAST), dual approval, payment release, remittance advice, reconciliation.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'V1 stops at payment-ready. Customers execute via their banking rails / Razorpay X / Aspire / etc. Native payment rails are P1 — risk vs reward varies by jurisdiction.',
+        players: [
+          { vendor: 'Tipalti', product: 'Mass Payments', strength: 'Core', monetization: 'Per-transaction + FX margin', note: '196 countries; this is their primary revenue' },
+          { vendor: 'Bill.com', product: 'Payments', strength: 'Core', monetization: 'Per-transaction + subscription', note: 'BILL Network drives payment monetization' },
+          { vendor: 'AvidXchange', product: 'AvidPay Network', strength: 'Core', monetization: 'Per-transaction + supplier payment fees' },
+          { vendor: 'Ramp', product: 'Bill Pay (cards + ACH)', strength: 'Core', monetization: 'Interchange + FX' },
+          { vendor: 'Brex', product: 'Brex Bill Pay', strength: 'Core', monetization: 'Interchange + FX' },
+          { vendor: 'Aspire / Airwallex', product: 'Banking + Bill Pay', strength: 'Core', monetization: 'FX margin + interchange' },
+          { vendor: 'Razorpay X', product: 'RazorpayX Payouts', strength: 'Core', monetization: 'Per-transaction (India / SEA)' },
+          { vendor: 'Stampli', product: 'Stampli Direct Pay', strength: 'Has', monetization: 'Per-transaction add-on' },
+          { vendor: 'Peakflo', product: 'Payments via FAST/GIRO/PayNow', strength: 'Core', monetization: 'Per-transaction + FX' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 8,
+        workflow: 'Vendor Self-Service Portal',
+        shortDescription: 'Vendor-facing portal for invoice submission, payment status, document upload, dispute raising.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'P1 expansion once invoice STP is locked. Reduces inbound email volume to AP team — measurable ROI.',
+        players: [
+          { vendor: 'Coupa', product: 'Coupa Supplier Portal', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'Tipalti', product: 'Supplier Hub', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'Stampli', product: 'Vendor portal (in-product chat)', strength: 'Has', monetization: 'Bundled', note: 'Their chat-thread paradigm doubles as supplier comms' },
+          { vendor: 'SAP Ariba', product: 'Ariba Network', strength: 'Core', monetization: 'Both buyer + supplier fees' },
+          { vendor: 'Peakflo', product: 'Vendor portal', strength: 'Has', monetization: 'Bundled' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 9,
+        workflow: 'Spend Analytics',
+        shortDescription: 'Vendor concentration, maverick spend tracking, savings opportunities, contract compliance dashboards.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'P1 — once we have 3+ live customers, the cross-customer benchmarking story becomes interesting.',
+        players: [
+          { vendor: 'Coupa', product: 'Coupa Spend Analytics', strength: 'Core', monetization: 'Add-on module — high ARR' },
+          { vendor: 'SAP Ariba', product: 'Ariba Spend Analysis', strength: 'Core', monetization: 'Add-on' },
+          { vendor: 'Ramp', product: 'Ramp Spend Insights', strength: 'Core', monetization: 'Bundled with cards' },
+          { vendor: 'Brex', product: 'Brex Empower', strength: 'Core', monetization: 'Bundled with cards' },
+          { vendor: 'Stampli', product: 'Spend dashboards', strength: 'Has', monetization: 'Bundled' },
+          { vendor: 'Bill.com', product: 'Spend insights (light)', strength: 'Light', monetization: 'Bundled' },
+        ],
+      },
+      {
+        process: 'P2P',
+        number: 10,
+        workflow: 'T&E / Expense Management',
+        shortDescription: 'Employee expense claims, receipt OCR, approval, card reconciliation, mileage, per-diem.',
+        ourCoverage: 'Out of V1 scope',
+        ourNote: 'Different buyer (HR/Finance shared) and different UX paradigm. Out of scope for the platform thesis. Customers run Concur / Ramp / Brex / Spenmo.',
+        players: [
+          { vendor: 'SAP Concur', product: 'Concur Expense', strength: 'Core', monetization: 'Per-user — primary T&E global incumbent' },
+          { vendor: 'Ramp', product: 'Ramp Travel + Expense', strength: 'Core', monetization: 'Bundled with cards / interchange' },
+          { vendor: 'Brex', product: 'Brex Travel + Expense', strength: 'Core', monetization: 'Bundled with cards' },
+          { vendor: 'Spenmo', product: 'Spenmo Expense', strength: 'Core', monetization: 'Per-user (SEA SMB)' },
+          { vendor: 'Volopay', product: 'Volopay Expense', strength: 'Core', monetization: 'Per-user (SEA / India)' },
+          { vendor: 'Expensify', product: 'Expensify', strength: 'Core', monetization: 'Per-user' },
+        ],
+      },
+      // ─── O2C (10) ───
+      {
+        process: 'O2C',
+        number: 1,
+        workflow: 'Customer Onboarding & Credit Management',
+        shortDescription: 'KYC, credit-bureau check, credit limit assignment, payment-terms decision, ongoing credit monitoring.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'Phase 2 P1 — credit-bureau integrations vary by jurisdiction. Build minimum viable, partner where needed.',
+        players: [
+          { vendor: 'HighRadius', product: 'Credit Cloud', strength: 'Core', monetization: 'Module — high enterprise ARR', note: '18+ AI agents include credit risk scoring' },
+          { vendor: 'Sidetrade', product: 'Sidetrade Credit', strength: 'Core', monetization: 'Module' },
+          { vendor: 'Esker', product: 'Esker Credit', strength: 'Core', monetization: 'Module' },
+          { vendor: 'BlackLine', product: 'BlackLine Credit Risk', strength: 'Has', monetization: 'I2C bolt-on' },
+          { vendor: 'Peakflo', product: 'Credit checks (light)', strength: 'Light', monetization: 'Bundled' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 2,
+        workflow: 'Order Management',
+        shortDescription: 'Order entry validation, inventory check, credit-limit check, order confirmation.',
+        ourCoverage: 'Out of V1 scope',
+        ourNote: 'Order management is ERP territory (SAP SD, Oracle OM, NetSuite). We integrate, we don\'t replace.',
+        players: [
+          { vendor: 'SAP SD', product: 'Sales & Distribution', strength: 'Core', monetization: 'SAP licensing' },
+          { vendor: 'Oracle OM', product: 'Order Management Cloud', strength: 'Core', monetization: 'Oracle licensing' },
+          { vendor: 'NetSuite', product: 'Order Management', strength: 'Core', monetization: 'NetSuite licensing' },
+          { vendor: 'Esker', product: 'Order entry automation', strength: 'Has', monetization: 'Module add-on' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 3,
+        workflow: 'Billing / Invoicing (incl. e-invoicing rails)',
+        shortDescription: 'Invoice generation from delivered orders, contract-based pricing, taxes, e-invoicing submission to tax authority.',
+        ourCoverage: 'Phase 2 P0 (2026)',
+        ourNote: 'P0 in O2C scope. Native MyInvois / InvoiceNow / e-Faktur integration is the moat — see Regulatory Tailwinds insight.',
+        players: [
+          { vendor: 'HighRadius', product: 'eInvoicing & Billing Cloud', strength: 'Has', monetization: 'Module', note: 'AR-side billing automation' },
+          { vendor: 'Sovos', product: 'Sovos Compliance Cloud', strength: 'Core', monetization: 'Per-jurisdiction subscription', note: 'Pure e-invoicing compliance — like ClearTax for global' },
+          { vendor: 'Avalara', product: 'Avalara e-Invoicing', strength: 'Core', monetization: 'Per-transaction + subscription' },
+          { vendor: 'ClearTax (Clear)', product: 'ClearTax E-Invoicing', strength: 'Core', monetization: 'Per-invoice (India + expanding SEA)' },
+          { vendor: 'Billtrust', product: 'Billtrust Invoicing', strength: 'Core', monetization: 'Subscription + per-transaction' },
+          { vendor: 'Bill.com', product: 'Bill.com Receivables', strength: 'Has', monetization: 'Per-transaction + subscription' },
+          { vendor: 'Peakflo', product: 'Billing module', strength: 'Has', monetization: 'Bundled with O2C' },
+          { vendor: 'Esker', product: 'Esker Order-to-Cash Billing', strength: 'Core', monetization: 'Module' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 4,
+        workflow: 'AR Management & Aging',
+        shortDescription: 'Receivables tracking by customer, aging buckets (0-30, 31-60, 61-90, 90+), DSO calculation, exposure dashboards.',
+        ourCoverage: 'Phase 2 P0 (2026)',
+        ourNote: 'P0. Real-time AR view with cross-entity rollup is the differentiation vs ERP-native AR which is reactive and report-driven.',
+        players: [
+          { vendor: 'HighRadius', product: 'Receivables Management', strength: 'Core', monetization: 'Core enterprise module' },
+          { vendor: 'Sidetrade', product: 'AR Management', strength: 'Core', monetization: 'Core' },
+          { vendor: 'Versapay', product: 'Versapay AR', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Billtrust', product: 'Billtrust Cash Cycle', strength: 'Core', monetization: 'Subscription + per-transaction' },
+          { vendor: 'Quadient (YayPay)', product: 'Quadient AR', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Tesorio', product: 'Tesorio AR', strength: 'Has', monetization: 'Subscription' },
+          { vendor: 'Peakflo', product: 'AR Module', strength: 'Core', monetization: 'AR subscription' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 5,
+        workflow: 'Dunning & Collections (sequenced reminders)',
+        shortDescription: 'Email/SMS dunning sequences, escalation to phone, promise-to-pay tracking, collector prioritization.',
+        ourCoverage: 'Phase 2 P0 (2026)',
+        ourNote: 'P0. Match Peakflo\'s playbook plus enterprise-grade dispute-aware logic (don\'t dun customers in active dispute).',
+        players: [
+          { vendor: 'Sidetrade', product: 'Aimie Autonomous Collections', strength: 'Core', monetization: 'Core enterprise module' },
+          { vendor: 'HighRadius', product: 'Collections Cloud', strength: 'Core', monetization: 'Core' },
+          { vendor: 'Peakflo', product: 'Collections + Voice AI', strength: 'Core', monetization: 'Core', note: 'Voice AI is their category-shaping feature' },
+          { vendor: 'Stuut', product: 'Stuut Autonomous AR', strength: 'Core', monetization: 'Subscription', note: '6–10 day go-lives documented' },
+          { vendor: 'Versapay', product: 'Collaborative Collections', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Tesorio', product: 'Collections Prioritization', strength: 'Has', monetization: 'Subscription' },
+          { vendor: 'Quadient (YayPay)', product: 'Structured collections playbooks', strength: 'Core', monetization: 'Subscription' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 6,
+        workflow: 'Voice AI for Collections',
+        shortDescription: 'Outbound AI voice agent that calls overdue customers, handles natural-language conversations, logs promise-to-pay.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'Strategic decision needed: build vs partner vs skip. Per Peakflo evidence, this is category-defining for SEA. Recommend partner-test in 2026.',
+        players: [
+          { vendor: 'Peakflo', product: 'Peakflo Voice AI', strength: 'Core', monetization: 'Bundled with collections', note: '12+ languages including Mandarin, Bahasa, Vietnamese' },
+          { vendor: 'Sidetrade', product: 'Aimie voice agents', strength: 'Has', monetization: 'Module' },
+          { vendor: 'Stuut', product: 'AI calling (US English)', strength: 'Has', monetization: 'Subscription' },
+          { vendor: 'Bland.ai / Retell / Vapi', product: 'Voice AI primitives', strength: 'Adjacent', monetization: 'Per-minute API', note: 'Underlying voice infra; partner candidates' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 7,
+        workflow: 'Cash Application & Reconciliation',
+        shortDescription: 'Match incoming bank payments to open invoices; handle lump-sum payments, short-pays, multi-currency, missing references.',
+        ourCoverage: 'Phase 2 P0 (2026)',
+        ourNote: 'P0. **This is what Hitachi specifically asked for and we didn\'t have.** Cash app is the gating feature for the Hitachi-pattern enterprise buyer.',
+        players: [
+          { vendor: 'HighRadius', product: 'Cash Application Cloud', strength: 'Core', monetization: 'Core enterprise module', note: 'Their flagship — 18+ AI agents' },
+          { vendor: 'Sidetrade', product: 'Cash Application', strength: 'Core', monetization: 'Core' },
+          { vendor: 'BlackLine', product: 'Cash Application', strength: 'Has', monetization: 'I2C bolt-on' },
+          { vendor: 'Versapay', product: 'Cash Application', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Billtrust', product: 'Cash Application', strength: 'Core', monetization: 'Subscription + per-transaction' },
+          { vendor: 'Recko (Stripe)', product: 'B2B Reconciliation', strength: 'Core', monetization: 'Bundled with Stripe RFA', note: 'Reconciliation as a primitive — competitor to in-product cash app' },
+          { vendor: 'Peakflo', product: 'Cash app', strength: 'Has', monetization: 'Bundled with AR' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 8,
+        workflow: 'Dispute / Deduction Resolution',
+        shortDescription: 'Track customer disputes, route to sales/ops/finance, issue credit notes, resolve short-pays.',
+        ourCoverage: 'Phase 2 P0 (2026)',
+        ourNote: 'P0 in scope per Spectrum. Deductions specifically is a HighRadius strength and a Spectrum ask.',
+        players: [
+          { vendor: 'HighRadius', product: 'Deductions Cloud', strength: 'Core', monetization: 'Core enterprise module', note: 'CPG / retail-heavy use case' },
+          { vendor: 'Versapay', product: 'Dispute management', strength: 'Core', monetization: 'Subscription', note: 'Their dispute UX is the differentiator' },
+          { vendor: 'Sidetrade', product: 'Dispute resolution', strength: 'Has', monetization: 'Module' },
+          { vendor: 'Esker', product: 'Claims management', strength: 'Has', monetization: 'Module' },
+          { vendor: 'Peakflo', product: 'Dispute (light)', strength: 'Light', monetization: 'Bundled' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 9,
+        workflow: 'Cash Flow Forecasting & DSO Analytics',
+        shortDescription: 'Predict cash inflows from AR, simulate scenarios, model DSO compression impact on cash.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'Natural extension once AR + cash app + collections are live. Analytics layer.',
+        players: [
+          { vendor: 'Tesorio', product: 'Tesorio Forecasting', strength: 'Core', monetization: 'Core product', note: 'This is their wedge' },
+          { vendor: 'HighRadius', product: 'Cash Flow Cloud', strength: 'Core', monetization: 'Module' },
+          { vendor: 'Peakflo', product: 'Cashflow management', strength: 'Has', monetization: 'Bundled' },
+          { vendor: 'Centime', product: 'Centime Forecasting', strength: 'Core', monetization: 'Subscription' },
+        ],
+      },
+      {
+        process: 'O2C',
+        number: 10,
+        workflow: 'Customer Self-Service / Payment Portal',
+        shortDescription: 'Customer-facing portal for invoice viewing, payment, dispute raising, statement download.',
+        ourCoverage: 'Phase 2 P1',
+        ourNote: 'P1 expansion once AR is live. Reduces AR team email load.',
+        players: [
+          { vendor: 'Versapay', product: 'Customer Portal', strength: 'Core', monetization: 'Subscription', note: 'Their wedge — buyer-seller shared portal' },
+          { vendor: 'Billtrust', product: 'Billtrust Payments Portal', strength: 'Core', monetization: 'Per-transaction' },
+          { vendor: 'HighRadius', product: 'Customer Portal', strength: 'Has', monetization: 'Bundled' },
+          { vendor: 'Bill.com', product: 'Bill.com Receivables Portal', strength: 'Core', monetization: 'Per-transaction' },
+        ],
+      },
+      // ─── R2R (8) ───
+      {
+        process: 'R2R',
+        number: 1,
+        workflow: 'Pre-Close Cutoff & Sub-ledger Freeze',
+        shortDescription: 'Freezing AP/AR/payroll/inventory sub-ledgers at period-end; GRNI accruals; intercompany cutoff.',
+        ourCoverage: 'Phase 3 P0 (2027)',
+        ourNote: 'Cross-process advantage: as the system of record for AP and AR, our cutoff data is real-time. Standalone close tools depend on ERP feeds.',
+        players: [
+          { vendor: 'BlackLine', product: 'Period-End Tasks', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'FloQast', product: 'Close Checklist', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Trintech (Cadency)', product: 'Cadency Tasks', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Numeric', product: 'Numeric Close', strength: 'Has', monetization: 'Subscription' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 2,
+        workflow: 'Journal Entry Workflow',
+        shortDescription: 'Preparer/reviewer/approver flow for accruals, prepaid amortization, FX revaluation, deferred tax — with supporting evidence.',
+        ourCoverage: 'Phase 3 P0 (2027)',
+        ourNote: 'Cross-process audit trail across AP/AR/JE is our differentiation. Standalone JE tools have a thin audit trail.',
+        players: [
+          { vendor: 'BlackLine', product: 'Journal Entry', strength: 'Core', monetization: 'Module' },
+          { vendor: 'FloQast', product: 'JE Workflow', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Trintech (Cadency)', product: 'Cadency Journals', strength: 'Core', monetization: 'Module' },
+          { vendor: 'Numeric', product: 'Numeric JE', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'OneStream', product: 'OneStream Journals', strength: 'Core', monetization: 'Bundled enterprise license' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 3,
+        workflow: 'Reconciliations',
+        shortDescription: 'Bank, AR, AP, fixed asset, accrual, lease, intercompany, prepaids — every BS account reconciled to source.',
+        ourCoverage: 'Phase 3 P0 (2027)',
+        ourNote: 'P0 — the time sink in close. Auto-matching with ML is the UX bar.',
+        players: [
+          { vendor: 'BlackLine', product: 'BlackLine Reconciliations', strength: 'Core', monetization: 'Core enterprise module', note: 'Category-defining product' },
+          { vendor: 'FloQast', product: 'Excel-native Reconciliations', strength: 'Core', monetization: 'Subscription', note: 'Mid-market UX leader' },
+          { vendor: 'Trintech', product: 'Cadency Recs', strength: 'Core', monetization: 'Module' },
+          { vendor: 'Numeric', product: 'AI-native Reconciliations', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'ChatFin', product: 'AI-agent reconciliation', strength: 'Has', monetization: 'Subscription' },
+          { vendor: 'Recko (Stripe)', product: 'Recko reconciliation engine', strength: 'Core', monetization: 'Bundled with Stripe RFA' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 4,
+        workflow: 'Flux Analysis & Variance Commentary',
+        shortDescription: 'Auto-flag variance vs prior period / prior year / budget; require written commentary above threshold.',
+        ourCoverage: 'Phase 3 P0 (2027)',
+        ourNote: 'AI-generated initial flux commentary is the obvious play — Numeric is shipping this.',
+        players: [
+          { vendor: 'Numeric', product: 'AI Flux Analysis', strength: 'Core', monetization: 'Differentiator', note: 'Their AI lead is here' },
+          { vendor: 'BlackLine', product: 'Variance Analysis', strength: 'Has', monetization: 'Module' },
+          { vendor: 'FloQast', product: 'AI Flux (rolling)', strength: 'Has', monetization: 'AI add-on' },
+          { vendor: 'Workiva', product: 'Workiva Reporting', strength: 'Has', monetization: 'Subscription' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 5,
+        workflow: 'Consolidation (Group Reporting)',
+        shortDescription: 'Multi-entity rollup, FX translation, intercompany elimination, minority interest, multi-GAAP adjustments.',
+        ourCoverage: 'Out of V1 scope',
+        ourNote: 'Per Risk #4 — explicitly out of R2R V1. Heavy consolidation logic is a swamp; partner or defer.',
+        players: [
+          { vendor: 'OneStream', product: 'OneStream Consolidation', strength: 'Core', monetization: 'Enterprise license', note: 'Category leader for unified close + consolidation' },
+          { vendor: 'BlackLine', product: 'BlackLine Consolidation', strength: 'Has', monetization: 'Module' },
+          { vendor: 'Workiva', product: 'Workiva Consolidation', strength: 'Has', monetization: 'Subscription' },
+          { vendor: 'SAP BPC / Group Reporting', product: 'SAP S/4 Group Reporting', strength: 'Core', monetization: 'SAP licensing' },
+          { vendor: 'Oracle FCCS', product: 'Financial Consolidation and Close', strength: 'Core', monetization: 'Oracle Cloud licensing' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 6,
+        workflow: 'Statutory Reporting & Regulatory Filings',
+        shortDescription: 'P&L, BS, CF for filing; GST returns, TDS, withholding, country-specific (MCA, IRAS, LHDN).',
+        ourCoverage: 'Phase 3 P1',
+        ourNote: 'Per-jurisdiction work. Partner with ClearTax / Sovos / Avalara where complexity warrants; build native where regulation aligns with our localization moat.',
+        players: [
+          { vendor: 'Workiva', product: 'Workiva SEC + SOX', strength: 'Core', monetization: 'Subscription', note: '75% of Fortune 500' },
+          { vendor: 'Sovos', product: 'Sovos Compliance Cloud', strength: 'Core', monetization: 'Per-jurisdiction' },
+          { vendor: 'Avalara', product: 'Avalara Compliance', strength: 'Core', monetization: 'Per-transaction + subscription' },
+          { vendor: 'ClearTax', product: 'GST + Compliance suite', strength: 'Core', monetization: 'Per-return / per-invoice', note: 'India primary; expanding SEA' },
+          { vendor: 'Thomson Reuters ONESOURCE', product: 'ONESOURCE Tax', strength: 'Core', monetization: 'Subscription' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 7,
+        workflow: 'Management Reporting / Board Pack',
+        shortDescription: 'Executive summary, KPI dashboards, variance commentary, forward-looking commentary delivered to board.',
+        ourCoverage: 'Phase 3 P1',
+        ourNote: 'Natural expansion once close + recs + flux are live. Anaplan and OneStream sell here at the enterprise tier.',
+        players: [
+          { vendor: 'OneStream', product: 'OneStream Reporting', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'Workiva', product: 'Workiva Management Reporting', strength: 'Core', monetization: 'Subscription' },
+          { vendor: 'Anaplan', product: 'Anaplan Boards', strength: 'Core', monetization: 'Per-user enterprise' },
+          { vendor: 'Datarails', product: 'Datarails FP&A', strength: 'Has', monetization: 'Subscription (mid-market)' },
+          { vendor: 'Mosaic', product: 'Mosaic FP&A', strength: 'Has', monetization: 'Subscription' },
+          { vendor: 'Cube', product: 'Cube FP&A', strength: 'Has', monetization: 'Subscription' },
+        ],
+      },
+      {
+        process: 'R2R',
+        number: 8,
+        workflow: 'Intercompany Matching & Settlement',
+        shortDescription: 'Match intercompany invoices and balances across entities; settle intercompany positions; eliminate on consolidation.',
+        ourCoverage: 'Phase 3 P0 (2027)',
+        ourNote: 'Cross-entity audit trail is exactly what our entity-scoped workflow engine enables. P0 differentiator at the SEA multi-entity buyer.',
+        players: [
+          { vendor: 'BlackLine', product: 'Intercompany Hub', strength: 'Core', monetization: 'Module', note: 'Acquired Rimilia for IC hub' },
+          { vendor: 'Trintech', product: 'Cadency Intercompany', strength: 'Core', monetization: 'Module' },
+          { vendor: 'OneStream', product: 'OneStream Intercompany', strength: 'Core', monetization: 'Bundled' },
+          { vendor: 'SAP', product: 'SAP S/4 Intercompany Matching', strength: 'Has', monetization: 'Bundled' },
+        ],
+      },
+    ],
+    vendorCoverage: [
+      { vendor: 'Neoflo (today)', category: 'Multi-process platform', p2pCoverage: 'P2P 1, 3, 4, 5, 6 — Live', o2cCoverage: 'Roadmap (Phase 2 P0: 3, 4, 5, 7, 8)', r2rCoverage: 'Roadmap (Phase 3 P0: 1, 2, 3, 4, 8)', primaryMonetization: 'Platform ARR (proposed wedge $25–45K, platform $60–120K)' },
+      { vendor: 'Peakflo', category: 'Multi-process SEA', p2pCoverage: '1, 4, 5, 6, 7 (light PR/PO)', o2cCoverage: '3, 4, 5, 6 (voice AI), 7, 9', r2rCoverage: 'None', primaryMonetization: 'AP + AR ARR; payment per-transaction' },
+      { vendor: 'Stampli', category: 'US mid-market AP', p2pCoverage: '1 (light), 4, 5, 6, 7 (Direct Pay), 8 (chat)', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'AP ARR; Direct Pay add-on' },
+      { vendor: 'Tipalti', category: 'Global enterprise AP + payments', p2pCoverage: '1, 4, 5, 6, 7 (Mass Payments), 8', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Per-transaction + FX margin (payments are the primary revenue)' },
+      { vendor: 'Bill.com', category: 'SMB AP+AR', p2pCoverage: '1 (network), 4 (light), 6, 7 (BILL Network)', o2cCoverage: '3 (light), 10', r2rCoverage: 'None', primaryMonetization: 'Per-transaction (payments) + per-user' },
+      { vendor: 'Coupa', category: 'Enterprise procurement', p2pCoverage: '1 (rich), 2 (core), 3, 4, 5, 6, 8 (rich), 9', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Procurement suite ARR (PR/PO is the wedge)' },
+      { vendor: 'SAP Ariba', category: 'ERP-bundled procurement', p2pCoverage: '1, 2, 8 (Ariba Network), 9', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'SAP licensing + Ariba Network supplier fees' },
+      { vendor: 'SAP VIM (OpenText)', category: 'ERP-native AP', p2pCoverage: '4 (template OCR), 5, 6', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'OpenText AddOn licensing (one-time + maintenance)' },
+      { vendor: 'Vic.ai', category: 'AI-native AP', p2pCoverage: '4 (autonomous), 5, 6', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Per-transaction; touch-ratio SLA' },
+      { vendor: 'Ramp / Brex', category: 'Spend management', p2pCoverage: '4 (light), 6, 7 (Bill Pay), 9 (insights), 10 (T&E)', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Card interchange + FX (software is loss-leader)' },
+      { vendor: 'Staple.ai', category: 'OCR primitive', p2pCoverage: '4 only (extraction)', o2cCoverage: '3 (extraction component)', r2rCoverage: 'None', primaryMonetization: 'Per-document API pricing' },
+      { vendor: 'HighRadius', category: 'Enterprise O2C', p2pCoverage: 'None', o2cCoverage: '1, 4, 5, 7 (Cash App flagship), 8 (Deductions), 9, 10', r2rCoverage: 'None', primaryMonetization: 'Module ARR — high enterprise prices' },
+      { vendor: 'Sidetrade', category: 'Enterprise O2C', p2pCoverage: 'None', o2cCoverage: '1, 4, 5, 6 (Aimie voice), 7, 8', r2rCoverage: 'None', primaryMonetization: 'Module ARR' },
+      { vendor: 'Versapay', category: 'Mid-market AR', p2pCoverage: 'None', o2cCoverage: '4, 5, 7, 8 (Dispute), 10 (portal flagship)', r2rCoverage: 'None', primaryMonetization: 'AR subscription' },
+      { vendor: 'Billtrust', category: 'Mid-market AR + payments', p2pCoverage: 'None', o2cCoverage: '3 (rich), 4, 7, 10', r2rCoverage: 'None', primaryMonetization: 'Per-transaction (payments) + subscription' },
+      { vendor: 'Tesorio', category: 'Cash flow + collections', p2pCoverage: 'None', o2cCoverage: '4, 5, 9 (Forecasting flagship)', r2rCoverage: 'None', primaryMonetization: 'Subscription' },
+      { vendor: 'Stuut', category: 'AI-native AR', p2pCoverage: 'None', o2cCoverage: '5, 6 (AI calling), 7', r2rCoverage: 'None', primaryMonetization: 'Subscription; fast deploy is the wedge' },
+      { vendor: 'BlackLine', category: 'Enterprise R2R', p2pCoverage: 'None', o2cCoverage: '7 (BlackLine Cash App)', r2rCoverage: '1, 2, 3 (flagship), 4, 5 (light), 8 (Hub)', primaryMonetization: 'Module ARR — Reconciliations is the flagship' },
+      { vendor: 'FloQast', category: 'Mid-market R2R', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '1, 2, 3, 4 (rolling AI)', primaryMonetization: 'Per-user subscription' },
+      { vendor: 'Trintech (Cadency / Adra)', category: 'Enterprise + mid R2R', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '1, 2, 3, 8', primaryMonetization: 'Module ARR' },
+      { vendor: 'Numeric', category: 'AI-native R2R', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '1, 2, 3, 4 (AI Flux flagship)', primaryMonetization: 'Subscription' },
+      { vendor: 'OneStream', category: 'Enterprise close + consolidation', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '2, 5 (Consolidation flagship), 7, 8', primaryMonetization: 'Enterprise license' },
+      { vendor: 'Workiva', category: 'Enterprise reporting + SOX', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '4, 6 (SEC + SOX flagship), 7', primaryMonetization: 'Subscription' },
+      { vendor: 'Anaplan / Datarails / Mosaic / Cube', category: 'FP&A / planning + reporting', p2pCoverage: 'None', o2cCoverage: '9 (cash flow modeling)', r2rCoverage: '7 (Management Reporting)', primaryMonetization: 'Per-user (Anaplan enterprise; others mid-market)' },
+      { vendor: 'ClearTax (Clear)', category: 'Tax compliance / e-invoicing rails', p2pCoverage: '1 (vendor tax), 4 (e-invoicing on inbound)', o2cCoverage: '3 (e-invoicing on outbound — flagship)', r2rCoverage: '6 (Statutory)', primaryMonetization: 'Per-invoice / per-return' },
+      { vendor: 'Sovos / Avalara', category: 'Global tax + e-invoicing', p2pCoverage: '4 (tax calc)', o2cCoverage: '3 (e-invoicing rails)', r2rCoverage: '6 (Statutory)', primaryMonetization: 'Per-jurisdiction subscription + per-transaction' },
+      { vendor: 'SAP Concur', category: 'Enterprise T&E', p2pCoverage: '10 (T&E flagship)', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Per-user subscription' },
+    ],
+    summary: `**Reading the workflow map gives three concrete strategic conclusions that don't show up in the per-competitor profiles:**
+
+1. **The single workflow with the most competitive density is P2P #4 (Invoice Receipt & Extraction)** — 11+ vendors actively monetize on it, including OCR primitives (Staple, Nanonets) underneath workflow products. This is the most commoditized layer in our roadmap. Our defense is **not** OCR accuracy alone — it's the combination of SEA-format-trained extraction + downstream workflow + cross-process audit trail.
+
+2. **Voice AI for Collections (O2C #6) is structurally Peakflo-defined.** Sidetrade and Stuut are present but English/EU-centric. **For SEA mid-market, Peakflo is the only Core player.** Our build/partner decision here directly affects our O2C win rate against them.
+
+3. **Two workflow gaps in the entire vendor landscape are interesting strategic openings:** (a) **multi-process audit trail** — no vendor has a single audit trail across AP, AR, and close. Even BlackLine (close-leader) bolted on cash app and intercompany via acquisition. Our entity-scoped workflow engine is architected for this from day one. (b) **R2R + e-invoicing convergence** — as MyInvois / PEPPOL data flows in real-time, the line between "compliance reporting" (ClearTax/Sovos) and "statutory close" (BlackLine/Workiva) collapses. Whoever owns the unified data layer here owns a category that doesn't exist yet.
+
+**Practical takeaway for the roadmap:** prioritize Phase 2 P0 workflows (O2C 3, 4, 5, 7, 8) by ship date because each one closes a gap that costs us specific named deals (Hitachi for cash app; Spectrum for deductions). Phase 3 P0 in R2R should be ruthlessly scoped to 1–4 + 8 (cutoff, JE, recs, flux, intercompany) — leave consolidation, statutory reporting, and management reporting to V2 and partners.`,
+  },
+};

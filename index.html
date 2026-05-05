@@ -305,6 +305,12 @@
       <a href="#jobmap">Buyer job map</a>
       <a href="#gtm">GTM playbook</a>
       <a href="#actions">90-day actions</a>
+      <div class="nav-section">Competitive deep-dive</div>
+      <a href="#h2h">Head-to-head profiles</a>
+      <a href="#matrix">Feature matrix</a>
+      <a href="#workflow">Workflow map</a>
+      <a href="#vendor-coverage">Vendor coverage</a>
+      <a href="#pipemap">Pipeline competitive map</a>
       <div class="nav-section">Process explainers</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
@@ -436,6 +442,46 @@
       <div id="actions-list"></div>
     </section>
 
+    <section id="h2h">
+      <div class="eyebrow">Competitive deep-dive 01</div>
+      <h2 class="section-title">Head-to-head profiles.</h2>
+      <div id="h2h-intro"></div>
+      <div id="h2h-list"></div>
+    </section>
+
+    <section id="matrix">
+      <div class="eyebrow">Competitive deep-dive 02</div>
+      <h2 class="section-title">Feature matrix — capability vs vendor.</h2>
+      <div id="matrix-intro"></div>
+      <div id="matrix-legend" class="grid grid-3" style="margin-bottom: var(--scale-300);"></div>
+      <div id="matrix-table" style="overflow-x: auto;"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="matrix-summary"></div>
+    </section>
+
+    <section id="workflow">
+      <div class="eyebrow">Competitive deep-dive 03</div>
+      <h2 class="section-title">Workflow-by-workflow map.</h2>
+      <div id="workflow-intro"></div>
+      <div class="tabs" id="workflow-tabs"></div>
+      <div id="workflow-panels"></div>
+    </section>
+
+    <section id="vendor-coverage">
+      <div class="eyebrow">Competitive deep-dive 04</div>
+      <h2 class="section-title">Vendor coverage — who plays where.</h2>
+      <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape.</p>
+      <div id="vc-table" style="overflow-x: auto;"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="workflow-summary"></div>
+    </section>
+
+    <section id="pipemap">
+      <div class="eyebrow">Competitive deep-dive 05</div>
+      <h2 class="section-title">Pipeline competitive map.</h2>
+      <div id="pm-intro"></div>
+      <div id="pm-list"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="pm-readout"></div>
+    </section>
+
     <section id="p2p">
       <div class="eyebrow">Process explainer</div>
       <h2 class="section-title" id="p2p-title"></h2>
@@ -490,6 +536,7 @@ DATA.o2c = window.O2C_DATA;
 DATA.r2r = window.R2R_DATA;
 DATA.customers = window.CUSTOMER_DATA;
 DATA.insights = window.INSIGHTS_DATA;
+DATA.comparisons = window.COMPARISONS_DATA;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -869,6 +916,218 @@ document.getElementById('actions-list').innerHTML = ins.ninetyDayActions.map(a =
     </dl>
   </div>
 `).join('');
+
+// ───────── Render: Head-to-head profiles ─────────
+const cmp = DATA.comparisons;
+document.getElementById('h2h-intro').innerHTML = `<p class="lede">${mdInline(cmp.headToHead.intro)}</p>`;
+
+function threatBadge(t) {
+  const map = { 'Critical': 'badge-error', 'High': 'badge-warning', 'Medium': 'badge-info', 'Low': 'badge-neutral', 'Reference': 'badge-neutral' };
+  return `<span class="badge ${map[t] || 'badge-neutral'}">${t} threat</span>`;
+}
+document.getElementById('h2h-list').innerHTML = cmp.headToHead.profiles.map(p => `
+  <div class="card" style="margin-bottom: var(--scale-400);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${p.vendor}</h3>
+      ${threatBadge(p.threatLevel)}
+    </div>
+    <p style="font-size: 13px; color: var(--text-default-caption); margin: var(--scale-100) 0 var(--scale-300);">${mdInline(p.category)}</p>
+    <dl class="stage-grid">
+      <dt>HQ</dt><dd>${p.hq}</dd>
+      <dt>Founded</dt><dd>${p.founded}</dd>
+      <dt>Funding</dt><dd>${mdInline(p.funding)}</dd>
+      <dt>Customers</dt><dd>${mdInline(p.customers)}</dd>
+      <dt>Pricing</dt><dd>${mdInline(p.pricing)}</dd>
+      <dt>Implementation</dt><dd>${mdInline(p.implementation)}</dd>
+    </dl>
+    <div class="grid grid-2" style="margin-top: var(--scale-300);">
+      <div>
+        <h4 style="color: var(--text-success-on-color);">Where they win</h4>
+        <ul>${p.whereTheyWin.map(b => `<li>${mdInline(b)}</li>`).join('')}</ul>
+      </div>
+      <div>
+        <h4 style="color: var(--text-error-on-color);">Where they lose</h4>
+        <ul>${p.whereTheyLose.map(b => `<li>${mdInline(b)}</li>`).join('')}</ul>
+      </div>
+    </div>
+    <div class="grid grid-2" style="margin-top: var(--scale-300);">
+      <div class="evidence" style="margin: 0;">
+        <strong style="color: var(--text-primary-default);">How we beat them</strong>
+        <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(p.howWeBeatThem)}</div>
+      </div>
+      <div class="evidence" style="margin: 0; background: var(--surface-error-subtle);">
+        <strong style="color: var(--text-error-on-color);">How they beat us (honest)</strong>
+        <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(p.howTheyBeatUs)}</div>
+      </div>
+    </div>
+    <div style="margin-top: var(--scale-300);">
+      <h4>Typical deal frame</h4>
+      <p style="font-size: 14px;">${mdInline(p.typicalDealFrame)}</p>
+    </div>
+    <div style="margin-top: var(--scale-300);">
+      <h4>Buyer decision criteria</h4>
+      <ul>${p.buyerDecisionCriteria.map(c => `<li>${mdInline(c)}</li>`).join('')}</ul>
+    </div>
+    <div class="what-it-means" style="margin-top: var(--scale-300);">${mdInline(p.ourCounterPlay)}</div>
+  </div>
+`).join('');
+
+// ───────── Render: Feature matrix ─────────
+document.getElementById('matrix-intro').innerHTML = `<p class="lede">${mdInline(cmp.featureMatrix.intro)}</p>`;
+document.getElementById('matrix-legend').innerHTML = cmp.featureMatrix.legend.map(l => {
+  const map = { 'Strong': 'badge-success', 'Parity': 'badge-info', 'Gap': 'badge-error', 'Roadmap': 'badge-warning', 'N/A': 'badge-neutral' };
+  return `<div class="card" style="padding: var(--scale-200);"><span class="badge ${map[l.score]}">${l.score}</span><div style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-100);">${l.meaning}</div></div>`;
+}).join('');
+
+function scoreBadge(s) {
+  const map = { 'Strong': 'badge-success', 'Parity': 'badge-info', 'Gap': 'badge-error', 'Roadmap': 'badge-warning', 'N/A': 'badge-neutral' };
+  return `<span class="badge ${map[s] || 'badge-neutral'}" style="font-size: 10px;">${s}</span>`;
+}
+document.getElementById('matrix-table').innerHTML = `
+  <table style="font-size: 12px; min-width: 1100px;">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Neoflo</th>
+        <th>Peakflo</th>
+        <th>Stampli</th>
+        <th>SAP VIM</th>
+        <th>HighRadius</th>
+        <th>FloQast</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${cmp.featureMatrix.rows.map(r => `
+        <tr>
+          <td><strong>${r.capability}</strong><div style="font-size: 10px; color: var(--text-default-caption); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px;">${r.category}</div></td>
+          <td>${scoreBadge(r.neoflo.score)}<div style="margin-top: 4px; font-size: 11px; color: var(--text-default-caption);">${mdInline(r.neoflo.note)}</div></td>
+          <td>${scoreBadge(r.peakflo.score)}<div style="margin-top: 4px; font-size: 11px; color: var(--text-default-caption);">${mdInline(r.peakflo.note)}</div></td>
+          <td>${scoreBadge(r.stampli.score)}<div style="margin-top: 4px; font-size: 11px; color: var(--text-default-caption);">${mdInline(r.stampli.note)}</div></td>
+          <td>${scoreBadge(r.sapVim.score)}<div style="margin-top: 4px; font-size: 11px; color: var(--text-default-caption);">${mdInline(r.sapVim.note)}</div></td>
+          <td>${scoreBadge(r.highRadius.score)}<div style="margin-top: 4px; font-size: 11px; color: var(--text-default-caption);">${mdInline(r.highRadius.note)}</div></td>
+          <td>${scoreBadge(r.floQast.score)}<div style="margin-top: 4px; font-size: 11px; color: var(--text-default-caption);">${mdInline(r.floQast.note)}</div></td>
+        </tr>`).join('')}
+    </tbody>
+  </table>`;
+document.getElementById('matrix-summary').innerHTML = `<h4>Summary</h4>${md(cmp.featureMatrix.summary)}`;
+
+// ───────── Render: Workflow map (tabbed by P2P/O2C/R2R) ─────────
+document.getElementById('workflow-intro').innerHTML = `<p class="lede">${mdInline(cmp.workflowMap.intro)}</p>`;
+
+const wfProcesses = ['P2P', 'O2C', 'R2R'];
+const wfTabs = document.getElementById('workflow-tabs');
+const wfPanels = document.getElementById('workflow-panels');
+wfProcesses.forEach((proc, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'tab' + (i === 0 ? ' active' : '');
+  btn.textContent = proc + ' (' + cmp.workflowMap.workflows.filter(w => w.process === proc).length + ')';
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#workflow-tabs .tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('#workflow-panels .tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('wf-panel-' + proc).classList.add('active');
+  });
+  wfTabs.appendChild(btn);
+
+  const panel = document.createElement('div');
+  panel.id = 'wf-panel-' + proc;
+  panel.className = 'tab-panel' + (i === 0 ? ' active' : '');
+
+  function strengthBadge(s) {
+    const map = { 'Core': 'badge-success', 'Has': 'badge-info', 'Light': 'badge-warning', 'Adjacent': 'badge-neutral' };
+    return `<span class="badge ${map[s] || 'badge-neutral'}" style="font-size: 10px;">${s}</span>`;
+  }
+  function coverageBadge(c) {
+    if (c === 'Live' || c.startsWith('Phase 1')) return `<span class="badge badge-success">${c}</span>`;
+    if (c.includes('P0')) return `<span class="badge badge-warning">${c}</span>`;
+    if (c.includes('P1') || c.includes('Localization')) return `<span class="badge badge-info">${c}</span>`;
+    if (c === 'Out of V1 scope') return `<span class="badge badge-neutral">${c}</span>`;
+    return `<span class="badge badge-neutral">${c}</span>`;
+  }
+
+  panel.innerHTML = cmp.workflowMap.workflows.filter(w => w.process === proc).map(w => `
+    <div class="stage" data-num="${w.number}" style="margin-bottom: var(--scale-500);">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+        <h3 style="margin: 0;">${w.workflow}</h3>
+        ${coverageBadge(w.ourCoverage)}
+      </div>
+      <p style="font-size: 14px; color: var(--text-default-caption); margin-top: var(--scale-100);">${mdInline(w.shortDescription)}</p>
+      <div class="evidence" style="background: var(--surface-primary-background); border-left-color: var(--border-primary-default);">
+        <strong style="color: var(--text-primary-default); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Neoflo</strong>
+        <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(w.ourNote)}</div>
+      </div>
+      <h4 style="margin-top: var(--scale-300);">Players (${w.players.length})</h4>
+      <table style="font-size: 12px;">
+        <thead>
+          <tr><th>Vendor</th><th>Product</th><th>Strength</th><th>How they monetize</th></tr>
+        </thead>
+        <tbody>
+          ${w.players.map(pl => `
+            <tr>
+              <td><strong>${pl.vendor}</strong></td>
+              <td>${pl.product}${pl.note ? `<div style="font-size: 11px; color: var(--text-default-caption); margin-top: 2px;">${mdInline(pl.note)}</div>` : ''}</td>
+              <td>${strengthBadge(pl.strength)}</td>
+              <td>${mdInline(pl.monetization)}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  `).join('');
+  wfPanels.appendChild(panel);
+});
+
+// Vendor coverage matrix
+document.getElementById('vc-table').innerHTML = `
+  <table style="font-size: 12px; min-width: 900px;">
+    <thead>
+      <tr>
+        <th>Vendor</th>
+        <th>Category</th>
+        <th>P2P workflows</th>
+        <th>O2C workflows</th>
+        <th>R2R workflows</th>
+        <th>Primary monetization</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${cmp.workflowMap.vendorCoverage.map(v => `
+        <tr ${v.vendor.startsWith('Neoflo') ? 'style="background: var(--surface-primary-background);"' : ''}>
+          <td><strong>${v.vendor}</strong></td>
+          <td>${v.category}</td>
+          <td>${mdInline(v.p2pCoverage)}</td>
+          <td>${mdInline(v.o2cCoverage)}</td>
+          <td>${mdInline(v.r2rCoverage)}</td>
+          <td>${mdInline(v.primaryMonetization)}</td>
+        </tr>`).join('')}
+    </tbody>
+  </table>`;
+document.getElementById('workflow-summary').innerHTML = `<h4>Strategic readout</h4>${md(cmp.workflowMap.summary)}`;
+
+// ───────── Render: Pipeline competitive map ─────────
+document.getElementById('pm-intro').innerHTML = `<p class="lede">${mdInline(cmp.pipelineMap.intro)}</p>`;
+function statusBadgePM(s) {
+  const map = { 'Live': 'badge-success', 'Active': 'badge-success', 'Stalled': 'badge-warning', 'Lost': 'badge-error', 'Exploratory': 'badge-info', 'Channel test': 'badge-info' };
+  return `<span class="badge ${map[s] || 'badge-neutral'}">${s}</span>`;
+}
+document.getElementById('pm-list').innerHTML = cmp.pipelineMap.accounts.map(a => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${a.account}</h3>
+      ${statusBadgePM(a.status)}
+    </div>
+    <p style="font-size: 13px; color: var(--text-default-caption); margin: var(--scale-100) 0 var(--scale-200);">${a.geography} · ${a.segment}</p>
+    <dl class="stage-grid">
+      <dt>Scope</dt><dd>${mdInline(a.scope)}</dd>
+      <dt>Primary competitor</dt><dd><strong>${mdInline(a.primaryCompetitor)}</strong></dd>
+      <dt>Secondary</dt><dd>${a.secondaryCompetitors.length ? a.secondaryCompetitors.map(s => mdInline(s)).join(' · ') : '—'}</dd>
+      <dt>Buyer frame</dt><dd>${mdInline(a.buyerFrame)}</dd>
+      <dt>Our positioning</dt><dd>${mdInline(a.ourPositioning)}</dd>
+      <dt>Risks</dt><dd><ul style="margin: 0; padding-left: 20px;">${a.riskFactors.map(r => `<li>${mdInline(r)}</li>`).join('')}</ul></dd>
+      <dt>Next action</dt><dd><strong>${mdInline(a.nextAction)}</strong></dd>
+    </dl>
+  </div>
+`).join('');
+document.getElementById('pm-readout').innerHTML = `<h4>Portfolio readout</h4>${md(cmp.pipelineMap.portfolioReadout)}`;
 
 // ───────── Active nav highlighting ─────────
 const navLinks = document.querySelectorAll('.nav a');
