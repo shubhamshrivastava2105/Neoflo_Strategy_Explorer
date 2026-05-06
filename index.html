@@ -372,6 +372,12 @@
       <a href="#voc-demo">Demo aha moments</a>
       <a href="#voc-replacement">AP replacement checklist</a>
       <a href="#voc-actions">P0 actions from clients</a>
+      <div class="nav-section">Prospect briefs (28)</div>
+      <a href="#pb-distribution">Pipeline distribution</a>
+      <a href="#pb-list">All prospect briefs</a>
+      <a href="#pb-signals">Cross-cutting signals</a>
+      <a href="#pb-channels">Channel partnerships</a>
+      <a href="#pb-investors">Investor intel</a>
       <div class="nav-section">Process explainers</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
@@ -669,6 +675,51 @@
       <div id="voc-actions-body"></div>
     </section>
 
+    <section id="pb-intro">
+      <div class="eyebrow">Section 31 · Prospect briefs</div>
+      <h2 class="section-title">Account-level corpus — 25 prospects + 2 investors.</h2>
+      <div id="pb-intro-body"></div>
+    </section>
+
+    <section id="pb-distribution">
+      <div class="eyebrow">Section 32 · Prospect briefs</div>
+      <h2 class="section-title">Pipeline distribution.</h2>
+      <p class="lede">How the 25 client briefs distribute across status, tier, geography, industry, and lead source. Reveals where pipeline is concentrated and where it's thin.</p>
+      <div class="grid grid-2" id="pb-dist-grid"></div>
+    </section>
+
+    <section id="pb-list">
+      <div class="eyebrow">Section 33 · Prospect briefs</div>
+      <h2 class="section-title">All prospect briefs.</h2>
+      <p class="lede">Each brief: company, contact, status, tier, lead source, ERP, wedge, signal/learning, next step. Filter by status to focus.</p>
+      <div style="display: flex; gap: var(--scale-200); margin-bottom: var(--scale-300); flex-wrap: wrap; align-items: center;">
+        <input id="pb-filter" type="search" placeholder="Filter by name, contact, geography, industry…" style="flex: 1; min-width: 240px; padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);" />
+        <select id="pb-status-filter" style="padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);">
+          <option value="">All statuses</option>
+        </select>
+      </div>
+      <div id="pb-list-body"></div>
+    </section>
+
+    <section id="pb-signals">
+      <div class="eyebrow">Section 34 · Prospect briefs</div>
+      <h2 class="section-title">Cross-cutting signals across the corpus.</h2>
+      <p class="lede">8 patterns that emerge when reading all 25 prospect conversations together — quantified with named evidence and concrete implications.</p>
+      <div id="pb-signals-body"></div>
+    </section>
+
+    <section id="pb-channels">
+      <div class="eyebrow">Section 35 · Prospect briefs</div>
+      <h2 class="section-title">Channel partnerships.</h2>
+      <div id="pb-channels-body"></div>
+    </section>
+
+    <section id="pb-investors">
+      <div class="eyebrow">Section 36 · Prospect briefs</div>
+      <h2 class="section-title">Investor intel.</h2>
+      <div id="pb-investors-body"></div>
+    </section>
+
     <section id="p2p">
       <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="p2p-title"></h2>
@@ -688,19 +739,19 @@
     </section>
 
     <section id="changemymind">
-      <div class="eyebrow">Section 31 · Reference</div>
+      <div class="eyebrow">Section 37 · Reference</div>
       <h2 class="section-title">What would flip this thesis.</h2>
       <div id="cmm-list"></div>
     </section>
 
     <section id="openquestions">
-      <div class="eyebrow">Section 32 · Reference</div>
+      <div class="eyebrow">Section 38 · Reference</div>
       <h2 class="section-title">Where evidence is still thin.</h2>
       <ul id="oq-list"></ul>
     </section>
 
     <section id="appendix">
-      <div class="eyebrow">Section 33 · Reference</div>
+      <div class="eyebrow">Section 39 · Reference</div>
       <h2 class="section-title">Sources &amp; gaps.</h2>
       <div id="appendix-body"></div>
     </section>
@@ -708,7 +759,7 @@
     <footer style="margin-top: var(--scale-1125); padding-top: var(--scale-500); border-top: 1px solid var(--border-pagecard-card-1); font-size: 12px; color: var(--text-default-caption); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-300);">
       <div>
         <strong style="color: var(--text-default-body);">Neoflo Strategy Explorer</strong> · v2 (customer evidence integrated)<br/>
-        Last updated 2026-05-06 · 33 sections · 28 workflows · 27 vendors · 10 pipeline accounts · 5 buyer personas · 7 geography decisions · 8 client conversations · 117 displaced-competitor customer datapoints · synthesized from Notion GTM home
+        Last updated 2026-05-06 · 39 sections · 28 workflows · 27 vendors · 25 prospect briefs · 2 investor briefs · 5 buyer personas · 7 geography decisions · 8 conversation patterns · 117 displaced-competitor datapoints · synthesized from Notion GTM home (18 pages + 25 pre-sales briefs)
       </div>
       <div>
         Internal · do not distribute externally
@@ -739,6 +790,7 @@ DATA.workflowPersonas = window.WORKFLOW_PERSONAS;
 DATA.stageDeep = window.STAGE_DEEP;
 DATA.personas = window.PERSONAS_DATA;
 DATA.voc = window.VOC_DATA;
+DATA.prospectBriefs = window.PROSPECT_BRIEFS;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -1411,6 +1463,124 @@ document.getElementById('pm-list').innerHTML = cmp.pipelineMap.accounts.map(a =>
   </div>
 `).join('');
 document.getElementById('pm-readout').innerHTML = `<h4>Portfolio readout</h4>${md(cmp.pipelineMap.portfolioReadout)}`;
+
+// ───────── Render: Prospect Briefs ─────────
+const pb = DATA.prospectBriefs;
+document.getElementById('pb-intro-body').innerHTML = `<p class="lede">${mdInline(pb.intro)}</p>`;
+
+// Distribution
+function distCard(title, items) {
+  const total = items.reduce((s, i) => s + i.count, 0);
+  return `
+    <div class="card">
+      <h4 style="margin-top: 0;">${title}</h4>
+      ${items.map(i => `
+        <div style="display: flex; justify-content: space-between; padding: var(--scale-100) 0; border-bottom: 1px solid var(--border-pagecard-card-1); font-size: 13px;">
+          <span>${mdInline(i.geo || i.industry || i.source || i.tier || i.status)}</span>
+          <span><strong>${i.count}</strong> <span style="color: var(--text-default-caption); font-size: 11px;">(${Math.round(i.count / total * 100)}%)</span></span>
+        </div>
+      `).join('')}
+    </div>`;
+}
+document.getElementById('pb-dist-grid').innerHTML = `
+  ${distCard('By status', pb.pipelineDistribution.byStatus)}
+  ${distCard('By tier', pb.pipelineDistribution.byTier)}
+  ${distCard('By geography', pb.pipelineDistribution.byGeography)}
+  ${distCard('By industry', pb.pipelineDistribution.byIndustry)}
+  ${distCard('By lead source', pb.pipelineDistribution.bySource)}`;
+
+// All briefs
+function pbStatusBadge(s) {
+  const map = {
+    'Live': 'badge-success',
+    'Active': 'badge-success',
+    'Pilot scoping': 'badge-success',
+    'Active — Proposal sent Apr 11, 2026': 'badge-success',
+    'Stalled': 'badge-warning',
+    'Lost': 'badge-error',
+    'Exploratory': 'badge-info',
+    'Pre-outreach': 'badge-neutral',
+    'Pre-outreach (warm)': 'badge-info',
+    'Channel partnership': 'badge-warning',
+    'Investor': 'badge-info',
+  };
+  return `<span class="badge ${map[s] || 'badge-neutral'}">${s}</span>`;
+}
+
+const statuses = [...new Set(pb.briefs.map(b => b.status))];
+const statusFilter = document.getElementById('pb-status-filter');
+statuses.forEach(s => {
+  const opt = document.createElement('option');
+  opt.value = s;
+  opt.textContent = s;
+  statusFilter.appendChild(opt);
+});
+
+function renderBriefs() {
+  const q = document.getElementById('pb-filter').value.trim().toLowerCase();
+  const sf = statusFilter.value;
+  const filtered = pb.briefs.filter(b => {
+    const text = (b.account + b.contact + b.geography + b.industry + b.scale + b.leadSource + b.erp + b.wedge + b.signalOrLearning).toLowerCase();
+    return (!q || text.includes(q)) && (!sf || b.status === sf);
+  });
+  document.getElementById('pb-list-body').innerHTML = `
+    <p style="font-size: 13px; color: var(--text-default-caption); margin-bottom: var(--scale-300);">Showing ${filtered.length} of ${pb.briefs.length} briefs</p>
+    ${filtered.map(b => `
+      <div class="card" style="margin-bottom: var(--scale-200);">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+          <h3 style="margin: 0;">${b.account}</h3>
+          ${pbStatusBadge(b.status)}
+        </div>
+        <p style="font-size: 13px; color: var(--text-default-caption); margin: var(--scale-100) 0 var(--scale-200);">${b.geography} · ${b.industry} · ${b.scale}</p>
+        <dl class="stage-grid">
+          <dt>Contact</dt><dd>${mdInline(b.contact)}</dd>
+          <dt>Tier · Source</dt><dd>${b.tier} · ${mdInline(b.leadSource)}</dd>
+          <dt>ERP</dt><dd>${mdInline(b.erp)}</dd>
+          <dt>Wedge</dt><dd>${mdInline(b.wedge)}</dd>
+          <dt>Signal / learning</dt><dd>${mdInline(b.signalOrLearning)}</dd>
+          ${b.nextStep ? `<dt>Next step</dt><dd><strong>${mdInline(b.nextStep)}</strong></dd>` : ''}
+        </dl>
+      </div>
+    `).join('')}`;
+}
+renderBriefs();
+document.getElementById('pb-filter').addEventListener('input', renderBriefs);
+statusFilter.addEventListener('change', renderBriefs);
+
+// Cross-cutting signals
+document.getElementById('pb-signals-body').innerHTML = pb.crossCuttingSignals.map((s, i) => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <h3>${i + 1}. ${s.signal}</h3>
+    <h4>Evidence</h4>
+    <ul>${s.evidence.map(e => `<li>${mdInline(e)}</li>`).join('')}</ul>
+    <div class="what-it-means">${mdInline(s.implication)}</div>
+  </div>
+`).join('');
+
+// Channel partnerships
+document.getElementById('pb-channels-body').innerHTML = pb.channelPartnerships.map(c => `
+  <div class="card" style="margin-bottom: var(--scale-200);">
+    <h3>${c.partner}</h3>
+    <dl class="stage-grid">
+      <dt>Nature</dt><dd>${mdInline(c.nature)}</dd>
+      <dt>Key terms</dt><dd>${mdInline(c.keyTerms)}</dd>
+      <dt>Fit</dt><dd>${mdInline(c.fitNote)}</dd>
+    </dl>
+  </div>
+`).join('');
+
+// Investor intel
+document.getElementById('pb-investors-body').innerHTML = pb.investorIntel.map(inv => `
+  <div class="card" style="margin-bottom: var(--scale-200);">
+    <h3>${inv.investor}</h3>
+    <p style="font-size: 13px; color: var(--text-default-caption);">${mdInline(inv.fund)}</p>
+    <dl class="stage-grid">
+      <dt>Thesis fit</dt><dd>${mdInline(inv.thesisFit)}</dd>
+      <dt>Friction points</dt><dd><ul style="margin: 0; padding-left: 20px;">${inv.objectionsRaised.map(o => `<li>${mdInline(o)}</li>`).join('')}</ul></dd>
+      <dt>Action item</dt><dd><strong>${mdInline(inv.actionItem)}</strong></dd>
+    </dl>
+  </div>
+`).join('');
 
 // ───────── Render: Voice of Customer ─────────
 const voc = DATA.voc;
