@@ -2389,8 +2389,14 @@ function showDraftPin(sectionEl, xPct, yPct) {
       if (!res.ok) {
         const j = await res.json().catch(() => ({}));
         console.error('[comment debug]', j);
-        const detail = j.githubBody
-          ? ` — ${typeof j.githubBody === 'string' ? j.githubBody : (j.githubBody.message || JSON.stringify(j.githubBody))} [repo: ${j.repo || '?'}, token: ${j.tokenPrefix || 'missing'}]`
+        const ghMsg = j.githubBody
+          ? (typeof j.githubBody === 'string' ? j.githubBody : (j.githubBody.message || JSON.stringify(j.githubBody)))
+          : null;
+        const probeStr = j.probe
+          ? ` [probe: user=${j.probe.tokenUser}, repoVisible=${j.probe.repoVisible}, perms=${JSON.stringify(j.probe.permissions)}]`
+          : '';
+        const detail = ghMsg
+          ? ` — ${ghMsg} [repo: ${j.repo || '?'}, token: ${j.tokenPrefix || 'missing'}]${probeStr}`
           : '';
         throw new Error((j.error || 'Could not post comment') + detail);
       }

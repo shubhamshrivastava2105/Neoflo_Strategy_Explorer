@@ -95,8 +95,35 @@ export default async function handler(req, res) {
     const payload = { error: `Failed to record comment — GitHub returned ${ghRes.status}${hint}` };
     payload.repo = `${REPO_OWNER}/${REPO_NAME}`;
     payload.tokenPresent = Boolean(TOKEN);
-    payload.tokenPrefix = TOKEN ? TOKEN.slice(0, 4) : null;
+    payload.tokenPrefix = TOKEN ? TOKEN.slice(0, 16) : null;
     try { payload.githubBody = JSON.parse(errText); } catch { payload.githubBody = errText; }
+
+    // Probe: who is the token, and can it see this repo?
+    try {
+      const probeHeaders = {
+        Authorization: `Bearer ${TOKEN}`,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'User-Agent': 'neoflo-strategy-explorer',
+      };
+      const [whoamiRes, repoRes] = await Promise.all([
+        fetch('https://api.github.com/user', { headers: probeHeaders }),
+        fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, { headers: probeHeaders }),
+      ]);
+      const whoami = whoamiRes.ok ? await whoamiRes.json() : { _status: whoamiRes.status, _body: await whoamiRes.text() };
+      const repoInfo = repoRes.ok ? await repoRes.json() : { _status: repoRes.status, _body: await repoRes.text() };
+      payload.probe = {
+        tokenUser: whoami.login || whoami._status || 'unknown',
+        repoVisible: repoRes.ok,
+        repoStatus: repoRes.status,
+        permissions: repoInfo.permissions || null,
+        hasIssues: repoInfo.has_issues ?? null,
+        oauthScopes: whoamiRes.headers.get('x-oauth-scopes') || null,
+        acceptedScopes: whoamiRes.headers.get('x-accepted-oauth-scopes') || null,
+      };
+    } catch (probeErr) {
+      payload.probe = { error: String(probeErr) };
+    }
     return res.status(502).json(payload);
   }
 
