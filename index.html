@@ -305,6 +305,140 @@
   .wf-deep-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--scale-300); }
   @media (max-width: 760px) { .wf-deep-cols { grid-template-columns: 1fr; } }
 
+  /* comment button + modal */
+  .comment-fab {
+    position: fixed;
+    bottom: var(--scale-400);
+    right: var(--scale-400);
+    z-index: 50;
+    background: var(--surface-primary-default);
+    color: white;
+    border: none;
+    padding: var(--scale-250) var(--scale-400);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-large);
+    transition: transform 120ms ease, background 120ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--scale-100);
+  }
+  .comment-fab:hover { background: var(--surface-primary-default-hover); transform: translateY(-2px); }
+  .comment-fab:active { background: var(--surface-primary-default-pressed); transform: translateY(0); }
+
+  .comment-modal {
+    position: fixed; inset: 0;
+    background: rgba(11, 11, 10, 0.5);
+    display: none;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: var(--scale-300);
+  }
+  .comment-modal.open { display: flex; }
+  .comment-modal-card {
+    background: var(--surface-pagecard-card-1);
+    border-radius: var(--radius-md);
+    padding: var(--scale-500);
+    width: 100%; max-width: 480px;
+    box-shadow: var(--shadow-large);
+    max-height: calc(100vh - 2 * var(--scale-300));
+    overflow-y: auto;
+  }
+  .comment-modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: var(--scale-100);
+  }
+  .comment-modal-header h3 { margin: 0; font-size: 18px; }
+  .comment-modal-close {
+    background: none; border: none; font-size: 28px; line-height: 1;
+    cursor: pointer; color: var(--text-default-caption);
+    padding: 0; width: 32px; height: 32px;
+    display: grid; place-items: center;
+    border-radius: var(--radius-sm);
+  }
+  .comment-modal-close:hover { background: var(--grey-100); color: var(--text-default-body); }
+  .comment-modal-section {
+    font-size: 11px; color: var(--text-default-caption);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    margin: 0 0 var(--scale-300);
+  }
+  .comment-modal-section strong {
+    color: var(--text-primary-default);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .comment-modal-card textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: var(--scale-250) var(--scale-300);
+    border: 1px solid var(--border-default-default);
+    border-radius: var(--radius-sm);
+    font-family: inherit; font-size: 14px; line-height: 1.5;
+    resize: vertical;
+    background: var(--surface-pagecard-card-1);
+    color: var(--text-default-body);
+  }
+  .comment-modal-card textarea:focus,
+  .comment-modal-card input:focus {
+    outline: none;
+    border-color: var(--border-primary-default);
+    box-shadow: 0 0 0 3px var(--surface-primary-subtle);
+  }
+  .comment-modal-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--scale-200);
+    margin-top: var(--scale-200);
+  }
+  @media (max-width: 480px) { .comment-modal-meta { grid-template-columns: 1fr; } }
+  .comment-modal-meta input {
+    padding: var(--scale-200) var(--scale-300);
+    border: 1px solid var(--border-default-default);
+    border-radius: var(--radius-sm);
+    font-family: inherit; font-size: 13px;
+    background: var(--surface-pagecard-card-1);
+    color: var(--text-default-body);
+    width: 100%;
+  }
+  .comment-modal-card button[type="submit"] {
+    margin-top: var(--scale-300);
+    width: 100%;
+    padding: var(--scale-250) var(--scale-300);
+    background: var(--surface-primary-default);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+    transition: background 120ms ease;
+  }
+  .comment-modal-card button[type="submit"]:hover { background: var(--surface-primary-default-hover); }
+  .comment-modal-card button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+  .comment-success {
+    background: var(--surface-success-subtle);
+    color: var(--text-success-on-color);
+    padding: var(--scale-250) var(--scale-300);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin-top: var(--scale-200);
+    border-left: 3px solid var(--border-success-default);
+  }
+  .comment-error {
+    background: var(--surface-error-subtle);
+    color: var(--text-error-on-color);
+    padding: var(--scale-250) var(--scale-300);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin-top: var(--scale-200);
+    border-left: 3px solid var(--border-error-default);
+  }
+
   /* mobile sidebar toggle */
   .menu-toggle { display: none; }
   @media (max-width: 920px) {
@@ -324,6 +458,27 @@
 <body>
 
 <button class="menu-toggle" id="menuToggle">☰ Menu</button>
+
+<button class="comment-fab" id="commentFab" type="button">💬 Comment</button>
+
+<div class="comment-modal" id="commentModal" role="dialog" aria-modal="true" aria-labelledby="commentModalTitle">
+  <div class="comment-modal-card">
+    <div class="comment-modal-header">
+      <h3 id="commentModalTitle">Add a comment</h3>
+      <button type="button" class="comment-modal-close" id="commentClose" aria-label="Close">×</button>
+    </div>
+    <p class="comment-modal-section">On section: <strong id="commentSection">—</strong></p>
+    <form id="commentForm">
+      <input type="hidden" name="section" id="commentSectionInput" />
+      <textarea name="comment" placeholder="Your thoughts, questions, pushback…" required minlength="3" maxlength="5000"></textarea>
+      <div class="comment-modal-meta">
+        <input type="text" name="name" placeholder="Name (optional)" maxlength="100" />
+        <input type="email" name="email" placeholder="Email (optional)" maxlength="200" />
+      </div>
+      <button type="submit" id="commentSubmit">Submit</button>
+    </form>
+  </div>
+</div>
 
 <div class="app">
   <aside class="sidebar" id="sidebar">
@@ -1892,6 +2047,94 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-30% 0px -60% 0px' });
 sections.forEach(s => observer.observe(s));
+
+// ───────── Comment feature ─────────
+const commentFab = document.getElementById('commentFab');
+const commentModal = document.getElementById('commentModal');
+const commentForm = document.getElementById('commentForm');
+const commentSectionEl = document.getElementById('commentSection');
+const commentSectionInput = document.getElementById('commentSectionInput');
+const commentClose = document.getElementById('commentClose');
+const commentSubmit = document.getElementById('commentSubmit');
+
+function getCurrentSectionLabel() {
+  const sections = Array.from(document.querySelectorAll('main section'));
+  if (!sections.length) return 'General';
+  const viewportMiddle = window.scrollY + window.innerHeight / 2;
+  let closest = sections[0];
+  let closestDist = Infinity;
+  sections.forEach(s => {
+    const top = s.getBoundingClientRect().top + window.scrollY;
+    const dist = Math.abs(top - viewportMiddle);
+    if (dist < closestDist) { closestDist = dist; closest = s; }
+  });
+  const eyebrow = closest.querySelector('.eyebrow');
+  const title = closest.querySelector('.section-title, h1.title');
+  if (eyebrow && title) return eyebrow.textContent.trim() + ' — ' + title.textContent.trim();
+  if (eyebrow) return eyebrow.textContent.trim();
+  if (title) return title.textContent.trim();
+  return closest.id || 'General';
+}
+
+function openCommentModal() {
+  const section = getCurrentSectionLabel();
+  commentSectionEl.textContent = section;
+  commentSectionInput.value = section;
+  commentModal.classList.add('open');
+  setTimeout(() => commentForm.querySelector('textarea').focus(), 50);
+}
+function closeCommentModal() {
+  commentModal.classList.remove('open');
+  commentForm.querySelectorAll('.comment-success, .comment-error').forEach(el => el.remove());
+}
+
+commentFab.addEventListener('click', openCommentModal);
+commentClose.addEventListener('click', closeCommentModal);
+commentModal.addEventListener('click', (e) => { if (e.target === commentModal) closeCommentModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && commentModal.classList.contains('open')) closeCommentModal(); });
+
+commentForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  commentForm.querySelectorAll('.comment-success, .comment-error').forEach(el => el.remove());
+  const data = new FormData(commentForm);
+  commentSubmit.disabled = true;
+  const originalLabel = commentSubmit.textContent;
+  commentSubmit.textContent = 'Submitting…';
+
+  try {
+    const res = await fetch('/api/comment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        comment: data.get('comment'),
+        name: data.get('name'),
+        email: data.get('email'),
+        section: data.get('section'),
+        url: location.href,
+      }),
+    });
+    if (res.ok) {
+      const json = await res.json();
+      const ok = document.createElement('div');
+      ok.className = 'comment-success';
+      ok.textContent = `Comment submitted (#${json.issueNumber}). Shubham will review.`;
+      commentForm.appendChild(ok);
+      commentForm.reset();
+      setTimeout(() => closeCommentModal(), 2500);
+    } else {
+      const json = await res.json().catch(() => ({}));
+      throw new Error(json.error || 'Submission failed');
+    }
+  } catch (err) {
+    const errEl = document.createElement('div');
+    errEl.className = 'comment-error';
+    errEl.textContent = err.message || 'Could not submit. Try again.';
+    commentForm.appendChild(errEl);
+  }
+
+  commentSubmit.disabled = false;
+  commentSubmit.textContent = originalLabel;
+});
 
 // mobile toggle
 document.getElementById('menuToggle').addEventListener('click', () => {
