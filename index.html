@@ -635,7 +635,6 @@
       <a href="#pb-list">All prospect briefs</a>
       <a href="#pb-signals">Cross-cutting signals</a>
       <a href="#pb-channels">Channel partnerships</a>
-      <a href="#pb-investors">Investor intel</a>
       <div class="nav-section">Process explainers</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
@@ -972,12 +971,6 @@
       <div id="pb-channels-body"></div>
     </section>
 
-    <section id="pb-investors">
-      <div class="eyebrow">Section 36 · Prospect briefs</div>
-      <h2 class="section-title">Investor intel.</h2>
-      <div id="pb-investors-body"></div>
-    </section>
-
     <section id="p2p">
       <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="p2p-title"></h2>
@@ -1017,7 +1010,7 @@
     <footer style="margin-top: var(--scale-1125); padding-top: var(--scale-500); border-top: 1px solid var(--border-pagecard-card-1); font-size: 12px; color: var(--text-default-caption); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-300);">
       <div>
         <strong style="color: var(--text-default-body);">Neoflo Strategy Explorer</strong> · v2 (customer evidence integrated)<br/>
-        Last updated 2026-05-06 · 39 sections · 28 workflows · 27 vendors · 25 prospect briefs · 2 investor briefs · 5 buyer personas · 7 geography decisions · 8 conversation patterns · 117 displaced-competitor datapoints · synthesized from Notion GTM home (18 pages + 25 pre-sales briefs)
+        Last updated 2026-05-06 · 38 sections · 28 workflows · 27 vendors · 25 prospect briefs · 5 buyer personas · 7 geography decisions · 8 conversation patterns · 117 displaced-competitor datapoints · synthesized from Notion GTM home (18 pages + 25 pre-sales briefs)
       </div>
       <div>
         Internal · do not distribute externally
@@ -1823,19 +1816,6 @@ document.getElementById('pb-channels-body').innerHTML = pb.channelPartnerships.m
       <dt>Nature</dt><dd>${mdInline(c.nature)}</dd>
       <dt>Key terms</dt><dd>${mdInline(c.keyTerms)}</dd>
       <dt>Fit</dt><dd>${mdInline(c.fitNote)}</dd>
-    </dl>
-  </div>
-`).join('');
-
-// Investor intel
-document.getElementById('pb-investors-body').innerHTML = pb.investorIntel.map(inv => `
-  <div class="card" style="margin-bottom: var(--scale-200);">
-    <h3>${inv.investor}</h3>
-    <p style="font-size: 13px; color: var(--text-default-caption);">${mdInline(inv.fund)}</p>
-    <dl class="stage-grid">
-      <dt>Thesis fit</dt><dd>${mdInline(inv.thesisFit)}</dd>
-      <dt>Friction points</dt><dd><ul style="margin: 0; padding-left: 20px;">${inv.objectionsRaised.map(o => `<li>${mdInline(o)}</li>`).join('')}</ul></dd>
-      <dt>Action item</dt><dd><strong>${mdInline(inv.actionItem)}</strong></dd>
     </dl>
   </div>
 `).join('');
