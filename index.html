@@ -314,24 +314,40 @@
     background: var(--surface-primary-default);
     color: white;
     border: none;
-    padding: var(--scale-250) var(--scale-400);
+    padding: 11px 18px 11px 16px;
     border-radius: 999px;
     font-family: inherit;
     font-size: 14px;
     font-weight: 600;
+    letter-spacing: -0.005em;
     cursor: pointer;
-    box-shadow: var(--shadow-large);
-    transition: transform 120ms ease, background 120ms ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                background 160ms ease,
+                box-shadow 160ms ease;
     display: inline-flex;
     align-items: center;
-    gap: var(--scale-100);
+    gap: 8px;
   }
-  .comment-toggle:hover { background: var(--surface-primary-default-hover); transform: translateY(-2px); }
+  .comment-toggle:hover {
+    background: var(--surface-primary-default-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22), 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  .comment-toggle:active { transform: translateY(0); transition-duration: 60ms; }
+  .comment-toggle:focus-visible {
+    outline: 2px solid var(--surface-primary-default);
+    outline-offset: 3px;
+  }
   .comment-toggle.active {
-    background: var(--surface-warning-default);
-    color: var(--grey-1000);
+    background: var(--grey-1000);
+    color: white;
   }
-  .comment-toggle.active:hover { background: var(--surface-warning-default-hover); }
+  .comment-toggle.active:hover { background: #2a2a2e; }
+  .comment-toggle .ct-icon {
+    font-size: 16px; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
 
   body.comment-mode { cursor: crosshair; }
   body.comment-mode .nav,
@@ -485,25 +501,55 @@
     width: 100%;
   }
   .popover-form .form-actions {
-    display: flex; justify-content: flex-end; gap: var(--scale-100);
+    display: flex; justify-content: flex-end; align-items: center; gap: 6px;
+    padding-top: var(--scale-200);
+    border-top: 1px solid var(--grey-100);
+    margin-top: var(--scale-100);
   }
   .popover-form .form-actions button {
-    padding: var(--scale-150) var(--scale-300);
+    padding: 8px 14px;
     border-radius: var(--radius-sm);
+    border: 1px solid transparent;
     font-family: inherit; font-size: 13px; font-weight: 600;
+    letter-spacing: -0.005em;
     cursor: pointer;
+    transition: background 120ms ease, color 120ms ease,
+                border-color 120ms ease, box-shadow 120ms ease,
+                transform 80ms ease;
   }
+  .popover-form .form-actions button:active:not(:disabled) { transform: translateY(1px); }
   .popover-form .form-actions .cancel {
-    background: var(--surface-pagecard-card-1);
-    border: 1px solid var(--border-default-default);
+    background: transparent;
     color: var(--text-default-caption);
+  }
+  .popover-form .form-actions .cancel:hover {
+    background: var(--grey-100);
+    color: var(--text-default-body);
   }
   .popover-form .form-actions .post {
     background: var(--surface-primary-default);
-    color: white; border: none;
+    color: white;
+    border-color: var(--surface-primary-default);
+    min-width: 78px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   }
-  .popover-form .form-actions .post:hover { background: var(--surface-primary-default-hover); }
-  .popover-form .form-actions .post:disabled { opacity: 0.5; cursor: not-allowed; }
+  .popover-form .form-actions .post:hover:not(:disabled) {
+    background: var(--surface-primary-default-hover);
+    border-color: var(--surface-primary-default-hover);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  }
+  .popover-form .form-actions .post:disabled {
+    background: var(--grey-100);
+    border-color: var(--grey-100);
+    color: var(--text-default-caption);
+    cursor: not-allowed;
+    opacity: 1;
+    box-shadow: none;
+  }
+  .popover-form .form-actions button:focus-visible {
+    outline: 2px solid var(--surface-primary-default);
+    outline-offset: 2px;
+  }
   .popover-error {
     background: var(--surface-error-subtle);
     color: var(--text-error-on-color);
@@ -534,7 +580,7 @@
 <button class="menu-toggle" id="menuToggle">☰ Menu</button>
 
 <div class="comment-banner" id="commentBanner">📍 Click anywhere on the page to leave a comment.</div>
-<button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false">💬 Comment</button>
+<button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false"><span class="ct-icon" aria-hidden="true">💬</span><span class="ct-label">Comment</span></button>
 <div id="pinLayer" aria-live="polite"></div>
 
 <div class="app">
@@ -2280,7 +2326,10 @@ function setCommentMode(on) {
   document.body.classList.toggle('comment-mode', on);
   commentToggle.classList.toggle('active', on);
   commentToggle.setAttribute('aria-pressed', String(on));
-  // Button label stays as "💬 Comment" — active state is shown by yellow highlight only.
+  const iconEl = commentToggle.querySelector('.ct-icon');
+  const labelEl = commentToggle.querySelector('.ct-label');
+  if (iconEl) iconEl.textContent = on ? '×' : '💬';
+  if (labelEl) labelEl.textContent = on ? 'Cancel' : 'Comment';
   if (!on) {
     if (draftEl) { draftEl.remove(); draftEl = null; }
     pinLayer.querySelectorAll('.comment-popover').forEach(p => p.remove());
@@ -2291,6 +2340,23 @@ commentToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   setCommentMode(!commentMode);
 });
+
+function findAnchor(target) {
+  // Prefer a section with an id — keeps the pin scoped to that view/tab.
+  const sec = target.closest('main section[id], section[id]');
+  if (sec) return sec;
+  // Otherwise, the nearest element with an id under main works as a stable anchor.
+  const idEl = target.closest('main [id]');
+  if (idEl) return idEl;
+  // Fall back to <main> so pins can land on anywhere in the page body.
+  const main = document.querySelector('main');
+  if (main) {
+    if (!main.id) main.id = '__page_main__';
+    return main;
+  }
+  if (!document.body.id) document.body.id = '__page_body__';
+  return document.body;
+}
 
 document.addEventListener('click', (e) => {
   // Close any open popovers when clicking outside (in non-comment mode)
@@ -2303,11 +2369,9 @@ document.addEventListener('click', (e) => {
   // In comment mode: drop a draft pin where they clicked
   if (shouldIgnoreClick(e.target)) return;
 
-  const sectionEl = e.target.closest('main section');
-  if (!sectionEl || !sectionEl.id) return;
-
-  // Compute position relative to section
+  const sectionEl = findAnchor(e.target);
   const rect = sectionEl.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
   const xPct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
   const yPct = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
 
@@ -2388,17 +2452,8 @@ function showDraftPin(sectionEl, xPct, yPct) {
       });
       if (!res.ok) {
         const j = await res.json().catch(() => ({}));
-        console.error('[comment debug]', j);
-        const ghMsg = j.githubBody
-          ? (typeof j.githubBody === 'string' ? j.githubBody : (j.githubBody.message || JSON.stringify(j.githubBody)))
-          : null;
-        const probeStr = j.probe
-          ? ` [probe: user=${j.probe.tokenUser}, repoVisible=${j.probe.repoVisible}, perms=${JSON.stringify(j.probe.permissions)}]`
-          : '';
-        const detail = ghMsg
-          ? ` — ${ghMsg} [repo: ${j.repo || '?'}, token: ${j.tokenPrefix || 'missing'}]${probeStr}`
-          : '';
-        throw new Error((j.error || 'Could not post comment') + detail);
+        console.error('[comment error]', j);
+        throw new Error(j.error || 'Could not post comment');
       }
       const json = await res.json();
       // Remove draft + popover, add real pin
