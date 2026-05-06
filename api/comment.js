@@ -14,16 +14,14 @@ export default async function handler(req, res) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-
   if (!isAuthenticated(req)) {
     return res.status(401).json({ error: 'Sign in to comment.' });
   }
-
   if (!TOKEN) {
     return res.status(500).json({ error: 'GITHUB_TOKEN not configured. Add it as a Vercel env var.' });
   }
 
-  const { comment, name, email, section, url } = req.body || {};
+  const { comment, name, email, section, sectionId, xPct, yPct, url } = req.body || {};
 
   if (typeof comment !== 'string' || comment.trim().length < 3) {
     return res.status(400).json({ error: 'Comment too short (minimum 3 characters)' });
@@ -43,11 +41,28 @@ export default async function handler(req, res) {
   const safeEmail = (typeof email === 'string' && email.trim()) ? email.trim().slice(0, 200) : '';
   const safeUrl = (typeof url === 'string' && url.trim()) ? url.trim().slice(0, 500) : '';
 
+  // Anchor metadata — embedded so the frontend can reposition pins on page load.
+  const meta = {
+    v: 1,
+    sectionId: typeof sectionId === 'string' ? sectionId.slice(0, 100) : null,
+    xPct: typeof xPct === 'number' && Number.isFinite(xPct) ? Math.max(0, Math.min(1, xPct)) : null,
+    yPct: typeof yPct === 'number' && Number.isFinite(yPct) ? Math.max(0, Math.min(1, yPct)) : null,
+    section: sectionLabel,
+    page: safeUrl,
+    from: safeName,
+    email: safeEmail || undefined,
+    createdAt: new Date().toISOString(),
+  };
+
   const bodyLines = [
+    `<!-- neoflo-meta-v1`,
+    JSON.stringify(meta),
+    `-->`,
+    '',
     `**Section:** ${sectionLabel}`,
     `**From:** ${safeName}${safeEmail ? ` (${safeEmail})` : ''}`,
     safeUrl ? `**Page:** ${safeUrl}` : null,
-    `**Submitted:** ${new Date().toISOString()}`,
+    `**Submitted:** ${meta.createdAt}`,
     '',
     '---',
     '',
@@ -65,10 +80,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'User-Agent': 'neoflo-strategy-explorer',
       },
-      body: JSON.stringify({
-        title,
-        body: bodyLines.join('\n'),
-      }),
+      body: JSON.stringify({ title, body: bodyLines.join('\n') }),
     },
   );
 
@@ -83,5 +95,15 @@ export default async function handler(req, res) {
     ok: true,
     issueNumber: issue.number,
     issueUrl: issue.html_url,
+    comment: {
+      number: issue.number,
+      anchor: { sectionId: meta.sectionId, xPct: meta.xPct, yPct: meta.yPct },
+      section: meta.section,
+      from: meta.from,
+      createdAt: meta.createdAt,
+      text: trimmedComment,
+      htmlUrl: issue.html_url,
+      state: 'open',
+    },
   });
 }

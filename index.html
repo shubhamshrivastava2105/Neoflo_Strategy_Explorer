@@ -305,12 +305,12 @@
   .wf-deep-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--scale-300); }
   @media (max-width: 760px) { .wf-deep-cols { grid-template-columns: 1fr; } }
 
-  /* comment button + modal */
-  .comment-fab {
+  /* comment system — Figma-style anchored pins */
+  .comment-toggle {
     position: fixed;
     bottom: var(--scale-400);
     right: var(--scale-400);
-    z-index: 50;
+    z-index: 60;
     background: var(--surface-primary-default);
     color: white;
     border: none;
@@ -326,117 +326,191 @@
     align-items: center;
     gap: var(--scale-100);
   }
-  .comment-fab:hover { background: var(--surface-primary-default-hover); transform: translateY(-2px); }
-  .comment-fab:active { background: var(--surface-primary-default-pressed); transform: translateY(0); }
+  .comment-toggle:hover { background: var(--surface-primary-default-hover); transform: translateY(-2px); }
+  .comment-toggle.active {
+    background: var(--surface-warning-default);
+    color: var(--grey-1000);
+  }
+  .comment-toggle.active:hover { background: var(--surface-warning-default-hover); }
 
-  .comment-modal {
-    position: fixed; inset: 0;
-    background: rgba(11, 11, 10, 0.5);
+  body.comment-mode { cursor: crosshair; }
+  body.comment-mode .nav,
+  body.comment-mode .menu-toggle,
+  body.comment-mode .comment-toggle,
+  body.comment-mode .tabs,
+  body.comment-mode select,
+  body.comment-mode input,
+  body.comment-mode textarea,
+  body.comment-mode button,
+  body.comment-mode a {
+    cursor: auto;
+  }
+
+  .comment-banner {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--surface-warning-default);
+    color: var(--grey-1000);
+    padding: var(--scale-200) var(--scale-400);
+    text-align: center;
+    font-size: 13px; font-weight: 600;
+    z-index: 55;
+    box-shadow: var(--shadow-medium);
     display: none;
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: var(--scale-300);
   }
-  .comment-modal.open { display: flex; }
-  .comment-modal-card {
+  body.comment-mode .comment-banner { display: block; }
+
+  .comment-pin {
+    position: absolute;
+    width: 30px; height: 30px;
+    border-radius: 50% 50% 50% 4px;
+    background: var(--surface-warning-default);
+    color: var(--grey-1000);
+    border: 2px solid white;
+    display: grid; place-items: center;
+    font-size: 12px; font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    z-index: 40;
+    transform: translate(-4px, -28px);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+    user-select: none;
+  }
+  .comment-pin:hover {
+    transform: translate(-4px, -28px) scale(1.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  }
+  .comment-pin.draft {
+    background: var(--surface-error-default);
+    color: white;
+  }
+  .comment-pin.expanded { z-index: 70; }
+
+  .comment-popover {
+    position: absolute;
+    width: 320px;
+    max-width: calc(100vw - var(--scale-400));
     background: var(--surface-pagecard-card-1);
+    border: 1px solid var(--border-pagecard-card-1);
     border-radius: var(--radius-md);
-    padding: var(--scale-500);
-    width: 100%; max-width: 480px;
     box-shadow: var(--shadow-large);
-    max-height: calc(100vh - 2 * var(--scale-300));
-    overflow-y: auto;
+    padding: var(--scale-300);
+    z-index: 70;
+    font-family: var(--font-family-plus-jakarta-sans);
   }
-  .comment-modal-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: var(--scale-100);
+  .comment-popover.left-side { right: auto; left: -340px; }
+  .popover-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: var(--scale-200); gap: var(--scale-200);
   }
-  .comment-modal-header h3 { margin: 0; font-size: 18px; }
-  .comment-modal-close {
-    background: none; border: none; font-size: 28px; line-height: 1;
-    cursor: pointer; color: var(--text-default-caption);
-    padding: 0; width: 32px; height: 32px;
+  .popover-section {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-default-caption); font-weight: 600;
+    flex: 1; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .popover-close {
+    background: none; border: none; cursor: pointer;
+    width: 22px; height: 22px;
     display: grid; place-items: center;
     border-radius: var(--radius-sm);
+    color: var(--text-default-caption);
+    font-size: 18px; line-height: 1;
+    flex-shrink: 0;
   }
-  .comment-modal-close:hover { background: var(--grey-100); color: var(--text-default-body); }
-  .comment-modal-section {
-    font-size: 11px; color: var(--text-default-caption);
-    text-transform: uppercase; letter-spacing: 1.5px;
-    margin: 0 0 var(--scale-300);
+  .popover-close:hover { background: var(--grey-100); color: var(--text-default-body); }
+  .popover-meta {
+    font-size: 12px; color: var(--text-default-caption);
+    margin-bottom: var(--scale-200);
   }
-  .comment-modal-section strong {
-    color: var(--text-primary-default);
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 13px;
-    font-weight: 600;
+  .popover-text {
+    background: var(--grey-50);
+    border-left: 3px solid var(--border-default-default);
+    padding: var(--scale-200) var(--scale-300);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-bottom: var(--scale-300);
+    font-family: var(--font-family-inter);
   }
-  .comment-modal-card textarea {
+  .popover-actions {
+    display: flex; justify-content: space-between; align-items: center; gap: var(--scale-200);
+  }
+  .popover-actions .resolve {
+    padding: var(--scale-200) var(--scale-300);
+    background: var(--surface-success-default);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .popover-actions .resolve:hover { background: var(--surface-success-default-hover); }
+  .popover-actions .resolve:disabled { opacity: 0.5; cursor: not-allowed; }
+  .popover-actions .gh-link {
+    font-size: 12px;
+    color: var(--text-default-caption);
+    text-decoration: underline;
+  }
+  .popover-form textarea {
     width: 100%;
-    min-height: 120px;
-    padding: var(--scale-250) var(--scale-300);
+    min-height: 90px;
+    padding: var(--scale-200) var(--scale-300);
     border: 1px solid var(--border-default-default);
     border-radius: var(--radius-sm);
-    font-family: inherit; font-size: 14px; line-height: 1.5;
+    font-family: inherit; font-size: 14px;
     resize: vertical;
     background: var(--surface-pagecard-card-1);
     color: var(--text-default-body);
+    margin-bottom: var(--scale-200);
   }
-  .comment-modal-card textarea:focus,
-  .comment-modal-card input:focus {
+  .popover-form textarea:focus,
+  .popover-form input:focus {
     outline: none;
     border-color: var(--border-primary-default);
     box-shadow: 0 0 0 3px var(--surface-primary-subtle);
   }
-  .comment-modal-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--scale-200);
-    margin-top: var(--scale-200);
+  .popover-form .form-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--scale-100);
+    margin-bottom: var(--scale-200);
   }
-  @media (max-width: 480px) { .comment-modal-meta { grid-template-columns: 1fr; } }
-  .comment-modal-meta input {
-    padding: var(--scale-200) var(--scale-300);
+  .popover-form .form-meta input {
+    padding: var(--scale-100) var(--scale-200);
     border: 1px solid var(--border-default-default);
     border-radius: var(--radius-sm);
-    font-family: inherit; font-size: 13px;
+    font-family: inherit; font-size: 12px;
     background: var(--surface-pagecard-card-1);
-    color: var(--text-default-body);
     width: 100%;
   }
-  .comment-modal-card button[type="submit"] {
-    margin-top: var(--scale-300);
-    width: 100%;
-    padding: var(--scale-250) var(--scale-300);
+  .popover-form .form-actions {
+    display: flex; justify-content: flex-end; gap: var(--scale-100);
+  }
+  .popover-form .form-actions button {
+    padding: var(--scale-150) var(--scale-300);
+    border-radius: var(--radius-sm);
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    cursor: pointer;
+  }
+  .popover-form .form-actions .cancel {
+    background: var(--surface-pagecard-card-1);
+    border: 1px solid var(--border-default-default);
+    color: var(--text-default-caption);
+  }
+  .popover-form .form-actions .post {
     background: var(--surface-primary-default);
-    color: white;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-size: 15px; font-weight: 600;
-    cursor: pointer; font-family: inherit;
-    transition: background 120ms ease;
+    color: white; border: none;
   }
-  .comment-modal-card button[type="submit"]:hover { background: var(--surface-primary-default-hover); }
-  .comment-modal-card button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
-  .comment-success {
-    background: var(--surface-success-subtle);
-    color: var(--text-success-on-color);
-    padding: var(--scale-250) var(--scale-300);
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    margin-top: var(--scale-200);
-    border-left: 3px solid var(--border-success-default);
-  }
-  .comment-error {
+  .popover-form .form-actions .post:hover { background: var(--surface-primary-default-hover); }
+  .popover-form .form-actions .post:disabled { opacity: 0.5; cursor: not-allowed; }
+  .popover-error {
     background: var(--surface-error-subtle);
     color: var(--text-error-on-color);
-    padding: var(--scale-250) var(--scale-300);
+    padding: var(--scale-100) var(--scale-200);
     border-radius: var(--radius-sm);
-    font-size: 13px;
-    margin-top: var(--scale-200);
-    border-left: 3px solid var(--border-error-default);
+    font-size: 12px;
+    margin-bottom: var(--scale-200);
   }
 
   /* mobile sidebar toggle */
@@ -459,26 +533,9 @@
 
 <button class="menu-toggle" id="menuToggle">☰ Menu</button>
 
-<button class="comment-fab" id="commentFab" type="button">💬 Comment</button>
-
-<div class="comment-modal" id="commentModal" role="dialog" aria-modal="true" aria-labelledby="commentModalTitle">
-  <div class="comment-modal-card">
-    <div class="comment-modal-header">
-      <h3 id="commentModalTitle">Add a comment</h3>
-      <button type="button" class="comment-modal-close" id="commentClose" aria-label="Close">×</button>
-    </div>
-    <p class="comment-modal-section">On section: <strong id="commentSection">—</strong></p>
-    <form id="commentForm">
-      <input type="hidden" name="section" id="commentSectionInput" />
-      <textarea name="comment" placeholder="Your thoughts, questions, pushback…" required minlength="3" maxlength="5000"></textarea>
-      <div class="comment-modal-meta">
-        <input type="text" name="name" placeholder="Name (optional)" maxlength="100" />
-        <input type="email" name="email" placeholder="Email (optional)" maxlength="200" />
-      </div>
-      <button type="submit" id="commentSubmit">Submit</button>
-    </form>
-  </div>
-</div>
+<div class="comment-banner" id="commentBanner">📍 Click anywhere on the page to leave a comment. Click the button again to exit.</div>
+<button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false">💬 Comment</button>
+<div id="pinLayer" aria-live="polite"></div>
 
 <div class="app">
   <aside class="sidebar" id="sidebar">
@@ -2048,93 +2105,318 @@ const observer = new IntersectionObserver((entries) => {
 }, { rootMargin: '-30% 0px -60% 0px' });
 sections.forEach(s => observer.observe(s));
 
-// ───────── Comment feature ─────────
-const commentFab = document.getElementById('commentFab');
-const commentModal = document.getElementById('commentModal');
-const commentForm = document.getElementById('commentForm');
-const commentSectionEl = document.getElementById('commentSection');
-const commentSectionInput = document.getElementById('commentSectionInput');
-const commentClose = document.getElementById('commentClose');
-const commentSubmit = document.getElementById('commentSubmit');
+// ───────── Comment system — Figma-style anchored pins ─────────
+const commentToggle = document.getElementById('commentToggle');
+const pinLayer = document.getElementById('pinLayer');
+let commentMode = false;
+let pins = []; // { number, sectionId, xPct, yPct, text, section, from, createdAt, htmlUrl, el, popover }
+let draftEl = null;
 
-function getCurrentSectionLabel() {
-  const sections = Array.from(document.querySelectorAll('main section'));
-  if (!sections.length) return 'General';
-  const viewportMiddle = window.scrollY + window.innerHeight / 2;
-  let closest = sections[0];
-  let closestDist = Infinity;
-  sections.forEach(s => {
-    const top = s.getBoundingClientRect().top + window.scrollY;
-    const dist = Math.abs(top - viewportMiddle);
-    if (dist < closestDist) { closestDist = dist; closest = s; }
-  });
-  const eyebrow = closest.querySelector('.eyebrow');
-  const title = closest.querySelector('.section-title, h1.title');
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function sectionLabelOf(sectionEl) {
+  if (!sectionEl) return 'General';
+  const eyebrow = sectionEl.querySelector('.eyebrow');
+  const title = sectionEl.querySelector('.section-title, h1.title');
   if (eyebrow && title) return eyebrow.textContent.trim() + ' — ' + title.textContent.trim();
   if (eyebrow) return eyebrow.textContent.trim();
   if (title) return title.textContent.trim();
-  return closest.id || 'General';
+  return sectionEl.id || 'General';
 }
 
-function openCommentModal() {
-  const section = getCurrentSectionLabel();
-  commentSectionEl.textContent = section;
-  commentSectionInput.value = section;
-  commentModal.classList.add('open');
-  setTimeout(() => commentForm.querySelector('textarea').focus(), 50);
-}
-function closeCommentModal() {
-  commentModal.classList.remove('open');
-  commentForm.querySelectorAll('.comment-success, .comment-error').forEach(el => el.remove());
+function shouldIgnoreClick(target) {
+  return Boolean(target.closest(
+    '.sidebar, .menu-toggle, .comment-toggle, .comment-banner, .comment-pin, .comment-popover, ' +
+    'header, button, a, input, textarea, select, summary, label, .tabs, .tab'
+  ));
 }
 
-commentFab.addEventListener('click', openCommentModal);
-commentClose.addEventListener('click', closeCommentModal);
-commentModal.addEventListener('click', (e) => { if (e.target === commentModal) closeCommentModal(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && commentModal.classList.contains('open')) closeCommentModal(); });
-
-commentForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  commentForm.querySelectorAll('.comment-success, .comment-error').forEach(el => el.remove());
-  const data = new FormData(commentForm);
-  commentSubmit.disabled = true;
-  const originalLabel = commentSubmit.textContent;
-  commentSubmit.textContent = 'Submitting…';
-
-  try {
-    const res = await fetch('/api/comment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        comment: data.get('comment'),
-        name: data.get('name'),
-        email: data.get('email'),
-        section: data.get('section'),
-        url: location.href,
-      }),
-    });
-    if (res.ok) {
-      const json = await res.json();
-      const ok = document.createElement('div');
-      ok.className = 'comment-success';
-      ok.textContent = `Comment submitted (#${json.issueNumber}). Shubham will review.`;
-      commentForm.appendChild(ok);
-      commentForm.reset();
-      setTimeout(() => closeCommentModal(), 2500);
-    } else {
-      const json = await res.json().catch(() => ({}));
-      throw new Error(json.error || 'Submission failed');
-    }
-  } catch (err) {
-    const errEl = document.createElement('div');
-    errEl.className = 'comment-error';
-    errEl.textContent = err.message || 'Could not submit. Try again.';
-    commentForm.appendChild(errEl);
+function positionPin(pinEl, sectionId, xPct, yPct) {
+  const section = document.getElementById(sectionId);
+  if (!section) {
+    pinEl.style.display = 'none';
+    return false;
   }
+  pinEl.style.display = '';
+  const rect = section.getBoundingClientRect();
+  const top = rect.top + window.scrollY + (yPct * rect.height);
+  const left = rect.left + window.scrollX + (xPct * rect.width);
+  pinEl.style.top = top + 'px';
+  pinEl.style.left = left + 'px';
+  return true;
+}
 
-  commentSubmit.disabled = false;
-  commentSubmit.textContent = originalLabel;
+function repositionAllPins() {
+  pins.forEach(p => positionPin(p.el, p.sectionId, p.xPct, p.yPct));
+  if (draftEl && draftEl.dataset.sectionId) {
+    positionPin(draftEl, draftEl.dataset.sectionId, parseFloat(draftEl.dataset.xPct), parseFloat(draftEl.dataset.yPct));
+  }
+}
+
+window.addEventListener('resize', () => requestAnimationFrame(repositionAllPins));
+new ResizeObserver(() => repositionAllPins()).observe(document.body);
+
+function closeAllPopovers() {
+  pinLayer.querySelectorAll('.comment-popover').forEach(p => p.remove());
+  pinLayer.querySelectorAll('.comment-pin.expanded').forEach(p => p.classList.remove('expanded'));
+}
+
+function buildPopover(pin) {
+  const popover = document.createElement('div');
+  popover.className = 'comment-popover';
+
+  // Decide left vs right side based on viewport
+  const pinRect = pin.el.getBoundingClientRect();
+  const placeLeft = pinRect.left + 340 > window.innerWidth - 16;
+  popover.classList.toggle('left-side', placeLeft);
+  popover.style.top = pin.el.style.top;
+  popover.style.left = (parseFloat(pin.el.style.left) + (placeLeft ? -340 : 36)) + 'px';
+
+  const meta = pin.from + (pin.createdAt ? ` · ${new Date(pin.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}` : '');
+  popover.innerHTML = `
+    <div class="popover-header">
+      <span class="popover-section">${escapeHtml(pin.section || '')}</span>
+      <button class="popover-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="popover-meta">${escapeHtml(meta)}</div>
+    <div class="popover-text">${escapeHtml(pin.text)}</div>
+    <div class="popover-actions">
+      <button type="button" class="resolve">✓ Resolve</button>
+      <a class="gh-link" href="${escapeHtml(pin.htmlUrl)}" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+  `;
+  popover.querySelector('.popover-close').addEventListener('click', () => {
+    popover.remove();
+    pin.el.classList.remove('expanded');
+  });
+  popover.querySelector('.resolve').addEventListener('click', async (e) => {
+    const btn = e.currentTarget;
+    btn.disabled = true; btn.textContent = 'Resolving…';
+    try {
+      const res = await fetch('/api/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ number: pin.number, action: 'resolve' }),
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error || 'Failed to resolve');
+      }
+      // Remove pin + popover from view
+      pin.el.remove();
+      popover.remove();
+      pins = pins.filter(p => p !== pin);
+      // Renumber remaining pins
+      pins.forEach((p, i) => { p.el.textContent = i + 1; });
+    } catch (err) {
+      btn.disabled = false; btn.textContent = '✓ Resolve';
+      const errEl = document.createElement('div');
+      errEl.className = 'popover-error';
+      errEl.textContent = err.message || 'Could not resolve. Try again.';
+      popover.querySelector('.popover-actions').before(errEl);
+    }
+  });
+  return popover;
+}
+
+function renderExistingPin(comment, indexNumber) {
+  if (!comment.anchor || !comment.anchor.sectionId) return null;
+  const pinEl = document.createElement('div');
+  pinEl.className = 'comment-pin';
+  pinEl.textContent = indexNumber;
+  pinEl.title = comment.text.slice(0, 80) + (comment.text.length > 80 ? '…' : '');
+  pinLayer.appendChild(pinEl);
+  const placed = positionPin(pinEl, comment.anchor.sectionId, comment.anchor.xPct || 0.5, comment.anchor.yPct || 0.5);
+  if (!placed) {
+    pinEl.remove();
+    return null;
+  }
+  const pinObj = {
+    number: comment.number,
+    sectionId: comment.anchor.sectionId,
+    xPct: comment.anchor.xPct,
+    yPct: comment.anchor.yPct,
+    text: comment.text,
+    section: comment.section,
+    from: comment.from,
+    createdAt: comment.createdAt,
+    htmlUrl: comment.htmlUrl,
+    el: pinEl,
+  };
+  pinEl.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const wasExpanded = pinEl.classList.contains('expanded');
+    closeAllPopovers();
+    if (!wasExpanded) {
+      pinEl.classList.add('expanded');
+      const popover = buildPopover(pinObj);
+      pinLayer.appendChild(popover);
+    }
+  });
+  return pinObj;
+}
+
+async function loadExistingComments() {
+  try {
+    const res = await fetch('/api/comments?state=open');
+    if (!res.ok) return;
+    const data = await res.json();
+    const list = (data.comments || []).filter(c => c.anchor && c.anchor.sectionId);
+    list.forEach((c, idx) => {
+      const pinObj = renderExistingPin(c, idx + 1);
+      if (pinObj) pins.push(pinObj);
+    });
+  } catch (e) {
+    console.error('Could not load comments:', e);
+  }
+}
+
+function setCommentMode(on) {
+  commentMode = on;
+  document.body.classList.toggle('comment-mode', on);
+  commentToggle.classList.toggle('active', on);
+  commentToggle.setAttribute('aria-pressed', String(on));
+  commentToggle.textContent = on ? '✕ Stop commenting' : '💬 Comment';
+  if (!on && draftEl) {
+    draftEl.remove();
+    draftEl = null;
+  }
+}
+
+commentToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  setCommentMode(!commentMode);
 });
+
+document.addEventListener('click', (e) => {
+  // Close any open popovers when clicking outside (in non-comment mode)
+  if (!commentMode) {
+    if (!e.target.closest('.comment-popover, .comment-pin')) {
+      closeAllPopovers();
+    }
+    return;
+  }
+  // In comment mode: drop a draft pin where they clicked
+  if (shouldIgnoreClick(e.target)) return;
+
+  const sectionEl = e.target.closest('main section');
+  if (!sectionEl || !sectionEl.id) return;
+
+  // Compute position relative to section
+  const rect = sectionEl.getBoundingClientRect();
+  const xPct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  const yPct = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+
+  showDraftPin(sectionEl, xPct, yPct);
+});
+
+function showDraftPin(sectionEl, xPct, yPct) {
+  if (draftEl) draftEl.remove();
+  closeAllPopovers();
+
+  draftEl = document.createElement('div');
+  draftEl.className = 'comment-pin draft';
+  draftEl.textContent = '?';
+  draftEl.dataset.sectionId = sectionEl.id;
+  draftEl.dataset.xPct = String(xPct);
+  draftEl.dataset.yPct = String(yPct);
+  pinLayer.appendChild(draftEl);
+  positionPin(draftEl, sectionEl.id, xPct, yPct);
+
+  // Build the form popover
+  const sectionLabel = sectionLabelOf(sectionEl);
+  const popover = document.createElement('div');
+  popover.className = 'comment-popover';
+  const pinRect = draftEl.getBoundingClientRect();
+  const placeLeft = pinRect.left + 340 > window.innerWidth - 16;
+  popover.classList.toggle('left-side', placeLeft);
+  popover.style.top = draftEl.style.top;
+  popover.style.left = (parseFloat(draftEl.style.left) + (placeLeft ? -340 : 36)) + 'px';
+  popover.innerHTML = `
+    <div class="popover-header">
+      <span class="popover-section">${escapeHtml(sectionLabel)}</span>
+      <button class="popover-close" type="button" aria-label="Cancel">×</button>
+    </div>
+    <form class="popover-form" autocomplete="on">
+      <textarea name="comment" placeholder="Your comment…" required minlength="3" maxlength="5000"></textarea>
+      <div class="form-meta">
+        <input type="text" name="name" placeholder="Name (optional)" maxlength="100" />
+        <input type="email" name="email" placeholder="Email (optional)" maxlength="200" />
+      </div>
+      <div class="form-actions">
+        <button type="button" class="cancel">Cancel</button>
+        <button type="submit" class="post">Post</button>
+      </div>
+    </form>
+  `;
+  pinLayer.appendChild(popover);
+  setTimeout(() => popover.querySelector('textarea').focus(), 50);
+
+  function cleanup() {
+    if (draftEl) { draftEl.remove(); draftEl = null; }
+    popover.remove();
+  }
+  popover.querySelector('.popover-close').addEventListener('click', cleanup);
+  popover.querySelector('.cancel').addEventListener('click', cleanup);
+
+  popover.querySelector('form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const data = new FormData(ev.currentTarget);
+    const postBtn = popover.querySelector('.post');
+    postBtn.disabled = true; postBtn.textContent = 'Posting…';
+    popover.querySelectorAll('.popover-error').forEach(e => e.remove());
+    try {
+      const res = await fetch('/api/comment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          comment: data.get('comment'),
+          name: data.get('name'),
+          email: data.get('email'),
+          section: sectionLabel,
+          sectionId: sectionEl.id,
+          xPct,
+          yPct,
+          url: location.href,
+        }),
+      });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error || 'Could not post comment');
+      }
+      const json = await res.json();
+      // Remove draft + popover, add real pin
+      cleanup();
+      const newPin = renderExistingPin(json.comment, pins.length + 1);
+      if (newPin) pins.push(newPin);
+    } catch (err) {
+      postBtn.disabled = false; postBtn.textContent = 'Post';
+      const errEl = document.createElement('div');
+      errEl.className = 'popover-error';
+      errEl.textContent = err.message;
+      popover.querySelector('.form-actions').before(errEl);
+    }
+  });
+}
+
+// Esc key cancels draft / closes popovers
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (draftEl) {
+      draftEl.remove(); draftEl = null;
+      pinLayer.querySelectorAll('.comment-popover').forEach(p => p.remove());
+    } else {
+      closeAllPopovers();
+    }
+  }
+});
+
+// Load existing pins on startup
+loadExistingComments();
 
 // mobile toggle
 document.getElementById('menuToggle').addEventListener('click', () => {
