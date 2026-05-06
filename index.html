@@ -364,6 +364,14 @@
       <a href="#personas">Buyer personas</a>
       <a href="#geo-targeting">Geography decisions</a>
       <a href="#target-rec">Target recommendation</a>
+      <div class="nav-section">Voice of customer</div>
+      <a href="#voc-questions">Top questions clients ask</a>
+      <a href="#voc-objections">Live objections</a>
+      <a href="#voc-patterns">Conversation patterns</a>
+      <a href="#voc-displacement">Displacement patterns (117 cos)</a>
+      <a href="#voc-demo">Demo aha moments</a>
+      <a href="#voc-replacement">AP replacement checklist</a>
+      <a href="#voc-actions">P0 actions from clients</a>
       <div class="nav-section">Process explainers</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
@@ -613,6 +621,54 @@
       <div class="card" style="margin-top: var(--scale-400); background: var(--surface-error-subtle); border-left: 3px solid var(--border-error-default);" id="target-rec-pitfalls"></div>
     </section>
 
+    <section id="voc-intro">
+      <div class="eyebrow">Section 23 · Voice of customer</div>
+      <h2 class="section-title">What buyers actually say.</h2>
+      <div id="voc-intro-body"></div>
+    </section>
+
+    <section id="voc-questions">
+      <div class="eyebrow">Section 24 · Voice of customer</div>
+      <h2 class="section-title">Top questions clients ask.</h2>
+      <div id="voc-questions-body"></div>
+    </section>
+
+    <section id="voc-objections">
+      <div class="eyebrow">Section 25 · Voice of customer</div>
+      <h2 class="section-title">Live objections — and what worked.</h2>
+      <div id="voc-objections-body"></div>
+    </section>
+
+    <section id="voc-patterns">
+      <div class="eyebrow">Section 26 · Voice of customer</div>
+      <h2 class="section-title">Conversation patterns across deals.</h2>
+      <div id="voc-patterns-body"></div>
+    </section>
+
+    <section id="voc-displacement">
+      <div class="eyebrow">Section 27 · Voice of customer</div>
+      <h2 class="section-title">Displacement patterns — 117 competitor customers.</h2>
+      <div id="voc-displacement-body"></div>
+    </section>
+
+    <section id="voc-demo">
+      <div class="eyebrow">Section 28 · Voice of customer</div>
+      <h2 class="section-title">Demo aha moments.</h2>
+      <div id="voc-demo-body"></div>
+    </section>
+
+    <section id="voc-replacement">
+      <div class="eyebrow">Section 29 · Voice of customer</div>
+      <h2 class="section-title">The 8-task AP replacement checklist.</h2>
+      <div id="voc-replacement-body"></div>
+    </section>
+
+    <section id="voc-actions">
+      <div class="eyebrow">Section 30 · Voice of customer</div>
+      <h2 class="section-title">P0 actions from client feedback.</h2>
+      <div id="voc-actions-body"></div>
+    </section>
+
     <section id="p2p">
       <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="p2p-title"></h2>
@@ -632,19 +688,19 @@
     </section>
 
     <section id="changemymind">
-      <div class="eyebrow">Section 23 · Reference</div>
+      <div class="eyebrow">Section 31 · Reference</div>
       <h2 class="section-title">What would flip this thesis.</h2>
       <div id="cmm-list"></div>
     </section>
 
     <section id="openquestions">
-      <div class="eyebrow">Section 24 · Reference</div>
+      <div class="eyebrow">Section 32 · Reference</div>
       <h2 class="section-title">Where evidence is still thin.</h2>
       <ul id="oq-list"></ul>
     </section>
 
     <section id="appendix">
-      <div class="eyebrow">Section 25 · Reference</div>
+      <div class="eyebrow">Section 33 · Reference</div>
       <h2 class="section-title">Sources &amp; gaps.</h2>
       <div id="appendix-body"></div>
     </section>
@@ -652,7 +708,7 @@
     <footer style="margin-top: var(--scale-1125); padding-top: var(--scale-500); border-top: 1px solid var(--border-pagecard-card-1); font-size: 12px; color: var(--text-default-caption); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-300);">
       <div>
         <strong style="color: var(--text-default-body);">Neoflo Strategy Explorer</strong> · v2 (customer evidence integrated)<br/>
-        Last updated 2026-05-05 · 25 sections · 28 workflows · 27 vendors · 10 pipeline accounts · 5 buyer personas · 7 geography decisions
+        Last updated 2026-05-06 · 33 sections · 28 workflows · 27 vendors · 10 pipeline accounts · 5 buyer personas · 7 geography decisions · 8 client conversations · 117 displaced-competitor customer datapoints · synthesized from Notion GTM home
       </div>
       <div>
         Internal · do not distribute externally
@@ -682,6 +738,7 @@ DATA.workflowDeep = window.WORKFLOW_DEEP;
 DATA.workflowPersonas = window.WORKFLOW_PERSONAS;
 DATA.stageDeep = window.STAGE_DEEP;
 DATA.personas = window.PERSONAS_DATA;
+DATA.voc = window.VOC_DATA;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -1354,6 +1411,125 @@ document.getElementById('pm-list').innerHTML = cmp.pipelineMap.accounts.map(a =>
   </div>
 `).join('');
 document.getElementById('pm-readout').innerHTML = `<h4>Portfolio readout</h4>${md(cmp.pipelineMap.portfolioReadout)}`;
+
+// ───────── Render: Voice of Customer ─────────
+const voc = DATA.voc;
+document.getElementById('voc-intro-body').innerHTML = `<p class="lede">${mdInline(voc.intro)}</p>`;
+
+// Top questions
+function priorityBadge(p) {
+  const map = { 'P0': 'badge-error', 'P1': 'badge-warning', 'P2': 'badge-info' };
+  return `<span class="badge ${map[p] || 'badge-neutral'}">${p}</span>`;
+}
+document.getElementById('voc-questions-body').innerHTML = voc.topQuestions.map((q, i) => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${i + 1}. ${q.question}</h3>
+      ${priorityBadge(q.priority)}
+    </div>
+    <p style="font-size: 13px; color: var(--text-default-caption); margin-top: var(--scale-100);">Heard in <strong>${q.frequency}</strong>: ${q.whoAsked.join(' · ')}</p>
+    <div class="evidence" style="background: var(--surface-success-subtle); border-left-color: var(--border-success-default); margin-top: var(--scale-200);">
+      <strong style="color: var(--text-success-on-color); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Our response</strong>
+      <div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(q.ourResponse)}</div>
+    </div>
+    ${q.actionNeeded ? `<div class="evidence" style="background: var(--surface-warning-subtle); border-left-color: var(--border-warning-default); margin-top: var(--scale-200);"><strong style="color: var(--text-warning-on-color); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Action needed</strong><div style="margin-top: var(--scale-100); font-size: 14px;">${mdInline(q.actionNeeded)}</div></div>` : ''}
+  </div>
+`).join('');
+
+// Live objections
+const objByCategory = voc.liveObjections.reduce((acc, o) => { (acc[o.category] = acc[o.category] || []).push(o); return acc; }, {});
+document.getElementById('voc-objections-body').innerHTML = Object.entries(objByCategory).map(([cat, list]) => `
+  <h3 style="margin-top: var(--scale-500);">${cat}</h3>
+  ${list.map(o => `
+    <div class="card" style="margin-bottom: var(--scale-200);">
+      <p style="font-family: var(--font-family-instrument-serif); font-size: 18px; font-style: italic; color: var(--text-default-heading); margin: 0 0 var(--scale-200);">${mdInline(o.objection)}</p>
+      <p style="font-size: 12px; color: var(--text-default-caption); margin: 0 0 var(--scale-200);"><strong>Source:</strong> ${mdInline(o.source)}</p>
+      <div style="font-size: 14px;"><strong style="color: var(--text-success-on-color);">What worked:</strong> ${mdInline(o.whatWorked)}</div>
+      ${o.playbookGap ? `<div style="margin-top: var(--scale-200); font-size: 13px; padding-top: var(--scale-200); border-top: 1px solid var(--border-pagecard-card-1);"><strong style="color: var(--text-warning-on-color);">Playbook gap:</strong> ${mdInline(o.playbookGap)}</div>` : ''}
+    </div>
+  `).join('')}
+`).join('');
+
+// Conversation patterns
+document.getElementById('voc-patterns-body').innerHTML = voc.conversationPatterns.map(p => `
+  <div class="stage" data-num="${p.number}" style="margin-bottom: var(--scale-400);">
+    <h3>${p.pattern}</h3>
+    <p style="font-size: 13px; color: var(--text-default-caption);">Prevalence: <strong>${p.prevalence}</strong></p>
+    <p style="font-size: 14px;">${mdInline(p.description)}</p>
+    <div style="font-size: 13px; margin-top: var(--scale-200);"><strong>Evidence:</strong></div>
+    <ul style="font-size: 13px;">${p.evidence.map(e => `<li>${mdInline(e)}</li>`).join('')}</ul>
+    <div class="what-it-means">${mdInline(p.whatItMeans)}</div>
+  </div>
+`).join('');
+
+// Displacement patterns
+document.getElementById('voc-displacement-body').innerHTML = voc.displacementPatterns.map(p => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
+      <h3 style="margin: 0;">${p.name}</h3>
+      <span class="badge badge-info">${p.count}</span>
+    </div>
+    <p style="font-size: 14px; margin-top: var(--scale-200);">${mdInline(p.insight)}</p>
+    <h4>Evidence</h4>
+    <ul>${p.evidence.map(e => `<li>${mdInline(e)}</li>`).join('')}</ul>
+    <div class="evidence" style="background: var(--surface-primary-background); border-left-color: var(--border-primary-default);">
+      <strong style="color: var(--text-primary-default); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Outreach angle</strong>
+      <div style="margin-top: var(--scale-100); font-size: 14px; font-style: italic;">${mdInline(p.outreachAngle)}</div>
+    </div>
+    <h4>Top targets</h4>
+    <div>${p.topTargets.map(t => `<span class="badge badge-neutral" style="margin: 2px;">${mdInline(t)}</span>`).join(' ')}</div>
+  </div>
+`).join('');
+
+// Demo aha moments
+document.getElementById('voc-demo-body').innerHTML = voc.demoAhaMoments.map((m, i) => `
+  <div class="card" style="margin-bottom: var(--scale-300);">
+    <h3>${i + 1}. ${m.moment}</h3>
+    <p style="font-size: 14px;"><strong>Why it works:</strong> ${mdInline(m.whyItWorks)}</p>
+    <p style="font-size: 13px; color: var(--text-default-caption);"><strong>Evidence:</strong></p>
+    <ul style="font-size: 13px;">${m.evidence.map(e => `<li>${mdInline(e)}</li>`).join('')}</ul>
+  </div>
+`).join('');
+
+// AP Replacement Checklist
+function statusBadgeRC(s) {
+  const map = { 'Core': 'badge-success', 'Partial': 'badge-warning', 'Gap': 'badge-error', 'HumanOps': 'badge-info' };
+  return `<span class="badge ${map[s] || 'badge-neutral'}">${s}</span>`;
+}
+document.getElementById('voc-replacement-body').innerHTML = `
+  <p class="lede">${mdInline(voc.apReplacementChecklist.intro)}</p>
+  <table>
+    <thead>
+      <tr><th>Task</th><th>Frequency</th><th>What postings say</th><th>Neoflo</th><th>If missing</th></tr>
+    </thead>
+    <tbody>
+      ${voc.apReplacementChecklist.tasks.map(t => `
+        <tr>
+          <td><strong>${t.task}</strong></td>
+          <td style="font-size: 12px;">${t.appearsInPostings}</td>
+          <td style="font-size: 12px; font-style: italic;">${mdInline(t.whatPostingsSay)}</td>
+          <td>${statusBadgeRC(t.neofloStatus)}</td>
+          <td style="font-size: 12px;">${mdInline(t.ifMissing)}</td>
+        </tr>`).join('')}
+    </tbody>
+  </table>
+  <div class="card" style="margin-top: var(--scale-300); background: var(--surface-warning-subtle); border-left: 3px solid var(--border-warning-default);">
+    <h4 style="margin-top: 0;">Decision</h4>
+    ${md(voc.apReplacementChecklist.decision)}
+  </div>`;
+
+// Immediate actions
+document.getElementById('voc-actions-body').innerHTML = voc.immediateActions.map((a, i) => `
+  <div class="evidence" style="margin-bottom: var(--scale-200); background: ${a.priority === 'P0' ? 'var(--surface-error-subtle)' : 'var(--surface-warning-subtle)'}; border-left-color: ${a.priority === 'P0' ? 'var(--border-error-default)' : 'var(--border-warning-default)'};">
+    <div style="display: flex; gap: var(--scale-200); align-items: flex-start;">
+      ${priorityBadge(a.priority)}
+      <div style="flex: 1;">
+        <div style="font-weight: 600; font-size: 14px;">${i + 1}. ${mdInline(a.action)}</div>
+        <div style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-100);"><strong>Source:</strong> ${mdInline(a.source)}</div>
+      </div>
+    </div>
+  </div>
+`).join('');
 
 // ───────── Render: Personas ─────────
 const persData = DATA.personas;

@@ -13,6 +13,7 @@ const files = [
   { src: 'content/workflow-personas.ts', exp: 'workflowPersonas', global: 'WORKFLOW_PERSONAS' },
   { src: 'content/process-stages-deep.ts', exp: 'stageDeepDives', global: 'STAGE_DEEP' },
   { src: 'content/personas.ts', exp: 'personasData', global: 'PERSONAS_DATA' },
+  { src: 'content/voice-of-customer.ts', exp: 'voiceOfCustomerData', global: 'VOC_DATA' },
 ];
 
 let out = '// Auto-generated from content/*.ts — do not edit\n';

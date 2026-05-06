@@ -13,7 +13,8 @@
       "Bash(curl -sI https://neoflo-strategy-explorer.vercel.app/)",
       "Bash(curl -sI https://strategy.neoflo.ai/login.html)",
       "Bash(curl -sI https://strategy.neoflo.ai/data.js)",
-      "Bash(curl -sI https://strategy.neoflo.ai/design_tokens.css)"
+      "Bash(curl -sI https://strategy.neoflo.ai/design_tokens.css)",
+      "mcp__claude_ai_Notion__notion-fetch"
     ]
   }
 }
