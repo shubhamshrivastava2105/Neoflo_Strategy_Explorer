@@ -2372,8 +2372,7 @@ function showDraftPin(sectionEl, xPct, yPct) {
     postBtn.disabled = true; postBtn.textContent = 'Posting…';
     popover.querySelectorAll('.popover-error').forEach(e => e.remove());
     try {
-      const debugFlag = new URLSearchParams(location.search).get('debug') === '1';
-      const res = await fetch('/api/comment' + (debugFlag ? '?debug=1' : ''), {
+      const res = await fetch('/api/comment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -2389,11 +2388,9 @@ function showDraftPin(sectionEl, xPct, yPct) {
       });
       if (!res.ok) {
         const j = await res.json().catch(() => ({}));
-        if (debugFlag && (j.githubBody || j.repo)) {
-          console.error('[comment debug]', j);
-        }
-        const detail = debugFlag && j.githubBody
-          ? ` — ${typeof j.githubBody === 'string' ? j.githubBody : (j.githubBody.message || JSON.stringify(j.githubBody))}`
+        console.error('[comment debug]', j);
+        const detail = j.githubBody
+          ? ` — ${typeof j.githubBody === 'string' ? j.githubBody : (j.githubBody.message || JSON.stringify(j.githubBody))} [repo: ${j.repo || '?'}, token: ${j.tokenPrefix || 'missing'}]`
           : '';
         throw new Error((j.error || 'Could not post comment') + detail);
       }
