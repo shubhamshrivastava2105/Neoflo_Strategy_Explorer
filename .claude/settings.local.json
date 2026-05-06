@@ -14,7 +14,17 @@
       "Bash(curl -sI https://strategy.neoflo.ai/login.html)",
       "Bash(curl -sI https://strategy.neoflo.ai/data.js)",
       "Bash(curl -sI https://strategy.neoflo.ai/design_tokens.css)",
-      "mcp__claude_ai_Notion__notion-fetch"
+      "mcp__claude_ai_Notion__notion-fetch",
+      "Bash(curl -sI https://github.com)",
+      "Bash(ping -c 1 github.com)",
+      "Bash(curl -s \"https://api.github.com/repos/shubhamshrivastava2105/Neoflo_Strategy_Explorer\")",
+      "Bash(npx --yes vercel env ls production)",
+      "Bash(curl -sI \"https://api.github.com/repos/shubhamshrivastava2105/Neoflo_Strategy_Explorer\")",
+      "Bash(npx --yes vercel env ls)",
+      "Bash(curl -sv \"https://api.github.com/repos/shubhamshrivastava2105/Neoflo_Strategy_Explorer\")",
+      "Bash(npx --yes vercel link --project neoflo-strategy-explorer --yes)",
+      "Bash(npx --yes vercel logs https://strategy.neoflo.ai --since 10m)",
+      "Bash(timeout 8 npx --yes vercel logs neoflo-strategy-explorer-8fo077f5u.vercel.app)"
     ]
   }
 }

@@ -87,7 +87,12 @@ export default async function handler(req, res) {
   if (!ghRes.ok) {
     const errText = await ghRes.text();
     console.error('GitHub API error:', ghRes.status, errText);
-    return res.status(502).json({ error: 'Failed to record comment. Try again later.' });
+    let hint = '';
+    if (ghRes.status === 401) hint = ' (token invalid or revoked)';
+    else if (ghRes.status === 403) hint = ' (token lacks Issues:write or repo access)';
+    else if (ghRes.status === 404) hint = ' (repo not found or Issues disabled)';
+    else if (ghRes.status === 410) hint = ' (Issues disabled on this repo)';
+    return res.status(502).json({ error: `Failed to record comment — GitHub returned ${ghRes.status}${hint}` });
   }
 
   const issue = await ghRes.json();

@@ -533,7 +533,7 @@
 
 <button class="menu-toggle" id="menuToggle">☰ Menu</button>
 
-<div class="comment-banner" id="commentBanner">📍 Click anywhere on the page to leave a comment. Click the button again to exit.</div>
+<div class="comment-banner" id="commentBanner">📍 Click anywhere on the page to leave a comment.</div>
 <button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false">💬 Comment</button>
 <div id="pinLayer" aria-live="polite"></div>
 
@@ -2280,10 +2280,10 @@ function setCommentMode(on) {
   document.body.classList.toggle('comment-mode', on);
   commentToggle.classList.toggle('active', on);
   commentToggle.setAttribute('aria-pressed', String(on));
-  commentToggle.textContent = on ? '✕ Stop commenting' : '💬 Comment';
-  if (!on && draftEl) {
-    draftEl.remove();
-    draftEl = null;
+  // Button label stays as "💬 Comment" — active state is shown by yellow highlight only.
+  if (!on) {
+    if (draftEl) { draftEl.remove(); draftEl = null; }
+    pinLayer.querySelectorAll('.comment-popover').forEach(p => p.remove());
   }
 }
 
@@ -2359,6 +2359,8 @@ function showDraftPin(sectionEl, xPct, yPct) {
   function cleanup() {
     if (draftEl) { draftEl.remove(); draftEl = null; }
     popover.remove();
+    // Posting or cancelling exits comment mode — one comment per arming.
+    setCommentMode(false);
   }
   popover.querySelector('.popover-close').addEventListener('click', cleanup);
   popover.querySelector('.cancel').addEventListener('click', cleanup);
