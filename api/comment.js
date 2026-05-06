@@ -92,7 +92,15 @@ export default async function handler(req, res) {
     else if (ghRes.status === 403) hint = ' (token lacks Issues:write or repo access)';
     else if (ghRes.status === 404) hint = ' (repo not found or Issues disabled)';
     else if (ghRes.status === 410) hint = ' (Issues disabled on this repo)';
-    return res.status(502).json({ error: `Failed to record comment — GitHub returned ${ghRes.status}${hint}` });
+    const debug = (req.query && req.query.debug === '1') || /[?&]debug=1(?:&|$)/.test(req.url || '');
+    const payload = { error: `Failed to record comment — GitHub returned ${ghRes.status}${hint}` };
+    if (debug) {
+      payload.repo = `${REPO_OWNER}/${REPO_NAME}`;
+      payload.tokenPresent = Boolean(TOKEN);
+      payload.tokenPrefix = TOKEN ? TOKEN.slice(0, 4) : null;
+      try { payload.githubBody = JSON.parse(errText); } catch { payload.githubBody = errText; }
+    }
+    return res.status(502).json(payload);
   }
 
   const issue = await ghRes.json();
