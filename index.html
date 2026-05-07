@@ -64,6 +64,28 @@
   .nav a:hover { background: var(--border-call-out-card-1); color: var(--text-on-colour-heading); }
   .nav a.active { background: var(--surface-primary-default); color: white; }
   .nav a .badge { font-size: 10px; opacity: .6; }
+  .nav-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 18px; height: 18px; padding: 0 6px;
+    border-radius: 999px;
+    background: var(--surface-warning-default);
+    color: var(--grey-1000);
+    font-size: 10.5px; font-weight: 700; line-height: 1;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .nav a.active .nav-count { background: white; color: var(--surface-primary-default); }
+  .comment-toggle .ct-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 18px; height: 18px; padding: 0 6px;
+    margin-left: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    color: white;
+    font-size: 11px; font-weight: 700; line-height: 1;
+  }
+  .comment-toggle.active .ct-count { background: rgba(255, 255, 255, 0.18); }
+  .comment-toggle .ct-count[hidden] { display: none; }
 
   /* main */
   main { padding: var(--scale-800) var(--scale-800); max-width: 1100px; }
@@ -580,7 +602,7 @@
 <button class="menu-toggle" id="menuToggle">☰ Menu</button>
 
 <div class="comment-banner" id="commentBanner">📍 Click anywhere on the page to leave a comment.</div>
-<button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false"><span class="ct-icon" aria-hidden="true">💬</span><span class="ct-label">Comment</span></button>
+<button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false"><span class="ct-icon" aria-hidden="true">💬</span><span class="ct-label">Comment</span><span class="ct-count" id="ctCount" hidden>0</span></button>
 <div id="pinLayer" aria-live="polite"></div>
 
 <div class="app">
@@ -2238,6 +2260,7 @@ function buildPopover(pin) {
       pins = pins.filter(p => p !== pin);
       // Renumber remaining pins
       pins.forEach((p, i) => { p.el.textContent = i + 1; });
+      refreshNavCounts();
     } catch (err) {
       btn.disabled = false; btn.textContent = '✓ Resolve';
       const errEl = document.createElement('div');
@@ -2286,6 +2309,41 @@ function renderExistingPin(comment, indexNumber) {
   return pinObj;
 }
 
+function refreshNavCounts() {
+  // Tally pins by sectionId
+  const counts = new Map();
+  pins.forEach(p => {
+    if (!p.sectionId) return;
+    counts.set(p.sectionId, (counts.get(p.sectionId) || 0) + 1);
+  });
+
+  // Walk every nav link and reconcile its badge
+  document.querySelectorAll('.nav a[href^="#"]').forEach(link => {
+    const id = link.getAttribute('href').slice(1);
+    const count = counts.get(id) || 0;
+    let badge = link.querySelector('.nav-count');
+    if (count > 0) {
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'nav-count';
+        badge.setAttribute('aria-label', 'comments');
+        link.appendChild(badge);
+      }
+      badge.textContent = count;
+    } else if (badge) {
+      badge.remove();
+    }
+  });
+
+  // Total count on the floating Comment toggle
+  const ctCount = document.getElementById('ctCount');
+  if (ctCount) {
+    const total = pins.length;
+    ctCount.textContent = total;
+    ctCount.hidden = total === 0;
+  }
+}
+
 async function loadExistingComments() {
   try {
     const res = await fetch('/api/comments?state=open');
@@ -2296,6 +2354,7 @@ async function loadExistingComments() {
       const pinObj = renderExistingPin(c, idx + 1);
       if (pinObj) pins.push(pinObj);
     });
+    refreshNavCounts();
   } catch (e) {
     console.error('Could not load comments:', e);
   }
@@ -2440,6 +2499,7 @@ function showDraftPin(sectionEl, xPct, yPct) {
       cleanup();
       const newPin = renderExistingPin(json.comment, pins.length + 1);
       if (newPin) pins.push(newPin);
+      refreshNavCounts();
     } catch (err) {
       postBtn.disabled = false; postBtn.textContent = 'Post';
       const errEl = document.createElement('div');
