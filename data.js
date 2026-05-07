@@ -6757,9 +6757,150 @@ window.PERSONAS_DATA = {
       ],
       "ourTalkTrack": "For procurement-led deals, lead with PR/PO + spend analytics + vendor self-service as the bundle. AP automation is the back-end of their procurement story. Frame as \"what Coupa charges enterprise pricing for, at mid-market price.\"",
       "classification": "Influencer"
+    },
+    {
+      "role": "Chief Accounting Officer (CAO)",
+      "level": "C-suite (typically only at $1B+ companies / public or pre-IPO) — reports to CFO. Sits between VP Controller and CFO.",
+      "whatTheyOwn": "Accounting policy, technical accounting (revenue recognition, lease accounting, business combinations), SOX 404 controls, external auditor relationship, statutory and SEC / regional reporting, group-level consolidation. The signing officer on accounting representations in the 10-K / equivalents.",
+      "dailyPain": "Audit findings every cycle on AP cut-off, accruals, and intercompany eliminations. Restatement risk lives in the gap between subledgers and the GL. SOX walkthroughs require evidence the team manually pulls from 4–6 systems each quarter. Material-weakness exposure when close stretches and post-close adjustments accumulate.",
+      "motivations": [
+        "Audit-clean, restatement-free books — career risk lives here",
+        "SOX evidence pulled automatically rather than manually each quarter",
+        "Sub-process auditability — every workflow step has an immutable evidence trail",
+        "Consistent accounting policy applied across entities (especially after acquisitions)",
+        "Close compression without sacrificing controls"
+      ],
+      "decisionAuthority": "Strong influence on platform decisions impacting controls and reporting. Often the technical \"buy or not\" voice for tools that hit GL, accruals, or consolidation. Economic buyer above ~$200K when CFO defers technical-accounting decisions.",
+      "blockers": [
+        "Auditor relationship — anything that changes how transactions hit the GL needs auditor sign-off",
+        "Migration risk during ERP upgrades or restatements",
+        "Lacking a SOX-grade evidence bundle from the vendor on Day 1 of evaluation"
+      ],
+      "whatTheyAskFirst": [
+        "\"What does your audit-trail evidence pack look like for SOX walkthroughs?\"",
+        "\"How do you handle period-end accrual cut-off automatically?\"",
+        "\"Show me a journal-entry trail — every JE traceable to the source document and approval.\"",
+        "\"What happens to the audit trail when our ERP upgrades?\"",
+        "\"What's the technical-accounting impact for revenue recognition / lease / intercompany?\""
+      ],
+      "ourTalkTrack": "Lead with the cross-process audit trail — one immutable evidence chain from PO → invoice → approval → payment → JE → reconciliation, across AP / AR / close. SOX-pack as an out-of-the-box artifact, not a quarter-end project. Position as \"the only mid-market platform that gives a CAO Big-4-grade evidence without Big-4 implementation cost.\" Reference the upper-mid SAP-shop accounts (Spectrum Brands segment) where the CAO is the controls owner.",
+      "classification": "Veto authority"
+    },
+    {
+      "role": "Accounting Manager / Sr Accounting Manager",
+      "level": "Manager / Sr Manager — reports to Controller (or VP Finance in flatter orgs). Typically supervises 3–10 staff and senior accountants.",
+      "whatTheyOwn": "Day-to-day close execution, ownership of specific subledgers (AP, AR, fixed assets, prepaids, accruals, intercompany), monthly reconciliations, JE preparation and review, and direct supervision of the team that does the work. Their calendar IS the close calendar.",
+      "dailyPain": "Lives inside the close every month — 8–15 days of fire-drill, recs that don't tie, AP cut-off questions at 11 PM, intercompany mismatches that take days to chase. Owns the narrative the Controller carries to the CFO; if it's late, it's their week. Spends 50–60% of time on rework and chasing instead of analysis.",
+      "motivations": [
+        "Close calendar that holds — predictability is psychological survival",
+        "Fewer reconciling items each cycle — quality is a personal scorecard",
+        "Career path to Assistant Controller / Controller",
+        "Senior accountants who actually grow rather than burn out on tedium",
+        "Controls that pass audit walkthroughs without weekend prep"
+      ],
+      "decisionAuthority": "Champion in evaluation. Their adoption signal is the difference between rollout success and shelfware. Rarely the economic buyer; powerful day-1 user influence; can effectively veto by under-adopting.",
+      "blockers": [
+        "Change-management fatigue — they've been through 1–2 failed automations",
+        "Tool-on-top-of-tool concern — they don't want another login; they want fewer",
+        "Worry about losing reportability or familiar workflow patterns the team relies on"
+      ],
+      "whatTheyAskFirst": [
+        "\"Walk me through close day 3 with this product — what's different from today?\"",
+        "\"What goes wrong, and who do I call when it does — during close, at 9 PM?\"",
+        "\"Will this generate the JEs I need, or do I still build them in Excel and post manually?\"",
+        "\"Recs — how does the platform handle the messy ones (multi-currency, partial payments, deductions)?\"",
+        "\"What happens to my staff accountants? Am I going to lose two of them to boredom or save two of them from burnout?\""
+      ],
+      "ourTalkTrack": "Day-3-of-close demo using their actual reconciliation and JE shape — not a generic flow. Show the exception queues and the audit drill-down. Frame the team impact concretely: senior accountants stop doing copy-paste from email and start doing analysis. Tie it to their own progression: \"This is the rollout that gets you promoted to Assistant Controller because the close calendar finally holds.\" For SEA mid-market deals where the org is smaller, the Accounting Manager often functions as both champion and primary day-1 user — invest demo time accordingly.",
+      "classification": "Champion"
+    },
+    {
+      "role": "Shared Services / GBS Director",
+      "level": "Director / Sr Director / VP — reports to CFO, COO, or Group Controller depending on org. Common at multi-entity conglomerates (Apparel Group, Welspun, Hitachi Vantara pattern).",
+      "whatTheyOwn": "Centralized AP, AR, recs, master-data management, and sometimes payroll across all entities. Runs a captive (or BPO-supported) center of 20–200 finance ops staff. Owns SLAs to entity controllers — e.g., \"invoice posted within 24 hours of approval, 98% on-time, under $X cost-per-transaction.\"",
+      "dailyPain": "Wildly different invoice formats, ERP instances, and approval workflows across entities. Adoption inconsistency — entity A is on the global platform, entity B insists on its own. Volume scales linearly with headcount because today's tools don't generalize. Each new entity acquisition adds 3–6 months of integration work.",
+      "motivations": [
+        "Cost-per-transaction reduction (the headline metric they're measured on)",
+        "Standardization across entities — one workflow, many entities, one master-data set",
+        "Headcount scaling sub-linearly with volume",
+        "Visible SLA performance to entity controllers (their internal customers)",
+        "Onboarding new entities in weeks, not quarters — acquisition integration speed"
+      ],
+      "decisionAuthority": "Primary buyer for multi-entity / GBS-led deals. Common at Indian and SEA conglomerates with regional ops (Apparel Group is canonical). Often holds the consolidated budget for the AP+AR platform across all entities.",
+      "blockers": [
+        "Entity-controller resistance to standardization (political — local CFOs want their own tools)",
+        "Multi-ERP reality (one entity on SAP, another on NetSuite, another on Tally)",
+        "Country-specific regulatory pockets (GST, e-invoicing, withholding tax) the platform may not cover",
+        "Past failed standardization attempts — burned-once pattern is strong here"
+      ],
+      "whatTheyAskFirst": [
+        "\"Show me a multi-ERP, multi-entity reference customer — concretely, with the entity count and ERP mix.\"",
+        "\"Cost per transaction at our volume — and how does it change as we double?\"",
+        "\"How long to onboard the next entity after the first one is live?\"",
+        "\"Does your master-data engine handle merges and dedupe across entities, or is that our problem?\"",
+        "\"Country regulatory: which mandates do you support natively, and what's the roadmap by jurisdiction?\""
+      ],
+      "ourTalkTrack": "Lead with the unified-master-data + multi-entity workflow story — exactly where Peakflo and Stampli weaken. Quote per-transaction economics at their scale and project the curve as they consolidate entities. Reference the SEA multi-entity pattern (Zalora live, Apparel Group active). Make e-invoicing native (MyInvois, InvoiceNow, e-Faktur) part of the pitch — one less compliance project they have to run themselves. For Indian-HQ conglomerates with SEA ops, frame the deployment as SEA-platform-with-Indian-buying-process — matches the geography secondary-target playbook.",
+      "classification": "Primary buyer"
+    },
+    {
+      "role": "Treasurer / Director of Treasury",
+      "level": "Director / VP — reports to CFO. Smaller orgs may merge Treasury into the Controller role.",
+      "whatTheyOwn": "Cash position (real-time view), FX exposure, bank relationships, debt and hedging, payment-file release, working-capital optimization (DPO + DSO).",
+      "dailyPain": "Cash position is reconstructed each morning from 6–12 bank portals + ERP balances + AP run-list + AR collections. FX exposure misjudged because invoice-currency timing is opaque. Payment runs depend on AP closing on time; AR cash-app accuracy drives forecast quality. They don't own AP or AR but they're downstream of every accuracy gap in both.",
+      "motivations": [
+        "Real-time, single-pane cash position",
+        "Reduced cost of capital — DPO extension on AP, DSO compression on AR",
+        "Lower idle cash because the forecast is reliable",
+        "Fraud-loss avoidance on outbound payments (vendor-master fraud is the rising attack vector)",
+        "FX hedge accuracy — fewer surprise impacts to gross margin"
+      ],
+      "decisionAuthority": "Influencer. Co-buyer when AP automation includes payment-file orchestration or when AR cash-app drives DSO. Veto on payment-control posture (dual-control, segregation of duties).",
+      "blockers": [
+        "Bank-connectivity changes — anything touching ACH / SWIFT / faster-payment rails touches their controls",
+        "Payment-fraud paranoia (justified)",
+        "Existing TMS (Kyriba, GTreasury) territoriality if the company has one already"
+      ],
+      "whatTheyAskFirst": [
+        "\"Cash forecast accuracy at +/- 7 days — what's your delta at reference customers?\"",
+        "\"How do you handle dual-control on payment release, and segregation between approver and releaser?\"",
+        "\"Vendor-master changes — how do you detect a fraudulent bank-detail update?\"",
+        "\"DSO and DPO movement at your reference customers — show me the curve.\"",
+        "\"Bank connectivity — what banks, what protocols, who owns the file format if it changes?\""
+      ],
+      "ourTalkTrack": "Frame Neoflo as the cash-visibility layer their existing TMS lacks at the transaction level. Quantify DSO compression from auto-cash-app + DPO extension from disciplined approval routing. Lean hard on payment-control posture (dual control, vendor-master change detection, ACH / local-rail support). Pull peer Treasurer / VP Finance reference where available. Don't pitch as a TMS replacement — that gets the deal killed; pitch as the FinOps layer that feeds their TMS cleaner data.",
+      "classification": "Influencer"
+    },
+    {
+      "role": "Tax Director / Indirect Tax Manager",
+      "level": "Director — reports to CFO or CAO depending on org structure. Often dotted-line to Group Tax at multinationals.",
+      "whatTheyOwn": "Direct tax (income / corporate), indirect tax (VAT, GST, sales / use tax, withholding), e-invoicing mandate compliance, transfer-pricing documentation, tax provision and disclosures.",
+      "dailyPain": "Indirect-tax filings depend on AP / AR data accuracy down to the line item. E-invoicing mandates (MyInvois, FATOORAH, e-Faktur, GST IRN, PEPPOL / InvoiceNow) arrive with hard deadlines and patchwork ERP support. Manual reconciliation between ERP, e-invoicing platform, and tax-authority portals consumes 30–60% of the team. Penalties for late or rejected filings are personal.",
+      "motivations": [
+        "Mandate compliance with zero rejected filings",
+        "Audit-defensibility per filing — the data trail back to the source invoice",
+        "Reduced manual prep time",
+        "Country-by-country localization without separate point tools per jurisdiction",
+        "Real-time matching of input-tax credits (especially GST / VAT)"
+      ],
+      "decisionAuthority": "Primary or co-buyer for the e-invoicing-tailwind segment. Strong influence on AP platforms that flow into tax filings. Holds budget for compliance tooling that often sits adjacent to the FinOps stack.",
+      "blockers": [
+        "Existing point compliance vendors (ClearTax, Sovos, Avalara) with embedded contracts",
+        "Country-specific mandate complexity that vendors over-promise on",
+        "Tax-authority API instability (especially in SEA) that punishes early adopters"
+      ],
+      "whatTheyAskFirst": [
+        "\"Which mandates do you support natively today, and what's your roadmap by country and date?\"",
+        "\"Do you produce filing-grade outputs, or just data we re-shape into our compliance tool?\"",
+        "\"Walk me through the rejection-handling flow when MyInvois rejects an invoice.\"",
+        "\"Tax-authority API outages — how do you handle queued submissions and retries?\"",
+        "\"Audit-trail evidence per filing — show me one full chain from invoice to acknowledgement.\""
+      ],
+      "ourTalkTrack": "E-invoicing native is one of our biggest differentiators in SEA — MyInvois, InvoiceNow, e-Faktur. Frame as \"compliance is a side-effect of the workflow, not a separate project.\" Speak to country-by-country roadmap honestly (don't over-promise GCC / EU coverage). Position vs ClearTax / Sovos as \"they bolt onto your ERP; we already include it.\" Demo the rejection-handling flow — that's where buyers see the depth and where competitors fall short. For the e-invoicing-mandate-driven segment, the Tax Director can be the first conversation, not a late-stage stakeholder.",
+      "classification": "Influencer"
     }
   ],
-  "buyingCommittee": "**The realistic SEA mid-market buying committee** is 3–5 people: **Controller (primary buyer / champion)**, **CFO (economic buyer above $100K)**, **Sr Director AP or AR (champion / day-1 user)**, **CIO / IT** (veto authority on integration), and sometimes **Procurement Director** (if PR/PO is in scope). Average deal cycle 4–9 months. NDA → demo cycle is the make-or-break window per Pattern 2 — compression to 7 days is a 90-day priority.",
+  "buyingCommittee": "**The realistic SEA mid-market buying committee** is 3–5 people: **Controller (primary buyer / champion)**, **CFO (economic buyer above $100K)**, **Sr Director AP or AR + Accounting Manager (champions / day-1 users)**, **CIO / IT** (veto authority on integration), and sometimes **Procurement Director** (if PR/PO is in scope). Average deal cycle 4–9 months. NDA → demo cycle is the make-or-break window per Pattern 2 — compression to 7 days is a 90-day priority.\n\n**Variants by segment:**\n- **Multi-entity SEA conglomerates** (Apparel Group / Welspun pattern) — the **Shared Services / GBS Director** often replaces the entity Controller as primary buyer; the Group Controller signs off; entity-level controllers become influencers.\n- **Upper-mid US enterprise** (Spectrum-class, $1B+ SAP shops) — add the **Chief Accounting Officer** as the controls-and-audit gate; close the deal only after CAO sign-off on the SOX-evidence pack and the auditor relationship.\n- **E-invoicing-mandate-driven deals** (MyInvois, FATOORAH, e-Faktur urgency) — the **Tax Director** is a co-buyer, often the first conversation rather than a late-stage stakeholder. Treasury comes in late on payment-control posture and DSO/DPO impact.",
   "geographyDecisions": [
     {
       "geography": "Southeast Asia mid-market (Singapore, Indonesia, Malaysia, Vietnam, Thailand, Philippines)",
