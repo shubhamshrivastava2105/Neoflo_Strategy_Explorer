@@ -590,7 +590,7 @@ export const prospectBriefsData: ProspectBriefsData = {
         'Welspun — Sudeep is the operational buyer; Akhilesh is technical gatekeeper',
         'Dossier — Jodi (CFO) is the buyer at this scale; Sergio (CEO) signs',
       ],
-      implication: 'Update ICP primary persona from CFO to Controller / VP Finance. CFO frame becomes "two things: resource unlock + capital unlock, in a compliant privacy-led way." First touch should target Controller, not CFO.',
+      implication: 'Update ICP primary persona from CFO to Controller / VP Finance. CFO frame becomes "two things: resource unlock + capital unlock, in a compliant privacy-led way." First touch should target Controller, not CFO. **Two grounded sub-patterns:** (1) at multi-entity orgs (Inspire / Apparel-Group / Welspun pattern), the **Shared Services / GBS Director** replaces the entity Controller as primary buyer — Scott Cane (Sr Director Shared Services at Inspire) is the canonical evidence, and the entry conversation should open at that role, not the entity finance leader; (2) at $1B+ public or pre-IPO US enterprises (Spectrum / HCCB / Quince segment), the **Chief Accounting Officer** is the controls-and-audit gate above the Controller — the SOX-evidence pack and auditor relationship must clear before contract. Build the segment-aware first-touch playbook: SEA mid-market = Controller; SEA / Indian conglomerate multi-entity = GBS Director; US upper-mid SAP-shop = Controller with mandatory CAO loop-in by Stage 2; e-invoicing-mandate-driven = Tax Director.',
     },
     {
       signal: 'Multi-product platform thesis validated by ALL "did not buy" conversations',

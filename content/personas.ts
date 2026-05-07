@@ -327,7 +327,7 @@ export const personasData: PersonasData = {
       geography: 'Southeast Asia mid-market (Singapore, Indonesia, Malaysia, Vietnam, Thailand, Philippines)',
       decision: 'TARGET — primary',
       marketSize: 'Smaller in absolute dollars than US ($500M–$1.5B addressable for our segment), but right-to-win is dramatically higher.',
-      buyerProfile: 'CFO / Controller at $50M–$500M revenue companies, multi-entity (SG HQ + ID/MY/VN subsidiaries), multi-currency, ERP-connected (NetSuite, SAP S/4, Oracle Fusion), currently running on Excel + email + ERP + bandaid SaaS.',
+      buyerProfile: 'CFO / Controller at $50M–$500M revenue companies, multi-entity (SG HQ + ID/MY/VN subsidiaries), multi-currency, ERP-connected (NetSuite, SAP S/4, Oracle Fusion), currently running on Excel + email + ERP + bandaid SaaS. **Stakeholder pattern by sub-segment:** at single-HQ mid-market the Controller / VP Finance is the primary buyer with the Accounting Manager as day-1 user. At multi-entity SEA conglomerates the **Shared Services / GBS Director** often replaces the entity Controller as primary buyer. For e-invoicing-mandate-driven evaluations (MyInvois / InvoiceNow / e-Faktur) the **Tax Director** comes in as a co-buyer in the first conversation, not late.',
       whyOrWhyNot: [
         '**Right-to-win is structural.** SEA mid-market is under-served — Peakflo is the only credible multi-process incumbent, and they don\'t have R2R. Stampli, FloQast, BlackLine are not present. Coupa and SAP Ariba are enterprise-only.',
         '**Forced-buy regulatory tailwind.** MyInvois (Malaysia, mandatory through 2026), InvoiceNow / PEPPOL (Singapore, rolling 2025–2026), e-Faktur (Indonesia, mandatory). Mid-market CFOs must comply; we make compliance a side-effect of our product.',
@@ -344,7 +344,7 @@ export const personasData: PersonasData = {
       geography: 'India-headquartered multinationals with SEA operations',
       decision: 'TARGET — secondary',
       marketSize: '~150–300 mid-market companies (Indian conglomerates with SEA ops); ACV $80–300K',
-      buyerProfile: 'Indian CFO/Controller making the platform decision for SEA subsidiaries. Apparel Group is the canonical example.',
+      buyerProfile: 'Indian CFO / Controller — or, in the Apparel-Group canonical pattern, a **Shared Services / GBS Director** running centralized finance ops for SEA / GCC subsidiaries — making the platform decision for non-Indian entities. The Indian Tax Director is often a co-stakeholder when GST IRN compliance or transfer-pricing documentation is in scope.',
       whyOrWhyNot: [
         '**Hybrid sale**: sold via Indian network warm intros, deployed in SEA entities. Apparel Group is exactly this pattern.',
         '**India network access** is a real advantage we have via existing relationships',
@@ -359,7 +359,7 @@ export const personasData: PersonasData = {
       geography: 'US enterprise via SAP-shop CPA channel (warm only)',
       decision: 'TARGET — secondary',
       marketSize: '~500–1500 SAP-shop mid-market enterprises that have rejected HighRadius/Tipalti enterprise quotes; ACV $80–300K',
-      buyerProfile: 'Mid-to-upper mid-market US enterprise ($500M–$2B revenue), SAP shop, multi-entity, has evaluated HighRadius/Coupa/Tipalti and rejected on price. Spectrum is canonical.',
+      buyerProfile: 'Mid-to-upper mid-market US enterprise ($500M–$2B revenue), SAP shop, multi-entity, has evaluated HighRadius/Coupa/Tipalti and rejected on price. Spectrum is canonical. **Stakeholder additions vs SEA primary:** at $1B+ public or pre-IPO accounts, the **Chief Accounting Officer (CAO)** is the controls-and-audit gate that must sign off on the SOX-evidence pack and the auditor relationship before contract; deals close only after CAO approval, regardless of CFO enthusiasm. The Treasurer becomes a co-stakeholder when the deal includes payment-file orchestration or AR cash-app driving DSO.',
       whyOrWhyNot: [
         '**HighRadius reject quote is the entry trigger.** $1.2–1.5M quote pushes them to look for alternatives. Spectrum is in motion now; we should systematize "HighRadius-rejected" lead generation.',
         '**Channel works via warm: CPA partnerships (Rehmann opened) + Big-4 alumni networks (KPMG → Spectrum)** + executive warm intros from CFO communities. Cold outbound is dead per Warner Queeny + Utpala Shelar (Signal 4).',
@@ -374,7 +374,7 @@ export const personasData: PersonasData = {
       geography: 'GCC / Middle East (UAE, Saudi)',
       decision: 'OPPORTUNISTIC',
       marketSize: 'Apparel Group plus 50–200 similar mid-market enterprises with regional HQs in GCC',
-      buyerProfile: 'Mid-market enterprise with GCC HQ and SEA / India operations',
+      buyerProfile: 'Mid-market enterprise with GCC HQ and SEA / India operations. The **Tax Director** is often the first conversation in this segment because FATOORAH e-invoicing compliance is a forced-buy event with hard authority deadlines; the GBS Director / Group Controller is the operational buyer once the compliance hook is established.',
       whyOrWhyNot: [
         '**FATOORAH e-invoicing (Saudi, mandatory) is structurally similar to MyInvois** — same compliance moat we\'re building applies',
         '**Apparel Group is in pipeline already** — Dubai HQ, multi-jurisdiction',
@@ -437,8 +437,8 @@ export const personasData: PersonasData = {
 
   recommendation: {
     headline: `**Target SEA mid-market Controllers + CFOs as the primary buyer (12-month focus). Sell to US enterprise warm channels opportunistically (15% of capacity). Do not pursue India domestic, US scale-ups, or EU.**`,
-    twelveMonthFocus: `Sell to **mid-market Controllers / VP Finance** at $50M–$500M revenue, multi-entity SEA companies. Champion = Sr Director AP / AR. Economic buyer = CFO. IT must be in the room early. Average deal 4–9 months, ACV $60–250K. **Lead with the multi-product platform** (P2P + O2C, R2R on roadmap) as the differentiator vs Peakflo (no R2R) and Stampli (AP-only). Use Zalora as the reference customer for every SEA pitch. Apply for PSG Pre-Approved Vendor status as the single biggest unlock for Singapore SMB-to-mid-market expansion.`,
-    twelveTo24Months: `Add **US warm-channel motion** via CPA partner program (Rehmann + 2–3 more) and KPMG-alumni introductions. Spectrum closure validates the "HighRadius-rejected mid-market enterprise" segment. Build the systematic lead-gen for that segment (LinkedIn signals, advisor introductions, public earnings call mentions of DSO/cash-app pain). Open **GCC opportunistic** path via Apparel Group expansion and FATOORAH compliance work. Begin **R2R Phase 3** once O2C is shipping; close orchestration + JE workflow + recs is the MVP.`,
+    twelveMonthFocus: `Sell to **mid-market Controllers / VP Finance** at $50M–$500M revenue, multi-entity SEA companies. Champions = **Sr Director AP / AR + Accounting Manager** (the Accounting Manager is the day-1 user whose adoption signal makes-or-breaks rollout — invest demo time accordingly). Economic buyer = CFO. IT must be in the room early. **For multi-entity conglomerate sub-segment** (Apparel Group / Welspun pattern), open with the Shared Services / GBS Director — they often hold the consolidated platform budget across entities. **For e-invoicing-mandate-driven deals**, the Tax Director is the first conversation, not a late-stage stakeholder. Average deal 4–9 months, ACV $60–250K. **Lead with the multi-product platform** (P2P + O2C, R2R on roadmap) as the differentiator vs Peakflo (no R2R) and Stampli (AP-only). Use Zalora as the reference customer for every SEA pitch. Apply for PSG Pre-Approved Vendor status as the single biggest unlock for Singapore SMB-to-mid-market expansion.`,
+    twelveTo24Months: `Add **US warm-channel motion** via CPA partner program (Rehmann + 2–3 more) and KPMG-alumni introductions. Spectrum closure validates the "HighRadius-rejected mid-market enterprise" segment — at this segment the **Chief Accounting Officer** is the controls gate (SOX-evidence pack and auditor relationship sign-off must precede contract); the Treasurer enters when payment-file orchestration or AR cash-app DSO is in scope. Build the systematic lead-gen for that segment (LinkedIn signals, advisor introductions, public earnings call mentions of DSO/cash-app pain). Open **GCC opportunistic** path via Apparel Group expansion and FATOORAH compliance work — Tax Director-led entry is the canonical motion here. Begin **R2R Phase 3** once O2C is shipping; close orchestration + JE workflow + recs is the MVP.`,
     avoidThesePitfalls: [
       '**Don\'t chase India domestic mid-market** — sub-$5/invoice commodity dynamics destroy unit economics. The Flipkart loss is the canonical proof.',
       '**Don\'t pursue US scale-ups** — Ramp/Brex own them via cards; cold outbound is dead; we have no network or references. CAC would be 5–10x SEA.',

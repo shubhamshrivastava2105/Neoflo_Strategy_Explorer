@@ -283,7 +283,7 @@ export const voiceOfCustomerData: VoiceOfCustomerData = {
       prevalence: 'Anahita said directly, validated by every other call',
       description: '"Strategic CFOs like me are too removed from invoice operations. The right first contact is controllers and FinOps heads."',
       evidence: ['Anahita Arora (CFO) explicit guidance', 'Spectrum: VP Controller (Utpala) is the buyer; introducing Sr Director AP + Sr Director AR', 'Welspun: Sudeep (likely VP Finance) is the entry point'],
-      whatItMeans: 'Update ICP primary persona from CFO to Controller / VP Finance. CFO frame becomes "two things: resource unlock + capital unlock, in a compliant privacy-led way."',
+      whatItMeans: 'Update ICP primary persona from CFO to Controller / VP Finance. CFO frame becomes "two things: resource unlock + capital unlock, in a compliant privacy-led way." **Segment variants worth tagging:** at multi-entity orgs the entry point shifts to **Shared Services / GBS Director** — Inspire (Scott Cane, Sr Director Shared Services) is the canonical pattern in our own corpus; the day-1 user is the **Accounting Manager** who runs the close calendar, not the Sr Director; at $1B+ public or pre-IPO accounts the **Chief Accounting Officer** sits above the Controller as the controls gate, and the deal does not close on CFO sign-off alone; for e-invoicing-mandate-driven evaluations, the **Tax Director** is the first conversation rather than a late-stage stakeholder.',
     },
     {
       number: 4,
