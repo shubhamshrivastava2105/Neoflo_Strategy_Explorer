@@ -53,6 +53,34 @@
 
   .nav { display: flex; flex-direction: column; gap: 2px; }
   .nav-section { padding: var(--scale-200) var(--scale-100); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-on-colour-placeholder); margin-top: var(--scale-300); }
+  /* collapsible nav parts */
+  details.nav-part { border-radius: var(--radius-sm); }
+  details.nav-part > summary {
+    cursor: pointer; list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--scale-200) var(--scale-100);
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text-on-colour-placeholder);
+    margin-top: var(--scale-300);
+    user-select: none;
+    transition: color 120ms ease;
+  }
+  details.nav-part > summary::-webkit-details-marker { display: none; }
+  details.nav-part > summary:hover { color: var(--text-on-colour-heading); }
+  details.nav-part > summary::after {
+    content: '▸';
+    font-size: 9px;
+    color: var(--text-on-colour-placeholder);
+    transition: transform 120ms ease;
+    margin-left: 6px;
+  }
+  details.nav-part[open] > summary::after { transform: rotate(90deg); }
+  details.nav-part > a {
+    margin-left: var(--scale-200);
+    border-left: 1px solid var(--border-call-out-card-1);
+    padding-left: var(--scale-250);
+  }
+  details.nav-part[open] > summary { color: var(--text-on-colour-heading); margin-bottom: 2px; }
   .nav a {
     display: flex; align-items: center; justify-content: space-between;
     padding: var(--scale-200) var(--scale-250);
@@ -666,59 +694,77 @@
       </div>
     </div>
     <nav class="nav" id="nav">
-      <div class="nav-section">1 · Basics</div>
-      <a href="#about-neoflo">About Neoflo</a>
-      <a href="#product">Product &amp; modules</a>
-      <a href="#glossary">Glossary</a>
-      <div class="nav-section">2 · The market</div>
-      <a href="#market">Market sizing</a>
-      <a href="#regulatory">Regulatory tailwinds</a>
-      <a href="#einv-roadmap">E-invoicing roadmap by country</a>
-      <div class="nav-section">3 · Competitive landscape</div>
-      <a href="#landscape">Cohorts overview</a>
-      <a href="#h2h">Head-to-head profiles</a>
-      <a href="#human-ai-cohort">Human + AI hybrid cohort</a>
-      <a href="#matrix">Feature matrix</a>
-      <a href="#workflow">Workflow map</a>
-      <a href="#vendor-coverage">Vendor coverage</a>
-      <a href="#pipemap">Pipeline competitive map</a>
-      <a href="#moat-comparison">Moat comparison</a>
-      <div class="nav-section">4 · Who we sell to</div>
-      <a href="#personas">Buyer personas (10)</a>
-      <a href="#jobmap">Buyer job map</a>
-      <a href="#geo-targeting">Geography decisions</a>
-      <a href="#target-rec">Target ICP</a>
-      <a href="#disqualifiers">Disqualifiers</a>
-      <div class="nav-section">5 · Voice of the field</div>
-      <a href="#voc-questions">Top questions clients ask</a>
-      <a href="#voc-objections">Live objections</a>
-      <a href="#voc-patterns">Conversation patterns</a>
-      <a href="#voc-displacement">Displacement patterns (117)</a>
-      <a href="#voc-demo">Demo aha moments</a>
-      <a href="#voc-replacement">AP replacement checklist</a>
-      <a href="#voc-actions">P0 actions from clients</a>
-      <div class="nav-section">6 · Customer evidence</div>
-      <a href="#signals">Customer-evidence signals</a>
-      <a href="#patterns">Customer-evidence patterns</a>
-      <div class="nav-section">7 · The strategic bet</div>
-      <a href="#tldr">TL;DR — the bet</a>
-      <a href="#gap">The gap</a>
-      <a href="#defensibility">Our moat (defensibility)</a>
-      <a href="#recommendation">Recommendation</a>
-      <a href="#risks">Risks</a>
-      <a href="#gtm">GTM playbook</a>
-      <a href="#actions">90-day actions</a>
-      <div class="nav-section">8 · Reference toolkit</div>
-      <a href="#p2p">P2P — Procure-to-Pay</a>
-      <a href="#o2c">O2C — Order-to-Cash</a>
-      <a href="#r2r">R2R — Record-to-Report</a>
-      <a href="#vat-wht">VAT &amp; WHT explained</a>
-      <a href="#pricing">Competitor pricing benchmarks</a>
-      <a href="#battlecards">Battlecards</a>
-      <div class="nav-section">Meta</div>
-      <a href="#changemymind">Change my mind</a>
-      <a href="#openquestions">Open questions</a>
-      <a href="#appendix">Appendix &amp; provenance</a>
+      <details class="nav-part">
+        <summary class="nav-section">1 · Basics</summary>
+        <a href="#about-neoflo">About Neoflo</a>
+        <a href="#product">Product &amp; modules</a>
+        <a href="#glossary">Glossary</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">2 · The market</summary>
+        <a href="#market">Market sizing</a>
+        <a href="#regulatory">Regulatory tailwinds</a>
+        <a href="#einv-roadmap">E-invoicing roadmap by country</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">3 · Competitive landscape</summary>
+        <a href="#landscape">Cohorts overview</a>
+        <a href="#h2h">Head-to-head profiles</a>
+        <a href="#human-ai-cohort">Human + AI hybrid cohort</a>
+        <a href="#matrix">Feature matrix</a>
+        <a href="#workflow">Workflow map</a>
+        <a href="#vendor-coverage">Vendor coverage</a>
+        <a href="#pipemap">Pipeline competitive map</a>
+        <a href="#moat-comparison">Moat &amp; vision</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">4 · Who we sell to</summary>
+        <a href="#personas">Buyer personas (10)</a>
+        <a href="#jobmap">Buyer job map</a>
+        <a href="#geo-targeting">Geography decisions</a>
+        <a href="#target-rec">Target ICP</a>
+        <a href="#disqualifiers">Disqualifiers</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">5 · Voice of the field</summary>
+        <a href="#voc-questions">Top questions clients ask</a>
+        <a href="#voc-objections">Live objections</a>
+        <a href="#voc-patterns">Conversation patterns</a>
+        <a href="#voc-displacement">Displacement patterns (117)</a>
+        <a href="#voc-demo">Demo aha moments</a>
+        <a href="#voc-replacement">AP replacement checklist</a>
+        <a href="#voc-actions">P0 actions from clients</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">6 · Customer evidence</summary>
+        <a href="#signals">Customer-evidence signals</a>
+        <a href="#patterns">Customer-evidence patterns</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">7 · The strategic bet</summary>
+        <a href="#tldr">TL;DR — the bet</a>
+        <a href="#gap">The gap</a>
+        <a href="#defensibility">Our moat (defensibility)</a>
+        <a href="#recommendation">Recommendation</a>
+        <a href="#risks">Risks</a>
+        <a href="#gtm">GTM playbook</a>
+        <a href="#actions">90-day actions</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">8 · Reference toolkit</summary>
+        <a href="#p2p">P2P — Procure-to-Pay</a>
+        <a href="#o2c">O2C — Order-to-Cash</a>
+        <a href="#r2r">R2R — Record-to-Report</a>
+        <a href="#vat-wht">VAT &amp; WHT explained</a>
+        <a href="#pricing">Competitor pricing benchmarks</a>
+        <a href="#battlecards">Battlecards</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">Meta</summary>
+        <a href="#changemymind">Change my mind</a>
+        <a href="#openquestions">Open questions</a>
+        <a href="#appendix">Appendix &amp; provenance</a>
+      </details>
       <div class="nav-section">Account</div>
       <a href="/api/logout" style="color: var(--text-on-colour-caption);">Sign out</a>
     </nav>
@@ -2605,11 +2651,25 @@ const observer = new IntersectionObserver((entries) => {
     if (e.isIntersecting) {
       navLinks.forEach(l => l.classList.remove('active'));
       const link = document.querySelector(`.nav a[href="#${e.target.id}"]`);
-      if (link) link.classList.add('active');
+      if (link) {
+        link.classList.add('active');
+        // Auto-open the parent nav-part so the active link is visible in the collapsed sidebar
+        const parentPart = link.closest('details.nav-part');
+        if (parentPart && !parentPart.open) parentPart.open = true;
+      }
     }
   });
 }, { rootMargin: '-30% 0px -60% 0px' });
 sections.forEach(s => observer.observe(s));
+
+// When a user clicks a nav link inside a collapsed part (via direct hash link),
+// make sure that part is open so the link is reachable.
+document.querySelectorAll('.nav-part a').forEach(a => {
+  a.addEventListener('click', () => {
+    const parent = a.closest('details.nav-part');
+    if (parent) parent.open = true;
+  });
+});
 
 // ───────── Comment system — Figma-style anchored pins ─────────
 const commentToggle = document.getElementById('commentToggle');
