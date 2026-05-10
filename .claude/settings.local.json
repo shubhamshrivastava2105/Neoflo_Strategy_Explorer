@@ -26,7 +26,9 @@
       "Bash(npx --yes vercel logs https://strategy.neoflo.ai --since 10m)",
       "Bash(timeout 8 npx --yes vercel logs neoflo-strategy-explorer-8fo077f5u.vercel.app)",
       "Bash(awk '/window.PERSONAS_DATA = {/,/^};/' data.js)",
-      "Bash(gh issue *)"
+      "Bash(gh issue *)",
+      "Bash(awk '/id=\"moat-comparison\"/{flag=1} flag{print NR\": \"$0; if\\(/<\\\\/section>/ && /personas/ \\){flag=0; exit}}' index.html)",
+      "Bash(awk 'NR>=1099 && NR<=1300 {print NR\": \"$0}' index.html)"
     ]
   }
 }
