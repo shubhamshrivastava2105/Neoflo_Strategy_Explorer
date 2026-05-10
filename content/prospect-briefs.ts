@@ -648,31 +648,7 @@ export const prospectBriefsData: ProspectBriefsData = {
     },
   ],
 
-  investorIntel: [
-    {
-      investor: 'Fady Abdel-Nour, Antler Elevate',
-      fund: 'Antler Elevate ($285M AUM, Series A-C; sweet spot $1.5-5M)',
-      thesisFit: 'Strong — explicitly calls out AP/AR automation as priority area. AI-native (not assisted). Emerging markets comfort (Prosus/PayU $6B deployed). Singapore-based.',
-      objectionsRaised: [
-        'Stage may be late for typical Elevate entry (Neoflo post-seed at $10M)',
-        'Services-vs-software framing — Antler thesis leans software; Neoflo is managed services + AI',
-        'Check size constraint vs likely Series A round size',
-      ],
-      actionItem: 'Use Yarken pattern-match: "What Yarken is doing in IT finance, we\'re doing in business finance." Prosus-Ula overlap (Fady was at Prosus/PayU when Prosus invested in Ula).',
-    },
-    {
-      investor: 'Arshad Chowdhury, Betatron Venture Group',
-      fund: 'BVG IV ($50M target, $15M first close; $500K-2M checks; HK/Singapore)',
-      thesisFit: 'Strong on thesis (asset-light B2B tech, Asia digitization, AI-native + small headcount). Yarken (their Feb 2026 lead) is the closest template — AI-native ITFM/FinOps with Fortune 2000 customers.',
-      objectionsRaised: [
-        'Asset-light tension — Neoflo has India delivery headcount',
-        'Services-vs-product framing — Betatron invests in tech',
-        'Stage/check (Neoflo $10M seed already; Betatron $500K-2M)',
-        'Exit credibility — needs to be articulated',
-      ],
-      actionItem: 'Use Yarken language explicitly. Avoid the word "BPO." Three-pillar story: AI platform (80%) + managed delivery (20% shrinking) + outcome contract. Sandip Sen advisory + Aegis→Teleperformance precedent for exit narrative.',
-    },
-  ],
+  investorIntel: [],
 
   pipelineDistribution: {
     byStatus: [

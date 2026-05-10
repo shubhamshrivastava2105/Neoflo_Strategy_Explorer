@@ -618,7 +618,6 @@
       <div class="nav-section">1 · Basics</div>
       <a href="#about-neoflo">About Neoflo</a>
       <a href="#product">Product &amp; modules</a>
-      <a href="#kpis">Live KPIs</a>
       <a href="#glossary">Glossary</a>
       <div class="nav-section">2 · The market</div>
       <a href="#market">Market sizing</a>
@@ -647,11 +646,7 @@
       <a href="#voc-demo">Demo aha moments</a>
       <a href="#voc-replacement">AP replacement checklist</a>
       <a href="#voc-actions">P0 actions from clients</a>
-      <div class="nav-section">6 · The pipeline</div>
-      <a href="#pb-distribution">Pipeline distribution</a>
-      <a href="#pb-list">All prospect briefs (28)</a>
-      <a href="#pb-signals">Cross-cutting signals</a>
-      <a href="#pb-channels">Channel partnerships</a>
+      <div class="nav-section">6 · Customer evidence</div>
       <a href="#signals">Customer-evidence signals</a>
       <a href="#patterns">Customer-evidence patterns</a>
       <div class="nav-section">7 · The strategic bet</div>
@@ -662,14 +657,12 @@
       <a href="#risks">Risks</a>
       <a href="#gtm">GTM playbook</a>
       <a href="#actions">90-day actions</a>
-      <a href="#roadmap">Roadmap (quarterly)</a>
       <div class="nav-section">8 · Reference toolkit</div>
       <a href="#p2p">P2P — Procure-to-Pay</a>
       <a href="#o2c">O2C — Order-to-Cash</a>
       <a href="#r2r">R2R — Record-to-Report</a>
       <a href="#vat-wht">VAT &amp; WHT explained</a>
       <a href="#pricing">Competitor pricing benchmarks</a>
-      <a href="#pricing-neoflo">Neoflo pricing card</a>
       <a href="#battlecards">Battlecards</a>
       <div class="nav-section">Meta</div>
       <a href="#changemymind">Change my mind</a>
@@ -724,15 +717,14 @@
             <li><strong>P2P</strong> — vendor onboarding · requisition · PO · GR · invoice receipt · 3-way match · payment</li>
             <li><strong>O2C</strong> — invoice generation · dunning · cash application · deductions</li>
             <li><strong>R2R</strong> — close orchestration · JE workflow · recs · intercompany</li>
-            <li><strong>28 sub-workflows</strong> mapped to who plays where + how they monetize (see Workflow map)</li>
           </ul>
         </div>
         <div class="card">
           <h4 style="margin-top: 0;">Compliance &amp; trust</h4>
           <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
-            <li><strong>ASEAN e-invoicing native</strong> — MyInvois (MY), InvoiceNow (SG), e-Faktur (ID); FATOORAH on roadmap</li>
-            <li><strong>SOC 2 Type II</strong> + AES-256 at rest + TLS 1.2+ in transit</li>
+            <li><strong>SOC 2 Type II + ISO</strong> + AES-256 at rest + TLS 1.2+ in transit</li>
             <li><strong>Cross-process audit trail</strong> — one immutable evidence chain: PO → invoice → approval → payment → JE → reconciliation</li>
+            <li><strong>Integrates with all major ERPs</strong> — SAP, Oracle, NetSuite, Zoho, etc.</li>
             <li><strong>Deployment</strong>: shadow layer alongside your ERP — does not replace it</li>
           </ul>
         </div>
@@ -756,37 +748,14 @@
     <section id="product" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Basics · Product</div>
       <h2 class="section-title">Product &amp; modules.</h2>
-      <p class="lede">The "what we ship" view — every module, every workflow status, every integration. Use this to answer "what does Neoflo actually do?" without scrolling through the strategy memo.</p>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 3 input needed]</strong>
-        <p style="margin-top: var(--scale-100); font-size: 14px;">Detailed module breakdown awaiting product-team confirmation. Planned content:</p>
-        <ul style="font-size: 14px; line-height: 1.6;">
-          <li><strong>AP module</strong> — vendor onboarding · requisition · PO · GR · invoice receipt · 3-way match · payment orchestration. Per-feature status: live / in dev / roadmap.</li>
-          <li><strong>AR module</strong> — invoice generation · dunning · cash application · deductions. Per-feature status.</li>
-          <li><strong>Close module</strong> — close orchestration · JE workflow · reconciliations · intercompany. Per-feature status.</li>
-          <li><strong>Platform layer</strong> — master data · audit trail · e-invoicing connectors · AI / extraction / memory infra · API surface · workflow engine.</li>
-          <li><strong>ERP integrations matrix</strong> — SAP S/4 · Oracle Fusion · NetSuite · Dynamics · Sage · Zoho · QuickBooks · Xero · Tally — depth and method (API / file / shadow layer / native).</li>
-          <li><strong>Comparison vs Workflow Map</strong> — what we own end-to-end vs what we partner / leave to ERP.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="kpis" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Basics · Live state</div>
-      <h2 class="section-title">Live KPIs.</h2>
-      <p class="lede">The current state of the business. Internal-only — keep this updated monthly so the team is calibrated to reality, not last quarter's numbers.</p>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 3 input needed]</strong>
-        <p style="margin-top: var(--scale-100); font-size: 14px;">Awaiting current numbers from finance. Planned panels:</p>
-        <ul style="font-size: 14px; line-height: 1.6;">
-          <li><strong>Revenue</strong> — current ARR, MRR, NRR, GRR, ACV by segment</li>
-          <li><strong>Customers</strong> — paying customer count, active pilots, churned in last 12 months</li>
-          <li><strong>Unit economics</strong> — gross margin, contribution margin per customer, payback period</li>
-          <li><strong>Cash</strong> — burn (gross + net), runway months, cash balance</li>
-          <li><strong>Team</strong> — current headcount by function (eng / GTM / ops / G&amp;A)</li>
-          <li><strong>As of</strong> — last close date</li>
-        </ul>
-      </div>
+      <p class="lede">What we are building.</p>
+      <ul style="font-size: 14.5px; line-height: 1.7; margin-top: var(--scale-300);">
+        <li><strong>Invoice Processing &amp; Straight-Through Processing (STP)</strong></li>
+        <li><strong>Spend Analytics &amp; Working Capital Intelligence</strong></li>
+        <li><strong>Collections, Dunning, Dispute Management &amp; Customer Self-Service</strong></li>
+        <li><strong>Cash Application &amp; Payment Matching</strong></li>
+        <li><strong>Financial Close Management</strong></li>
+      </ul>
     </section>
 
     <section id="glossary" style="margin-bottom: var(--scale-700);">
@@ -872,7 +841,7 @@
           <dt>NDA</dt><dd>Non-Disclosure Agreement — typically gates the demo / sample exchange.</dd>
           <dt>POC / Pilot</dt><dd>Proof of Concept — short paid trial; our pilot fee is credited to Year 1.</dd>
           <dt>SLA</dt><dd>Service-Level Agreement — outcome guarantee.</dd>
-          <dt>PSG</dt><dd>Productivity Solutions Grant — Singapore subsidy for SME tools; our 90-day priority is Pre-Approved Vendor status.</dd>
+          <dt>PSG</dt><dd>Productivity Solutions Grant — Singapore government subsidy that covers up to ~50% of SME tool cost for Pre-Approved Vendors. Vendor status is a structural distribution lever in Singapore (Peakflo has it; we don't yet).</dd>
           <dt>BPO</dt><dd>Business Process Outsourcing — the FTE-priced incumbent we displace via outcome pricing.</dd>
           <dt>ITFM</dt><dd>IT Financial Management — Yarken's category; relevant cohort comparison.</dd>
         </dl>
@@ -931,11 +900,9 @@
     </section>
 
     <section id="patterns">
-      <div class="eyebrow">Section 08 · Customer evidence v2</div>
-      <h2 class="section-title">Cross-cutting patterns &amp; strategy changes.</h2>
+      <div class="eyebrow">Section 08 · Customer evidence</div>
+      <h2 class="section-title">Cross-cutting patterns.</h2>
       <div id="patterns-list"></div>
-      <h3 style="margin-top: var(--scale-500);">What changed in v2</h3>
-      <div id="changes-list"></div>
     </section>
 
     <section id="pricing">
@@ -1004,23 +971,6 @@
       <div class="eyebrow">Section 14 · Deep insights</div>
       <h2 class="section-title">What to do in the next quarter.</h2>
       <div id="actions-list"></div>
-    </section>
-
-    <section id="roadmap" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Strategy · Roadmap</div>
-      <h2 class="section-title">Roadmap (quarterly).</h2>
-      <p class="lede">Sequenced view of what ships when — product, GTM, partnerships, e-invoicing mandate readiness. Pair with "Recommendation" to see the bet behind the sequence.</p>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 3 input needed]</strong>
-        <p style="margin-top: var(--scale-100); font-size: 14px;">Awaiting confirmed dates from product, GTM, and ops. Planned: Now / Next / Later strip plus a quarterly grid 2026 Q2 → 2027 Q4. Lanes:</p>
-        <ul style="font-size: 14px; line-height: 1.6;">
-          <li><strong>Product</strong> — P2P (live extensions) · O2C beta &amp; GA · R2R MVP (close + JE + recs) · agent / copilot layer</li>
-          <li><strong>Compliance</strong> — MyInvois milestones · InvoiceNow PEPPOL · e-Faktur · FATOORAH · SOC 2 Type II renewal</li>
-          <li><strong>GTM</strong> — PSG approval · 2 SEA references closed · Spectrum closure · CPA partner program scaling · India-HQ multinational targets</li>
-          <li><strong>Partnerships</strong> — TrueMind embedded CGO · EY India Tax · Boomerang / Rehmann CPA · 2 ERP integrations deepened</li>
-          <li><strong>Org</strong> — SEA-based GTM hires · India engineering scale · CFO / Head of GTM hire</li>
-        </ul>
-      </div>
     </section>
 
     <section id="h2h">
@@ -1404,45 +1354,6 @@
       <div id="voc-actions-body"></div>
     </section>
 
-    <section id="pb-intro">
-      <div class="eyebrow">Section 31 · Prospect briefs</div>
-      <h2 class="section-title">Account-level corpus — 25 prospects + 2 investors.</h2>
-      <div id="pb-intro-body"></div>
-    </section>
-
-    <section id="pb-distribution">
-      <div class="eyebrow">Section 32 · Prospect briefs</div>
-      <h2 class="section-title">Pipeline distribution.</h2>
-      <p class="lede">How the 25 client briefs distribute across status, tier, geography, industry, and lead source. Reveals where pipeline is concentrated and where it's thin.</p>
-      <div class="grid grid-2" id="pb-dist-grid"></div>
-    </section>
-
-    <section id="pb-list">
-      <div class="eyebrow">Section 33 · Prospect briefs</div>
-      <h2 class="section-title">All prospect briefs.</h2>
-      <p class="lede">Each brief: company, contact, status, tier, lead source, ERP, wedge, signal/learning, next step. Filter by status to focus.</p>
-      <div style="display: flex; gap: var(--scale-200); margin-bottom: var(--scale-300); flex-wrap: wrap; align-items: center;">
-        <input id="pb-filter" type="search" placeholder="Filter by name, contact, geography, industry…" style="flex: 1; min-width: 240px; padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);" />
-        <select id="pb-status-filter" style="padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);">
-          <option value="">All statuses</option>
-        </select>
-      </div>
-      <div id="pb-list-body"></div>
-    </section>
-
-    <section id="pb-signals">
-      <div class="eyebrow">Section 34 · Prospect briefs</div>
-      <h2 class="section-title">Cross-cutting signals across the corpus.</h2>
-      <p class="lede">8 patterns that emerge when reading all 25 prospect conversations together — quantified with named evidence and concrete implications.</p>
-      <div id="pb-signals-body"></div>
-    </section>
-
-    <section id="pb-channels">
-      <div class="eyebrow">Section 35 · Prospect briefs</div>
-      <h2 class="section-title">Channel partnerships.</h2>
-      <div id="pb-channels-body"></div>
-    </section>
-
     <section id="p2p">
       <div class="eyebrow">Process explainer · Reference</div>
       <h2 class="section-title" id="p2p-title"></h2>
@@ -1623,25 +1534,6 @@
       <p style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-400); font-style: italic;">Written for general understanding. Tax rates and rules vary by country and business type — always consult a tax professional for specific advice.</p>
     </section>
 
-    <section id="pricing-neoflo" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Toolkit · Pricing</div>
-      <h2 class="section-title">Neoflo pricing card.</h2>
-      <p class="lede">How we price ourselves. The "competitor pricing benchmarks" page shows the market; this page is our list. Sales: bookmark this and stop reverse-engineering pricing live in calls (per Anahita's feedback).</p>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 3 input needed]</strong>
-        <p style="margin-top: var(--scale-100); font-size: 14px;">Awaiting founder / sales sign-off. Planned content:</p>
-        <ul style="font-size: 14px; line-height: 1.6;">
-          <li><strong>Headline metric</strong> — outcome-based ($1.50–$5 / invoice range referenced in voice-of-customer; needs confirmation + tiering)</li>
-          <li><strong>Tiers</strong> — Wedge (P2P only) · Platform (P2P + O2C) · Enterprise (P2P + O2C + R2R + multi-entity), with ACV ranges per tier</li>
-          <li><strong>Pilot</strong> — fee, scope (5–10% of volume), credited to Year 1, conversion path</li>
-          <li><strong>Gain-share</strong> — when offered, how structured</li>
-          <li><strong>Implementation</strong> — included or quoted; ranges by complexity (Simple / Standard / Complex)</li>
-          <li><strong>Worked-example calculator</strong> — FTE cost → time on invoices → Neoflo cost → savings (Anahita's #1 ask)</li>
-          <li><strong>Discount discipline</strong> — what we will and won't discount, who approves</li>
-        </ul>
-      </div>
-    </section>
-
     <section id="battlecards" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Toolkit · Battlecards</div>
       <h2 class="section-title">Battlecards.</h2>
@@ -1684,7 +1576,7 @@
     <footer style="margin-top: var(--scale-1125); padding-top: var(--scale-500); border-top: 1px solid var(--border-pagecard-card-1); font-size: 12px; color: var(--text-default-caption); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-300);">
       <div>
         <strong style="color: var(--text-default-body);">Neoflo Strategy Explorer</strong> · v2 (customer evidence integrated)<br/>
-        Last updated 2026-05-10 · restructured into 8 parts · ~50 sections · 28 workflows · 27 vendors · 25 prospect briefs · 10 buyer personas · 7 geography decisions · 8 conversation patterns · 117 displaced-competitor datapoints · synthesized from Notion GTM home (18 pages + 25 pre-sales briefs)
+        Last updated 2026-05-10 · 27 vendors · 10 buyer personas · 7 geography decisions · 8 conversation patterns · 117 displaced-competitor datapoints · synthesized from Notion GTM home
       </div>
       <div>
         Internal · do not distribute externally
@@ -1915,13 +1807,6 @@ const patternsHtml = DATA.customers.patterns.map(p => `
   </div>
 `).join('');
 document.getElementById('patterns-list').innerHTML = patternsHtml;
-
-const changesHtml = DATA.customers.changesToStrategy.map(c => `
-  <div class="evidence">
-    <div class="ev-head"><span class="ev-company">${c.change}</span><span class="badge badge-info">${c.signal}</span></div>
-  </div>
-`).join('');
-document.getElementById('changes-list').innerHTML = changesHtml;
 
 // ───────── Render: Process explainers ─────────
 function renderProcess(data, prefix) {
@@ -2388,111 +2273,6 @@ document.getElementById('pm-list').innerHTML = cmp.pipelineMap.accounts.map(a =>
   </div>
 `).join('');
 document.getElementById('pm-readout').innerHTML = `<h4>Portfolio readout</h4>${md(cmp.pipelineMap.portfolioReadout)}`;
-
-// ───────── Render: Prospect Briefs ─────────
-const pb = DATA.prospectBriefs;
-document.getElementById('pb-intro-body').innerHTML = `<p class="lede">${mdInline(pb.intro)}</p>`;
-
-// Distribution
-function distCard(title, items) {
-  const total = items.reduce((s, i) => s + i.count, 0);
-  return `
-    <div class="card">
-      <h4 style="margin-top: 0;">${title}</h4>
-      ${items.map(i => `
-        <div style="display: flex; justify-content: space-between; padding: var(--scale-100) 0; border-bottom: 1px solid var(--border-pagecard-card-1); font-size: 13px;">
-          <span>${mdInline(i.geo || i.industry || i.source || i.tier || i.status)}</span>
-          <span><strong>${i.count}</strong> <span style="color: var(--text-default-caption); font-size: 11px;">(${Math.round(i.count / total * 100)}%)</span></span>
-        </div>
-      `).join('')}
-    </div>`;
-}
-document.getElementById('pb-dist-grid').innerHTML = `
-  ${distCard('By status', pb.pipelineDistribution.byStatus)}
-  ${distCard('By tier', pb.pipelineDistribution.byTier)}
-  ${distCard('By geography', pb.pipelineDistribution.byGeography)}
-  ${distCard('By industry', pb.pipelineDistribution.byIndustry)}
-  ${distCard('By lead source', pb.pipelineDistribution.bySource)}`;
-
-// All briefs
-function pbStatusBadge(s) {
-  const map = {
-    'Live': 'badge-success',
-    'Active': 'badge-success',
-    'Pilot scoping': 'badge-success',
-    'Active — Proposal sent Apr 11, 2026': 'badge-success',
-    'Stalled': 'badge-warning',
-    'Lost': 'badge-error',
-    'Exploratory': 'badge-info',
-    'Pre-outreach': 'badge-neutral',
-    'Pre-outreach (warm)': 'badge-info',
-    'Channel partnership': 'badge-warning',
-    'Investor': 'badge-info',
-  };
-  return `<span class="badge ${map[s] || 'badge-neutral'}">${s}</span>`;
-}
-
-const statuses = [...new Set(pb.briefs.map(b => b.status))];
-const statusFilter = document.getElementById('pb-status-filter');
-statuses.forEach(s => {
-  const opt = document.createElement('option');
-  opt.value = s;
-  opt.textContent = s;
-  statusFilter.appendChild(opt);
-});
-
-function renderBriefs() {
-  const q = document.getElementById('pb-filter').value.trim().toLowerCase();
-  const sf = statusFilter.value;
-  const filtered = pb.briefs.filter(b => {
-    const text = (b.account + b.contact + b.geography + b.industry + b.scale + b.leadSource + b.erp + b.wedge + b.signalOrLearning).toLowerCase();
-    return (!q || text.includes(q)) && (!sf || b.status === sf);
-  });
-  document.getElementById('pb-list-body').innerHTML = `
-    <p style="font-size: 13px; color: var(--text-default-caption); margin-bottom: var(--scale-300);">Showing ${filtered.length} of ${pb.briefs.length} briefs</p>
-    ${filtered.map(b => `
-      <div class="card" style="margin-bottom: var(--scale-200);">
-        <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-200);">
-          <h3 style="margin: 0;">${b.account}</h3>
-          ${pbStatusBadge(b.status)}
-        </div>
-        <p style="font-size: 13px; color: var(--text-default-caption); margin: var(--scale-100) 0 var(--scale-200);">${b.geography} · ${b.industry} · ${b.scale}</p>
-        <dl class="stage-grid">
-          <dt>Contact</dt><dd>${mdInline(b.contact)}</dd>
-          <dt>Tier · Source</dt><dd>${b.tier} · ${mdInline(b.leadSource)}</dd>
-          <dt>ERP</dt><dd>${mdInline(b.erp)}</dd>
-          <dt>Wedge</dt><dd>${mdInline(b.wedge)}</dd>
-          <dt>Signal / learning</dt><dd>${mdInline(b.signalOrLearning)}</dd>
-          ${b.nextStep ? `<dt>Next step</dt><dd><strong>${mdInline(b.nextStep)}</strong></dd>` : ''}
-        </dl>
-      </div>
-    `).join('')}`;
-}
-renderBriefs();
-document.getElementById('pb-filter').addEventListener('input', renderBriefs);
-statusFilter.addEventListener('change', renderBriefs);
-
-// Cross-cutting signals
-document.getElementById('pb-signals-body').innerHTML = pb.crossCuttingSignals.map((s, i) => `
-  <div class="card" style="margin-bottom: var(--scale-300);">
-    <h3>${i + 1}. ${s.signal}</h3>
-    <h4>Evidence</h4>
-    <ul>${s.evidence.map(e => `<li>${mdInline(e)}</li>`).join('')}</ul>
-    <div class="what-it-means">${mdInline(s.implication)}</div>
-  </div>
-`).join('');
-
-// Channel partnerships
-document.getElementById('pb-channels-body').innerHTML = pb.channelPartnerships.map(c => `
-  <div class="card" style="margin-bottom: var(--scale-200);">
-    <h3>${c.partner}</h3>
-    <dl class="stage-grid">
-      <dt>Nature</dt><dd>${mdInline(c.nature)}</dd>
-      <dt>Key terms</dt><dd>${mdInline(c.keyTerms)}</dd>
-      <dt>Fit</dt><dd>${mdInline(c.fitNote)}</dd>
-    </dl>
-  </div>
-`).join('');
 
 // ───────── Render: Voice of Customer ─────────
 const voc = DATA.voc;
