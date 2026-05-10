@@ -1090,19 +1090,153 @@
     <section id="moat-comparison" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Competitive · Moat</div>
       <h2 class="section-title">Moat comparison — us vs them.</h2>
-      <p class="lede">For each competitive cohort: what is their moat, what is ours, and how durable is each. Pair with "Defensibility" (Part 7) to read both sides — what we have to defend, and what they have to defend against us.</p>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 2 research]</strong>
-        <p style="margin-top: var(--scale-100); font-size: 14px;">Planned: a moat-by-layer matrix comparing each major competitor across:</p>
-        <ul style="font-size: 14px; line-height: 1.6;">
-          <li><strong>Distribution moat</strong> — channel, network, brand</li>
-          <li><strong>Data moat</strong> — proprietary training data, customer-specific learning, memory</li>
-          <li><strong>Workflow moat</strong> — depth of process coverage, ERP integration breadth</li>
-          <li><strong>Switching-cost moat</strong> — data lock-in, integration, retraining, contractual</li>
-          <li><strong>Compliance moat</strong> — regulatory certifications, e-invoicing native, SOC / ISO</li>
-          <li><strong>Cost moat</strong> — unit economics, gross margin, ability to underprice sustainably</li>
-        </ul>
-        <p style="font-size: 14px; line-height: 1.6;">Competitors covered: Peakflo · Stampli · Tipalti · Bill · Coupa · SAP VIM · Brex / Ramp · Vic.ai · Stuut · HighRadius · BlackLine · FloQast · Yarken (overlap with Human + AI cohort).</p>
+      <p class="lede">For each major competitor, what is their moat, what is ours, and how durable is each. Pair with "Defensibility" (Part 7) to read both sides — what we have to defend, and what they have to defend against us. Ratings: <strong>VS</strong> = Very Strong · <strong>S</strong> = Strong · <strong>M</strong> = Medium · <strong>W</strong> = Weak.</p>
+
+      <div class="card" style="margin-top: var(--scale-300); overflow-x: auto;">
+        <h4 style="margin-top: 0;">Moat-by-layer matrix</h4>
+        <table style="font-size: 13px;">
+          <thead>
+            <tr>
+              <th style="text-align: left; min-width: 100px;">Player</th>
+              <th>Distribution</th>
+              <th>Data</th>
+              <th>Workflow</th>
+              <th>Switching cost</th>
+              <th>Compliance</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Peakflo</strong></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">PSG-subsidized in SG</span></td>
+              <td>M <span style="color: var(--text-default-caption);">SEA OCR replicable</span></td>
+              <td>M <span style="color: var(--text-default-caption);">no R2R</span></td>
+              <td>M <span style="color: var(--text-default-caption);">SaaS-standard</span></td>
+              <td>S <span style="color: var(--text-default-caption);">SOC 2 + InvoiceNow native</span></td>
+              <td>M <span style="color: var(--text-default-caption);">PSG-funded in SG</span></td>
+            </tr>
+            <tr>
+              <td><strong>Stampli</strong></td>
+              <td>S <span style="color: var(--text-default-caption);">1.5K customers, 70+ ERPs</span></td>
+              <td>M <span style="color: var(--text-default-caption);">Billy weak on non-Latin scripts</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">chat-thread-on-invoice is sticky</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">12mo of conversation history</span></td>
+              <td>M <span style="color: var(--text-default-caption);">SOC 2, no SEA mandates</span></td>
+              <td>W <span style="color: var(--text-default-caption);">Mountain View CAC heavy</span></td>
+            </tr>
+            <tr>
+              <td><strong>Tipalti</strong></td>
+              <td>S <span style="color: var(--text-default-caption);">NetSuite/Sage Intacct partner motion</span></td>
+              <td>M <span style="color: var(--text-default-caption);">tax rules per jurisdiction</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">196 countries · mass payments</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">global supplier network lock-in</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">KPMG-validated tax compliance</span></td>
+              <td>M <span style="color: var(--text-default-caption);">FX/transaction monetization</span></td>
+            </tr>
+            <tr>
+              <td><strong>Bill (BILL)</strong></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">CPA channel + 481K-business network</span></td>
+              <td>M <span style="color: var(--text-default-caption);">vendor data underexploited</span></td>
+              <td>M <span style="color: var(--text-default-caption);">SMB-grade controls</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">QB + 200 vendors locks SMB in</span></td>
+              <td>M <span style="color: var(--text-default-caption);">money-transmitter in 50 states</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">public scale + interchange</span></td>
+            </tr>
+            <tr>
+              <td><strong>Coupa</strong></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">F500 + Big-4 + analyst Leader</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">$6T+ Community spend data</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">deepest end-to-end S2P suite</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">multi-yr ent contracts + supplier portal</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">SOC + supplier risk built-in</span></td>
+              <td>M <span style="color: var(--text-default-caption);">enterprise-CAC heavy; TBP discipline</span></td>
+            </tr>
+            <tr>
+              <td><strong>SAP VIM</strong></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">bundled with SAP licensing — zero CAC</span></td>
+              <td>W <span style="color: var(--text-default-caption);">template OCR, no learning loop</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">native SAP MM/FI/SCM integration</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">ABAP customizations + audit trail</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">e-invoicing certs in DE/FR/IT/BR/IN</span></td>
+              <td>S* <span style="color: var(--text-default-caption);">looks free / TCO is high</span></td>
+            </tr>
+            <tr>
+              <td><strong>Vic.ai</strong></td>
+              <td>M <span style="color: var(--text-default-caption);">ICONIQ network; no MQ rank</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">per-txn human-feedback at scale</span></td>
+              <td>W–M <span style="color: var(--text-default-caption);">AP-only; thin by design</span></td>
+              <td>M <span style="color: var(--text-default-caption);">GL-coding model calibration</span></td>
+              <td>W <span style="color: var(--text-default-caption);">SOC 2 only</span></td>
+              <td>M <span style="color: var(--text-default-caption);">per-txn breaks at &gt;1M invoice/yr</span></td>
+            </tr>
+            <tr>
+              <td><strong>Stuut</strong></td>
+              <td>W <span style="color: var(--text-default-caption);">early-stage; limited eco</span></td>
+              <td>M <span style="color: var(--text-default-caption);">collections playbooks early</span></td>
+              <td>M <span style="color: var(--text-default-caption);">AR/collections only</span></td>
+              <td>W <span style="color: var(--text-default-caption);">6–10 day go-live cuts both ways</span></td>
+              <td>W <span style="color: var(--text-default-caption);">SOC 2; no SEA mandates</span></td>
+              <td>W <span style="color: var(--text-default-caption);">early-stage burn</span></td>
+            </tr>
+            <tr>
+              <td><strong>HighRadius</strong></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">Gartner MQ Leader · F1000 ref book</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">remittance patterns at 1K-customer scale</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">deepest end-to-end O2C</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">multi-yr ent + ERP depth</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">SOC 1/2 + ISO + banking depth</span></td>
+              <td><strong>W</strong> <span style="color: var(--text-default-caption);">$1.2M+ quotes price out ent mid-mkt — our opening</span></td>
+            </tr>
+            <tr>
+              <td><strong>BlackLine</strong></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">SAP Solex partnership · F500 controllers</span></td>
+              <td>M <span style="color: var(--text-default-caption);">recon templates; AI flux nascent</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">deepest close-mgmt in category</span></td>
+              <td><strong>VS</strong> <span style="color: var(--text-default-caption);">recon history + SOX trails</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">SOX + multi-GAAP</span></td>
+              <td>M <span style="color: var(--text-default-caption);">FloQast undercutting at mid-mkt</span></td>
+            </tr>
+            <tr style="background: var(--surface-primary-background);">
+              <td><strong>Neoflo (us)</strong></td>
+              <td>W → M <span style="color: var(--text-default-caption);">PSG pending · Zalora ref</span></td>
+              <td>M <span style="color: var(--text-default-caption);">contextual extraction + memory; compounding</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">P2P+O2C+R2R on shared engine — unique</span></td>
+              <td>M <span style="color: var(--text-default-caption);">compounds with time</span></td>
+              <td>S <span style="color: var(--text-default-caption);">SOC 2 + ASEAN e-invoicing native (build-out)</span></td>
+              <td><strong>S</strong> <span style="color: var(--text-default-caption);">India eng cost leverage in target geos</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-200);"><strong>* SAP VIM Cost moat note:</strong> sticker price is bundled with SAP licensing (apparent VS), but ABAP-consultant TCO and upgrade pain make real cost moat closer to W. Buyers compare sticker price, so it functions as Strong in the deal moment.</p>
+        <p style="font-size: 12px; color: var(--text-default-caption); font-style: italic; margin-top: var(--scale-200);">Sources: per-competitor profiles compiled May 2026 (research session without live web access — vision statements and current ARR figures should be verified with a 30-min live-web pass before external sharing).</p>
+      </div>
+
+      <h3 style="margin-top: var(--scale-500);">Key cross-cutting reads</h3>
+
+      <div class="card" style="margin-top: var(--scale-200);">
+        <h4 style="margin-top: 0;">1 · Peakflo is our only "all six layers intact" rival in our home market</h4>
+        <p style="font-size: 14px; line-height: 1.6;">Distribution (PSG) is the structurally hardest layer to neutralize and is also the only one with a defined remediation path — apply for PSG Pre-Approved Vendor status. Until that's closed, Peakflo gets a structural ~50% net-pricing advantage in Singapore that no value story bridges below S$2M revenue accounts.</p>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-200);">
+        <h4 style="margin-top: 0;">2 · The cost-moat opening at HighRadius is real and Spectrum-validated</h4>
+        <p style="font-size: 14px; line-height: 1.6;">Every "rejected-by-HighRadius enterprise mid-market" deal is a warm lead by definition. HighRadius's $1.2M+ floor prices out the $500M–$5B-revenue band — exactly Spectrum's profile. The discovery work is finding them (LinkedIn signals, advisor intros, public earnings-call mentions of DSO / cash-app pain), not convincing them.</p>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-200);">
+        <h4 style="margin-top: 0;">3 · SAP VIM is the silent default, not a name on the bid sheet</h4>
+        <p style="font-size: 14px; line-height: 1.6;">In Coca-Cola, Spectrum, Welspun, Hitachi (4 of 4 SAP-shop conversations), the real decision is VIM-displacement, not "Stampli vs Neoflo." The 11-dimension VIM battlecard (Coca-Cola structure: extraction accuracy · first-pass automation · learning loop · tax/GL · email ingest · customization overhead · upgrade pain · expertise availability · country compliance · fraud · AR coverage) is the single highest-leverage sales asset to build now. Without it we lose silently to inertia.</p>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-200);">
+        <h4 style="margin-top: 0;">4 · Vic.ai and Stuut are architectural pacers, not pipeline competitors</h4>
+        <p style="font-size: 14px; line-height: 1.6;">Neither shows up in our deal flow today. But if "autonomous agent + exception review" becomes the buyer frame by 2027, every workflow-centric tool — Neoflo, Stampli, Peakflo, Bill — has the same retrofit problem. The V2 architecture decisions we make this year should not preclude an autonomy-first operating model. This is a planning input more than a battle today.</p>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-200);">
+        <h4 style="margin-top: 0;">5 · The defensible advantage no competitor on this list has</h4>
+        <p style="font-size: 14px; line-height: 1.6;"><strong>Multi-process platform breadth (P2P + O2C + R2R) on shared workflow primitives in a SEA-localized stack.</strong> HighRadius and BlackLine could in theory cross-build given enough time and capital. Peakflo could add R2R if they raise. The window to "first to three modules in SEA" is narrow — that position is worth a forced sequencing decision and is the strongest moat we can compound for.</p>
       </div>
     </section>
 

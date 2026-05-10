@@ -1,7 +1,7 @@
 // Auto-generated from content/*.ts — do not edit
 
 window.STRATEGY_DATA = {
-  "tldr": "**Stay sequenced P2P → O2C → R2R, but ground the bet in what 12+ buyers actually told us, not desk research.** P2P alone is the largest, most contested, fastest-commoditizing segment globally — Hitachi and Spectrum independently confirmed they will not pay for an AP-only product. Our defensible position is **the multi-workflow FinOps platform for SEA mid-market and SAP-shop enterprise (US warm-channel via CPA partners only)**, with engineering delivered from India for cost leverage in those markets. The wedge is P2P invoice processing (Zalora live; 2 more SEA references existential by Q4 2026). The moat in customer language: **one vendor master, one customer master, one audit trail across AP + AR + close — the things every controller manages today across 3–5 disconnected systems**. The real competitive ring isn't BlackLine or Tipalti — they don't show up in these deals. It's **Peakflo** (4-year head start in SEA, PSG-subsidized in Singapore, voice AI for collections), **SAP VIM / ERP-native AP modules** (the actual incumbent in every SAP-shop conversation), **the AI-native US wave** (Brex/Ramp from above, Vic.ai/Stuut as direct attackers, Rillet from below) which is resetting \"automation\" to \"agents,\" and the **ASEAN e-invoicing mandate wave** (MyInvois, PEPPOL/InvoiceNow, e-Faktur) which is forced-buying for our exact target segment over the next 24 months and is the single biggest distribution lever we're under-using.",
+  "tldr": "**The bet, in one line:** We are building the multi-workflow FinOps platform — AP, AR, and close on a single AI-native engine — for SEA mid-market finance teams. We wedge through P2P invoice processing; US SAP-shop enterprise is a warm-channel-only secondary motion. Five claims behind that bet, each with proof and the \"why now\":\n\n**1. Sequencing: P2P → O2C → R2R, not P2P forever.** *Claim:* P2P alone is the largest, most contested, fastest-commoditizing segment globally; the moat lives in running all three on one engine. *Proof:* Hitachi walked because we were AP-only when they wanted cash app; Spectrum rejected a $1.2–1.5M HighRadius quote precisely because they wanted AP+AR+deductions+cash app as a bundle; Anahita Arora framed the multi-process need explicitly. Every documented \"did not buy\" validates the platform thesis. *Why now:* Standalone OCR + workflow-automation tools are commoditizing in real time — Vic.ai is resetting expectations to \"agentic,\" Brex/Ramp is making bill-pay a free interchange-bundled tile from above, Indian OCR vendors price at ₹1.6–4 per invoice from below. Single-product positioning is the structural reason we lose deals.\n\n**2. Target SEA mid-market primarily; US SAP-shop enterprise secondarily, warm-channel only.** *Claim:* SEA is structurally under-served — Peakflo is the only credible multi-process player and they don't have R2R. US is over-served (5–10 viable players per category) but US warm-channel inbound is real for the SAP-shop \"rejected HighRadius\" segment. *Proof:* 12+ documented buyer conversations cluster overwhelmingly in SEA mid-market or US-via-warm-intro (Spectrum via Big-4 alumni, Boomerang via the Rehmann CPA channel) — zero conversions came from cold outbound (Pattern 1 in voice-of-customer). *Why now:* PSG Pre-Approved Vendor status in Singapore is the single biggest distribution lever we are not pulling, and Peakflo gets a structural ~50% pricing advantage in SG until we close it.\n\n**3. The moat is the unified-master story, not the AI itself.** *Claim:* Speak buyer language, not builder language: \"one vendor master, one customer master, one audit trail across AP + AR + close — the things every controller manages today across 3–5 disconnected systems.\" *Proof:* Every \"did not buy\" customer (Hitachi, Spectrum, Anahita) framed the need as multi-process / unified data, not \"better AI.\" HSBC: \"nobody stitches things together end to end\" was the differentiator that resonated, not the AI claim. *Why now:* AI capability is racing to parity across the category — by 2027 every credible vendor has comparable extraction accuracy. The systems-of-record consolidation moat is what survives commoditization of the AI layer.\n\n**4. The competitive ring is Peakflo + SAP VIM + the AI-native wave + e-invoicing mandates — not BlackLine or Tipalti.** *Claim:* The headline players in market reports rarely show up in our actual deals. The ring that matters is geographically and segmentally specific. *Proof:* Across 12+ documented deals, BlackLine showed up zero times; Tipalti showed up only as a reject-quote benchmark. SAP VIM showed up in **4 of 4** SAP-shop conversations (Coca-Cola, Spectrum, Welspun, Hitachi). The AI-native US wave (Vic.ai, Stuut, Brex agentic bill-pay) is reshaping how buyers define \"automation\" mid-evaluation. *Why now:* Without a clear answer to the autonomy framing, we lose buyer momentum at the demo stage; without the SAP VIM 11-dimension battlecard (Coca-Cola structure), we lose silently in every SAP-shop room.\n\n**5. ASEAN e-invoicing is the biggest under-used distribution lever.** *Claim:* MyInvois (Malaysia), InvoiceNow / PEPPOL (Singapore), e-Faktur (Indonesia) are phased mandates landing on our exact target segment over the next 24 months. Compliance is forced; we make it a side-effect of our product. *Proof:* The mid-market $50M–$500M revenue bracket is exactly the cohort being phased in across all three jurisdictions in 2025–2026 per the public mandate calendars (LHDN, IMDA, DGT). *Why now:* Tax-Director-led entry conversations are open today — the urgency does not return at the same intensity once mandates are fully live, because the buying decision has already been forced by the deadline. Capture this window, or compete entirely on price for the 24 months after.\n\n**Existential dependency, 12-month version:** Convert Spectrum + Apparel Group + 1 more SEA enterprise to live customers by Q4 2026. Until then, Zalora-as-only-reference is a deal-killing risk in every new conversation.",
   "marketSizing": {
     "intro": "Three things matter for sizing: how big the global category is, how fast it's growing, and where the dollars actually concentrate.",
     "rows": [
@@ -28,7 +28,7 @@ window.STRATEGY_DATA = {
       }
     ],
     "headline": "**The headline:** P2P is the biggest market but also the most fragmented and most price-pressured. O2C is smaller but has more pricing power per customer (DSO impact → cash → CFO will pay). R2R is enterprise-priced — BlackLine charges $40K–$300K+ ARR for mid-market, which means there's room for a serious mid-market disruptor if you can match capability at 1/3 the price.",
-    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **mid-market: $50M–$500M revenue, 10–50 finance staff, multi-entity, ERP-connected, currently running on Excel + email + ERP + bandaid SaaS**. Within that segment, two geographies look very different. **USA mid-market** is over-served — every category has 5–10 viable players. **Southeast Asia mid-market** is under-served, especially the multi-entity multi-currency multi-jurisdiction reality. **Our addressable opportunity in SEA mid-market is smaller in absolute dollars than the US, but our right to win is dramatically higher.**"
+    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **mid-market: $50M–$500M revenue, 10–50 finance staff, multi-entity, ERP-connected, currently running on Excel + email + ERP + bandaid SaaS**. Within that segment, two geographies look very different.\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2024), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. See \"The gap\" for the full grid with sources.\n\n**Southeast Asia mid-market is under-served at the same vendor-count level.** A SEA mid-market controller has **at most 2–3 viable named vendors per category, and only one (Peakflo) that spans multiple workflows on a single engine** — and Peakflo doesn't have R2R. R2R for SEA mid-market is **structurally empty**: no SEA-native vendor of meaningful scale; BlackLine / FloQast sell via APAC enterprise teams; Sage Intacct close is the do-nothing alternative.\n\n**Our addressable opportunity in SEA mid-market is smaller in absolute dollars than the US, but our right-to-win is dramatically higher** because we're not entering a 9-vendor RFP — we're competing against one credible incumbent and an empty cell on the close side."
   },
   "landscapes": {
     "p2p": {
@@ -577,56 +577,59 @@ window.STRATEGY_DATA = {
     }
   },
   "gap": {
-    "intro": "If you map all the competitors above onto a 2D grid — **Geography (USA / Southeast Asia)** × **Process scope (P2P only / O2C only / R2R only / Multi-process platform)** — the picture becomes clear.",
+    "intro": "If you map all the competitors above onto a 2D grid — **Geography (USA / Southeast Asia)** × **Process scope (P2P only / O2C only / R2R only / Multi-process platform)** — the picture becomes clear. The cells are not subjective: the player counts below come from cross-checking US 10-K filings (AvidXchange, Bill, BlackLine, Workiva, Coupa pre-take-private), funding-round disclosures, and analyst coverage (Gartner MQ Procure-to-Pay 2024, IDC MarketScape AR 2024, Ardent Partners ePayables 2024); SEA-side counts come from each vendor's own materials and DealStreetAsia/TechCrunch coverage through late 2025. Where a vendor is \"borderline\" mid-market or single-customer-anecdote in a region, we've stripped them out — the bar is \"viable, fundable, currently selling at $50M–$500M revenue with multi-entity workflow depth.\"",
     "grid": [
       {
         "geography": "USA mid-market",
         "category": "P2P only",
-        "contents": "Stampli, Bill, Ramp, Medius, Yooz"
+        "contents": "8–10 viable: Stampli, Tipalti, AvidXchange, Vic.ai, Coupa (upper-mid), Bill (lower-mid), Ottimate (vertical), Ramp / Brex Bill Pay (cards-led), Yooz US (borderline)"
       },
       {
         "geography": "USA mid-market",
         "category": "O2C only",
-        "contents": "Versapay, Billtrust, Tesorio, Stuut"
+        "contents": "6–8 viable: Versapay, HighRadius (mid-market SKU since 2023), Billtrust, Esker, Quadient AR, Tesorio, Invoiced, Sidetrade US (smaller)"
       },
       {
         "geography": "USA mid-market",
         "category": "R2R only",
-        "contents": "FloQast, Numeric, Trintech Adra"
+        "contents": "5–7 viable: FloQast, BlackLine (upper-mid SKU), Trintech Adra, Numeric, Vena (close + FP&A), Workiva (heavier), ReconArt (niche)"
       },
       {
         "geography": "USA mid-market",
         "category": "Multi-process platform",
-        "contents": "Sparse. Stampli adding P2P features, Coupa enterprise-only",
+        "contents": "0–1 credible (Sage Intacct comes closest as the ERP, not as a workflow vendor)",
         "highlight": true
       },
       {
         "geography": "Southeast Asia mid-market",
         "category": "P2P only",
-        "contents": "Peakflo, Spenmo, Volopay"
+        "contents": "1 credible (Peakflo); Volopay / Aspire / Spenmo are SMB-skewed cards-led and do not credibly serve multi-entity SEA mid-market AP"
       },
       {
         "geography": "Southeast Asia mid-market",
         "category": "O2C only",
-        "contents": "Peakflo"
+        "contents": "1 credible (Peakflo) + Growfin (Singapore-HQ but US-customer-heavy; partial fit) + Chaser (UK, light SEA presence)"
       },
       {
         "geography": "Southeast Asia mid-market",
         "category": "R2R only",
-        "contents": "Empty.",
+        "contents": "0 SEA-native vendors. FloQast and BlackLine sell into SEA via APAC enterprise teams; Sage Intacct close is the de facto fallback. Structural gap.",
         "highlight": true
       },
       {
         "geography": "Southeast Asia mid-market",
         "category": "Multi-process platform",
-        "contents": "Peakflo (only)",
+        "contents": "1 (Peakflo) — and they do not have R2R",
         "highlight": true
       }
     ],
     "takeaways": [
-      "**Multi-process FinOps platform for SEA mid-market** — Peakflo is the only credible incumbent here, and they don't have R2R. This is the Neoflo opportunity.",
-      "**R2R for SEA mid-market** — essentially unaddressed. BlackLine is too expensive and US/EU-built. FloQast doesn't localize for SEA. AI-native ERPs are a future threat but not present-day competitors.",
-      "**Workflow generality** — every competitor we've listed runs a process-specific data model. Stampli's data model is invoice-centric. HighRadius is AR-centric. BlackLine is GL-centric. **Nobody has a generalized workflow engine that runs P2P, O2C, R2R on shared primitives.** That is exactly Neoflo's platform thesis, and it's what we should defend."
+      "**The vendor-density inversion is the entire memo.** A US mid-market controller has **19–25 viable named vendors** across the three workflows; a SEA mid-market controller has **at most 2–3 per category, and only one (Peakflo) that spans multiple workflows on a single engine** — and even Peakflo doesn't have R2R. The US is over-served and price-compressing (Coupa take-private, AvidXchange take-private, Bill mid-market deceleration); SEA is structurally empty in exactly the bracket we serve.",
+      "**Multi-process FinOps platform for SEA mid-market** — Peakflo is the only credible incumbent, and they don't have R2R. This is the Neoflo opportunity, period.",
+      "**R2R for SEA mid-market is structurally empty.** No SEA-native mid-market close vendor of meaningful scale exists. BlackLine and FloQast sell in via APAC enterprise teams (too heavy / too expensive). Sage Intacct close is the do-nothing alternative. AI-native ERPs (Rillet, Campfire) are a future threat but not present-day competitors.",
+      "**O2C for SEA mid-market is functionally a single-vendor segment.** Peakflo is the only credible play. Growfin is Singapore-HQ but its customer base is US-heavy and skews lower-mid; not a structural alternative for SEA buyers today. Chaser, Sidetrade have light SEA footprint. This is closer to \"uncontested\" than the broader market thinks.",
+      "**Workflow generality is the moat that survives commoditization.** Every competitor above runs a process-specific data model: Stampli is invoice-centric, HighRadius is AR-centric, BlackLine is GL-centric. **Nobody has a generalized workflow engine running P2P, O2C, and R2R on shared primitives.** That is the Neoflo platform thesis, and it's what we should defend.",
+      "**There's a separate competitive frame we shouldn't miss: the Human + AI hybrid cohort.** Yarken, Auditoria, Klippa, Topkey, Aegis (acquired by Teleperformance) — and increasingly the BPO incumbents (Genpact, WNS, Sutherland) layering AI on top — operate the same managed-outcome model we do, but mostly outside the FinOps category. They're not in this gap grid because they cross-cut categories rather than slot into one. Conversation Pattern 4 (\"BPO disruption window is open NOW\") is partly a response to this cohort moving into our space. See \"Human + AI hybrid cohort\" in Part 3 for the deep dive."
     ]
   },
   "recommendation": {
@@ -649,7 +652,7 @@ window.STRATEGY_DATA = {
       }
     ],
     "nonNegotiable": "Every shortcut that hardcodes assumptions about \"this is an AP workflow\" or \"this is an AR-specific data model\" will cost us 3x the time when we expand. **The platform thesis is the moat. Without it, we're just another AP tool with mid-market features.** Stage definitions, role mappings, entity scoping, audit trail, integrations, exception handling — these all stay generic. Domain logic lives at the workflow definition layer, not the engine layer.",
-    "geography": "We should explicitly **deprioritize the US** for the next 18 months as a target market. The math is brutal: we have no US sales motion, no US references, and 5–10 well-funded incumbents per category with 3–7 year head starts. **Cost of customer acquisition in the US would be 5–10x what it costs in Singapore/Indonesia.** If US deals come inbound — take them, but don't let them dictate the roadmap.",
+    "geography": "We **deprioritize the US scale-up segment** for the next 18 months as a strategic-focus call — not a capability call. We could hire in the US; that's not the bottleneck. The bottleneck is the math: we have no US sales motion, no warm references, no network, and 5–10 well-funded incumbents per category with 3–7 year head starts. **Cost of customer acquisition in the US scale-up segment would be 5–10× what it costs in Singapore / Indonesia**, and the 12 months of founder + GTM bandwidth that would consume is the same 12 months we need to lock SEA primary (5+ live SEA customers, R2R MVP shipped, PSG approval). The US **SAP-shop enterprise warm-channel motion** is a separate, secondary target — we keep that open via CPA partners (Rehmann + KPMG-alumni) and Spectrum closure. If US scale-up deals come inbound — take them, but don't let them dictate the roadmap. Reassess in 12 months when SEA primary is de-risked.",
     "futureVision": "The Brex / Ramp / Rillet / Stuut wave tells us where buyer expectations are heading: **\"AI agents do the work, humans review exceptions.\"** Our 2026 roadmap is workflow-first. Our 2027–2028 roadmap should be agent-first — not as a feature, but as the operating model. We don't need to ship that now, but the architecture decisions we make this year should not preclude it."
   },
   "risks": [
@@ -7000,21 +7003,22 @@ window.PERSONAS_DATA = {
     {
       "geography": "US scale-ups (venture-backed tech / SaaS / DTC, $20M–$200M revenue)",
       "decision": "DO NOT TARGET",
-      "marketSize": "Large in absolute count, but commercially blocked",
+      "marketSize": "Large in absolute count, but the strategic case to enter is weak — see reasoning. Hiring in the US is doable; that is not the bottleneck. The bottleneck is the math of CAC, where our differentiation lands, and where 12 months of focus generates the highest expected return.",
       "buyerProfile": "CFO at venture-backed US tech / SaaS / DTC company, already on Brex or Ramp for cards",
       "whyOrWhyNot": [
-        "**Brex and Ramp own this segment via card distribution.** Their bill-pay tile is \"free\" (interchange-bundled). Charging SaaS for AP layer in these accounts is structurally hard.",
-        "**Cold outbound is dead per Pattern 1 + Signal 4.** Direct sales motion in US would require 5–10x our SEA CAC. We have no team, no references, no network.",
-        "**Single-entity, single-currency, US-only** is the simplest workflow scope — exactly where we have least differentiation. Stampli, Bill, Vic.ai are all stronger.",
-        "**Their workflow is card-led**, not invoice-led. Our P2P workflow story doesn't resonate as the wedge.",
-        "**Vic.ai / Stuut autonomy story is reshaping buyer expectation** in US — we're not category-leading on autonomy yet."
+        "**This is a strategic-focus decision, not a capability one.** We can hire in the US — anyone can. The question is where 12 months of founder + GTM bandwidth produces the highest expected return, and that answer is SEA mid-market by a wide margin (see Geography Decision #1 + the vendor-density inversion in \"The gap\"). Choosing to play here would mean *not* playing in SEA primary at the same intensity.",
+        "**Brex and Ramp own this segment via card distribution.** Their bill-pay tile is \"free\" — interchange-bundled. Charging SaaS for an AP layer in card-led accounts is structurally hard regardless of how many salespeople we hire.",
+        "**Cold outbound is dead in this segment per Pattern 1 + Signal 4** of voice-of-customer. Direct sales motion in US scale-ups would require 5–10× our SEA CAC. Critically, we have no warm-channel, no references, and no network here — the *cost of building those* is the real entry barrier, not the headcount itself.",
+        "**Single-entity, single-currency, US-only is the simplest workflow scope** — exactly where Neoflo has the least differentiation. Stampli, Bill, Vic.ai are stronger here. Multi-entity / multi-currency / multi-jurisdiction is the workflow generality we monetize, and US scale-ups don't need it.",
+        "**Their workflow is card-led, not invoice-led.** Our P2P invoice-processing wedge does not resonate as the entry conversation. Buyers in this segment aren't shopping for \"AP automation\" — they're shopping for \"spend management with bill pay attached.\"",
+        "**Vic.ai / Stuut autonomy story is reshaping buyer expectation** in US — we are not category-leading on autonomy yet, and matching that bar is a separate roadmap item we have not committed to before 2027."
       ],
-      "competitiveDynamics": "Brex/Ramp from above (cards), Vic.ai/Stuut from agentic angle, Stampli from mid-market AP positioning. No structural advantage we can play here.",
+      "competitiveDynamics": "Brex / Ramp from above (cards-led), Vic.ai / Stuut from the agentic-autonomy angle, Stampli from mid-market AP communication-first. No structural advantage we can play here that justifies redirecting bandwidth from SEA.",
       "proofPoints": [
         "No documented US scale-up wins",
-        "Pattern 1 — all warm SEA + US enterprise via warm channel"
+        "Pattern 1 — all our wins are warm SEA + US enterprise via warm channel"
       ],
-      "resourceCommitment": "Zero. Decline inbound; refer to Stampli/Bill/Vic.ai if asked."
+      "resourceCommitment": "Zero direct sales motion. Decline outbound effort; refer Stampli / Bill / Vic.ai if a fit-anyway buyer asks. **Reassess this decision in 12 months** if SEA primary is locked (5+ live customers, R2R MVP shipped, PSG approval secured) and we have validated capacity to expand without diluting the SEA motion."
     },
     {
       "geography": "EU mid-market",
