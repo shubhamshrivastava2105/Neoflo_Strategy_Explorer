@@ -1971,6 +1971,652 @@ window.COMPARISONS_DATA = {
           "Cost and time-to-live"
         ],
         "ourCounterPlay": "(1) Treat as an enterprise reference benchmark, not a mid-market battlecard. (2) Where they appear, reuse the VIM-displacement frame on the AR side. (3) Don't chase SAP-locked enterprise AR-only deals."
+      },
+      {
+        "vendor": "Tipalti",
+        "category": "Global mass-payments & AP automation for high-volume, multi-entity teams",
+        "threatLevel": "High",
+        "hq": "Foster City, California, USA",
+        "founded": "2010",
+        "funding": "$270M Series F at $8.3B (Dec 2021); private-market markdowns put implied valuation near ~$3.1B by 2024",
+        "customers": "4,000+ customers; strong in tech, marketplaces, digital media (GoDaddy, Twitch historically)",
+        "pricing": "Platform fee + per-payee/transaction + FX margin; mid-market ARR ~$30K–$150K, scaling with volume",
+        "implementation": "6–14 weeks for core AP + payments; longer with multi-entity ERP",
+        "whereTheyWin": [
+          "Cross-border mass payouts across 196 countries / 120 currencies with tax + KYC built in",
+          "Supplier self-service onboarding and W-8/W-9, 1099/1042 tax-form automation at scale",
+          "Best fit for high payee-count businesses: marketplaces, affiliates, creators, gig payouts",
+          "Mature product, KPMG-validated controls, enterprise-grade security"
+        ],
+        "whereTheyLose": [
+          "Software you still operate — exceptions, coding, matching land back on your team",
+          "AP/payments-centric; thin on O2C/cash application, no unified R2R close",
+          "Separate data per workflow; no single vendor + customer master across the cycle",
+          "Outcome and SLA risk stays with the buyer"
+        ],
+        "howWeBeatThem": "Tipalti is the best-in-class payments rail, but it is still a tool the customer runs. We sell the operation: Neoflo runs P2P end to end against one vendor master and one audit trail, and we own the SLA on cleared invoices and resolved exceptions instead of handing them back. Because we execute the work, every exception we resolve trains the engine (the flywheel), so accuracy compounds where Tipalti's stays flat unless the customer staffs around it. And we close the loop into O2C and R2R that Tipalti structurally does not touch.",
+        "howTheyBeatUs": "On raw global payment reach Tipalti is years ahead — 196 countries, deep FX, payee tax compliance, a battle-tested rail with 4,000+ references. For a company whose core pain is paying thousands of international payees correctly, Tipalti is the proven, de-risked buy; we are a single-reference (Zalora) early-stage bet. If the buyer just wants software they trust and already has people to operate AP, Tipalti is the safer answer.",
+        "typicalDealFrame": "A multi-entity, high-payee-volume company (marketplace, media, e-commerce) automating cross-border AP and payouts — often framed as \"we need a real payments engine,\" where we must reframe from rail to run-the-operation.",
+        "buyerDecisionCriteria": [
+          "Cross-border country/currency coverage and FX",
+          "Payee onboarding + tax compliance at volume",
+          "ERP fit and multi-entity consolidation",
+          "Vendor maturity, security, reference depth",
+          "Headcount still required to operate the tool"
+        ],
+        "ourCounterPlay": "(1) Reframe from \"best payment tool\" to \"lowest fully-loaded cost to clear an invoice,\" including the FTEs Tipalti still needs. (2) Quantify the exception backlog Tipalti leaves on their desk; we own it under SLA. (3) Pull O2C/cash app and R2R into scope so it's operation-vs-module. (4) For genuinely global payouts, position Neoflo as the operating layer on top of rails — partner where we can't match reach. (5) Use the flywheel: our accuracy improves because we run the work."
+      },
+      {
+        "vendor": "Bill (BILL Holdings)",
+        "category": "SMB / lower-mid-market AP+AR distributed through accountants and the BILL Network",
+        "threatLevel": "Medium",
+        "hq": "San Jose, California, USA",
+        "founded": "2006",
+        "funding": "Public (NASDAQ: BILL); FY2025 revenue well over $1B, profitable-scale fintech",
+        "customers": "~494K businesses (FY2025) + a payment network of ~8.3M members; deep CPA channel",
+        "pricing": "Per-user subscription + per-transaction + payment/FX float; SMB ARR low-thousands to low-tens-of-thousands",
+        "implementation": "Days to a few weeks; self-serve / accountant-led",
+        "whereTheyWin": [
+          "Unmatched SMB distribution via CPA firms and the BILL Network effect",
+          "Fast, cheap, self-serve onboarding",
+          "Combined AP + AR + spend (Divvy) in one familiar product",
+          "Trusted public brand with huge payment volume"
+        ],
+        "whereTheyLose": [
+          "Built for SMB simplicity; thin on multi-entity and 3-way-match depth",
+          "Self-serve software — the customer still does the AP work",
+          "No R2R ownership, limited true exception automation",
+          "Data fragments across AP, AR, and Divvy, not one master"
+        ],
+        "howWeBeatThem": "Bill wins the small end by being cheap, fast, and everywhere through accountants, but it is self-serve software for businesses simple enough to run it themselves. We target the mid-market where volume, multiple entities, and messy matching break that model — and instead of handing the work back, we run it under SLA, on one vendor and customer master. As complexity rises, Bill's buyer outgrows the tool and re-hires AP staff; that inflection is our entry point.",
+        "howTheyBeatUs": "For a smaller or simpler org, Bill is faster, far cheaper, public-company-backed, and recommended by the customer's own accountant — a trust channel we have no answer to at seed stage. Many businesses simply lack the complexity to justify a managed-service engagement. If the need is light-touch AP/AR they run themselves, Bill beats us on price, speed, and credibility.",
+        "typicalDealFrame": "A growing company on Bill (often via its accountant) hits a complexity ceiling — more entities, higher volume, harder matching, a stretched AP team. A graduation story from self-serve tool to run-for-me operation.",
+        "buyerDecisionCriteria": [
+          "Price and speed of onboarding",
+          "Accountant/advisor recommendation",
+          "How much the team can operate itself",
+          "Multi-entity and matching complexity",
+          "Unified AP+AR data vs separate modules"
+        ],
+        "ourCounterPlay": "(1) Don't fight Bill at the small end; let it be the on-ramp and target the graduation moment. (2) Lead managed-service: \"you've outgrown DIY, we run it under SLA.\" (3) Show the unified vendor+customer master vs Bill's split AP/AR/Divvy data. (4) Quantify AP FTEs re-hired as volume scales; replace that cost with our outcome model. (5) Position Neoflo as augmenting, not replacing, the advisor relationship."
+      },
+      {
+        "vendor": "Coupa",
+        "category": "Enterprise source-to-pay & business spend management suite",
+        "threatLevel": "Medium",
+        "hq": "San Mateo, California, USA",
+        "founded": "2006",
+        "funding": "Taken private by Thoma Bravo for ~$8B (closed Feb 2023), minority from ADIA",
+        "customers": "Large enterprise across Global 2000; $6T+ cumulative community spend data",
+        "pricing": "Enterprise suite licensing; six- to seven-figure ARR, often $250K–$1M+ for full S2P",
+        "implementation": "6–18+ months for full S2P; heavy change-management and SI involvement",
+        "whereTheyWin": [
+          "Broad source-to-pay: sourcing, procurement, AP, contracts, supply-chain spend",
+          "Community spend benchmarking from trillions in aggregated data",
+          "Strong for large enterprises standardizing global spend governance",
+          "Analyst-leader position and deep SI ecosystem"
+        ],
+        "whereTheyLose": [
+          "Enterprise-heavy: slow, expensive, over-scoped for mid-market",
+          "A platform to configure and operate, not an outcome delivered",
+          "AP is one module in a sourcing-led suite; little O2C",
+          "Long, services-intensive implementations with real failure risk"
+        ],
+        "howWeBeatThem": "Coupa is built for the enterprise that wants to govern spend org-wide and has the budget, SIs, and team to run a multi-quarter S2P program — the opposite of our buyer. We serve the US mid-market that needs the work done, not another platform to staff: P2P + cash application as a managed operation in weeks with an SLA. We also unify P2P and O2C on one data layer, while Coupa is sourcing-led with AP as a module and little O2C story.",
+        "howTheyBeatUs": "For a true enterprise, Coupa offers breadth we can't touch — strategic sourcing, contract lifecycle, supplier risk, spend analytics across trillions of benchmarked dollars, with Thoma Bravo scale and a deep partner ecosystem. If the priority is enterprise-wide spend control and procurement strategy, Coupa is the category leader and we're out of our weight class.",
+        "typicalDealFrame": "Larger / upmarket deals where a procurement or finance leader wants enterprise spend governance. We more often meet Coupa when a mid-market buyer is being oversold an enterprise S2P suite they can't realistically implement.",
+        "buyerDecisionCriteria": [
+          "Source-to-pay breadth and procurement-strategy fit",
+          "Spend analytics and benchmarking value",
+          "Implementation time, cost, internal capacity",
+          "Enterprise scale / global standardization",
+          "Platform to operate vs work delivered"
+        ],
+        "ourCounterPlay": "(1) Disqualify on scope: full Coupa S2P is overbuilt and over-timed for mid-market. (2) Reframe from \"spend governance platform\" to \"invoices cleared and cash applied, done for you.\" (3) Contrast weeks-to-value managed service vs 6–18 month S2P programs. (4) Pull O2C/cash app into the comparison where Coupa is weak. (5) Where procurement strategy genuinely matters, concede sourcing and win the operational P2P+O2C layer."
+      },
+      {
+        "vendor": "Basware",
+        "category": "Enterprise e-invoicing, AP automation & networked procure-to-pay",
+        "threatLevel": "Medium",
+        "hq": "Espoo, Finland",
+        "founded": "1985",
+        "funding": "Owned by Accel-KKR (with Long Path, Briarwood) since 2022 (~€620M take-private; delisted from Nasdaq Helsinki)",
+        "customers": "~6,500+ businesses in 60+ countries; large e-invoicing network handling 170M+ invoices/year",
+        "pricing": "Enterprise subscription + network/transaction fees; ARR ~$150K–$500K+",
+        "implementation": "6–15+ months for enterprise AP/P2P + e-invoicing compliance rollouts",
+        "whereTheyWin": [
+          "Deep e-invoicing and global tax/compliance (mandates, PEPPOL, country rules)",
+          "Large open AP/invoicing network with high throughput",
+          "Strong for multinationals with complex compliance footprints",
+          "Long track record and AP-automation depth"
+        ],
+        "whereTheyLose": [
+          "Enterprise-oriented; slow and heavy for US mid-market",
+          "Software to operate; exceptions and matching stay with the customer",
+          "AP/e-invoicing focused; limited O2C and R2R breadth",
+          "Less US brand presence than Tipalti/Bill/Coupa"
+        ],
+        "howWeBeatThem": "Basware is genuinely strong at enterprise e-invoicing and compliance, but it is a platform enterprises configure and run with long rollouts — a poor fit for US mid-market that just wants the work done. We deliver P2P + cash application as an SLA-backed managed service in weeks, owning exceptions instead of returning them, and unify P2P + O2C on one master where Basware is AP/invoicing-centric.",
+        "howTheyBeatUs": "For a multinational drowning in e-invoicing mandates and cross-border tax compliance, Basware has decades of depth, a large network, and PE backing we can't rival, plus thousands of enterprise references against our one. If the defining problem is global compliant e-invoicing at enterprise scale, Basware is the specialist and we're too early and too mid-market-focused to be credible there.",
+        "typicalDealFrame": "Enterprise / multinational AP modernization and e-invoicing-compliance deals. We meet Basware mainly when a US-centric mid-market buyer weighs a heavyweight enterprise AP platform that's more than they need to operate.",
+        "buyerDecisionCriteria": [
+          "E-invoicing compliance and mandate readiness",
+          "Network reach and invoice-volume scalability",
+          "Implementation timeline and operating burden",
+          "Enterprise/multinational fit vs mid-market simplicity",
+          "Breadth beyond AP into O2C and close"
+        ],
+        "ourCounterPlay": "(1) Qualify on geography/size: Basware shines in EU/multinational enterprise — press US mid-market fit. (2) Reframe from e-invoicing platform to \"P2P + cash app operated for you under SLA.\" (3) Contrast weeks-to-value vs multi-quarter rollouts. (4) Expand into O2C and the unified data layer where Basware is thin. (5) Where e-invoicing compliance is the real driver, concede that lane and compete on operational execution."
+      },
+      {
+        "vendor": "Versapay",
+        "category": "Collaborative AR (shared buyer/seller portal) + integrated B2B payments",
+        "threatLevel": "High",
+        "hq": "Toronto, Canada / Atlanta, USA",
+        "founded": "2006",
+        "funding": "Private; taken private by Great Hill Partners (2020), with Ten Coves Capital; ~$42M revenue, ~47K customers reported (2024)",
+        "customers": "~47,000 businesses; strong in real estate, distribution, manufacturing (Regency Centers, Boston Properties)",
+        "pricing": "Subscription + payment processing take-rate; platform ~$20K–$100K+/yr, payments monetization on top",
+        "implementation": "2–4 months; ERP-integrated (NetSuite, Sage Intacct, Dynamics)",
+        "whereTheyWin": [
+          "Buyer-facing collaboration portal that actually reduces disputes",
+          "Deep ERP integrations and proven scale (tens of thousands of customers)",
+          "Embedded payments make ROI tangible to CFOs",
+          "Mature cash application and dispute workflows"
+        ],
+        "whereTheyLose": [
+          "Tool, not a managed service — the customer still staffs AR",
+          "AR-only; no P2P, no R2R, no unified masters",
+          "Portal value depends on the buyer logging in (friction)",
+          "Heavier, slower deployments vs AI-native upstarts"
+        ],
+        "howWeBeatThem": "Versapay sells software your AR team operates; we sell the outcome — AI plus humans run cash application and collections for you under an SLA. Their value is concentrated in one workflow (AR + payments); ours is one engine spanning P2P and O2C on a single vendor and customer master with one audit trail, so finance leaders consolidate vendors. We're also faster to value and don't require the buyer to adopt a portal.",
+        "howTheyBeatUs": "Honestly, in pure O2C today they are far deeper than us — 18+ years of cash-application logic, a battle-tested portal, embedded payments with clear ROI, and thousands of live mid-market references. Our O2C is still being built and Zalora is our only flagship; a payments-savvy CFO who wants proven AR + a payments rail now will see Versapay as the safer choice.",
+        "typicalDealFrame": "Mid-market CFO/Controller wanting to automate AR, cut DSO, and monetize payments through a buyer portal alongside an existing ERP — framed as AR automation + payments ROI.",
+        "buyerDecisionCriteria": [
+          "DSO reduction and cash-app accuracy",
+          "Quality of the buyer-facing payment experience",
+          "ERP integration depth",
+          "Payment economics and TCO",
+          "Reference density at their size/vertical"
+        ],
+        "ourCounterPlay": "(1) Reframe from \"AR tool\" to \"AR operation\" — we staff and run it. (2) Sell multi-process consolidation (P2P+O2C, one master, one audit trail) a single-workflow vendor can't match. (3) Concede AR feature depth, pivot to outcome + SLA + speed-to-value + the exception flywheel. (4) Attack portal-adoption friction — our model doesn't depend on the buyer logging in."
+      },
+      {
+        "vendor": "Billtrust",
+        "category": "Mid-market/enterprise AR automation + supplier payments network",
+        "threatLevel": "High",
+        "hq": "Lawrenceville, New Jersey, USA",
+        "founded": "2001",
+        "funding": "Taken private by EQT at ~$1.7B ($9.50/share), announced Sep 2022, closed Q1 2023",
+        "customers": "Thousands of mid-market/enterprise customers; large Business Payments Network; strong in distribution, manufacturing, building products",
+        "pricing": "Modular suite + payments take-rate; enterprise contracts typically six figures/yr",
+        "implementation": "Often 3–6+ months given module breadth and network integration",
+        "whereTheyWin": [
+          "Broadest AR suite — credit, invoicing, payments, cash app, collections",
+          "Business Payments Network drives buyer-side straight-through cash app",
+          "Enterprise-grade scale, security, references",
+          "EQT backing gives stability and M&A firepower"
+        ],
+        "whereTheyLose": [
+          "Heavy, slower implementations; enterprise complexity",
+          "Software + services, not a fully managed outcome",
+          "AR-only — no P2P or R2R, no unified data layer",
+          "Legacy architecture vs AI-native challengers"
+        ],
+        "howWeBeatThem": "Billtrust is the incumbent enterprise AR suite — broad, proven, heavy. We win by not being a suite you staff and integrate over six months: we run P2P and O2C as a managed AI+human operation under SLA, on one engine and one data layer. Their breadth is within AR; ours is across the order-to-cash and procure-to-pay lifecycle — a more valuable consolidation for many mid-market CFOs.",
+        "howTheyBeatUs": "Billtrust has two decades of AR depth, a payments network we can't match, EQT capital, and thousands of recognizable references. For a buyer who wants the most complete, lowest-risk enterprise AR platform with a real supplier network today, we look early-stage and AR-shallow — our O2C is still maturing with one flagship.",
+        "typicalDealFrame": "Larger mid-market/enterprise finance org standardizing AR across credit-to-cash, replacing fragmented point tools, wanting a payments network.",
+        "buyerDecisionCriteria": [
+          "Suite breadth across credit-to-cash",
+          "Payments/supplier network + straight-through cash app",
+          "Enterprise security, scale, references",
+          "Implementation risk and TCO",
+          "Vendor stability and roadmap"
+        ],
+        "ourCounterPlay": "(1) Avoid head-to-head on AR suite breadth — reframe to managed outcome vs licensed software. (2) Use deployment speed and SLA delivery against their 3–6 month implementations. (3) Sell cross-workflow consolidation (P2P+O2C) an AR-only suite can't offer. (4) Target mid-market accounts where Billtrust feels heavy/over-scoped."
+      },
+      {
+        "vendor": "Tesorio",
+        "category": "AI cash-flow performance + collections forecasting platform",
+        "threatLevel": "Medium",
+        "hq": "Burlingame, California, USA",
+        "founded": "2015",
+        "funding": "YC-backed; ~$35–38M total raised, largest a $17M Series B (Jun 2022); Madrona, First Round, Floodgate",
+        "customers": "Mid-market to enterprise; Slack, Box, Twilio, Veeva, Domo; $20B+ invoices managed annually",
+        "pricing": "SaaS subscription, seat/volume based; mid-market ~$20K–$80K/yr",
+        "implementation": "4–8 weeks; ERP/CRM connectors (NetSuite, Salesforce)",
+        "whereTheyWin": [
+          "Best-in-class cash-flow forecasting and CFO-level visibility",
+          "Strong collections workflow and AR analytics",
+          "Recognizable tech-company logo base",
+          "Lighter, faster deployment than legacy suites"
+        ],
+        "whereTheyLose": [
+          "Software for the team to operate, not a managed service",
+          "AR/forecasting focus; no P2P, R2R, or unified masters",
+          "Smaller scale and slower funding cadence than newer AI-natives",
+          "Less of a payments/network play than Versapay/Billtrust"
+        ],
+        "howWeBeatThem": "Tesorio is excellent at predicting cash and helping your team collect — but your team still does the work. We do the work: AI plus humans run collections and cash application under SLA, spanning P2P as well as O2C on one data layer. Their forecasting is a feature inside our broader managed operation, and our exception flywheel improves the model because we actually run the process end to end.",
+        "howTheyBeatUs": "In cash-flow forecasting and AR analytics Tesorio is genuinely ahead of where our O2C is today, with marquee tech logos and years of refinement. A finance team that mainly wants predictive cash visibility plus a solid collections tool — and is happy to operate it — will find Tesorio more proven and lower-risk.",
+        "typicalDealFrame": "VP Finance/Treasury at a growth or mid-market tech company wanting reliable cash forecasting and tighter collections — framed as cash visibility + collections efficiency.",
+        "buyerDecisionCriteria": [
+          "Forecast accuracy and cash visibility",
+          "Collections effectiveness and DSO impact",
+          "ERP/CRM integration",
+          "Time-to-value",
+          "Logo/reference credibility"
+        ],
+        "ourCounterPlay": "(1) Concede forecasting depth; reframe to \"who actually does the collecting\" — us (managed) vs the buyer (DIY tool). (2) Bundle forecasting as one output of a broader managed P2P+O2C operation. (3) Lead with SLA outcomes and the exception flywheel a pure analytics tool can't replicate. (4) Position multi-process consolidation vs their single-lane scope."
+      },
+      {
+        "vendor": "Sidetrade",
+        "category": "AI-native O2C platform with autonomous cash-collection agent (Aimie)",
+        "threatLevel": "High",
+        "hq": "Paris, France / London, UK",
+        "founded": "2000",
+        "funding": "Public — Euronext Growth (ALBFR.PA); profitable; ~14% constant-currency revenue growth (2025); Euronext Tech Leaders 2025",
+        "customers": "Enterprises in 85 countries; ~450 employees; Aimie data lake on ~$8T B2B transactions (~285M invoices / ~$1.7T captured in 2025)",
+        "pricing": "Enterprise SaaS, volume/module based; typically six figures/yr",
+        "implementation": "Several months for enterprise; Aimie agent rolling out across large accounts",
+        "whereTheyWin": [
+          "Massive proprietary data lake (~$8T) powering agentic AI collections — a real data moat",
+          "Genuinely AI-native O2C roadmap (Aimie autonomous collection agent)",
+          "Public, profitable, enterprise-credible at global scale",
+          "Deep O2C breadth: collections, cash app, disputes, credit, analytics"
+        ],
+        "whereTheyLose": [
+          "Enterprise/EMEA orientation; less mid-market US density",
+          "Software platform, not a done-for-you operation",
+          "O2C-only — no P2P or R2R on the same engine",
+          "Longer enterprise sales and implementation cycles"
+        ],
+        "howWeBeatThem": "Sidetrade is the most data-advantaged O2C player here and we should respect that. We don't out-feature their data lake; we win on model and scope. They sell an AI platform the enterprise still operates; we sell an AI+human managed operation under SLA, spanning P2P as well as O2C on one master. For a US mid-market buyer, Sidetrade feels enterprise-heavy and EMEA-centric while we're right-sized, faster, and we actually run the work — so our flywheel learns from execution, not just observed data.",
+        "howTheyBeatUs": "Sidetrade has an $8T transactional data moat, a shipped autonomous collections agent, public-company stability, and global enterprise references — our O2C is early and single-flagship by comparison. On pure AR/O2C AI depth and proof, an enterprise or data-driven buyer will reasonably conclude Sidetrade is years ahead, and their data advantage compounds.",
+        "typicalDealFrame": "Larger enterprise (often EMEA/global) standardizing O2C with AI-driven collections at scale — framed as AI-native O2C transformation backed by a data lake.",
+        "buyerDecisionCriteria": [
+          "AI/agent capability and the data advantage",
+          "O2C breadth and enterprise scalability",
+          "Proven cash-collection efficiency gains",
+          "Global/multi-entity support",
+          "Vendor stability (public, profitable)"
+        ],
+        "ourCounterPlay": "(1) Don't fight the data lake — reframe to execution: we run the work and learn from resolving exceptions, not just observing data. (2) Sell managed outcome + SLA vs an enterprise platform the buyer must staff. (3) Position US mid-market right-sizing and speed vs their enterprise/EMEA heaviness. (4) Win on cross-workflow scope (P2P+O2C, one master) a pure O2C vendor can't match."
+      },
+      {
+        "vendor": "Stuut",
+        "category": "AI-native accounts receivable / collections automation, ultra-fast go-live",
+        "threatLevel": "High",
+        "hq": "New York, USA",
+        "founded": "2023",
+        "funding": "~$29.5M Series A led by Andreessen Horowitz (Nov 2025) after a ~$5.9M seed; a16z, Khosla, Activant, 1984 Ventures",
+        "customers": "Early but fast-growing US logos; CharterUp cited live in 2 days, $3.4M collected, ~20% collections lift",
+        "pricing": "SaaS subscription, volume/seat based; early-stage, undisclosed (assume low-mid five figures/yr)",
+        "implementation": "Very fast — 3–4 days typical go-live",
+        "whereTheyWin": [
+          "Blazing-fast deployment (days) with strong early collection-lift proof",
+          "Modern AI-native product and UX",
+          "Top-tier US VC backing (a16z) and momentum",
+          "Sharp single-workflow focus = clean, fast ROI story"
+        ],
+        "whereTheyLose": [
+          "Very young; thin reference base and limited scale",
+          "AR-only — no P2P, R2R, or unified masters",
+          "Self-serve software, not an SLA-backed operation",
+          "Unproven durability and enterprise robustness"
+        ],
+        "howWeBeatThem": "Stuut is our closest stylistic competitor on speed and AI-native posture, so we can't win on \"we're modern and fast\" — they are too. We win on model and scope: they ship a fast AR tool the customer operates; we deliver a managed AI+human operation under SLA across P2P and O2C on one data layer. Their flywheel is product telemetry; ours is actually running the work — training the AI on resolved exceptions across workflows. For a buyer who wants the outcome delivered rather than another tool to run, we fit better even with a younger AR feature set.",
+        "howTheyBeatUs": "Stuut is genuinely AI-native, deploys in days, has a16z money and crisp early ROI in pure AR — arguably ahead of our O2C on AR-specific polish and speed-to-value. A buyer who wants a fast, modern, self-serve AR tool and doesn't value managed delivery or multi-process scope may simply prefer Stuut, and they can iterate fast.",
+        "typicalDealFrame": "A fast-growing US company (often PE-backed or scaling ops) wanting modern AR automation live in days with quick collection lift — framed as rip-and-replace of manual/legacy AR.",
+        "buyerDecisionCriteria": [
+          "Speed to go-live",
+          "Demonstrated collection lift / DSO impact",
+          "Product modernity and ease of use",
+          "Integration simplicity",
+          "Cost vs proven ROI"
+        ],
+        "ourCounterPlay": "(1) Match on speed/modernity, then separate on model — managed operation + SLA vs self-serve tool. (2) Sell cross-workflow scope (P2P+O2C) a single-product startup can't offer. (3) Use the execution-driven exception flywheel as a durable moat vs their product telemetry. (4) Where a buyer wants done-for-you, lead hard with outcome-as-a-service."
+      },
+      {
+        "vendor": "Upflow",
+        "category": "Collections-first AR / \"financial relationship management\" + emerging B2B payments",
+        "threatLevel": "Medium",
+        "hq": "Paris, France / New York, USA",
+        "founded": "2018",
+        "funding": "YC-backed; ~$23M total raised, incl. a $5M round (Apr 2024) atop a $15M Series A; Lorimer, YC, Hexa, Hedosophia",
+        "customers": "Hundreds of mid-market B2B companies; ~$200M+ processed monthly; SaaS, cybersecurity, HR tech, staffing",
+        "pricing": "SaaS subscription tiered by volume/users; ~$10K–$50K/yr + emerging payments economics",
+        "implementation": "Light — weeks; connectors to NetSuite, QuickBooks, Stripe",
+        "whereTheyWin": [
+          "Clean, collections-focused workflow with a finance-CRM angle",
+          "Fast, light deployment and good UX",
+          "Expanding into B2B payments to deepen value",
+          "Solid mid-market SaaS/services traction across US + EU"
+        ],
+        "whereTheyLose": [
+          "Tool the AR team operates, not a managed service",
+          "AR/collections focus; no P2P, R2R, or unified masters",
+          "Smaller scale and lighter funding than enterprise or a16z-class players",
+          "Feature depth narrower than full O2C suites"
+        ],
+        "howWeBeatThem": "Upflow is a well-built collections tool with a finance-CRM angle, but it's still software your team drives. We win by delivering the collections outcome ourselves — AI plus humans under SLA — and by spanning P2P and O2C on one engine and one set of masters where Upflow is single-lane AR. Our exception flywheel learns from running the work across workflows; their improvement is bounded to an AR tool the customer operates.",
+        "howTheyBeatUs": "Upflow has hundreds of live mid-market references, a polished collections product, real payment throughput, and a growing payments motion — meaningfully more proof in pure AR than our still-building O2C. A buyer who just wants a clean, affordable, fast-to-deploy collections tool they run themselves will see Upflow as proven and low-risk.",
+        "typicalDealFrame": "Mid-market B2B (often SaaS/services) finance team wanting structured, data-driven collections and cleaner cash visibility, fast to deploy — framed as collections efficiency + finance CRM.",
+        "buyerDecisionCriteria": [
+          "Collections workflow quality and DSO impact",
+          "Speed and ease of deployment",
+          "Integration with ERP/billing/payment stack",
+          "Price-to-value at mid-market budgets",
+          "Reference fit by vertical"
+        ],
+        "ourCounterPlay": "(1) Reframe from \"collections tool\" to \"collections operation we run for you\" under SLA. (2) Sell P2P+O2C consolidation vs their AR-only scope. (3) Lead with outcome + speed-to-value + the execution flywheel. (4) Target buyers who lack the headcount to operate a tool and want done-for-you delivery."
+      },
+      {
+        "vendor": "Tabs",
+        "category": "AI-native contract-to-cash platform (billing, collections, rev rec, reporting)",
+        "threatLevel": "High",
+        "hq": "New York, USA",
+        "founded": "2023",
+        "funding": "$55M Series B led by Lightspeed (Sep 2025), with General Catalyst, Primary, WiL; ~$91M total raised",
+        "customers": "200+ customers (Cursor, Statsig); ~$500M+ annual invoice volume automated; ~5x ARR growth",
+        "pricing": "SaaS subscription, usage/volume based; modern mid-market+ pricing (undisclosed)",
+        "implementation": "Fast for a suite — weeks; AI extracts terms from contracts to drive billing",
+        "whereTheyWin": [
+          "AI-native across the full contract-to-cash lifecycle (billing + rev rec + collections + reporting)",
+          "Contract-intelligence that auto-derives billing terms — strong for complex/usage pricing",
+          "Heavy funding ($91M) and momentum with hot tech logos",
+          "Modern product and fast deployment vs legacy suites"
+        ],
+        "whereTheyLose": [
+          "Young; scaling references and enterprise hardening in progress",
+          "Contract-to-cash (O2C) focus; no P2P, R2R, or unified vendor master",
+          "Software platform, not an SLA-backed managed operation",
+          "Best fit skews to complex-contract SaaS, less to broad mid-market AP/AR"
+        ],
+        "howWeBeatThem": "Tabs is the most ambitious AI-native O2C player here and genuinely strong on contract-to-cash — so honestly, in billing/rev-rec depth they're ahead of us today. We win on model and scope. They sell an AI platform the finance team operates within contract-to-cash; we sell a managed AI+human operation under SLA spanning P2P and O2C on one engine, one vendor master, one customer master, one audit trail. Our flywheel comes from running the work end to end across workflows — the consolidation and done-for-you delivery a contract-to-cash product structurally isn't.",
+        "howTheyBeatUs": "Tabs has $91M in the bank, 200+ customers, marquee logos, 5x ARR growth, and real AI-native contract-to-cash depth our O2C can't yet match. For a complex-contract SaaS CFO who wants the best AI billing-and-collections platform now, Tabs is more proven, better funded, and deeper in the exact workflow they care about.",
+        "typicalDealFrame": "Growth/mid-market SaaS or usage-billing company automating messy contract-to-cash (billing, rev rec, collections) with AI — framed as an AI-native finance platform replacing manual billing ops.",
+        "buyerDecisionCriteria": [
+          "AI billing/contract-intelligence accuracy for complex terms",
+          "Breadth across billing + rev rec + collections + reporting",
+          "Speed to value and product modernity",
+          "Logo credibility and funding/stability",
+          "Integration with CRM/ERP/billing stack"
+        ],
+        "ourCounterPlay": "(1) Concede contract-to-cash depth; reframe to managed delivery vs a platform the buyer staffs. (2) Sell multi-process consolidation (P2P+O2C, one master) beyond their O2C lane. (3) Lead with SLA-backed outcome-as-a-service and the execution-driven flywheel. (4) Target buyers who want the work done for them and value AP+AR consolidation, not just best-in-class billing."
+      },
+      {
+        "vendor": "Kolleno",
+        "category": "AI order-to-cash agents for credit control & collections (SME/mid-market)",
+        "threatLevel": "Medium",
+        "hq": "London, UK",
+        "founded": "2020",
+        "funding": "~£4M / $5.4M seed (Mar 2022) led by Eurazeo and Stride.VC, with Allianz Trade, HubSpot, angels",
+        "customers": "SME/mid-market across UK, EU, US, Canada, South Africa; 170,000+ invoices processed since launch",
+        "pricing": "SaaS subscription tiered by volume/users; SME-friendly ~$5K–$30K/yr",
+        "implementation": "Light — days to weeks; connectors to common accounting/ERP systems",
+        "whereTheyWin": [
+          "AI-agent O2C narrative (chase, reconcile, monitor risk) at SME-friendly pricing",
+          "Light, fast deployment and accessible UX",
+          "Multi-geography traction for an early-stage player",
+          "Credit/risk angle via the Allianz Trade relationship"
+        ],
+        "whereTheyLose": [
+          "Small and early; modest funding and reference scale",
+          "AR/collections focus; no P2P, R2R, or unified masters",
+          "Self-serve software, not an SLA-backed operation",
+          "UK/EU-centric; lighter US mid-market presence"
+        ],
+        "howWeBeatThem": "Kolleno is an affordable, fast AI-agent collections tool aimed largely at SMEs, but it remains software the customer operates within AR. We win by delivering the outcome — AI plus humans running collections and cash application under SLA — and by spanning P2P and O2C on one data layer rather than a single AR lane. For a US mid-market buyer wanting done-for-you delivery and consolidation, we're a stronger proposition than a self-serve SME tool.",
+        "howTheyBeatUs": "On pure AR/collections automation Kolleno has shipped since 2020 with real invoice throughput across several geographies and SME-friendly pricing — more AR proof than our still-building O2C. A small or budget-conscious buyer who just wants an inexpensive, fast AI collections tool they run themselves may reasonably pick Kolleno today.",
+        "typicalDealFrame": "SME or smaller mid-market finance team wanting affordable, automated credit control and collections with an AI-agent feel — framed as low-cost, fast AR automation.",
+        "buyerDecisionCriteria": [
+          "Price-to-value at SME/mid-market budgets",
+          "Collections/credit-control effectiveness and DSO impact",
+          "Speed and ease of deployment",
+          "Accounting/ERP integration breadth",
+          "Credit-risk capabilities"
+        ],
+        "ourCounterPlay": "(1) Reframe from cheap self-serve AR tool to managed operation + SLA. (2) Sell P2P+O2C consolidation and unified masters vs their AR-only scope. (3) Target US mid-market where we're right-sized and they're lighter. (4) Lead with done-for-you delivery and the execution flywheel for buyers without the headcount to run a tool."
+      },
+      {
+        "vendor": "BlackLine",
+        "category": "Enterprise + mid-market financial close, reconciliation & R2R platform (the category incumbent)",
+        "threatLevel": "High",
+        "hq": "Woodland Hills, California, USA",
+        "founded": "2001",
+        "funding": "Public (NASDAQ: BL); ~$685M ARR, ~7% YoY revenue growth (FY2025)",
+        "customers": "~4,394 customers (Dec 2025); net revenue retention ~105%; Fortune 500 and global enterprise",
+        "pricing": "Annual subscription, per-module + per-user; mid-market ~$50K–$150K/yr, enterprise $250K–$1M+/yr",
+        "implementation": "3–9 months via BlackLine or SIs; enterprise multi-entity 9–18 months",
+        "whereTheyWin": [
+          "Deep, audit-proven recs and close at enterprise scale",
+          "SAP Solex reseller distribution into the SAP base",
+          "Massive partner/SI ecosystem and analyst-leader credibility",
+          "Breadth: recs, close tasks, intercompany, journals, GRC"
+        ],
+        "whereTheyLose": [
+          "Tool, not done-for-you outcome — the customer still staffs the work",
+          "Heavy, slow, expensive implementations for mid-market",
+          "Bolt-on around the ERP; not a unified AP+AR+close data layer",
+          "AI retrofitted onto legacy architecture, not AI-native"
+        ],
+        "howWeBeatThem": "BlackLine sells software your team still has to run; we sell the finished outcome — SLA-backed managed delivery where our people plus AI actually close the books, apply the cash, and clear the exceptions. For a US mid-market CFO, BlackLine means buying a platform, a long implementation, and a team to operate it; Neoflo means the work just gets done across P2P, O2C, and R2R on one engine, one vendor master, one customer master, one audit trail. They can't match the cross-workflow data layer or the exception flywheel because they touch only the close.",
+        "howTheyBeatUs": "On close and reconciliation alone, BlackLine is genuinely deeper than us today — two-plus decades of audit-tested controls, enterprise scale, intercompany and GRC depth we haven't built. A large enterprise with a complex multi-entity close, demanding auditors, and an SAP/BlackLine footprint will trust their maturity and ecosystem over a seed-stage vendor whose close is the newest part of the stack.",
+        "typicalDealFrame": "A mid-market or enterprise finance team standardizing close and recs on a proven platform — triggered by audit pressure, an ERP migration, or a slow manual close.",
+        "buyerDecisionCriteria": [
+          "Audit/controls credibility and references",
+          "Reconciliation and close-automation depth",
+          "Fit with existing ERP (especially SAP)",
+          "Total cost incl. implementation and headcount",
+          "Time-to-value and ongoing operating burden"
+        ],
+        "ourCounterPlay": "(1) Reframe from \"close tool\" to \"close done for you\" — sell the SLA outcome, not seats. (2) Bundle close with AP + cash application so the buyer sees one engine and one data layer vs a point tool. (3) Lead with TCO: BlackLine license + SI + internal FTEs vs our all-in managed fee. (4) Target mid-market accounts where BlackLine implementation pain is highest. (5) Concede close depth honestly but win on integrated AP+AR+close and zero operating burden."
+      },
+      {
+        "vendor": "Trintech",
+        "category": "Enterprise (Cadency) and mid-market (Adra) financial close & reconciliation software",
+        "threatLevel": "Medium",
+        "hq": "Plano, Texas, USA",
+        "founded": "1987",
+        "funding": "PE-owned; Summit Partners majority (since 2018, from Vista), Vista residual stake; ~$2B sale exploration reported in 2024",
+        "customers": "Thousands of customers globally; strong in banking, retail, high-volume transaction industries",
+        "pricing": "Annual subscription, per-module + volume; Adra ~$30K–$120K/yr, Cadency $150K–$750K+/yr",
+        "implementation": "Adra: weeks-to-months; Cadency: 6–12+ months for enterprise",
+        "whereTheyWin": [
+          "Two tiers cover mid-market (Adra) and enterprise (Cadency)",
+          "Strong high-volume transaction matching and recs heritage",
+          "Established in banking/retail with demanding reconciliation needs",
+          "Mature controls, journals, intercompany, close governance"
+        ],
+        "whereTheyLose": [
+          "Software only — no managed delivery of the actual work",
+          "Legacy architecture; AI/agentic capabilities trail newer entrants",
+          "Adra-to-Cadency split means migration friction as customers grow",
+          "Close-only scope; no unified AP+AR+close data layer"
+        ],
+        "howWeBeatThem": "Trintech sells a close-and-recs toolset your team operates; we sell the outcome with our people and AI running it under SLA. Their Adra/Cadency split solves their packaging problem, not the customer's — the buyer still owns staffing, exceptions, and integration. Neoflo unifies P2P, O2C, and R2R on one engine with one vendor master, one customer master, one audit trail, so data and the exception flywheel compound across workflows in a way a standalone close vendor structurally can't.",
+        "howTheyBeatUs": "For high-volume reconciliation — bank or card transaction matching at massive scale — Trintech's matching engine and decades of controls maturity are deeper than our newest module. A finance org whose pain is specifically heavy recs, wanting a proven PE-backed vendor with a long reference list, may see Trintech as safer and more battle-tested.",
+        "typicalDealFrame": "A finance team with heavy reconciliation volume or a manual close seeking proven automation — Adra if mid-market, Cadency if enterprise.",
+        "buyerDecisionCriteria": [
+          "Reconciliation/matching depth at volume",
+          "Vendor stability and references",
+          "Fit to mid-market vs enterprise tier",
+          "Implementation effort and time-to-value",
+          "Controls and audit governance"
+        ],
+        "ourCounterPlay": "(1) Position against \"you still run it\" — sell managed close as a service, not a license. (2) Attack the Adra-to-Cadency upgrade cliff: with Neoflo there's no re-platform as you grow. (3) Bundle recs into the full AP+AR+close outcome. (4) Emphasize AI-native + human delivery vs legacy tooling. (5) Be candid on raw matching depth but win on no-headcount, cross-workflow data."
+      },
+      {
+        "vendor": "Numeric",
+        "category": "AI-native close management expanding into a comprehensive finance platform",
+        "threatLevel": "High",
+        "hq": "San Francisco, California, USA",
+        "founded": "2020",
+        "funding": "$51M Series B led by IVP (Nov 2025); ~$89M total; Menlo, Founders Fund, 8VC + angels Marc Huffman (ex-BlackLine CEO), Ron Gill (ex-NetSuite CFO)",
+        "customers": "Fast-growing base of high-growth and pre-IPO companies; strong with venture-backed, tech-forward finance teams",
+        "pricing": "Annual subscription tiered by entity/complexity; ~$20K–$100K+/yr for mid-market",
+        "implementation": "Fast — days to a few weeks",
+        "whereTheyWin": [
+          "Genuinely AI-native architecture (flux analysis, AI recs, agents)",
+          "Fast onboarding vs heavy legacy implementations",
+          "Loved by modern, high-growth and pre-IPO finance teams",
+          "Well-funded with credible ex-BlackLine/NetSuite backing"
+        ],
+        "whereTheyLose": [
+          "Software only — the customer still staffs and runs the close",
+          "Close-centric; expanding outward but no managed delivery",
+          "Younger product; enterprise controls/scale still maturing",
+          "No cross-workflow AP+AR+close data layer or exception flywheel"
+        ],
+        "howWeBeatThem": "Numeric is our closest philosophical competitor on the close — AI-native and beloved — but it's still a tool a finance team must operate. We sell the outcome: our people plus AI actually run the close under SLA. And because Neoflo runs P2P and O2C on the same engine, our close is fed by one vendor master, one customer master, one audit trail, and every exception we resolve trains the AI. Numeric, sitting only at close, can't harvest the upstream AP/AR exception signal that powers our flywheel.",
+        "howTheyBeatUs": "Numeric's close is more mature and battle-tested than our newest module, they're far better capitalized at Series B (~$89M), and their AI-native close has real love among the exact high-growth teams we both court. A buyer who wants best-in-class self-serve AI close software and prefers to keep their own team in the seat will likely pick Numeric, and their momentum lets them encroach on our space faster than we can match their close depth.",
+        "typicalDealFrame": "A high-growth or pre-IPO finance team replacing spreadsheets or a legacy vendor with a modern, fast AI close tool — their own staff operating it.",
+        "buyerDecisionCriteria": [
+          "AI/automation quality and modern UX",
+          "Speed of implementation",
+          "Fit for high-growth/pre-IPO needs",
+          "Keep work in-house vs outsource",
+          "Vendor funding and roadmap momentum"
+        ],
+        "ourCounterPlay": "(1) Draw the tool-vs-operation line sharply — they automate your team's work, we do the work. (2) Sell the AP+AR+close bundle so the buyer gets upstream + close. (3) Lead with the exception flywheel: we resolve real exceptions across workflows. (4) Target buyers who want fewer headcount, not better software for the headcount they keep. (5) Acknowledge their close polish, then win on managed outcome + unified data."
+      },
+      {
+        "vendor": "OneStream",
+        "category": "Unified corporate performance management: close, consolidation & planning",
+        "threatLevel": "Medium",
+        "hq": "Birmingham, Michigan, USA",
+        "founded": "2010",
+        "funding": "IPO Jul 2024 (KKR-backed), taken private by Hg for ~$6.4B (completed Apr 2026); minority General Atlantic, Tidemark",
+        "customers": "~1,500+ enterprise customers; strong in large, complex multi-entity consolidations",
+        "pricing": "Enterprise subscription, platform + module; typically $250K–$1.5M+/yr",
+        "implementation": "Enterprise-grade; typically 6–18 months via SIs",
+        "whereTheyWin": [
+          "Unified close + consolidation + planning on one platform",
+          "Strong in complex, large multi-entity consolidations",
+          "Replaces legacy Hyperion/CPM stacks (clear displacement story)",
+          "Deep-pocketed Hg ownership and enterprise credibility"
+        ],
+        "whereTheyLose": [
+          "Aimed at large enterprise, not US mid-market — heavy and costly",
+          "Software + SI; no managed delivery of the work",
+          "Long, expensive implementations",
+          "CPM/consolidation focus; not an operational AP+AR+close engine"
+        ],
+        "howWeBeatThem": "OneStream and Neoflo barely overlap on the ideal customer: they sell a heavy enterprise CPM platform requiring SIs and a long rollout, while we sell a done-for-you managed operation to US mid-market. Where a buyer weighs both, the pitch is simple — they buy a consolidation platform plus an implementation project plus the staff to run it; we deliver the close, the cash application, and the AP as a finished outcome on one unified engine. They have no cross-workflow operational data layer or exception flywheel because they sit at the consolidation/CPM layer.",
+        "howTheyBeatUs": "For genuine enterprise consolidation — dozens of entities, multi-GAAP, complex eliminations, integrated planning — OneStream is vastly deeper than anything we offer and is the right answer for large, complex organizations. They're far better resourced under Hg with enterprise references we can't touch. If a deal is really about consolidation at scale, we shouldn't be in it; that's their home turf and our R2R is the newest thing we ship.",
+        "typicalDealFrame": "A large enterprise replacing a legacy CPM/Hyperion stack and unifying close, consolidation, and planning on one platform.",
+        "buyerDecisionCriteria": [
+          "Consolidation depth and multi-entity/multi-GAAP support",
+          "Integrated planning + close on one platform",
+          "Enterprise scale and references",
+          "SI ecosystem and implementation capacity",
+          "Long-term vendor stability"
+        ],
+        "ourCounterPlay": "(1) Qualify hard — if it's true enterprise consolidation, walk; if it's mid-market close + ops, engage. (2) Reframe to operation-vs-platform: we run the work, they license a platform you staff. (3) Bundle transactional AP+AR+close OneStream's CPM layer never touches. (4) Win on time-to-value vs their 6–18 month rollouts for mid-market buyers. (5) Position OneStream as overkill (and overcost) for the US mid-market."
+      },
+      {
+        "vendor": "Workiva",
+        "category": "Connected reporting, compliance & disclosure (SEC/SOX/ESG) with close and controls",
+        "threatLevel": "Medium",
+        "hq": "Ames, Iowa, USA",
+        "founded": "2008",
+        "funding": "Public (NYSE: WK); ~22% subscription revenue growth (FY2025); net revenue retention ~113%, gross ~97%",
+        "customers": "6,600+ customers; 85%+ of the Fortune 1,000 (95%+ of Fortune 100); deep in regulated/public companies",
+        "pricing": "Annual subscription, platform + solution; typically $50K–$500K+/yr",
+        "implementation": "Typically 2–6 months per solution; broader rollouts longer",
+        "whereTheyWin": [
+          "Dominant in SEC/SOX/regulatory disclosure and reporting",
+          "Connected data across reporting, controls, and close",
+          "Trusted by the vast majority of large public companies",
+          "Strong audit/assurance and compliance credibility"
+        ],
+        "whereTheyLose": [
+          "Reporting/compliance-led, not a transactional close+recs engine",
+          "Software platform; no managed delivery of the work",
+          "Built for large public companies, less for US mid-market private firms",
+          "Not an AP+AR+close operational data layer"
+        ],
+        "howWeBeatThem": "Workiva owns the reporting and compliance assembly layer for big public companies; we own the operational finance work for US mid-market. Where they touch close, it's in service of reporting and controls, not running recs, applying cash, or clearing AP exceptions — and it's still software a team operates. Neoflo delivers the actual operation across P2P, O2C, and R2R as a managed outcome on one unified data layer, with an exception flywheel a reporting focus can't generate.",
+        "howTheyBeatUs": "For SEC filing, SOX controls, and complex multi-framework disclosure, Workiva is in a different league — nothing we do competes with their connected reporting and compliance depth, and they're trusted by the overwhelming majority of the Fortune 1,000. A pre-IPO or public company whose acute pain is reporting and controls will rightly choose Workiva, and they can extend toward our space from enormous trust and scale.",
+        "typicalDealFrame": "A public or pre-IPO company standardizing SEC/SOX/ESG reporting and controls on a connected platform, often with close and assurance attached.",
+        "buyerDecisionCriteria": [
+          "Disclosure/reporting and SOX controls depth",
+          "Audit and assurance credibility",
+          "Connected data across reporting workflows",
+          "Fit for public/regulated company needs",
+          "Vendor scale and stability"
+        ],
+        "ourCounterPlay": "(1) Segment away from their core — target mid-market private firms, not regulated public filers. (2) Reframe close as an operation we run, not a reporting artifact you assemble. (3) Bundle transactional AP+AR+close Workiva's reporting layer never performs. (4) Sell managed outcome + headcount savings vs another platform to staff. (5) Concede their disclosure dominance; avoid head-to-heads where reporting is the real need."
+      },
+      {
+        "vendor": "Maxima",
+        "category": "AI-native, agentic financial close & accounting automation platform",
+        "threatLevel": "High",
+        "hq": "San Mateo, California, USA",
+        "founded": "2024",
+        "funding": "$41M across seed + Series A (Nov 2025) from Kleiner Perkins, Redpoint, Audacious; ~$143M post-money; ex-BlackLine execs as advisors (not founders)",
+        "customers": "AI-forward enterprises incl. Scale AI, Rippling, SpotOn, Glean; $255B+ transaction volume across 250M+ records",
+        "pricing": "Annual subscription, usage/agent-based; emerging, deal-specific",
+        "implementation": "Fast — weeks; sits on the existing ERP without re-platforming",
+        "whereTheyWin": [
+          "Agentic AI doing recs, journals, and close prep at high accuracy",
+          "Marquee AI-native logos (Scale AI, Rippling, Glean)",
+          "Sits on top of existing ERPs without re-platforming",
+          "Strong tier-1 VC backing and ex-BlackLine advisory credibility"
+        ],
+        "whereTheyLose": [
+          "Very young (founded 2024); enterprise controls/audit track record thin",
+          "Software/agents — still oversight from the customer's team",
+          "Close/accounting-task focus; no unified AP+AR+close data layer",
+          "No managed-service delivery; you supervise the agents"
+        ],
+        "howWeBeatThem": "Maxima and Neoflo both pair AI with finance work, but Maxima ships agents the customer supervises, while we ship the finished outcome — our people plus AI run the operation under SLA so the buyer supervises nothing. And Maxima sits only at the close/accounting-task layer; Neoflo runs P2P and O2C on the same engine, so our close is fed by one vendor master, one customer master, one audit trail, and our exception flywheel trains on the full transactional flow. We sell \"done,\" they sell \"an agent that helps.\"",
+        "howTheyBeatUs": "Maxima's agentic close looks genuinely strong — real automation at high accuracy over enormous volume — and they've landed exactly the marquee AI-native logos that signal momentum, backed by Kleiner and Redpoint at a $143M valuation far above our seed stage. On pure close/accounting AI depth they're ahead of our newest module, and a buyer comfortable keeping their team in the loop may find Maxima's self-serve agentic model more appealing and better resourced.",
+        "typicalDealFrame": "A tech-forward, AI-native finance team layering agentic automation on its existing ERP to slash close cycle time — staff overseeing the agents.",
+        "buyerDecisionCriteria": [
+          "Agentic AI accuracy and automation breadth",
+          "No re-platforming of the existing ERP",
+          "Speed to value",
+          "Vendor credibility and reference logos",
+          "Comfort keeping work in-house vs outsourcing"
+        ],
+        "ourCounterPlay": "(1) Push the supervise-vs-done line: their agents need your oversight, our managed team needs none. (2) Sell AP+AR+close as one operation vs their close-layer agents. (3) Lead with the cross-workflow flywheel — we train on the full transactional flow. (4) Stress SLA accountability: we own the outcome, not just the tooling. (5) Acknowledge their agentic depth, then win on unified data + zero-oversight delivery."
+      },
+      {
+        "vendor": "FinAlyzer (BeyondSquare)",
+        "category": "Financial consolidation, close & management reporting (India-built, globalizing)",
+        "threatLevel": "Low",
+        "hq": "Bangalore, India",
+        "founded": "2010",
+        "funding": "$4M Series A led by Avant Global Corporation (Sep 2025), staged across issuance + milestone warrants",
+        "customers": "100+ enterprises across 25 industries in 45+ countries; strongest in India, expanding to SEA, Middle East, Europe",
+        "pricing": "Annual subscription, entity/module based; value-priced ~$15K–$80K/yr",
+        "implementation": "A few weeks to a few months depending on entity complexity",
+        "whereTheyWin": [
+          "Cost-effective consolidation + close + reporting in one tool",
+          "Strong fit for multi-entity Indian/APAC/ME group reporting",
+          "Handles multi-GAAP and complex group structures affordably",
+          "Established (since 2010) with a real customer base"
+        ],
+        "whereTheyLose": [
+          "India/APAC-centric; limited US mid-market presence or fit",
+          "Software only — no managed delivery",
+          "Lightly funded ($4M) vs global competitors",
+          "Consolidation/reporting focus; no AP+AR+close operational layer"
+        ],
+        "howWeBeatThem": "FinAlyzer is a capable, value-priced consolidation and reporting tool built for India and broader APAC/ME — not a US mid-market managed operation. In the rare deal where they appear, the contrast is stark: they sell affordable software a team configures for group reporting, while we deliver the actual close, cash application, and AP as an SLA-backed outcome on one unified engine across P2P, O2C, and R2R. Our home market and delivery model both differ from theirs.",
+        "howTheyBeatUs": "For a multi-entity group in India, SEA, or the Middle East that mainly needs affordable financial consolidation and statutory/management reporting, FinAlyzer is a proven, well-priced fit with 15 years of domain focus and multi-GAAP depth we haven't built. A cost-sensitive buyer in those regions — or any buyer whose core need is consolidation reporting rather than running the operation — may reasonably prefer their focused, lower-cost tool.",
+        "typicalDealFrame": "A multi-entity group (often India/APAC/ME) seeking affordable consolidation, close, and management reporting on one platform.",
+        "buyerDecisionCriteria": [
+          "Consolidation and group-reporting depth",
+          "Price/value vs Western incumbents",
+          "Multi-GAAP and multi-entity support",
+          "Regional fit and local support",
+          "Implementation speed"
+        ],
+        "ourCounterPlay": "(1) Compete on market, not features — own US mid-market where they're absent. (2) Reframe from reporting tool to managed operation: we run the work. (3) Bundle transactional AP+AR+close their consolidation layer never touches. (4) Lead with managed delivery + outcome SLA vs self-configured software. (5) Avoid price-only fights in their home regions; differentiate on done-for-you and unified data."
       }
     ]
   },
