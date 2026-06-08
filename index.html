@@ -898,38 +898,49 @@
 
     <section id="how-accounting-works" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Start here · The basics</div>
-      <h2 class="section-title">How accounting works — in 5 minutes.</h2>
-      <p class="lede">Before the workflows, here's the minimal model of how accounting itself works — enough that the rest of this page makes sense even if you've never read a balance sheet. Five ideas: the equation, double-entry, the flow, cash vs accrual, and the three statements.</p>
+      <h2 class="section-title">How accounting works — explained like you're 5.</h2>
+      <p class="lede">No finance background needed. We'll follow one example all the way through — <strong>Mia's lemonade stand</strong> — and build the whole picture in tiny steps. Every new word is explained the moment it appears.</p>
 
-      <div class="grid grid-2" style="margin-top: var(--scale-300);">
-        <div class="card">
-          <h4 style="margin-top: 0;">1 · The one equation everything balances around</h4>
-          <p style="font-size: 14px;"><strong>Assets = Liabilities + Equity.</strong> What the company <em>owns</em> equals what it <em>owes</em> plus what the <em>owners</em> put in / earned. This never breaks — every transaction keeps it balanced.</p>
-          <p style="font-size: 13.5px; margin-bottom: 0;">Five account types: <strong>Assets</strong> (cash, receivables, inventory), <strong>Liabilities</strong> (payables, loans), <strong>Equity</strong> (owner capital + retained earnings), <strong>Revenue</strong> (sales), <strong>Expenses</strong> (costs). Revenue and expenses flow into equity at period end as profit.</p>
-        </div>
-        <div class="card">
-          <h4 style="margin-top: 0;">2 · Double-entry: every transaction hits two sides</h4>
-          <p style="font-size: 14px;">Each transaction is recorded in <strong>at least two accounts</strong> — a <strong>debit</strong> and an equal <strong>credit</strong> — so the books always balance.</p>
-          <p style="font-size: 13.5px; margin-bottom: 0;"><em>Example:</em> you buy $1,000 of inventory on credit → <strong>Inventory (asset) +$1,000</strong> (debit) and <strong>Accounts Payable (liability) +$1,000</strong> (credit). Later you pay the supplier → <strong>Cash −$1,000</strong>, <strong>AP −$1,000</strong>. Always balanced.</p>
-        </div>
-        <div class="card">
-          <h4 style="margin-top: 0;">3 · The flow: transaction → statements</h4>
-          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Transaction</strong> (an invoice, a payment) → recorded as a <strong>journal entry (JE)</strong> → posted to the <strong>general ledger (GL)</strong> (the master list of all accounts) → summarized in a <strong>trial balance</strong> (all account balances, debits = credits) → rolled into the <strong>financial statements</strong>. That last step — turning the ledger into statements — is the <strong>R2R / close</strong> workflow on this page.</p>
-        </div>
-        <div class="card">
-          <h4 style="margin-top: 0;">4 · Cash vs accrual (why timing matters)</h4>
-          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Cash basis:</strong> record revenue/expense when money actually moves. <strong>Accrual basis</strong> (what most companies and GAAP use): record them when they're <em>earned / incurred</em>, regardless of when cash moves. Accrual is why you book a March expense in March even if you pay it in April — and why "accruals" and "cutoff" exist in the close.</p>
-        </div>
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">① The one rule that never breaks</h4>
+        <p style="font-size: 14.5px;"><strong>Tiny version:</strong> everything Mia <em>has</em> came from somewhere — either she borrowed it, or it's really hers.</p>
+        <p style="font-size: 14px;">So: <strong>What you HAVE = what you OWE + what's really YOURS.</strong> Mia's stand is worth $10. $4 she borrowed from her big brother (she owes that). $6 was her own pocket money (that's hers). <strong>10 = 4 + 6.</strong> This stays true forever — if one number changes, another must too.</p>
+        <p style="font-size: 13.5px; color: var(--text-default-caption); margin-bottom: 0;"><strong>Grown-up words:</strong> things you have = <strong>assets</strong> (cash, lemons, the stand). Things you owe = <strong>liabilities</strong>. The part that's really yours = <strong>equity</strong>. So <em>Assets = Liabilities + Equity</em> — the "accounting equation."</p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300);">
-        <h4 style="margin-top: 0;">5 · The three financial statements (the output of it all)</h4>
+        <h4 style="margin-top: 0;">② Every time money moves, TWO things change</h4>
+        <p style="font-size: 14.5px;"><strong>Tiny version:</strong> it's a see-saw. If one side goes up, the other side has to move too, so it stays level.</p>
+        <p style="font-size: 14px;">Mia buys $2 of lemons with cash → <strong>lemons go up $2</strong>, <strong>cash goes down $2</strong>. Two changes, still balanced. Or she takes $2 of cups and promises to pay later → <strong>cups go up $2</strong>, <strong>"I owe the shop" goes up $2</strong>. Always two sides, always equal.</p>
+        <p style="font-size: 13.5px; color: var(--text-default-caption); margin-bottom: 0;"><strong>Grown-up words:</strong> the two sides are a <strong>debit</strong> and a <strong>credit</strong>. You don't need to memorize which is which — just remember every entry has two equal sides, which is why the books always balance. This is called <strong>double-entry</strong>.</p>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">③ How a sale turns into a report card</h4>
+        <p style="font-size: 14.5px;"><strong>Tiny version:</strong> Mia writes down every sale in a notebook, sorts them into piles, checks the math, then makes report cards.</p>
+        <ol style="font-size: 14px; line-height: 1.7; margin-bottom: 0;">
+          <li>She sells a cup — that's a <strong>transaction</strong> (something happened).</li>
+          <li>She writes it in her notebook — a <strong>journal entry</strong>.</li>
+          <li>She sorts every notebook line into piles by type (all the "cash" lines together, all the "lemons" lines together) — the <strong>ledger</strong>.</li>
+          <li>She checks both see-saw sides still match — the <strong>trial balance</strong>.</li>
+          <li>She turns it into report cards — the <strong>financial statements</strong>. <span style="color: var(--text-default-caption);">(This last step is the "close," the <strong>R2R</strong> workflow on this page.)</span></li>
+        </ol>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">④ When do you count it?</h4>
+        <p style="font-size: 14.5px;"><strong>Tiny version:</strong> two ways to count. Count it when the coin lands in your hand — or count it when you did the work, even if the coin comes later.</p>
+        <p style="font-size: 14px; margin-bottom: 0;">Mia gives a neighbor lemonade on Monday but gets paid on Friday. <strong>Cash way:</strong> it counts on Friday (when the coin arrives). <strong>Accrual way:</strong> it counts on Monday (when she did the work). Most real companies use the <strong>accrual</strong> way — that's why "accruals" and "cutoff" exist at month-end: they make sure each thing lands in the right month.</p>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">⑤ The three report cards (what it all adds up to)</h4>
         <div class="grid grid-3" style="margin-top: var(--scale-200);">
-          <div><strong>📈 Income Statement (P&amp;L)</strong><br><span style="font-size: 13px;">Revenue − expenses = profit, <em>over a period</em>. "Did we make money?"</span></div>
-          <div><strong>⚖️ Balance Sheet</strong><br><span style="font-size: 13px;">Assets, liabilities, equity <em>at a point in time</em>. "What do we own and owe?"</span></div>
-          <div><strong>💵 Cash Flow Statement</strong><br><span style="font-size: 13px;">Where cash came from and went, <em>over a period</em>. "Where did the money go?"</span></div>
+          <div><strong>📈 "Did I make money?"</strong><br><span style="font-size: 13px;">The <strong>Income Statement (P&amp;L)</strong>: money in minus money out, over a week or month.</span></div>
+          <div><strong>⚖️ "What do I own and owe?"</strong><br><span style="font-size: 13px;">The <strong>Balance Sheet</strong>: a snapshot of assets, liabilities, and equity <em>right now</em>.</span></div>
+          <div><strong>💵 "Where did my coins go?"</strong><br><span style="font-size: 13px;">The <strong>Cash Flow Statement</strong>: the story of cash coming in and going out.</span></div>
         </div>
-        <p style="font-size: 13.5px; color: var(--text-default-caption); margin-top: var(--scale-200); margin-bottom: 0;">These three are what the month-end <strong>close (R2R)</strong> produces. The <strong>P2P</strong> and <strong>O2C</strong> workflows below are where most of the underlying transactions (bills you owe, money owed to you) actually originate.</p>
+        <p style="font-size: 13.5px; color: var(--text-default-caption); margin-top: var(--scale-200); margin-bottom: 0;">Making these three report cards is the month-end <strong>close (R2R)</strong>. Paying for lemons and cups is <strong>P2P</strong>; collecting from customers is <strong>O2C</strong> — those two create most of the notebook lines in the first place.</p>
       </div>
     </section>
 
@@ -953,120 +964,88 @@
 
     <section id="vat-wht">
       <div class="eyebrow">Reference · Taxes you'll hit</div>
-      <h2 class="section-title">Indirect tax &amp; withholding — the deep version.</h2>
-      <p class="lede">Two taxes run through almost every invoice: <strong>VAT-type taxes</strong> (on the <em>transaction</em> — what is sold) and <strong>withholding taxes</strong> (on the <em>payment</em> — who is paid). Each operates at <strong>two levels</strong>: the <strong>line-item level</strong> (each line of an invoice) and the <strong>entity level</strong> (rolled up across the company for a filing period). Getting both right is most of what tax compliance actually is.</p>
+      <h2 class="section-title">VAT &amp; withholding tax — explained like you're 5.</h2>
+      <p class="lede">Two taxes show up on almost every invoice. One is about the <strong>thing being sold</strong> (VAT). One is about the <strong>person being paid</strong> (withholding tax). We'll explain each with a tiny story first, then the real-world detail — including the two levels every finance team deals with: <strong>per line</strong> on an invoice, and <strong>rolled up for the whole company</strong> each month.</p>
 
-      <div class="grid grid-2" style="margin-top: var(--scale-300);">
-        <div class="card">
-          <h3 style="margin-top: 0;">VAT — in one paragraph</h3>
-          <p>VAT taxes the <strong>value added at each step of a supply chain</strong>. Every business charges tax on what it sells (<strong>output tax</strong>) and reclaims the tax it paid on what it bought (<strong>input tax</strong>), remitting only the <strong>difference</strong>. Because each link pays tax only on the value <em>it</em> added, the tax doesn't pile up — the full burden lands once, on the final consumer. <strong>VAT follows the product.</strong></p>
-        </div>
-        <div class="card">
-          <h3 style="margin-top: 0;">WHT — in one paragraph</h3>
-          <p>WHT is <strong>income tax collected early</strong>. When you pay certain vendors, the law says: don't hand over the full amount — <strong>hold back a slice and send it to the tax authority on the payee's behalf</strong>. The payee later credits that amount against their own income-tax bill. Governments prefer to collect at the source (from the payer, who's easy to audit). <strong>WHT follows the payee.</strong></p>
-        </div>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">The essence of VAT — the value-added chain</h3>
-      <p style="font-size: 14px;">Three businesses, a 10% VAT, one final consumer. Each pays tax only on the value <em>it</em> added:</p>
-      <div class="card" style="margin-top: var(--scale-200);">
+      <h3 style="margin-top: var(--scale-400);">VAT — a little tax added each time something is sold</h3>
+      <div class="card">
+        <p style="font-size: 14.5px; margin-top: 0;"><strong>Tiny version:</strong> every time something is sold, a little tax is added on top. The clever trick: each shop only really pays tax on the <em>extra value it added</em>, and gets back the tax it already paid. So the tax doesn't stack up and up — the very last buyer pays it all, just once.</p>
+        <p style="font-size: 14px;"><strong>The sticker trick:</strong> imagine the tax you paid your supplier is a sticker you keep. When it's your turn to hand tax to the government, you stick on your old sticker and only pay the <em>difference</em>.</p>
+        <p style="font-size: 14px; margin-bottom: var(--scale-200);">Here's a whole chain with a 10% tax. Watch how each one only pays for <em>their</em> bit:</p>
         <table style="font-size: 13px;">
-          <thead><tr><th>Step</th><th>Sells for</th><th>Output VAT (charges)</th><th>Input VAT (reclaims)</th><th>Net VAT remitted</th></tr></thead>
+          <thead><tr><th>Who sells to who</th><th>Price</th><th>Tax they add (and collect)</th><th>Tax sticker they already had</th><th>What they actually send the govt</th></tr></thead>
           <tbody>
-            <tr><td>Farmer → Roaster</td><td>$100</td><td>$10</td><td>$0</td><td><strong>$10</strong></td></tr>
-            <tr><td>Roaster → Café</td><td>$300</td><td>$30</td><td>$10</td><td><strong>$20</strong></td></tr>
-            <tr><td>Café → Consumer</td><td>$500</td><td>$50</td><td>$30</td><td><strong>$20</strong></td></tr>
-            <tr><td><strong>Total to government</strong></td><td></td><td></td><td></td><td><strong>$50</strong></td></tr>
+            <tr><td>🍋 Farmer → Lemonade maker</td><td>$100</td><td>$10</td><td>$0</td><td><strong>$10</strong></td></tr>
+            <tr><td>🥤 Lemonade maker → Café</td><td>$300</td><td>$30</td><td>$10</td><td><strong>$20</strong></td></tr>
+            <tr><td>🧑 Café → You (the drinker)</td><td>$500</td><td>$50</td><td>$30</td><td><strong>$20</strong></td></tr>
+            <tr><td><strong>Total the government gets</strong></td><td></td><td></td><td></td><td><strong>$50</strong></td></tr>
           </tbody>
         </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200); margin-bottom: 0;">The government collects <strong>$50 — exactly 10% of the final $500 price — in three pieces.</strong> The consumer bears all $50 and reclaims nothing. <strong>That input-credit chain is the entire point of VAT</strong> — it stops tax cascading (tax-on-tax) at every step.</p>
+        <p style="font-size: 14px; margin-top: var(--scale-200); margin-bottom: 0;">The government gets <strong>$50 — exactly 10% of the final $500 — but in little pieces.</strong> You, the last buyer, can't get any back. <strong>That "get back what you paid" chain is the whole idea of VAT.</strong></p>
       </div>
-
       <div class="grid grid-2" style="margin-top: var(--scale-300);">
         <div class="card">
-          <h4 style="margin-top: 0;">VAT at the line-item level</h4>
-          <ul style="font-size: 13.5px; line-height: 1.65;">
-            <li><strong>Tax code / rate per line</strong> — one invoice can mix a 20%, a 5%, and a 0% line.</li>
-            <li><strong>Classification</strong> — the rate follows <em>what</em> the item is (HSN/SAC, commodity code). Mis-classifying a line is the #1 VAT error.</li>
-            <li><strong>Place of supply</strong> — <em>where</em> the supply happens sets <em>which</em> jurisdiction's VAT applies (key for services / cross-border).</li>
-            <li><strong>Reverse charge</strong> — for some supplies the <em>buyer</em> self-accounts for VAT (books an output + input entry, netting to zero if recoverable).</li>
-            <li><strong>Zero-rated vs exempt</strong> — zero-rated (exports) = 0% output <em>but you still reclaim input</em>; exempt = no output <em>and no input recovery</em>. Opposite for recovery.</li>
+          <h4 style="margin-top: 0;">VAT — line by line (on one invoice)</h4>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Tiny version:</strong> on one receipt, different things can have different tax. A toy might have a big tax; milk might have none. Each line carries its own tax.</p>
+          <ul style="font-size: 13px; line-height: 1.6; margin-bottom: 0;">
+            <li><strong>Each line has its own rate</strong> — one invoice can mix 20%, 5%, and 0% lines.</li>
+            <li><strong>The rate depends on what the thing is</strong> (its product code). Putting the wrong code is the #1 mistake.</li>
+            <li><strong>Where the sale happens</strong> decides whose tax applies (matters a lot for cross-border).</li>
+            <li><strong>Sometimes the buyer handles the tax</strong> instead of the seller ("reverse charge").</li>
+            <li><strong>"0% but still get your sticker back" (zero-rated)</strong> is different from <strong>"no tax and no sticker back" (exempt).</strong></li>
           </ul>
         </div>
         <div class="card">
-          <h4 style="margin-top: 0;">VAT at the entity level</h4>
-          <ul style="font-size: 13.5px; line-height: 1.65;">
-            <li><strong>Registration</strong> — an entity registers (often above a turnover threshold) and gets a VAT number; below it, may not charge VAT at all.</li>
-            <li><strong>The return nets it up:</strong> <strong>Net VAT = total output VAT − total input VAT</strong> for the period. Positive → pay; negative → refund/credit.</li>
-            <li><strong>Input-credit eligibility</strong> — blocked credits (entertainment, some vehicles), valid tax invoice required, partial-exemption apportionment.</li>
-            <li><strong>Multi-entity / group</strong> — each registered entity files its own return; some regimes allow VAT grouping (intra-group supplies disregarded).</li>
+          <h4 style="margin-top: 0;">VAT — rolled up (the whole shop, each month)</h4>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Tiny version:</strong> at month-end the shop adds up <em>all</em> the tax it collected, subtracts <em>all</em> the tax it paid, and mails the government the difference.</p>
+          <ul style="font-size: 13px; line-height: 1.6; margin-bottom: 0;">
+            <li><strong>Sign up first</strong> — a business registers for a VAT number (often only once it's big enough).</li>
+            <li><strong>The monthly math:</strong> <strong>tax you collected − tax you paid = what you owe</strong> (or get refunded).</li>
+            <li><strong>Some stickers don't count</strong> — a few purchases (like entertainment) can't be claimed back.</li>
+            <li><strong>Each company files its own</strong> — a group with many companies does this per company.</li>
           </ul>
         </div>
       </div>
 
-      <h3 style="margin-top: var(--scale-500);">The essence of WHT — the withholding logic</h3>
+      <h3 style="margin-top: var(--scale-500);">Withholding tax (WHT) — keep a little piece and send it in for them</h3>
       <div class="card">
-        <p style="margin-top: 0;">A company pays a contractor <strong>$10,000</strong> for services, with <strong>10% WHT on professional services</strong>:</p>
-        <ul style="font-size: 14px; line-height: 1.7;">
-          <li>The company <strong>withholds $1,000</strong> and pays the contractor <strong>$9,000</strong>.</li>
-          <li>It <strong>remits the $1,000</strong> to the tax authority and issues a <strong>withholding certificate</strong>.</li>
-          <li>The contractor reports $10,000 of income and <strong>credits the $1,000 already withheld</strong> — topping up only the difference (or getting a refund).</li>
-        </ul>
-        <p style="font-size: 14px; margin-bottom: 0;">Nobody paid extra tax — the $1,000 was just <strong>collected earlier, by the payer</strong>. The payee's only real cost is cash-flow timing.</p>
+        <p style="font-size: 14.5px; margin-top: 0;"><strong>Tiny version:</strong> when a company pays someone for a job, it keeps a small piece of the money and sends that piece straight to the government <em>for</em> that person — like a "save it for taxes" jar. The worker isn't losing it: they get credit for it later when they do their own taxes.</p>
+        <p style="font-size: 14px; margin-bottom: 0;"><strong>Example:</strong> a company owes a helper <strong>$10</strong> for a job, and the rule says keep 10%. So it gives the helper <strong>$9</strong>, sends <strong>$1</strong> to the government, and hands the helper a little receipt. When the helper does their taxes, that $1 counts as <em>already paid</em>. Nobody paid extra — the government just got its bit early, from the company (which is easy to check) instead of chasing the helper later.</p>
       </div>
-
       <div class="grid grid-2" style="margin-top: var(--scale-300);">
         <div class="card">
-          <h4 style="margin-top: 0;">WHT at the payment (line) level</h4>
-          <ul style="font-size: 13.5px; line-height: 1.65;">
-            <li><strong>Nature of the payment</strong> — rates differ by category: services, contractor work, rent, royalties, interest, dividends, commission. (Goods usually aren't subject; services usually are.)</li>
-            <li><strong>Payee status</strong> — resident vs non-resident; valid tax ID or exemption certificate; missing ID → higher penalty rate.</li>
-            <li><strong>Gross-up</strong> — if the contract fixes a <em>net</em> amount, the payer bears the WHT on top (invoice "grossed up").</li>
-            <li><strong>Cross-border</strong> — a tax treaty can cut the statutory rate (e.g., 15% → 10%) with a residency certificate.</li>
+          <h4 style="margin-top: 0;">WHT — per payment</h4>
+          <ul style="font-size: 13px; line-height: 1.6; margin-bottom: 0;">
+            <li><strong>How big the piece is depends on the kind of job</strong> — cleaning, renting, lending money, and royalties all have different rates. (Buying <em>goods</em> usually has no piece kept; paying for <em>services</em> usually does.)</li>
+            <li><strong>And on who the person is</strong> — if they won't give their tax number, the company often must keep a <em>bigger</em> piece.</li>
+            <li><strong>Across borders,</strong> a deal between two countries (a "treaty") can shrink the piece.</li>
           </ul>
         </div>
         <div class="card">
-          <h4 style="margin-top: 0;">WHT at the entity level</h4>
-          <ul style="font-size: 13.5px; line-height: 1.65;">
-            <li><strong>Who must withhold</strong> — typically every business above a threshold is an appointed withholding agent.</li>
-            <li><strong>Thresholds</strong> — small payments below a floor are often exempt.</li>
-            <li><strong>Remittance + returns</strong> — withheld amounts deposited on a schedule (often monthly), reported in a WHT return, certificates issued per payee.</li>
-            <li><strong>Penalties</strong> — failing to withhold can make the <em>payer</em> liable for the tax and can <strong>disallow the expense deduction</strong> — so AP treats WHT as a hard control.</li>
+          <h4 style="margin-top: 0;">WHT — rolled up (the whole company, each month)</h4>
+          <ul style="font-size: 13px; line-height: 1.6; margin-bottom: 0;">
+            <li><strong>The company keeps all the little pieces in a jar</strong> and sends them in together on a schedule (often monthly), with a list of who they belong to.</li>
+            <li><strong>Tiny payments are usually skipped</strong> (below a floor amount).</li>
+            <li><strong>It's a serious rule:</strong> if a company forgets to keep the piece, it can be made to pay it itself — so finance teams treat it as a hard checkpoint.</li>
           </ul>
         </div>
       </div>
 
-      <h3 style="margin-top: var(--scale-500);">The US reality</h3>
+      <h3 style="margin-top: var(--scale-500);">How it works in the United States</h3>
       <div class="grid grid-2" style="margin-top: var(--scale-200);">
         <div class="card">
-          <h4 style="margin-top: 0;">Sales &amp; use tax (no VAT in the US)</h4>
-          <p style="font-size: 13.5px; line-height: 1.65;"><strong>Single-stage, no input-credit chain</strong> — collected once at the final retail sale; B2B-for-resale is tax-free with a resale certificate. <strong>Line level:</strong> taxability + rate by item and location (state/county/city). <strong>Entity level:</strong> register per state where you have <strong>nexus</strong>; <strong>economic nexus</strong> (post-<em>Wayfair</em>, 2018) can apply on sales volume alone. <strong>Use tax</strong> is the buyer's self-assessed true-up when a seller didn't charge tax.</p>
+          <h4 style="margin-top: 0;">Sales tax (the US version of VAT)</h4>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Tiny version:</strong> in America there's <strong>no sticker / give-back chain.</strong> The tax is added just <strong>once</strong> — when the very last person buys the thing. A shop buying to resell shows a "resale card" and pays no tax. How much depends on <em>what</em> it is and <em>which state/town</em> you're in. A company must collect a state's tax once it sells enough there (called <strong>nexus</strong>), even with no shop in that state.</p>
         </div>
         <div class="card">
-          <h4 style="margin-top: 0;">1099 + backup withholding (US WHT analog)</h4>
-          <p style="font-size: 13.5px; line-height: 1.65;">Collect a <strong>W-9</strong> before paying. Report services payments of <strong>$2,000+/yr</strong> on <strong>1099-NEC</strong> <em>(threshold raised from $600 by the OBBBA, effective 2026, inflation-indexed from 2027)</em>. Default withholding is <strong>0%</strong>; if the vendor won't give a valid TIN you must apply <strong>24% backup withholding</strong>. Payments to <strong>corporations are generally exempt</strong> — except legal and medical payments.</p>
+          <h4 style="margin-top: 0;">1099 &amp; backup withholding (the US version of WHT)</h4>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Tiny version:</strong> first you ask a helper for their tax number (a <strong>W-9</strong>). If you pay them <strong>$2,000 or more</strong> in a year for services, you tell the government with a form (a <strong>1099</strong>). Normally you keep nothing extra. <strong>But</strong> if the helper won't give a valid tax number, you <em>must</em> keep <strong>24%</strong> and send it in. Payments to big companies usually don't need a 1099 (except lawyers and doctors).</p>
         </div>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300); background: var(--surface-primary-background); border-color: var(--border-primary-default);">
-        <h4 style="margin-top: 0;">The global cousin: VAT / GST</h4>
-        <p style="margin-bottom: 0;">Most of the world — EU, UK, India (<strong>GST</strong>), and dozens more — uses the multi-stage VAT mechanism above. It still matters for a US-centric company: <strong>overseas entities</strong> file VAT/GST abroad, and <strong>e-invoicing mandates</strong> (PEPPOL, MyInvois, Coretax) are VAT-driven — built so tax authorities can validate output/input VAT in real time, line by line. <strong>Cross-border WHT</strong> on royalties / interest / service fees to foreign vendors is governed by domestic non-resident rates and tax treaties.</p>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">One-page summary</h3>
-        <table style="font-size: 13px;">
-          <thead><tr><th></th><th>VAT / GST</th><th>Sales &amp; use tax (US)</th><th>WHT / 1099</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Taxes what?</strong></td><td>Value added at each step</td><td>The final retail sale</td><td>A payment to a vendor</td></tr>
-            <tr><td><strong>Stages</strong></td><td>Multi-stage, input credits</td><td>Single-stage, no credits</td><td>n/a</td></tr>
-            <tr><td><strong>Line level</strong></td><td>Rate / classification / place of supply / reverse charge</td><td>Taxability + rate by item &amp; location</td><td>Rate by payment type × payee status × treaty</td></tr>
-            <tr><td><strong>Entity level</strong></td><td>Return: output − input = net</td><td>Per-state return; nexus</td><td>Deposit + WHT return + certificates</td></tr>
-            <tr><td><strong>Follows the…</strong></td><td>Product</td><td>Product + location</td><td>Payee</td></tr>
-            <tr><td><strong>Who bears it</strong></td><td>Final consumer</td><td>Final consumer</td><td>Nobody extra — collected early</td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 13px; color: var(--text-default-caption); margin-bottom: 0; margin-top: var(--scale-200);"><strong>Essence in one line:</strong> VAT/GST is a <em>transaction</em> tax netted across the <em>entity</em> via input credits; WHT is <em>income tax pulled forward</em> by the payer, per <em>payment</em>, administered by the <em>entity</em>. The US swaps VAT for single-stage sales tax and broad WHT for narrow 1099/backup withholding — but the two-level (line + entity) shape is the same everywhere.</p>
+        <h4 style="margin-top: 0;">The whole thing in one breath</h4>
+        <p style="margin-bottom: 0; font-size: 14px;"><strong>VAT</strong> is a tax on the <em>thing being sold</em>, added at every step, where each shop gets back what it already paid — so it lands once, on the final buyer. <strong>Withholding tax</strong> is a worker's income tax, paid <em>early</em> by the company that pays them. Both work at two levels: <strong>on each line of an invoice</strong>, and <strong>added up for the whole company each month</strong>. The US keeps it simpler: <strong>one-time sales tax</strong> instead of VAT, and a <strong>narrow 1099 / 24% backup rule</strong> instead of broad withholding.</p>
       </div>
     </section>
 
