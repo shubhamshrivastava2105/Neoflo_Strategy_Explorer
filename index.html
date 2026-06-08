@@ -915,104 +915,120 @@
 
     <section id="vat-wht">
       <div class="eyebrow">Reference · Taxes you'll hit</div>
-      <h2 class="section-title">Sales tax &amp; withholding — a plain-English guide (US).</h2>
-      <p class="lede">The two taxes a US finance team keeps running into across P2P and O2C: <strong>sales &amp; use tax</strong> (on what you buy and sell) and <strong>1099 / backup withholding</strong> (on what you pay vendors). VAT — the international cousin — is at the end, because overseas entities and e-invoicing mandates still use it. Worked example uses a 9% combined sales-tax rate to make the math concrete.</p>
+      <h2 class="section-title">Indirect tax &amp; withholding — the deep version.</h2>
+      <p class="lede">Two taxes run through almost every invoice: <strong>VAT-type taxes</strong> (on the <em>transaction</em> — what is sold) and <strong>withholding taxes</strong> (on the <em>payment</em> — who is paid). Each operates at <strong>two levels</strong>: the <strong>line-item level</strong> (each line of an invoice) and the <strong>entity level</strong> (rolled up across the company for a filing period). Getting both right is most of what tax compliance actually is.</p>
 
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">What is sales tax?</h3>
-        <p><strong>Sales &amp; use tax</strong> is a US consumption tax collected <strong>once, at the final retail sale</strong>, and remitted to the state (often plus a county/city). The seller collects it from the buyer and sends it to the state.</p>
-        <p>It is <strong>single-stage</strong> — unlike VAT, there is <strong>no chain of input credits</strong>. A business buying goods for resale hands the seller a <strong>resale / exemption certificate</strong> and pays no sales tax on that purchase. Rate depends on <em>what</em> is sold and <em>where</em> (~45 states + thousands of local jurisdictions, ~0–10%+).</p>
-        <p><strong>Use tax</strong> is the mirror: buy taxable goods where the seller didn't charge tax (e.g., out-of-state) and you self-assess use tax to your own state. <strong>Nexus</strong> (post-<em>Wayfair</em>, 2018): you can owe tax in states where you have economic nexus — sales-volume thresholds — not just physical presence. <strong>Sales tax follows the product and the location, not the person.</strong></p>
+      <div class="grid grid-2" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h3 style="margin-top: 0;">VAT — in one paragraph</h3>
+          <p>VAT taxes the <strong>value added at each step of a supply chain</strong>. Every business charges tax on what it sells (<strong>output tax</strong>) and reclaims the tax it paid on what it bought (<strong>input tax</strong>), remitting only the <strong>difference</strong>. Because each link pays tax only on the value <em>it</em> added, the tax doesn't pile up — the full burden lands once, on the final consumer. <strong>VAT follows the product.</strong></p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">WHT — in one paragraph</h3>
+          <p>WHT is <strong>income tax collected early</strong>. When you pay certain vendors, the law says: don't hand over the full amount — <strong>hold back a slice and send it to the tax authority on the payee's behalf</strong>. The payee later credits that amount against their own income-tax bill. Governments prefer to collect at the source (from the payer, who's easy to audit). <strong>WHT follows the payee.</strong></p>
+        </div>
       </div>
 
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">What is 1099 / backup withholding?</h3>
-        <p>The closest US analog to "withholding tax on vendor payments" — it's about <strong>who you're paying</strong>, not the product. When you pay a US vendor (especially for services):</p>
+      <h3 style="margin-top: var(--scale-500);">The essence of VAT — the value-added chain</h3>
+      <p style="font-size: 14px;">Three businesses, a 10% VAT, one final consumer. Each pays tax only on the value <em>it</em> added:</p>
+      <div class="card" style="margin-top: var(--scale-200);">
+        <table style="font-size: 13px;">
+          <thead><tr><th>Step</th><th>Sells for</th><th>Output VAT (charges)</th><th>Input VAT (reclaims)</th><th>Net VAT remitted</th></tr></thead>
+          <tbody>
+            <tr><td>Farmer → Roaster</td><td>$100</td><td>$10</td><td>$0</td><td><strong>$10</strong></td></tr>
+            <tr><td>Roaster → Café</td><td>$300</td><td>$30</td><td>$10</td><td><strong>$20</strong></td></tr>
+            <tr><td>Café → Consumer</td><td>$500</td><td>$50</td><td>$30</td><td><strong>$20</strong></td></tr>
+            <tr><td><strong>Total to government</strong></td><td></td><td></td><td></td><td><strong>$50</strong></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 14px; margin-top: var(--scale-200); margin-bottom: 0;">The government collects <strong>$50 — exactly 10% of the final $500 price — in three pieces.</strong> The consumer bears all $50 and reclaims nothing. <strong>That input-credit chain is the entire point of VAT</strong> — it stops tax cascading (tax-on-tax) at every step.</p>
+      </div>
+
+      <div class="grid grid-2" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h4 style="margin-top: 0;">VAT at the line-item level</h4>
+          <ul style="font-size: 13.5px; line-height: 1.65;">
+            <li><strong>Tax code / rate per line</strong> — one invoice can mix a 20%, a 5%, and a 0% line.</li>
+            <li><strong>Classification</strong> — the rate follows <em>what</em> the item is (HSN/SAC, commodity code). Mis-classifying a line is the #1 VAT error.</li>
+            <li><strong>Place of supply</strong> — <em>where</em> the supply happens sets <em>which</em> jurisdiction's VAT applies (key for services / cross-border).</li>
+            <li><strong>Reverse charge</strong> — for some supplies the <em>buyer</em> self-accounts for VAT (books an output + input entry, netting to zero if recoverable).</li>
+            <li><strong>Zero-rated vs exempt</strong> — zero-rated (exports) = 0% output <em>but you still reclaim input</em>; exempt = no output <em>and no input recovery</em>. Opposite for recovery.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">VAT at the entity level</h4>
+          <ul style="font-size: 13.5px; line-height: 1.65;">
+            <li><strong>Registration</strong> — an entity registers (often above a turnover threshold) and gets a VAT number; below it, may not charge VAT at all.</li>
+            <li><strong>The return nets it up:</strong> <strong>Net VAT = total output VAT − total input VAT</strong> for the period. Positive → pay; negative → refund/credit.</li>
+            <li><strong>Input-credit eligibility</strong> — blocked credits (entertainment, some vehicles), valid tax invoice required, partial-exemption apportionment.</li>
+            <li><strong>Multi-entity / group</strong> — each registered entity files its own return; some regimes allow VAT grouping (intra-group supplies disregarded).</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--scale-500);">The essence of WHT — the withholding logic</h3>
+      <div class="card">
+        <p style="margin-top: 0;">A company pays a contractor <strong>$10,000</strong> for services, with <strong>10% WHT on professional services</strong>:</p>
         <ul style="font-size: 14px; line-height: 1.7;">
-          <li>You collect a <strong>W-9</strong> (legal name + TIN/EIN) <strong>before</strong> paying.</li>
-          <li>Pay them <strong>$600+</strong> in a year for services → you report it to the IRS on <strong>Form 1099-NEC</strong>.</li>
-          <li>Normally you withhold <strong>nothing</strong> — the vendor pays their own income tax.</li>
-          <li><strong>But</strong> if the vendor won't furnish a valid TIN (or the IRS flags a mismatch), you <strong>must apply 24% backup withholding</strong> and send it to the IRS.</li>
+          <li>The company <strong>withholds $1,000</strong> and pays the contractor <strong>$9,000</strong>.</li>
+          <li>It <strong>remits the $1,000</strong> to the tax authority and issues a <strong>withholding certificate</strong>.</li>
+          <li>The contractor reports $10,000 of income and <strong>credits the $1,000 already withheld</strong> — topping up only the difference (or getting a refund).</li>
         </ul>
-        <p><strong>Backup withholding follows the vendor's tax status, not the product.</strong> Missing/invalid W-9 → 24% withheld.</p>
+        <p style="font-size: 14px; margin-bottom: 0;">Nobody paid extra tax — the $1,000 was just <strong>collected earlier, by the payer</strong>. The payee's only real cost is cash-flow timing.</p>
       </div>
 
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">The key difference at a glance</h3>
-        <table>
-          <thead><tr><th></th><th>Sales &amp; use tax</th><th>1099 / backup withholding</th></tr></thead>
-          <tbody>
-            <tr><td><strong>What triggers it?</strong></td><td>A taxable sale, in a taxing jurisdiction</td><td>Paying a reportable vendor</td></tr>
-            <tr><td><strong>Calculated on?</strong></td><td>Sale price (product + location)</td><td>The payment to the vendor</td></tr>
-            <tr><td><strong>Who remits?</strong></td><td>Seller → state</td><td>Buyer (withholds only if TIN is bad)</td></tr>
-            <tr><td><strong>Default withholding?</strong></td><td>n/a — added to the price</td><td>0%, or <strong>24%</strong> if no valid W-9</td></tr>
-            <tr><td><strong>Multi-stage credit?</strong></td><td><strong>No</strong> (single-stage)</td><td>n/a</td></tr>
-          </tbody>
-        </table>
+      <div class="grid grid-2" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h4 style="margin-top: 0;">WHT at the payment (line) level</h4>
+          <ul style="font-size: 13.5px; line-height: 1.65;">
+            <li><strong>Nature of the payment</strong> — rates differ by category: services, contractor work, rent, royalties, interest, dividends, commission. (Goods usually aren't subject; services usually are.)</li>
+            <li><strong>Payee status</strong> — resident vs non-resident; valid tax ID or exemption certificate; missing ID → higher penalty rate.</li>
+            <li><strong>Gross-up</strong> — if the contract fixes a <em>net</em> amount, the payer bears the WHT on top (invoice "grossed up").</li>
+            <li><strong>Cross-border</strong> — a tax treaty can cut the statutory rate (e.g., 15% → 10%) with a residency certificate.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">WHT at the entity level</h4>
+          <ul style="font-size: 13.5px; line-height: 1.65;">
+            <li><strong>Who must withhold</strong> — typically every business above a threshold is an appointed withholding agent.</li>
+            <li><strong>Thresholds</strong> — small payments below a floor are often exempt.</li>
+            <li><strong>Remittance + returns</strong> — withheld amounts deposited on a schedule (often monthly), reported in a WHT return, certificates issued per payee.</li>
+            <li><strong>Penalties</strong> — failing to withhold can make the <em>payer</em> liable for the tax and can <strong>disallow the expense deduction</strong> — so AP treats WHT as a hard control.</li>
+          </ul>
+        </div>
       </div>
 
-      <h3 style="margin-top: var(--scale-500);">How it works — a worked US example</h3>
-      <p style="font-size: 14px; line-height: 1.6;">Three players: a <strong>US clothing brand</strong> selling to a <strong>US retailer</strong> selling to a <strong>consumer</strong>. Combined sales-tax rate = 9%.</p>
-
-      <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Step 1 · Brand sells to Retailer (for resale) — $100</h4>
-        <table>
-          <tbody>
-            <tr><td>Price (for resale)</td><td style="text-align: right;">$100</td></tr>
-            <tr><td>Sales tax</td><td style="text-align: right;">$0 (resale certificate)</td></tr>
-            <tr><td><strong>Retailer pays Brand</strong></td><td style="text-align: right;"><strong>$100</strong></td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200);">The Retailer is buying to resell, so it hands the Brand a <strong>resale certificate</strong> — no sales tax on a B2B-for-resale purchase.</p>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Step 2 · Retailer sells to Consumer — $200</h4>
-        <table>
-          <tbody>
-            <tr><td>Price</td><td style="text-align: right;">$200</td></tr>
-            <tr><td>Sales tax (9%)</td><td style="text-align: right;">$18</td></tr>
-            <tr><td><strong>Consumer pays Retailer</strong></td><td style="text-align: right;"><strong>$218</strong></td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200);">The Retailer collects $18 and remits it to the state.</p>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Step 3 · The Consumer (and the punchline)</h4>
-        <p style="font-size: 14px; margin-top: 0;">The Consumer can't reclaim anything — the tax stops with them. The state collected <strong>exactly $18 — 9% of the final $200 price — once, at the final sale.</strong> There's no multi-stage credit chain to reconcile. <strong>That single-stage simplicity is the key difference from VAT.</strong></p>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Where 1099 withholding fits</h3>
-        <p>Separate from sales tax — it's about paying vendors. Say the Retailer pays a <strong>freelance designer $5,000</strong> for services:</p>
-        <ul style="font-size: 14px; line-height: 1.7;">
-          <li><strong>Valid W-9</strong> → withhold nothing, pay the full <strong>$5,000</strong>, issue a <strong>1099-NEC</strong> at year end.</li>
-          <li><strong>Refuses / invalid TIN</strong> → apply <strong>24% backup withholding</strong>: hold <strong>$1,200</strong>, pay the designer <strong>$3,800</strong>, send <strong>$1,200</strong> to the IRS. The designer reconciles it on their return.</li>
-        </ul>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Individual vs company vendor</h3>
-        <p><strong>Sales tax</strong> is the same regardless of who the seller is — it depends on the product + jurisdiction (and whether a valid exemption certificate is on file).</p>
-        <p><strong>1099 / backup withholding:</strong> payments to <strong>corporations are generally 1099-exempt</strong> (with exceptions like legal and medical); payments to <strong>individuals, LLCs, and partnerships for services are reportable</strong>. The <strong>24% backup withholding</strong> is triggered by a <strong>missing/invalid TIN</strong>, not by being an individual per se.</p>
+      <h3 style="margin-top: var(--scale-500);">The US reality</h3>
+      <div class="grid grid-2" style="margin-top: var(--scale-200);">
+        <div class="card">
+          <h4 style="margin-top: 0;">Sales &amp; use tax (no VAT in the US)</h4>
+          <p style="font-size: 13.5px; line-height: 1.65;"><strong>Single-stage, no input-credit chain</strong> — collected once at the final retail sale; B2B-for-resale is tax-free with a resale certificate. <strong>Line level:</strong> taxability + rate by item and location (state/county/city). <strong>Entity level:</strong> register per state where you have <strong>nexus</strong>; <strong>economic nexus</strong> (post-<em>Wayfair</em>, 2018) can apply on sales volume alone. <strong>Use tax</strong> is the buyer's self-assessed true-up when a seller didn't charge tax.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">1099 + backup withholding (US WHT analog)</h4>
+          <p style="font-size: 13.5px; line-height: 1.65;">Collect a <strong>W-9</strong> before paying. Report services payments of <strong>$2,000+/yr</strong> on <strong>1099-NEC</strong> <em>(threshold raised from $600 by the OBBBA, effective 2026, inflation-indexed from 2027)</em>. Default withholding is <strong>0%</strong>; if the vendor won't give a valid TIN you must apply <strong>24% backup withholding</strong>. Payments to <strong>corporations are generally exempt</strong> — except legal and medical payments.</p>
+        </div>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300); background: var(--surface-primary-background); border-color: var(--border-primary-default);">
-        <h3 style="margin-top: 0;">The international cousin: VAT</h3>
-        <p>Most of the world — EU, UK, India (GST), and dozens more — uses <strong>VAT</strong> instead of US-style sales tax. VAT is <strong>multi-stage</strong>: tax is added at every step and each business <strong>reclaims the VAT it paid</strong> (input credit), so the net burden lands on the end consumer. <strong>The US has no VAT and no input-credit chain.</strong></p>
-        <p style="margin-bottom: 0;">It still matters here: customers with <strong>overseas entities</strong> deal with VAT abroad, and <strong>e-invoicing mandates</strong> (PEPPOL and similar) are VAT-driven. But for US operations, it's sales &amp; use tax and 1099 withholding.</p>
+        <h4 style="margin-top: 0;">The global cousin: VAT / GST</h4>
+        <p style="margin-bottom: 0;">Most of the world — EU, UK, India (<strong>GST</strong>), and dozens more — uses the multi-stage VAT mechanism above. It still matters for a US-centric company: <strong>overseas entities</strong> file VAT/GST abroad, and <strong>e-invoicing mandates</strong> (PEPPOL, MyInvois, Coretax) are VAT-driven — built so tax authorities can validate output/input VAT in real time, line by line. <strong>Cross-border WHT</strong> on royalties / interest / service fees to foreign vendors is governed by domestic non-resident rates and tax treaties.</p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Key takeaways</h3>
-        <ol style="font-size: 14px; line-height: 1.7;">
-          <li><strong>US sales tax is single-stage</strong> — collected once at the final retail sale, no input-credit chain; B2B-for-resale is tax-free with a certificate.</li>
-          <li><strong>Use tax + economic nexus (Wayfair)</strong> can make you owe tax in states where you sell, even without physical presence.</li>
-          <li>The US "withholding" analog is <strong>1099 reporting + 24% backup withholding</strong> when a W-9/TIN is missing — not a flat rate on every vendor.</li>
-          <li><strong>Corporations are generally 1099-exempt;</strong> what matters is the $600 services threshold and a valid TIN.</li>
-          <li><strong>VAT is the international cousin</strong> — multi-stage with input credits — relevant only for overseas entities and e-invoicing mandates.</li>
-        </ol>
+        <h3 style="margin-top: 0;">One-page summary</h3>
+        <table style="font-size: 13px;">
+          <thead><tr><th></th><th>VAT / GST</th><th>Sales &amp; use tax (US)</th><th>WHT / 1099</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Taxes what?</strong></td><td>Value added at each step</td><td>The final retail sale</td><td>A payment to a vendor</td></tr>
+            <tr><td><strong>Stages</strong></td><td>Multi-stage, input credits</td><td>Single-stage, no credits</td><td>n/a</td></tr>
+            <tr><td><strong>Line level</strong></td><td>Rate / classification / place of supply / reverse charge</td><td>Taxability + rate by item &amp; location</td><td>Rate by payment type × payee status × treaty</td></tr>
+            <tr><td><strong>Entity level</strong></td><td>Return: output − input = net</td><td>Per-state return; nexus</td><td>Deposit + WHT return + certificates</td></tr>
+            <tr><td><strong>Follows the…</strong></td><td>Product</td><td>Product + location</td><td>Payee</td></tr>
+            <tr><td><strong>Who bears it</strong></td><td>Final consumer</td><td>Final consumer</td><td>Nobody extra — collected early</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 13px; color: var(--text-default-caption); margin-bottom: 0; margin-top: var(--scale-200);"><strong>Essence in one line:</strong> VAT/GST is a <em>transaction</em> tax netted across the <em>entity</em> via input credits; WHT is <em>income tax pulled forward</em> by the payer, per <em>payment</em>, administered by the <em>entity</em>. The US swaps VAT for single-stage sales tax and broad WHT for narrow 1099/backup withholding — but the two-level (line + entity) shape is the same everywhere.</p>
       </div>
     </section>
 
