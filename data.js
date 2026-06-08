@@ -702,7 +702,8 @@ window.P2P_DATA = {
     "Goods Receipt",
     "Invoice Receipt",
     "3-Way Match",
-    "Payment"
+    "Payment",
+    "Vendor Self-Service"
   ],
   "runningExample": "You run **Brew & Co**, a wholesale coffee bean business. You need to buy 10,000 paper bags from a new packaging supplier, **PackRight Industries**, to ship beans to your customers.",
   "stages": [
@@ -768,6 +769,15 @@ window.P2P_DATA = {
       "example": "Friday's payment run includes PackRight's $7,840. The bank file is generated, you and the CFO approve, the bank confirms the ACH payment by 4pm, the AP ledger is updated, and PackRight gets an automated email: \"Invoice INV-PR-887 paid $7,840, trace # ABC123XYZ.\"",
       "analogy": "Setting up an auto-pay for your credit card bill — the system handles the actual transfer, but somebody has to make sure the money's there and approve the run.",
       "whereItBreaks": "Bank files in the wrong format get rejected. Payment failures (closed account, wrong IFSC) aren't flagged in real time. Remittance advice doesn't go out, so vendors call AP asking \"did you pay me?\" Cash application on the vendor's side fails because there's no remittance reference. Multi-currency payments add FX complexity that breaks reconciliation."
+    },
+    {
+      "number": 8,
+      "title": "Vendor Self-Service & Query Resolution",
+      "whatItIs": "The supporting layer that lets vendors submit invoices and check status themselves — and gives AP one place to answer \"did you get my invoice?\" and \"when am I paid?\" This isn't a sequential step; it runs alongside the whole cycle.",
+      "whatHappens": "Vendors submit invoices and tax/bank documents through a portal instead of email, and see real-time status of every invoice (received → matched → approved → scheduled → paid). They raise queries in-thread, and AP resolves exceptions and vendor questions in one place with the full PO / GRN / invoice context attached — instead of digging through inboxes. Done well, most \"where's my payment?\" questions are answered before the vendor even asks.",
+      "example": "PackRight logs into the portal, sees Invoice INV-PR-887 is \"Approved — scheduled for Friday's run,\" and uploads next month's invoice directly — no email to your AP team, no phone call.",
+      "analogy": "The \"Track your order\" page on Amazon — you check the status yourself instead of emailing the seller \"where's my package?\"",
+      "whereItBreaks": "Without it, vendors call and email AP for every status update, and AP burns hours a day on \"did you get it / when am I paid\" — the single biggest avoidable load on the team. Queries sit in scattered inboxes with no link to the PO / GRN / invoice, so each one is re-investigated from scratch, exceptions age, and vendor relationships fray."
     }
   ],
   "loopsAndConnections": "The diagram at the top is the **happy path**. In reality, the loops between stages are where the work piles up:\n\n- **Invoice → PO loop:** Invoice arrives but no PO exists (rogue spend), or the PO is wrong. Procurement has to fix the PO before AP can match.\n- **3-way match → GRN loop:** Invoice arrives before the GRN is posted. AP chases the warehouse to post the GRN.\n- **3-way match → Vendor loop:** Price or quantity variance triggers a back-and-forth with the vendor — credit notes, revised invoices, debit memos.\n- **Payment → Vendor query loop:** Vendor doesn't know if/when they were paid. They call AP. AP looks it up. Multiply by 200 vendors a month.\n- **Spend analytics feeds back into vendor management:** Maverick spend (off-contract purchases) gets caught in analytics, then enforcement loops back into PR/PO controls.\n\nThe messy loops between stages are where AP teams spend 60–70% of their time, where cash leaks happen, and where vendor relationships break. That's also where automation value sits — not on the happy path, but in the exception handling and the chasing.",
