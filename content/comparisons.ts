@@ -401,12 +401,12 @@ export const comparisonsData: ComparisonsData = {
   },
 
   featureMatrix: {
-    intro: `Capability comparison across the six competitors that show up most often in our deals. Scored: **Strong** (clearly differentiated), **Parity** (matched), **Gap** (we lag today), **Roadmap** (we plan to ship), **N/A** (not in their product). Where we score Gap or Roadmap, the note explains the trajectory.`,
+    intro: `Capability comparison across the six competitors that show up most often in our deals. Our column is scored only on what we have **today**: **Strong** (clearly differentiated), **Parity** (matched), **Gap** (not available today), **N/A** (out of scope). Where we score Gap, the note states plainly what's missing — not a roadmap.`,
     legend: [
       { score: 'Strong', meaning: 'Clearly differentiated capability — defensible advantage' },
       { score: 'Parity', meaning: 'Matched — neither side wins on this dimension' },
-      { score: 'Gap', meaning: 'We lag today; closing this gap is on the active roadmap' },
-      { score: 'Roadmap', meaning: 'Planned but not yet shipped' },
+      { score: 'Gap', meaning: 'Not available today' },
+      { score: 'Roadmap', meaning: 'A competitor has signalled this as planned, not yet shipped' },
       { score: 'N/A', meaning: 'Not in this vendor\'s product / scope' },
     ],
     rows: [
@@ -433,7 +433,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'Autonomous AP (touch-ratio)',
         category: 'P2P',
-        neoflo: { score: 'Roadmap', note: 'V2 architecture priority for 2027 — quarterly touch-ratio targets' },
+        neoflo: { score: 'Gap', note: 'Not available today — human-in-the-loop, no touch-ratio SLA' },
         peakflo: { score: 'Gap', note: 'Workflow-centric, limited agentic claims' },
         stampli: { score: 'Parity', note: 'Billy the Bot suggests; human still in loop' },
         sapVim: { score: 'Gap', note: 'No autonomy; rule-based only' },
@@ -443,7 +443,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'AR — billing & cash application',
         category: 'O2C',
-        neoflo: { score: 'Roadmap', note: 'Phase 2 2026 P0 — must ship for Hitachi-style buyers' },
+        neoflo: { score: 'Gap', note: 'Not available today — no AR billing / cash application' },
         peakflo: { score: 'Strong', note: 'Live; voice AI for collections' },
         stampli: { score: 'N/A', note: 'AP-only' },
         sapVim: { score: 'N/A', note: 'AP-only' },
@@ -453,7 +453,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'Voice AI for collections',
         category: 'O2C',
-        neoflo: { score: 'Roadmap', note: 'Should evaluate; SEA-cultural fit per Peakflo evidence' },
+        neoflo: { score: 'Gap', note: 'Not available today' },
         peakflo: { score: 'Strong', note: '12+ languages; category-defining' },
         stampli: { score: 'N/A', note: 'AP-only' },
         sapVim: { score: 'N/A', note: 'AP-only' },
@@ -463,7 +463,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'Close orchestration + JE workflow',
         category: 'R2R',
-        neoflo: { score: 'Roadmap', note: 'Phase 3 2027; lock MVP scope tight' },
+        neoflo: { score: 'Gap', note: 'Not available today — no R2R / close module' },
         peakflo: { score: 'N/A', note: 'No R2R' },
         stampli: { score: 'N/A', note: 'AP-only' },
         sapVim: { score: 'N/A', note: 'AP-only' },
@@ -473,7 +473,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'Reconciliations — automated matching',
         category: 'R2R',
-        neoflo: { score: 'Roadmap', note: 'Phase 3' },
+        neoflo: { score: 'Gap', note: 'Not available today' },
         peakflo: { score: 'N/A', note: 'No R2R' },
         stampli: { score: 'N/A', note: 'AP-only' },
         sapVim: { score: 'N/A', note: 'AP-only' },
@@ -513,7 +513,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'MyInvois (Malaysia) e-invoicing native',
         category: 'Localization',
-        neoflo: { score: 'Roadmap', note: 'P0 by mid-2026 — forced-buy trigger' },
+        neoflo: { score: 'Gap', note: 'Not native today' },
         peakflo: { score: 'Roadmap', note: 'Likely on their roadmap; status unconfirmed' },
         stampli: { score: 'N/A', note: 'No SEA' },
         sapVim: { score: 'Parity', note: 'SAP modules support; configuration heavy' },
@@ -523,7 +523,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'InvoiceNow / PEPPOL (Singapore)',
         category: 'Localization',
-        neoflo: { score: 'Roadmap', note: 'Bundled with PSG approval push' },
+        neoflo: { score: 'Gap', note: 'Not native today' },
         peakflo: { score: 'Strong', note: 'Already PSG approved + InvoiceNow' },
         stampli: { score: 'N/A', note: 'No SG' },
         sapVim: { score: 'Parity', note: 'SAP add-on supports' },
@@ -533,7 +533,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'e-Faktur (Indonesia)',
         category: 'Localization',
-        neoflo: { score: 'Roadmap', note: 'Non-negotiable for ID pitches' },
+        neoflo: { score: 'Gap', note: 'Not native today' },
         peakflo: { score: 'Strong', note: 'Live; mature regime' },
         stampli: { score: 'N/A', note: 'No ID' },
         sapVim: { score: 'Parity', note: 'SAP module supports' },
@@ -543,7 +543,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'Time-to-live SLA (P2P)',
         category: 'Integration',
-        neoflo: { score: 'Strong', note: '6–10 weeks Zalora; aim for 4-week SLA commit' },
+        neoflo: { score: 'Strong', note: '6–10 weeks (Zalora)' },
         peakflo: { score: 'Strong', note: '4–8 weeks' },
         stampli: { score: 'Strong', note: '30-day public commit' },
         sapVim: { score: 'Gap', note: '6–18 months — the buyer\'s pain point' },
@@ -553,7 +553,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'SAP S/4HANA integration depth',
         category: 'Integration',
-        neoflo: { score: 'Roadmap', note: 'Reference architecture is the 90-day deliverable' },
+        neoflo: { score: 'Gap', note: 'Not available today' },
         peakflo: { score: 'Parity', note: 'Functional, not enterprise-grade evidence' },
         stampli: { score: 'Strong', note: 'Best-in-class among modern AP tools' },
         sapVim: { score: 'Strong', note: 'Native, by design' },
@@ -563,7 +563,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'NetSuite integration depth',
         category: 'Integration',
-        neoflo: { score: 'Roadmap', note: 'Critical for SEA scale-up GTM' },
+        neoflo: { score: 'Gap', note: 'Not available today' },
         peakflo: { score: 'Parity', note: 'NetSuite supported' },
         stampli: { score: 'Strong', note: 'Strong NetSuite story; many shared accounts' },
         sapVim: { score: 'N/A', note: 'SAP-only' },
@@ -573,7 +573,7 @@ export const comparisonsData: ComparisonsData = {
       {
         capability: 'Mid-market enterprise reference (>$1B rev)',
         category: 'Platform',
-        neoflo: { score: 'Parity', note: 'Zalora live; need 2 more by Q4 2026' },
+        neoflo: { score: 'Parity', note: 'Zalora live; thin reference book today' },
         peakflo: { score: 'Parity', note: 'Lazada; SME-tilted otherwise' },
         stampli: { score: 'Strong', note: '1,500 customers, mid-to-upper-mid book' },
         sapVim: { score: 'Strong', note: 'Most Fortune 1000 SAP shops' },
@@ -581,7 +581,7 @@ export const comparisonsData: ComparisonsData = {
         floQast: { score: 'Strong', note: '2,800+ mid-market' },
       },
     ],
-    summary: `Reading across the matrix: **we are Strong on multi-process platform, multi-entity, multi-currency, cross-process audit, and SEA OCR.** We are **Roadmap on AR (must ship 2026), close (must ship 2027), MyInvois/PEPPOL/e-Faktur (must ship by mid-2026), and SAP S/4 + NetSuite integration depth (must close by Q3 2026)**. The Roadmap items are not optional — they are the path to converting Strong-on-paper into Strong-in-deals. The single most important conclusion: **the matrix has no row where any single competitor is Strong across all of P2P + O2C + R2R + SEA-localization. That is the platform thesis, restated as a feature comparison.**`,
+    summary: `Reading across the matrix: **today we are Strong on multi-process platform, multi-entity, multi-currency, cross-process audit, and invoice OCR.** Our current **gaps** are AR (billing & cash application), close orchestration & reconciliations, voice-AI collections, native e-invoicing localization, and SAP S/4 + NetSuite integration depth. The single most important conclusion: **the matrix has no row where any single competitor is Strong across all of P2P + O2C + R2R. That is the platform thesis, restated as a feature comparison.**`,
   },
 
   pipelineMap: {
@@ -1215,7 +1215,7 @@ export const comparisonsData: ComparisonsData = {
       { vendor: 'Vic.ai', category: 'AI-native AP', p2pCoverage: '4 (autonomous), 5, 6', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Per-transaction; touch-ratio SLA' },
       { vendor: 'Ramp / Brex', category: 'Spend management', p2pCoverage: '4 (light), 6, 7 (Bill Pay), 9 (insights), 10 (T&E)', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Card interchange + FX (software is loss-leader)' },
       { vendor: 'Staple.ai', category: 'OCR primitive', p2pCoverage: '4 only (extraction)', o2cCoverage: '3 (extraction component)', r2rCoverage: 'None', primaryMonetization: 'Per-document API pricing' },
-      { vendor: 'HighRadius', category: 'Enterprise O2C', p2pCoverage: 'None', o2cCoverage: '1, 4, 5, 7 (Cash App flagship), 8 (Deductions), 9, 10', r2rCoverage: 'None', primaryMonetization: 'Module ARR — high enterprise prices' },
+      { vendor: 'HighRadius', category: 'Enterprise O2C + R2R', p2pCoverage: 'None', o2cCoverage: '1, 4, 5, 7 (Cash App flagship), 8 (Deductions), 9, 10', r2rCoverage: '1, 2, 3 (recs), 4, 8 (intercompany) — "LiveCube" R2R agents', primaryMonetization: 'Module ARR — high enterprise prices' },
       { vendor: 'Sidetrade', category: 'Enterprise O2C', p2pCoverage: 'None', o2cCoverage: '1, 4, 5, 6 (Aimie voice), 7, 8', r2rCoverage: 'None', primaryMonetization: 'Module ARR' },
       { vendor: 'Versapay', category: 'Mid-market AR', p2pCoverage: 'None', o2cCoverage: '4, 5, 7, 8 (Dispute), 10 (portal flagship)', r2rCoverage: 'None', primaryMonetization: 'AR subscription' },
       { vendor: 'Billtrust', category: 'Mid-market AR + payments', p2pCoverage: 'None', o2cCoverage: '3 (rich), 4, 7, 10', r2rCoverage: 'None', primaryMonetization: 'Per-transaction (payments) + subscription' },
@@ -1231,6 +1231,16 @@ export const comparisonsData: ComparisonsData = {
       { vendor: 'ClearTax (Clear)', category: 'Tax compliance / e-invoicing rails', p2pCoverage: '1 (vendor tax), 4 (e-invoicing on inbound)', o2cCoverage: '3 (e-invoicing on outbound — flagship)', r2rCoverage: '6 (Statutory)', primaryMonetization: 'Per-invoice / per-return' },
       { vendor: 'Sovos / Avalara', category: 'Global tax + e-invoicing', p2pCoverage: '4 (tax calc)', o2cCoverage: '3 (e-invoicing rails)', r2rCoverage: '6 (Statutory)', primaryMonetization: 'Per-jurisdiction subscription + per-transaction' },
       { vendor: 'SAP Concur', category: 'Enterprise T&E', p2pCoverage: '10 (T&E flagship)', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Per-user subscription' },
+      // ── Additions from competitive research (validated positioning; funding figures pending live-web confirmation) ──
+      { vendor: 'Esker', category: 'Multi-process P2P + O2C (closest analogue to us)', p2pCoverage: '1, 4, 5, 6, 7, 8 (AP + procurement + order mgmt)', o2cCoverage: '3, 4, 5, 7 (cash app), 8, 10 (portal)', r2rCoverage: 'None', primaryMonetization: 'Platform ARR' },
+      { vendor: 'Airbase (Paylocity)', category: 'US mid-market unified P2P + spend', p2pCoverage: '2, 4, 5, 6, 7, 9, 10 (AP + procurement + cards + T&E)', o2cCoverage: 'None', r2rCoverage: 'None', primaryMonetization: 'Platform ARR + interchange; HCM distribution via Paylocity' },
+      { vendor: 'Basware', category: 'Enterprise e-invoicing + P2P / AP network', p2pCoverage: '1, 4, 5, 6, 7, 8 (supplier network)', o2cCoverage: '3 (e-invoicing outbound)', r2rCoverage: 'None', primaryMonetization: 'Enterprise ARR + network fees' },
+      { vendor: 'Serrala', category: 'Enterprise SAP-native O2C (+ payments)', p2pCoverage: '7 (payments)', o2cCoverage: '1, 5, 7 (cash app flagship), 8', r2rCoverage: 'None', primaryMonetization: 'Module ARR (enterprise)' },
+      { vendor: 'Upflow', category: 'US / EU mid-market AR (collections-first)', p2pCoverage: 'None', o2cCoverage: '5 (collections flagship), 7, 10 (portal)', r2rCoverage: 'None', primaryMonetization: 'Subscription' },
+      { vendor: 'Tabs', category: 'AI-native contract-to-cash AR', p2pCoverage: 'None', o2cCoverage: '3 (AI billing from contracts), 4, 7', r2rCoverage: 'None', primaryMonetization: 'Subscription' },
+      { vendor: 'Kolleno', category: 'AI-native O2C (agentic)', p2pCoverage: 'None', o2cCoverage: '5, 7 (agentic collections + reconciliation)', r2rCoverage: 'None', primaryMonetization: 'Subscription' },
+      { vendor: 'Maxima', category: 'AI-native R2R (agentic close)', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '1, 2, 3, 4 (agentic close + flux)', primaryMonetization: 'Subscription' },
+      { vendor: 'FinAlyzer (BeyondSquare)', category: 'India-origin R2R consolidation + reporting', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '5 (consolidation), 6 (statutory), 7 (reporting)', primaryMonetization: 'Subscription' },
     ],
     summary: `**Reading the workflow map gives three concrete strategic conclusions that don't show up in the per-competitor profiles:**
 

@@ -450,6 +450,29 @@
     display: inline-flex; align-items: center; justify-content: center;
   }
 
+  /* hide/show pins toggle — sits just above the Comment button */
+  .pin-visibility-toggle {
+    position: fixed;
+    bottom: calc(var(--scale-400) + 52px);
+    right: var(--scale-400);
+    z-index: 60;
+    background: var(--surface-default-background, #fff);
+    color: var(--text-default-default, #1a1a1a);
+    border: 1px solid var(--border-default-default, #e3e3e3);
+    width: 40px; height: 40px;
+    border-radius: 999px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1), background 160ms ease;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .pin-visibility-toggle:hover { transform: translateY(-1px); background: var(--surface-default-background-hover, #f5f5f5); }
+  .pin-visibility-toggle[hidden] { display: none; }
+  /* when pins are hidden, drop pins + any open popovers out of view */
+  body.pins-hidden .comment-pin,
+  body.pins-hidden .comment-popover { display: none !important; }
+
   body.comment-mode { cursor: crosshair; }
   body.comment-mode .nav,
   body.comment-mode .menu-toggle,
@@ -681,6 +704,7 @@
 <button class="menu-toggle" id="menuToggle">☰ Menu</button>
 
 <div class="comment-banner" id="commentBanner">📍 Click anywhere on the page to leave a comment.</div>
+<button class="pin-visibility-toggle" id="pinVisibilityToggle" type="button" aria-pressed="false" title="Hide comment pins" hidden>👁️</button>
 <button class="comment-toggle" id="commentToggle" type="button" aria-pressed="false"><span class="ct-icon" aria-hidden="true">💬</span><span class="ct-label">Comment</span><span class="ct-count" id="ctCount" hidden>0</span></button>
 <div id="pinLayer" aria-live="polite"></div>
 
@@ -695,170 +719,88 @@
     </div>
     <nav class="nav" id="nav">
       <details class="nav-part">
-        <summary class="nav-section">1 · Basics</summary>
-        <a href="#about-neoflo">About Neoflo</a>
-        <a href="#product">Product &amp; modules</a>
-        <a href="#glossary">Glossary</a>
+        <summary class="nav-section">1 · The problem</summary>
+        <a href="#glossary">What FinOps is</a>
       </details>
       <details class="nav-part">
-        <summary class="nav-section">2 · The market</summary>
-        <a href="#market">Market sizing</a>
-        <a href="#regulatory">Regulatory tailwinds</a>
-        <a href="#einv-roadmap">E-invoicing roadmap by country</a>
-      </details>
-      <details class="nav-part">
-        <summary class="nav-section">3 · Competitive landscape</summary>
-        <a href="#landscape">Cohorts overview</a>
-        <a href="#h2h">Head-to-head profiles</a>
-        <a href="#human-ai-cohort">Human + AI hybrid cohort</a>
-        <a href="#matrix">Feature matrix</a>
-        <a href="#workflow">Workflow map</a>
-        <a href="#vendor-coverage">Vendor coverage</a>
-        <a href="#pipemap">Pipeline competitive map</a>
-        <a href="#moat-comparison">Moat &amp; vision</a>
-      </details>
-      <details class="nav-part">
-        <summary class="nav-section">4 · Who we sell to</summary>
-        <a href="#personas">Buyer personas (10)</a>
-        <a href="#jobmap">Buyer job map</a>
-        <a href="#geo-targeting">Geography decisions</a>
-        <a href="#target-rec">Target ICP</a>
-        <a href="#disqualifiers">Disqualifiers</a>
-      </details>
-      <details class="nav-part">
-        <summary class="nav-section">5 · Voice of the field</summary>
-        <a href="#voc-questions">Top questions clients ask</a>
-        <a href="#voc-objections">Live objections</a>
-        <a href="#voc-patterns">Conversation patterns</a>
-        <a href="#voc-displacement">Displacement patterns (117)</a>
-        <a href="#voc-demo">Demo aha moments</a>
-        <a href="#voc-replacement">AP replacement checklist</a>
-        <a href="#voc-actions">P0 actions from clients</a>
-      </details>
-      <details class="nav-part">
-        <summary class="nav-section">6 · Customer evidence</summary>
-        <a href="#signals">Customer-evidence signals</a>
-        <a href="#patterns">Customer-evidence patterns</a>
-      </details>
-      <details class="nav-part">
-        <summary class="nav-section">7 · The strategic bet</summary>
-        <a href="#tldr">TL;DR — the bet</a>
-        <a href="#gap">The gap</a>
-        <a href="#defensibility">Our moat (defensibility)</a>
-        <a href="#recommendation">Recommendation</a>
-        <a href="#risks">Risks</a>
-        <a href="#gtm">GTM playbook</a>
-        <a href="#actions">90-day actions</a>
-      </details>
-      <details class="nav-part">
-        <summary class="nav-section">8 · Reference toolkit</summary>
+        <summary class="nav-section">2 · The space</summary>
         <a href="#p2p">P2P — Procure-to-Pay</a>
         <a href="#o2c">O2C — Order-to-Cash</a>
         <a href="#r2r">R2R — Record-to-Report</a>
         <a href="#vat-wht">VAT &amp; WHT explained</a>
-        <a href="#pricing">Competitor pricing benchmarks</a>
-        <a href="#battlecards">Battlecards</a>
       </details>
       <details class="nav-part">
-        <summary class="nav-section">Meta</summary>
+        <summary class="nav-section">3 · The players</summary>
+        <a href="#landscape">Cohorts overview</a>
+        <a href="#workflow">Who competes, by workflow</a>
+        <a href="#vendor-coverage">Vendor coverage table</a>
+        <a href="#h2h">Head-to-head profiles</a>
+        <a href="#human-ai-cohort">Human + AI hybrid cohort</a>
+        <a href="#matrix">Feature matrix</a>
+        <a href="#pipemap">Pipeline competitive map</a>
+        <a href="#moat-comparison">Moat &amp; vision</a>
+        <a href="#pricing">Competitor pricing</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">4 · Neoflo</summary>
+        <a href="#about-neoflo">What Neoflo is</a>
+        <a href="#product">What Neoflo does</a>
+        <a href="#defensibility">Our moat</a>
+        <a href="#gap">The gap / our opening</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">5 · The strategy</summary>
+        <a href="#tldr">TL;DR — the bet</a>
+        <a href="#market">Market sizing</a>
+        <a href="#regulatory">Regulatory tailwinds</a>
+        <a href="#einv-roadmap">E-invoicing roadmap</a>
+        <a href="#personas">Buyer personas</a>
+        <a href="#jobmap">Buyer job map</a>
+        <a href="#target-rec">Target ICP</a>
+        <a href="#geo-targeting">Geography decisions</a>
+        <a href="#disqualifiers">Disqualifiers</a>
+        <a href="#recommendation">Recommendation</a>
+        <a href="#risks">Risks</a>
+        <a href="#gtm">GTM playbook</a>
+        <a href="#actions">90-day actions</a>
+        <a href="#voc-questions">Questions clients ask</a>
+        <a href="#voc-objections">Live objections</a>
+        <a href="#voc-patterns">Conversation patterns</a>
+        <a href="#voc-displacement">Displacement patterns</a>
+        <a href="#voc-demo">Demo aha moments</a>
+        <a href="#voc-replacement">AP replacement checklist</a>
+        <a href="#voc-actions">P0 actions from clients</a>
+        <a href="#signals">Customer-evidence signals</a>
+        <a href="#patterns">Customer-evidence patterns</a>
+      </details>
+      <details class="nav-part">
+        <summary class="nav-section">6 · Reference</summary>
+        <a href="#battlecards">Battlecards</a>
         <a href="#changemymind">Change my mind</a>
         <a href="#openquestions">Open questions</a>
         <a href="#appendix">Appendix &amp; provenance</a>
       </details>
-      <div class="nav-section">Account</div>
+            <div class="nav-section">Account</div>
       <a href="/api/logout" style="color: var(--text-on-colour-caption);">Sign out</a>
     </nav>
   </aside>
 
   <main>
     <header class="hero">
-      <div class="eyebrow">Neoflo · Strategy memo v2</div>
-      <h1 class="title">The multi-workflow <em>FinOps platform</em><br>built for SEA mid-market.</h1>
-      <p class="lede" id="hero-lede"></p>
+      <div class="eyebrow">Neoflo · FinOps field guide + strategy</div>
+      <h1 class="title">What <em>FinOps</em> is, who's competing,<br>and where Neoflo fits.</h1>
+      <p class="lede" id="hero-lede">New to the space? Read top to bottom — it builds from the basics (what FinOps is, how the P2P / O2C / R2R workflows work) to the players, to what Neoflo does, to the strategy. Already fluent? Jump to any section from the sidebar.</p>
       <div class="meta">
-        <span>Geography: SEA mid-market focus</span>
-        <span>Wedge: P2P invoice processing</span>
-        <span>Built on customer evidence v2</span>
+        <span>For newcomers &amp; the FinOps-fluent</span>
+        <span>Market: US mid-market</span>
+        <span>P2P · O2C · R2R</span>
       </div>
     </header>
 
-    <section id="about-neoflo" style="margin-bottom: var(--scale-800);">
-      <div class="eyebrow">Basics · Read this first</div>
-      <h2 class="section-title">What Neoflo is.</h2>
-      <p class="lede">Neoflo is the multi-workflow FinOps platform for SEA mid-market finance teams — <strong>AP, AR, and close on a single AI-native engine</strong>, against one vendor master, one customer master, and one audit trail. We're not an automation tool you have to operate yourself — we're the managed outcome. AI does the work; our team owns the SLA.</p>
-
-      <h3 style="margin-top: var(--scale-500);">The 60-second pitch (for GTM)</h3>
-      <div class="card" style="font-size: 14px; line-height: 1.7;">
-        <p style="margin-top: 0;"><strong>What we replace:</strong> the 3–5 disconnected systems a mid-market finance team runs today — ERP + an AP point tool + an AR / collections tool + spreadsheet reconciliations + email / Slack approvals.</p>
-        <p><strong>How we differ from the AP-only crowd</strong> (Stampli, Peakflo, Tipalti, Bill): we run AP <em>and</em> AR <em>and</em> close on the same engine, against the same masters and the same audit trail. Single platform, one source of truth.</p>
-        <p><strong>How we differ from OCR commodity</strong> (Nanonets, Cogniquest, Staple): we use <strong>contextual extraction trained on real invoices</strong>, not rule-based OCR — and the system has <strong>memory: accuracy compounds on your data over time</strong>, vendor by vendor and format by format.</p>
-        <p><strong>How we differ from "agentic" US tools</strong> (Vic.ai, Stuut, Brex Bill Pay): we don't drop an autonomous agent on you and walk away. We're outcome-as-a-service — managed delivery + AI + humans where the work demands it. SLA-backed. Pilot fee credited to Year 1.</p>
-        <p style="margin-bottom: 0;"><strong>What buyers actually pay for:</strong> close days saved, AP team hours back, DSO compressed, audit-prep that takes a day instead of a week. Lead with the outcome, not the tool.</p>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">The capabilities map</h3>
-      <div class="grid grid-3" style="margin-top: var(--scale-300);">
-        <div class="card">
-          <h4 style="margin-top: 0;">AI we built</h4>
-          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
-            <li><strong>Contextual invoice extraction</strong> — outperforms rule-based OCR; handles handwritten, multilingual, and SEA-format invoices</li>
-            <li><strong>Memory that compounds</strong> — accuracy improves on your data; vendor-by-vendor, GL-line-by-line learning</li>
-            <li><strong>GL coding suggestions</strong> with confidence scoring</li>
-            <li><strong>Anomaly detection</strong> on invoice patterns and vendor behaviour</li>
-            <li><strong>Match logic across PO / GR / invoice</strong> — handles the messy 30–40% that incumbent OCR misses</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="margin-top: 0;">Workflows we run</h4>
-          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
-            <li><strong>P2P</strong> — vendor onboarding · requisition · PO · GR · invoice receipt · 3-way match · payment</li>
-            <li><strong>O2C</strong> — invoice generation · dunning · cash application · deductions</li>
-            <li><strong>R2R</strong> — close orchestration · JE workflow · recs · intercompany</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="margin-top: 0;">Compliance &amp; trust</h4>
-          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
-            <li><strong>SOC 2 Type II + ISO</strong> + AES-256 at rest + TLS 1.2+ in transit</li>
-            <li><strong>Cross-process audit trail</strong> — one immutable evidence chain: PO → invoice → approval → payment → JE → reconciliation</li>
-            <li><strong>Integrates with all major ERPs</strong> — SAP, Oracle, NetSuite, Zoho, etc.</li>
-            <li><strong>Deployment</strong>: shadow layer alongside your ERP — does not replace it</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">Who it's for</h3>
-      <div class="card">
-        <p style="font-size: 14px; line-height: 1.7; margin-top: 0;">Mid-market companies — <strong>$50M–$500M revenue, 10–50 finance staff, multi-entity, ERP-connected</strong> (NetSuite / SAP S/4 / Oracle Fusion / Dynamics) — currently stitched together on Excel + email + ERP + bandaid SaaS.</p>
-        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 0;">Two target geographies: <strong>SEA mid-market</strong> (Singapore / Indonesia / Malaysia / Vietnam / Thailand / Philippines) and the <strong>US</strong> — both SAP-shop enterprise (via warm CPA-partner channels) and the broader US mid-market. Out of scope: India domestic mid-market (sub-$5 / invoice OCR commodity destroys SaaS unit economics) and EU mid-market (no warm channel today).</p>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">Lead the conversation with this</h3>
-      <div class="evidence" style="margin-top: var(--scale-200); background: var(--surface-primary-background); border-left-color: var(--border-primary-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Talk track for first meetings</strong>
-        <div style="margin-top: var(--scale-100); font-size: 14px; line-height: 1.7;">
-          "Most finance teams your size are running AP, AR, and close across 3–5 tools that don't talk to each other. We unify all three on one engine, with one vendor master, one customer master, and one audit trail. The AI handles invoice extraction, GL coding, reconciliations, and exception routing — and it gets smarter on your data over time. Our team owns the outcome SLA. Pilot is 4–6 weeks, fee credited to Year 1 — so risk is close to zero. Most automation vendors won't guarantee SLAs on outcomes. We do."
-        </div>
-      </div>
-    </section>
-
-    <section id="product" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Basics · Product</div>
-      <h2 class="section-title">Product &amp; modules.</h2>
-      <p class="lede">What we are building.</p>
-      <ul style="font-size: 14.5px; line-height: 1.7; margin-top: var(--scale-300);">
-        <li><strong>Invoice Processing &amp; Straight-Through Processing (STP)</strong></li>
-        <li><strong>Spend Analytics &amp; Working Capital Intelligence</strong></li>
-        <li><strong>Collections, Dunning, Dispute Management &amp; Customer Self-Service</strong></li>
-        <li><strong>Cash Application &amp; Payment Matching</strong></li>
-        <li><strong>Financial Close Management</strong></li>
-      </ul>
-    </section>
-
     <section id="glossary" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Basics · Reference</div>
-      <h2 class="section-title">Glossary.</h2>
-      <p class="lede">Acronym dictionary for the team. New hires read this on Day 1.</p>
+      <div class="eyebrow">Start here · The basics</div>
+      <h2 class="section-title">What FinOps is.</h2>
+      <p class="lede">FinOps (finance operations) is how a company runs the money-in / money-out / close-the-books machinery: <strong>P2P</strong> (paying suppliers), <strong>O2C</strong> (collecting from customers), and <strong>R2R</strong> (closing and reporting). Everything else on this page refers back to these terms — so start here, then read on.</p>
 
       <div class="card">
         <h4 style="margin-top: 0;">Process abbreviations</h4>
@@ -943,487 +885,6 @@
           <dt>ITFM</dt><dd>IT Financial Management — Yarken's category; relevant cohort comparison.</dd>
         </dl>
       </div>
-    </section>
-
-    <section id="tldr">
-      <div class="eyebrow">Section 01 · Strategy</div>
-      <h2 class="section-title">The bet, in one paragraph.</h2>
-      <div id="tldr-body"></div>
-    </section>
-
-    <section id="market">
-      <div class="eyebrow">Section 02 · Strategy</div>
-      <h2 class="section-title">Three categories. Different shapes.</h2>
-      <div id="market-intro"></div>
-      <div class="grid grid-3" id="market-stats"></div>
-      <div id="market-table"></div>
-      <div class="card" id="market-headline"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="market-segment"></div>
-    </section>
-
-    <section id="landscape">
-      <div class="eyebrow">Section 03 · Strategy</div>
-      <h2 class="section-title">Four cohorts per category.</h2>
-      <div class="tabs" id="landscape-tabs"></div>
-      <div id="landscape-panels"></div>
-    </section>
-
-    <section id="gap">
-      <div class="eyebrow">Section 04 · Strategy</div>
-      <h2 class="section-title">Where nobody is winning yet.</h2>
-      <div id="gap-intro"></div>
-      <div class="gap-grid" id="gap-grid"></div>
-      <div style="margin-top: var(--scale-400);" id="gap-takeaways"></div>
-    </section>
-
-    <section id="recommendation">
-      <div class="eyebrow">Section 05 · Strategy</div>
-      <h2 class="section-title" id="rec-headline"></h2>
-      <div class="grid grid-3" id="rec-phases"></div>
-      <div style="margin-top: var(--scale-400);" id="rec-rest"></div>
-    </section>
-
-    <section id="risks">
-      <div class="eyebrow">Section 06 · Strategy</div>
-      <h2 class="section-title">What could break the bet.</h2>
-      <div id="risks-list"></div>
-    </section>
-
-    <section id="signals">
-      <div class="eyebrow">Section 07 · Customer evidence v2</div>
-      <h2 class="section-title">What 12+ buyers actually told us.</h2>
-      <div id="signals-intro"></div>
-      <div id="signals-list"></div>
-    </section>
-
-    <section id="patterns">
-      <div class="eyebrow">Section 08 · Customer evidence</div>
-      <h2 class="section-title">Cross-cutting patterns.</h2>
-      <div id="patterns-list"></div>
-    </section>
-
-    <section id="pricing">
-      <div class="eyebrow">Section 09 · Deep insights</div>
-      <h2 class="section-title">What competitors charge. What we should.</h2>
-      <div id="pricing-intro"></div>
-      <div id="pricing-table"></div>
-      <h3>Proposed Neoflo price ladder</h3>
-      <div class="grid grid-3" id="pricing-tiers"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="pricing-logic"></div>
-    </section>
-
-    <section id="regulatory">
-      <div class="eyebrow">Section 10 · Deep insights</div>
-      <h2 class="section-title">ASEAN e-invoicing is forced buying.</h2>
-      <div id="reg-intro"></div>
-      <div id="reg-list"></div>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default); border-left: 3px solid var(--border-warning-default);" id="reg-headline"></div>
-    </section>
-
-    <section id="einv-roadmap" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Market · E-invoicing</div>
-      <h2 class="section-title">E-invoicing roadmap by country.</h2>
-      <p class="lede">Mandate calendar by jurisdiction × Neoflo support status. The Tax Director persona's first question: "Which mandates do you support natively today, and what's your roadmap by country and date?" — this page is the answer.</p>
-      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
-        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 3 input needed]</strong>
-        <p style="margin-top: var(--scale-100); font-size: 14px;">Awaiting product-team confirmation. Planned table — for each mandate: jurisdiction · platform · authority · phase calendar (B2G → large B2B → mid-market → all) · current Neoflo status (Live / In dev / On roadmap / Not on roadmap):</p>
-        <ul style="font-size: 14px; line-height: 1.6;">
-          <li><strong>Malaysia · MyInvois</strong> (LHDN) — phased mandate 2024–2026</li>
-          <li><strong>Singapore · InvoiceNow / PEPPOL</strong> (IMDA) — rolling 2025–2026</li>
-          <li><strong>Indonesia · e-Faktur</strong> (DGT) — mandatory</li>
-          <li><strong>Philippines · EIS</strong> (BIR) — phased</li>
-          <li><strong>Vietnam · e-Invoice</strong> (GDT) — mandatory</li>
-          <li><strong>Thailand · e-Tax</strong> (RD) — incentive-based</li>
-          <li><strong>Saudi Arabia · FATOORAH</strong> (ZATCA) — mandatory</li>
-          <li><strong>India · GST IRN</strong> — mandatory above turnover threshold</li>
-          <li><strong>EU · PEPPOL / national variants</strong> — varies by member state</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="defensibility">
-      <div class="eyebrow">Section 11 · Deep insights</div>
-      <h2 class="section-title">What stops a competitor from copying us.</h2>
-      <div id="def-intro"></div>
-      <div id="def-table"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="def-summary"></div>
-    </section>
-
-    <section id="jobmap">
-      <div class="eyebrow">Section 12 · Deep insights</div>
-      <h2 class="section-title">What the buyer is actually doing.</h2>
-      <div id="jm-intro"></div>
-      <div id="jm-list"></div>
-    </section>
-
-    <section id="gtm">
-      <div class="eyebrow">Section 13 · Deep insights</div>
-      <h2 class="section-title">Segment × geography × channel.</h2>
-      <div id="gtm-intro"></div>
-      <div id="gtm-table"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="gtm-sequencing"></div>
-    </section>
-
-    <section id="actions">
-      <div class="eyebrow">Section 14 · Deep insights</div>
-      <h2 class="section-title">What to do in the next quarter.</h2>
-      <div id="actions-list"></div>
-    </section>
-
-    <section id="h2h">
-      <div class="eyebrow">Section 15 · Competitive deep-dive</div>
-      <h2 class="section-title">Head-to-head profiles.</h2>
-      <div id="h2h-intro"></div>
-      <div id="h2h-list"></div>
-    </section>
-
-    <section id="human-ai-cohort" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Competitive · Cohort</div>
-      <h2 class="section-title">Human + AI hybrid cohort.</h2>
-      <p class="lede">Companies whose model looks most like ours — managed-outcome services where the customer outsources the workflow and the vendor decides what's done by AI vs. humans. This is our true peer set on positioning, even when headline categories differ. Conversation Pattern 4 ("BPO disruption window is open NOW") is partly a response to this cohort.</p>
-
-      <p style="font-size: 12px; color: var(--text-default-caption); font-style: italic;">Sourcing note: this section was compiled without live web access. Customer counts, ARR figures, and 2026 vision wording are estimates from training-data knowledge or internal-corpus references; verify with a 30-min live-web pass before external sharing.</p>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Yarken <span style="font-size: 13px; color: var(--text-default-caption); font-weight: 400;">— closest US-referenceable template</span></h3>
-        <dl class="stage-grid">
-          <dt>Model</dt><dd>AI-native ITFM (IT Financial Management) and cloud-cost-management platform with managed-services overlay. Per our internal investor briefs (Betatron Feb 2026 deal): "AI platform (80%) + managed delivery (20% shrinking) + outcome contract" — very close to our intended split.</dd>
-          <dt>Pricing</dt><dd>Outcome-based / value-share pricing referenced in investor briefs as the differentiator vs FTE-priced BPO.</dd>
-          <dt>Financials</dt><dd><strong>Verified from internal corpus only:</strong> Betatron Venture Group lead (Feb 2026) — they're the closest pattern Betatron is funding. Customer base described as "Fortune 2000" with "asset-light + small headcount." ARR / funding amount / valuation not in internal corpus; not verified externally in this session.</dd>
-          <dt>Customer evidence</dt><dd>Internal-corpus-only: Fortune 2000 named customers referenced but not enumerated. Recommend live-web check on yarken.com case studies.</dd>
-          <dt>vs Neoflo</dt><dd><strong>What Yarken does better:</strong> US enterprise distribution, Fortune 2000 reference book, structurally similar pricing already validated by VC. <strong>What Neoflo does better:</strong> different category (business finance ops vs IT finance ops), SEA geographic moat, deeper workflow surface (P2P + O2C + R2R vs ITFM cost optimization), e-invoicing native compliance. <strong>Talk track:</strong> "What Yarken is doing in IT finance, we're doing in business finance" — directly from our internal pitch playbook.</dd>
-        </dl>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Auditoria.ai</h3>
-        <dl class="stage-grid">
-          <dt>Model</dt><dd>"Autonomous finance" SmartAgents — pre-built AI agents for AP, AR, vendor management. Productized AI + managed-services overlay for exception handling. NorCal-based.</dd>
-          <dt>Pricing</dt><dd>SaaS + per-agent pricing model. Not outcome-priced like Neoflo.</dd>
-          <dt>Financials</dt><dd>VC-backed (Venrock, Workday Ventures cited as investors). Funding total / ARR not verified in this session — recommend live-web check.</dd>
-          <dt>Customer evidence</dt><dd>US enterprise reference set in healthcare, financial services, manufacturing. Specific customer names not verified in this session.</dd>
-          <dt>vs Neoflo</dt><dd><strong>What Auditoria does better:</strong> US enterprise distribution, Workday partnership, longer track record on AP autonomous agents (since ~2020). <strong>What Neoflo does better:</strong> SEA presence, multi-process platform breadth (R2R included), India delivery cost, e-invoicing native. <strong>Watch for:</strong> if they push into SEA via Workday APAC, we lose a structural advantage.</dd>
-        </dl>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Klippa</h3>
-        <dl class="stage-grid">
-          <dt>Model</dt><dd>Document AI + finance workflow with managed extraction services. Founded ~2015, Netherlands-HQ.</dd>
-          <dt>Pricing</dt><dd>Per-document API pricing (similar shape to Staple.ai) plus enterprise SaaS for full workflow.</dd>
-          <dt>Financials</dt><dd>VC-backed; specific funding / ARR not verified in this session.</dd>
-          <dt>Customer evidence</dt><dd>European mid-market customer base; expense management and AP automation use cases predominate. Specific customer names not verified in this session.</dd>
-          <dt>vs Neoflo</dt><dd><strong>What Klippa does better:</strong> EU mid-market presence, document AI primitives (similar to where Staple.ai sits relative to us). <strong>What Neoflo does better:</strong> full workflow vs API primitive, SEA presence, multi-process. Klippa is closer to a complement than a competitor in our segment — could partner.</dd>
-        </dl>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Topkey</h3>
-        <dl class="stage-grid">
-          <dt>Model</dt><dd>Back-office finance with humans-in-the-loop. Vertical-skewed (hospitality / property management cited).</dd>
-          <dt>Pricing</dt><dd>Hybrid managed services + SaaS; not extensively documented.</dd>
-          <dt>Financials</dt><dd>Less well-documented in training data; recommend live-web check on funding / customer count.</dd>
-          <dt>vs Neoflo</dt><dd>Likely a smaller-scale, vertical-specific player. Unlikely to be a direct competitor in our segment. Mention only for completeness of the cohort.</dd>
-        </dl>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">Aegis Group → Teleperformance <span style="font-size: 13px; color: var(--text-default-caption); font-weight: 400;">— exit precedent, not a competitor</span></h3>
-        <dl class="stage-grid">
-          <dt>Why this matters</dt><dd>Acquired by Teleperformance in 2014 (~$610M reported). The canonical exit-narrative comp for managed-services-with-tech-overlay companies. Sandip Sen advisory connection in our internal corpus references this deal as a strategic exit pattern.</dd>
-          <dt>Use in pitch</dt><dd>When investors push on services-vs-product framing (the Antler Elevate / Betatron objection in our investor briefs), Aegis → Teleperformance is the precedent that says "managed-services-with-tech is venture-fundable AND venture-exitable."</dd>
-        </dl>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">BPO disruption shadow — Genpact, WNS, Sutherland</h3>
-        <dl class="stage-grid">
-          <dt>Why we mention them</dt><dd>The traditional BPO incumbents (Genpact: NYSE:G, $4.4B revenue; WNS: NYSE:WNS; Sutherland: private) are increasingly layering AI on top of their existing FTE-priced delivery. Per Voice-of-Customer Pattern 4: "they layered AI on a 30-year labor model. We started with AI, added humans where needed." The framing wins because it's true — they cannot cannibalize their own FTE revenue, so the AI overlay never actually replaces the headcount-priced contract underneath.</dd>
-          <dt>Specific accounts in our corpus</dt><dd>14 enterprises in our competitive intel are flagged as "stuck in BPO lock-in" — Wesco/Genpact, AVEVA/Cognizant, Coca-Cola Bottlers/Genpact. These are warm targets when their BPO contract renewal cycles open.</dd>
-          <dt>vs Neoflo</dt><dd><strong>What BPOs do better:</strong> distribution (Big-4 advisory + Fortune 1000 procurement relationships), scale of delivery teams, regulatory geographies they already operate in. <strong>What Neoflo does better:</strong> AI-native architecture (not retrofitted), unit economics that scale sub-linearly with volume (vs FTE pricing), specificity to FinOps (vs full BPO surface). <strong>Tactical:</strong> we win when buyers explicitly want to escape FTE pricing — pilot is the wedge.</dd>
-        </dl>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-400); background: var(--surface-primary-background); border-color: var(--border-primary-default);">
-        <h4 style="margin-top: 0;">Cross-cutting reads on this cohort</h4>
-        <ol style="font-size: 14px; line-height: 1.7; padding-left: 20px;">
-          <li><strong>Yarken is the closest pattern-match for our pitch.</strong> Use the language directly: "AI platform (80%) + managed delivery (20% shrinking) + outcome contract." Avoid the word "BPO" (per investor-briefing guidance — see prospect-briefs.ts).</li>
-          <li><strong>Auditoria.ai is the closest US-FinOps-vertical pattern-match.</strong> If they push into SEA via the Workday partnership, we lose a structural advantage — watch for this.</li>
-          <li><strong>The BPO disruption story works because the BPOs cannot cannibalize themselves.</strong> Conversation Pattern 4 is more durable than it looks — every BPO that adds AI as an overlay confirms the framing.</li>
-          <li><strong>Aegis → Teleperformance is the exit pattern when investors push back on services-vs-product framing.</strong> Use it explicitly in investor conversations (Antler Elevate / Betatron objection-handling).</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="matrix">
-      <div class="eyebrow">Section 16 · Competitive deep-dive</div>
-      <h2 class="section-title">Feature matrix — capability vs vendor.</h2>
-      <div id="matrix-intro"></div>
-      <div id="matrix-legend" class="grid grid-3" style="margin-bottom: var(--scale-300);"></div>
-      <div id="matrix-table" style="overflow-x: auto;"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="matrix-summary"></div>
-    </section>
-
-    <section id="workflow">
-      <div class="eyebrow">Section 17 · Competitive deep-dive</div>
-      <h2 class="section-title">Workflow-by-workflow map.</h2>
-      <div id="workflow-intro"></div>
-      <div class="tabs" id="workflow-tabs"></div>
-      <div style="display: flex; gap: var(--scale-200); margin-bottom: var(--scale-300); flex-wrap: wrap; align-items: center;">
-        <input id="wf-filter" type="search" placeholder="Filter workflows by name, vendor, or text…" style="flex: 1; min-width: 240px; padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);" />
-        <button class="tab" id="wf-expand-all" type="button">Expand all</button>
-        <button class="tab" id="wf-collapse-all" type="button">Collapse all</button>
-      </div>
-      <div id="workflow-panels"></div>
-    </section>
-
-    <section id="vendor-coverage">
-      <div class="eyebrow">Section 18 · Competitive deep-dive</div>
-      <h2 class="section-title">Vendor coverage — who plays where.</h2>
-      <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape.</p>
-      <div id="vc-table" style="overflow-x: auto;"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="workflow-summary"></div>
-    </section>
-
-    <section id="pipemap">
-      <div class="eyebrow">Section 19 · Competitive deep-dive</div>
-      <h2 class="section-title">Pipeline competitive map.</h2>
-      <div id="pm-intro"></div>
-      <div id="pm-list"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="pm-readout"></div>
-    </section>
-
-    <section id="moat-comparison" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Competitive · Moat &amp; Vision</div>
-      <h2 class="section-title">Moat &amp; vision — what each competitor says about themselves and where their moat actually sits.</h2>
-      <p class="lede">One card per competitor. The headline you can scan; click any card to see their stated vision (verbatim or paraphrased) and our read on where their moat is real, where it's softer than they'd say, and what it means for us. Sources are linked so anyone can verify.</p>
-
-      <p style="font-size: 12px; color: var(--text-default-caption); font-style: italic; margin-bottom: var(--scale-300);">Vision wording was compiled without a live web pass; for any external use, re-pull current 2026 wording from the linked vendor home page.</p>
-
-      <details class="comp-card">
-        <summary><strong>Peakflo</strong> — <em>"all-in-one finance operations platform for Southeast Asia"</em><br/><span class="comp-headline">Strongest moat: distribution in Singapore via PSG-subsidized pricing. The four-year SEA head start is real. Where they're soft: no R2R, OCR data is replicable.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from public positioning):</strong> "All-in-one finance operations platform for SEA mid-market — AP, AR, payments, collections."</p>
-          <p><strong>Where moat is real:</strong> PSG Pre-Approved Vendor status in Singapore is structurally hard to replicate without a 90-day-plus regulator engagement; once approved, every SG SMB sees them at ~50% net cost vs unsubsidized vendors. Voice-AI collections in 12+ SEA languages is genuinely category-defining for SEA because phone collections are culturally normal in ID/PH/VN/TH.</p>
-          <p><strong>Where moat is softer:</strong> SEA-format OCR training data is replicable inside 12 months by anyone with comparable invoice volume. Workflow data model is invoice + collections-centric — not flexible for entity-scoped multi-process; no R2R. Data and workflow moats are not as durable as their distribution moat.</p>
-          <p><strong>What it means for us:</strong> Distribution (PSG) is the structural lever — closing PSG status would directly neutralize their pricing advantage in Singapore. Their lack of R2R is the obvious flank — locking close-management as the third module in SEA is a differentiator they would need 12+ months to match.</p>
-          <p><strong>Sources:</strong> <a href="https://peakflo.co" target="_blank" rel="noopener">peakflo.co</a> · <a href="https://www.ycombinator.com/companies/peakflo" target="_blank" rel="noopener">Y Combinator W22</a> · <a href="https://www.imda.gov.sg/how-we-can-help/productivity-solutions-grant" target="_blank" rel="noopener">IMDA PSG eligibility</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>Stampli</strong> — <em>"The only AP automation platform with a conversation-first design"</em><br/><span class="comp-headline">Strongest moat: the chat-thread-on-the-invoice UX is genuinely sticky. 1,500+ customers, 70+ ERPs, highest sustained G2 rating in mid-market AP.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from public positioning):</strong> "Conversation-first AP — every invoice is a thread between AP, requester, approver, and vendor."</p>
-          <p><strong>Where moat is real:</strong> Workflow + switching cost. Once 12+ months of approval / vendor / requester conversations are in-thread, migrating to another tool means losing that audit history. ERP integration depth (70+ ERPs) compounds this. G2 4.6–4.8 sustained — UX is genuinely best-in-class.</p>
-          <p><strong>Where moat is softer:</strong> Cost (Mountain View CAC heavy, $30K+ ARR floor — losing the long-tail to Bill / Ramp by design). Data moat is medium — Billy the Bot is weaker on non-Latin scripts and SEA / EU formats. Compliance is SOC 2 / GDPR but no SEA mandate coverage.</p>
-          <p><strong>What it means for us:</strong> They are the US mid-market AP gold standard, not a SEA competitor. We don't run into them in our deals today. The lesson is that workflow stickiness via UX (their chat thread) compounds into a real moat — our equivalent should be the unified-master-data view across AP+AR+close.</p>
-          <p><strong>Sources:</strong> <a href="https://www.stampli.com" target="_blank" rel="noopener">stampli.com</a> · <a href="https://www.g2.com/products/stampli/reviews" target="_blank" rel="noopener">G2 Stampli</a> · <a href="https://www.crunchbase.com/organization/stampli" target="_blank" rel="noopener">Crunchbase (funding)</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>Tipalti</strong> — <em>"The global payables automation platform"</em><br/><span class="comp-headline">Strongest moat: 196-country mass-payment infrastructure + KPMG-validated tax compliance. Built for global mid-market with many small global suppliers.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from public positioning):</strong> "Modernize your payables process from end to end — globally, compliantly, at scale."</p>
-          <p><strong>Where moat is real:</strong> Workflow + compliance + switching cost. 196 countries, 120+ currencies, native W-8/W-9/1099/DAC7 generation, KPMG-validated. Once a customer's global supplier network and tax-form history is in Tipalti, migrating is months of work.</p>
-          <p><strong>Where moat is softer:</strong> Implementation length (6+ months reported), sales motion is heavier than mid-market alternatives, valuation has reportedly come down materially from 2021 peak (down-round / layoffs reported in 2024). Distribution moat is good but not VS — limited SEA presence specifically.</p>
-          <p><strong>What it means for us:</strong> They show up only when a customer has many global suppliers. Most of our SEA mid-market deals do not need their level of global coverage. Where they overlap, we lose on global coverage but win on time-to-live and price.</p>
-          <p><strong>Sources:</strong> <a href="https://www.tipalti.com" target="_blank" rel="noopener">tipalti.com</a> · <a href="https://www.g2.com/products/tipalti/reviews" target="_blank" rel="noopener">G2 Tipalti</a> · <a href="https://techcrunch.com/2021/12/08/tipalti-raises-270m-at-an-8-3b-valuation/" target="_blank" rel="noopener">2021 Series F coverage</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>Bill (NASDAQ: BILL)</strong> — <em>"Putting SMBs in control of payments, expenses, and cash flow"</em><br/><span class="comp-headline">Strongest moat: distribution. CPA channel + 481K-business network + QuickBooks/Xero embedded.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from BILL investor materials and earnings):</strong> "The financial operations platform for SMBs."</p>
-          <p><strong>Where moat is real:</strong> Distribution moat is one of the strongest in finance SaaS. The CPA-channel motion (thousands of accounting firms reselling BILL to their SMB clients) means SMBs literally don't shop — the accountant decides. Money-transmitter licensure across all 50 US states is itself a moat. The BILL Network's vendor auto-fill is a real two-sided network effect.</p>
-          <p><strong>Where moat is softer:</strong> Workflow (SMB-grade controls, multi-entity weak). Mid-market traction has been decelerating per recent earnings — they're SMB-anchored. Customers reaching $50M+ revenue routinely describe the product as "outgrown."</p>
-          <p><strong>What it means for us:</strong> Not a head-to-head competitor in our segment. They sell SMB; we sell mid-market. Where we run into them is buyers who outgrew Bill and are shopping up. They are a referral target, not a battlecard target.</p>
-          <p><strong>Sources:</strong> <a href="https://www.bill.com" target="_blank" rel="noopener">bill.com</a> · <a href="https://investor.bill.com" target="_blank" rel="noopener">BILL Investor Relations</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001786909" target="_blank" rel="noopener">SEC filings (10-K)</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>Coupa</strong> — <em>"Total Spend Management"</em><br/><span class="comp-headline">Strongest moat: enterprise procurement category leadership. $6T+ Community spend dataset is genuinely unreplicable. Now Thoma Bravo-private.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from public positioning):</strong> "Total visibility and control of every dollar a business spends — from sourcing through payment."</p>
-          <p><strong>Where moat is real:</strong> Distribution (Fortune 500 procurement orgs + Big-4 advisory practices). Data ($6T+ in cumulative spend across 3,000+ enterprises — Community Insights is unreplicable). Workflow (deepest end-to-end S2P suite). Switching cost (multi-year ent contracts + supplier-portal lock-in). Four "VS" layers — among the strongest moats in this set.</p>
-          <p><strong>Where moat is softer:</strong> Mid-market — not their segment. Post-Thoma-Bravo, mid-market is being pushed off Coupa toward lighter tools (Stampli is the most consistent beneficiary).</p>
-          <p><strong>What it means for us:</strong> Not a competitor in our segment. They show up only as a "we considered Coupa but it's too heavy" upmarket displacement signal — that is one of our entry triggers, especially in upper-mid US enterprise.</p>
-          <p><strong>Sources:</strong> <a href="https://www.coupa.com" target="_blank" rel="noopener">coupa.com</a> · <a href="https://news.thomabravo.com/2023-02-28-Thoma-Bravo-Completes-Acquisition-of-Coupa-Software" target="_blank" rel="noopener">Thoma Bravo $8B acquisition (Feb 2023)</a> · <a href="https://www.gartner.com/reviews/market/source-to-pay-suites" target="_blank" rel="noopener">Gartner Peer Insights — S2P</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>SAP VIM / S/4HANA Central Invoice Management</strong> — <em>"AP automation built for SAP" / "intelligent, automated invoice processing for SAP S/4HANA"</em><br/><span class="comp-headline">Strongest moat: it's already installed in every SAP shop. Inertia is the moat. The actual product is mediocre.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from SAP / OpenText product pages):</strong> "The AP automation that ships with your SAP investment — intelligent invoice processing for SAP S/4HANA."</p>
-          <p><strong>Where moat is real:</strong> Distribution (bundled with SAP licensing — zero CAC). Switching cost (ABAP customizations + audit trail accumulated over years). Compliance (e-invoicing certs already in DE/FR/IT/BR/IN). For a CIO whose primary objective is "no more vendors / no more migration risk," VIM wins by default.</p>
-          <p><strong>Where moat is softer:</strong> Data (template OCR, no learning loop — first-pass automation typically &lt;60% on non-standard formats). The "free / bundled" cost moat is sticker-price only — ABAP-consultant TCO and upgrade pain make real cost moat much weaker. The product is mediocre at the actual AP workflow.</p>
-          <p><strong>What it means for us:</strong> The silent default in every SAP-shop deal — Coca-Cola, Spectrum, Welspun, Hitachi. The real competition in those rooms is "Neoflo vs do nothing," not "Neoflo vs Stampli." Coca-Cola asked for an explicit 11-dimension head-to-head against VIM (extraction · first-pass automation · learning · tax/GL · email ingest · customization overhead · upgrade pain · expertise availability · country compliance · fraud · AR coverage) — that battlecard frame is reusable for every SAP-shop conversation.</p>
-          <p><strong>Sources:</strong> <a href="https://www.opentext.com/products/vendor-invoice-management-for-sap-solutions" target="_blank" rel="noopener">OpenText VIM product page</a> · <a href="https://www.sap.com/products/financial-management/central-invoice-management.html" target="_blank" rel="noopener">SAP S/4HANA Central Invoice Management</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>Vic.ai</strong> — <em>"the autonomous finance platform"</em><br/><span class="comp-headline">Strongest moat: architectural — autonomy-first AP, where every other tool is human-in-loop. Sets the buyer expectation everyone else has to meet.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from public materials):</strong> "AP is the wedge; the goal is autonomous finance end-to-end — agents do the work, humans review exceptions."</p>
-          <p><strong>Where moat is real:</strong> Architecture. Vic.ai is the only AP product publicly committing to and measuring a touch-ratio SLA — % of invoices auto-posted with zero human review. The thesis: AI should auto-post 80–95% of invoices and humans should only see exceptions. Stampli, Bill, AvidXchange, Tipalti, and Peakflo are all built on a "human-assisted by AI" assumption. If autonomy becomes the dominant buyer frame, every workflow-centric tool has to retrofit.</p>
-          <p><strong>Where moat is softer:</strong> Distribution (no Magic Quadrant rank yet, limited partner ecosystem). Workflow surface (AP-only, deliberately thin). Compliance (SOC 2 only). Their per-transaction pricing breaks at very high volume.</p>
-          <p><strong>What it means for us:</strong> Not a pipeline competitor today — they almost never show up in our SEA deals. They are an architectural pacer. The V2 architecture should not preclude an autonomy-first operating model when the buyer frame shifts.</p>
-          <p><strong>Sources:</strong> <a href="https://www.vic.ai" target="_blank" rel="noopener">vic.ai</a> · <a href="https://www.crunchbase.com/organization/vic-ai" target="_blank" rel="noopener">Crunchbase (funding)</a> · <a href="https://www.iconiqcapital.com" target="_blank" rel="noopener">ICONIQ Capital</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>Stuut</strong> — <em>"the AI agent for accounts receivable" / autonomous AR</em><br/><span class="comp-headline">Strongest moat: speed of deployment (6–10 day go-lives in AR). Sets a category-shifting benchmark.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from public materials):</strong> "Autonomous AR — AI agents do the collections work, humans review escalations."</p>
-          <p><strong>Where moat is real:</strong> Speed. 6–10 day go-lives in AR / collections — a category where HighRadius takes 3–9 months and even mid-market alternatives take 4–8 weeks — is genuinely category-shifting. The architectural choice (lightweight integration, opinionated playbooks) is the wedge.</p>
-          <p><strong>Where moat is softer:</strong> All other layers are weak today. Distribution (early-stage, limited eco). Workflow (AR-only, deliberately narrow). Switching cost (6–10 day go-live cuts both ways — easy in, easy out). Compliance (SOC 2, no SEA mandates).</p>
-          <p><strong>What it means for us:</strong> Like Vic.ai — not a pipeline competitor, an architectural pacer. If "your AR is live in two weeks" becomes the buyer expectation, the enterprise-AR sales cycle compresses for the whole category, including ours.</p>
-          <p><strong>Sources:</strong> <a href="https://www.stuut.ai" target="_blank" rel="noopener">stuut.ai</a> · <a href="https://www.crunchbase.com/organization/stuut" target="_blank" rel="noopener">Crunchbase</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>HighRadius</strong> — <em>"Autonomous Finance"</em><br/><span class="comp-headline">Strongest moat: enterprise O2C category leadership. 1,000+ Fortune 1000 customers. Their entry price ($1.2M+) creates our opening at upper-mid.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from CEO Sashi Narahari keynotes):</strong> "The finance department running itself — autonomous finance powered by AI agents across O2C."</p>
-          <p><strong>Where moat is real:</strong> Distribution (Gartner MQ Leader, F1000 reference book, deep SAP/Oracle/Workday integrations). Workflow (deepest end-to-end O2C — credit, collections, cash app, deductions, disputes). Switching cost (multi-year ent contracts, ERP depth, customer master + AR history accumulated; migration is seven figures of work).</p>
-          <p><strong>Where moat is softer:</strong> Cost. $1.2M+ enterprise quotes price out the entire enterprise mid-market band ($500M–$5B revenue) — exactly Spectrum's profile. This is the structural opening for us.</p>
-          <p><strong>What it means for us:</strong> Spectrum-validated wedge: every "rejected-by-HighRadius enterprise mid-market" deal is a warm lead by definition. The discovery work is finding them (LinkedIn signals, advisor introductions, public earnings-call mentions of DSO / cash-app pain), not convincing them.</p>
-          <p><strong>Sources:</strong> <a href="https://www.highradius.com" target="_blank" rel="noopener">highradius.com</a> · <a href="https://www.gartner.com/reviews/market/integrated-invoice-to-cash" target="_blank" rel="noopener">Gartner Peer Insights — Invoice-to-Cash</a> · <a href="https://www.crunchbase.com/organization/highradius" target="_blank" rel="noopener">Crunchbase</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card">
-        <summary><strong>BlackLine (NASDAQ: BL)</strong> — <em>"the platform that powers the modern accounting experience"</em><br/><span class="comp-headline">Strongest moat: category creation + SAP partnership. 4,400+ customers; high Fortune 500 controller-office penetration.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision (paraphrased from CEO Owen Ryan and recent earnings):</strong> "Modern accounting + AI-led close, powered by the platform that defined the close-management category."</p>
-          <p><strong>Where moat is real:</strong> Distribution (SAP Solex partnership — SAP resells BlackLine globally; F500 controller community). Workflow (deepest close-management in the category — recs + JE + intercompany + variance + close-orchestration all natively integrated). Switching cost (recon history, JE rules, SOX trails accumulated; migration is high seven figures for large customers).</p>
-          <p><strong>Where moat is softer:</strong> Cost — mid-market pricing ($40K–$300K) being undercut by FloQast and AI-native challengers like Numeric. Net Revenue Retention has compressed from 110%+ historically toward ~106–108% in recent quarters — soft signal that enterprise expansion is harder.</p>
-          <p><strong>What it means for us:</strong> They are the R2R category leader, not in our SEA mid-market deals today. As we approach R2R as the third module, we will compete with them at the upper end of mid-market — likely on price + the integrated-AP+AR+close bundle that they cannot match without rebuilding.</p>
-          <p><strong>Sources:</strong> <a href="https://www.blackline.com" target="_blank" rel="noopener">blackline.com</a> · <a href="https://investors.blackline.com" target="_blank" rel="noopener">BlackLine Investor Relations</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001666134" target="_blank" rel="noopener">SEC filings (10-K)</a></p>
-        </div>
-      </details>
-
-      <details class="comp-card" style="background: var(--surface-primary-background); border-color: var(--border-primary-default);" open>
-        <summary><strong>Neoflo (us)</strong> — <em>"the multi-workflow FinOps platform for SEA mid-market"</em><br/><span class="comp-headline">Strongest moat (today): workflow generality — P2P + O2C + R2R on one engine, one vendor master, one customer master, one audit trail. The thing no one else on this list has.</span></summary>
-        <div class="comp-body">
-          <p><strong>Vision:</strong> AP, AR, and close on a single AI-native engine for SEA mid-market — outcome-as-a-service rather than software-as-a-service.</p>
-          <p><strong>Where the moat is real:</strong> Workflow generality (every other vendor on this list runs a process-specific data model — Stampli is invoice-centric, HighRadius is AR-centric, BlackLine is GL-centric). Multi-entity / multi-currency reality (SEA structural complexity none of the US players handle cleanly).</p>
-          <p><strong>Where the moat is still being built:</strong> Distribution (PSG pending; reference book is 1 customer at the moment). Data (memory + contextual extraction compounding but still early). Compliance (SOC 2 / ISO; ASEAN e-invoicing is roadmap not shipped).</p>
-          <p><strong>What it means for us:</strong> The defensible advantage is the multi-process platform breadth in a SEA-localized stack — HighRadius and BlackLine could in theory cross-build given enough time and capital; Peakflo could add R2R if they raise. The "first to three modules in SEA" position is the moat we can compound for. The window is narrow.</p>
-        </div>
-      </details>
-    </section>
-
-    <section id="personas">
-      <div class="eyebrow">Section 20 · Personas &amp; targeting</div>
-      <h2 class="section-title">Who we sell to.</h2>
-      <div id="personas-intro"></div>
-      <div id="personas-list"></div>
-      <div class="card" style="margin-top: var(--scale-300);" id="buying-committee"></div>
-    </section>
-
-    <section id="geo-targeting">
-      <div class="eyebrow">Section 21 · Personas &amp; targeting</div>
-      <h2 class="section-title">Where we sell — and where we deliberately don't.</h2>
-      <div id="geo-list"></div>
-    </section>
-
-    <section id="target-rec">
-      <div class="eyebrow">Section 22 · Personas &amp; targeting</div>
-      <h2 class="section-title" id="target-rec-headline"></h2>
-      <div class="grid grid-2" id="target-rec-time"></div>
-      <div class="card" style="margin-top: var(--scale-400); background: var(--surface-error-subtle); border-left: 3px solid var(--border-error-default);" id="target-rec-pitfalls"></div>
-    </section>
-
-    <section id="disqualifiers" style="margin-bottom: var(--scale-700);">
-      <div class="eyebrow">Targeting · Boundaries</div>
-      <h2 class="section-title">Disqualifiers — when we say no.</h2>
-      <p class="lede">Consolidated rules for "we don't pursue this." If a deal trips one of these, walk — politely. Time saved here funds the deals we're built to win.</p>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h4 style="margin-top: 0;">Hard disqualifiers (walk immediately)</h4>
-        <ul style="font-size: 14px; line-height: 1.7;">
-          <li><strong>"Our CTO wants to build it in-house."</strong> Per our ICP definition this is a deal-killer; CTO budget control means cycles burned for no win. Walk; revisit if dynamic changes.</li>
-          <li><strong>India domestic mid-market AP.</strong> Sub-$5 / invoice OCR commodity (Cogniquest, Nanonets, Kosh.ai, ClearTax) destroys SaaS unit economics. Flipkart loss to Uttara at ₹15 / RO is the canonical proof. Decline; refer to commodity vendors.</li>
-          <li><strong>US tech / SaaS / DTC scale-ups.</strong> Brex / Ramp own the segment via card distribution; cold outbound is dead per Pattern 1; CAC would be 5–10× SEA. Refer to Stampli / Bill / Vic.ai if asked.</li>
-          <li><strong>EU mid-market</strong> (until 2028 reassessment). No warm channel; GDPR is a heavy lift; regional incumbents (Yooz, Esker, Medius, Sidetrade) are entrenched.</li>
-        </ul>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h4 style="margin-top: 0;">Yellow flags (qualify carefully, may still close)</h4>
-        <ul style="font-size: 14px; line-height: 1.7;">
-          <li><strong>Single-product ask only.</strong> Hitachi walked because we were AP-only when they wanted cash app. Re-frame to multi-product platform; if buyer insists single-product, scope a pilot but flag platform expansion as the goal.</li>
-          <li><strong>On-prem hard requirement.</strong> Welspun-style. Possible but heavy delivery; only with scope and price reflecting it.</li>
-          <li><strong>"Free" alternative dominant.</strong> Cards-bundled bill-pay (Brex / Ramp) or ERP-native AP (SAP VIM, Oracle Fusion AP). Win only if the buyer has explicitly named pain with the incumbent.</li>
-          <li><strong>No multi-entity, no multi-currency.</strong> Workflow-engine generality is our moat in SEA; if neither applies, we have less differentiation.</li>
-          <li><strong>Sub-$25K ARR realistic deal size.</strong> Below the floor for our gross-margin profile. Refer to Bill.com / Stampli SMB tier if the customer fits there.</li>
-        </ul>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-300);">
-        <h4 style="margin-top: 0;">Geography rules (pre-cleared yes / no)</h4>
-        <ul style="font-size: 14px; line-height: 1.7;">
-          <li><strong>Yes — primary:</strong> SEA mid-market (SG / ID / MY / VN / TH / PH); India-HQ multinationals deploying in SEA</li>
-          <li><strong>Yes — opportunistic / warm only:</strong> US SAP-shop enterprise via CPA partners (Rehmann, KPMG alumni); GCC inbound (FATOORAH-driven)</li>
-          <li><strong>No:</strong> India domestic; US tech / SaaS scale-ups; EU mid-market</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="voc-intro">
-      <div class="eyebrow">Section 23 · Voice of customer</div>
-      <h2 class="section-title">What buyers actually say.</h2>
-      <div id="voc-intro-body"></div>
-    </section>
-
-    <section id="voc-questions">
-      <div class="eyebrow">Section 24 · Voice of customer</div>
-      <h2 class="section-title">Top questions clients ask.</h2>
-      <div id="voc-questions-body"></div>
-    </section>
-
-    <section id="voc-objections">
-      <div class="eyebrow">Section 25 · Voice of customer</div>
-      <h2 class="section-title">Live objections — and what worked.</h2>
-      <div id="voc-objections-body"></div>
-    </section>
-
-    <section id="voc-patterns">
-      <div class="eyebrow">Section 26 · Voice of customer</div>
-      <h2 class="section-title">Conversation patterns across deals.</h2>
-      <div id="voc-patterns-body"></div>
-    </section>
-
-    <section id="voc-displacement">
-      <div class="eyebrow">Section 27 · Voice of customer</div>
-      <h2 class="section-title">Displacement patterns — 117 competitor customers.</h2>
-      <div id="voc-displacement-body"></div>
-    </section>
-
-    <section id="voc-demo">
-      <div class="eyebrow">Section 28 · Voice of customer</div>
-      <h2 class="section-title">Demo aha moments.</h2>
-      <div id="voc-demo-body"></div>
-    </section>
-
-    <section id="voc-replacement">
-      <div class="eyebrow">Section 29 · Voice of customer</div>
-      <h2 class="section-title">The 8-task AP replacement checklist.</h2>
-      <div id="voc-replacement-body"></div>
-    </section>
-
-    <section id="voc-actions">
-      <div class="eyebrow">Section 30 · Voice of customer</div>
-      <h2 class="section-title">P0 actions from client feedback.</h2>
-      <div id="voc-actions-body"></div>
     </section>
 
     <section id="p2p">
@@ -1606,6 +1067,504 @@
       <p style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-400); font-style: italic;">Written for general understanding. Tax rates and rules vary by country and business type — always consult a tax professional for specific advice.</p>
     </section>
 
+    <section id="landscape">
+      <div class="eyebrow">Strategy</div>
+      <h2 class="section-title">Four cohorts per category.</h2>
+      <div class="tabs" id="landscape-tabs"></div>
+      <div id="landscape-panels"></div>
+    </section>
+
+    <section id="workflow">
+      <div class="eyebrow">Competitive deep-dive</div>
+      <h2 class="section-title">Workflow-by-workflow map.</h2>
+      <div id="workflow-intro"></div>
+      <div class="tabs" id="workflow-tabs"></div>
+      <div style="display: flex; gap: var(--scale-200); margin-bottom: var(--scale-300); flex-wrap: wrap; align-items: center;">
+        <input id="wf-filter" type="search" placeholder="Filter workflows by name, vendor, or text…" style="flex: 1; min-width: 240px; padding: var(--scale-200) var(--scale-300); border: 1px solid var(--border-default-default); border-radius: var(--radius-sm); font-family: inherit; font-size: 14px; background: var(--surface-pagecard-card-1);" />
+        <button class="tab" id="wf-expand-all" type="button">Expand all</button>
+        <button class="tab" id="wf-collapse-all" type="button">Collapse all</button>
+      </div>
+      <div id="workflow-panels"></div>
+    </section>
+
+    <section id="vendor-coverage">
+      <div class="eyebrow">Competitive deep-dive</div>
+      <h2 class="section-title">Vendor coverage — who plays where.</h2>
+      <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape.</p>
+      <div id="vc-table" style="overflow-x: auto;"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="workflow-summary"></div>
+    </section>
+
+    <section id="h2h">
+      <div class="eyebrow">Competitive deep-dive</div>
+      <h2 class="section-title">Head-to-head profiles.</h2>
+      <div id="h2h-intro"></div>
+      <div id="h2h-list"></div>
+    </section>
+
+    <section id="human-ai-cohort" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">Competitive · Cohort</div>
+      <h2 class="section-title">Human + AI hybrid cohort.</h2>
+      <p class="lede">Companies whose model looks most like ours — managed-outcome services where the customer outsources the workflow and the vendor decides what's done by AI vs. humans. This is our true peer set on positioning, even when headline categories differ. Conversation Pattern 4 ("BPO disruption window is open NOW") is partly a response to this cohort.</p>
+
+      <p style="font-size: 12px; color: var(--text-default-caption); font-style: italic;">Sourcing note: this section was compiled without live web access. Customer counts, ARR figures, and 2026 vision wording are estimates from training-data knowledge or internal-corpus references; verify with a 30-min live-web pass before external sharing.</p>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Yarken <span style="font-size: 13px; color: var(--text-default-caption); font-weight: 400;">— closest US-referenceable template</span></h3>
+        <dl class="stage-grid">
+          <dt>Model</dt><dd>AI-native ITFM (IT Financial Management) and cloud-cost-management platform with managed-services overlay. Per our internal investor briefs (Betatron Feb 2026 deal): "AI platform (80%) + managed delivery (20% shrinking) + outcome contract" — very close to our intended split.</dd>
+          <dt>Pricing</dt><dd>Outcome-based / value-share pricing referenced in investor briefs as the differentiator vs FTE-priced BPO.</dd>
+          <dt>Financials</dt><dd><strong>Verified from internal corpus only:</strong> Betatron Venture Group lead (Feb 2026) — they're the closest pattern Betatron is funding. Customer base described as "Fortune 2000" with "asset-light + small headcount." ARR / funding amount / valuation not in internal corpus; not verified externally in this session.</dd>
+          <dt>Customer evidence</dt><dd>Internal-corpus-only: Fortune 2000 named customers referenced but not enumerated. Recommend live-web check on yarken.com case studies.</dd>
+          <dt>vs Neoflo</dt><dd><strong>What Yarken does better:</strong> US enterprise distribution, Fortune 2000 reference book, structurally similar pricing already validated by VC. <strong>What Neoflo does better:</strong> different category (business finance ops vs IT finance ops), SEA geographic moat, deeper workflow surface (P2P + O2C + R2R vs ITFM cost optimization), e-invoicing native compliance. <strong>Talk track:</strong> "What Yarken is doing in IT finance, we're doing in business finance" — directly from our internal pitch playbook.</dd>
+        </dl>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Auditoria.ai</h3>
+        <dl class="stage-grid">
+          <dt>Model</dt><dd>"Autonomous finance" SmartAgents — pre-built AI agents for AP, AR, vendor management. Productized AI + managed-services overlay for exception handling. NorCal-based.</dd>
+          <dt>Pricing</dt><dd>SaaS + per-agent pricing model. Not outcome-priced like Neoflo.</dd>
+          <dt>Financials</dt><dd>VC-backed (Venrock, Workday Ventures cited as investors). Funding total / ARR not verified in this session — recommend live-web check.</dd>
+          <dt>Customer evidence</dt><dd>US enterprise reference set in healthcare, financial services, manufacturing. Specific customer names not verified in this session.</dd>
+          <dt>vs Neoflo</dt><dd><strong>What Auditoria does better:</strong> US enterprise distribution, Workday partnership, longer track record on AP autonomous agents (since ~2020). <strong>What Neoflo does better:</strong> SEA presence, multi-process platform breadth (R2R included), India delivery cost, e-invoicing native. <strong>Watch for:</strong> if they push into SEA via Workday APAC, we lose a structural advantage.</dd>
+        </dl>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Klippa</h3>
+        <dl class="stage-grid">
+          <dt>Model</dt><dd>Document AI + finance workflow with managed extraction services. Founded ~2015, Netherlands-HQ.</dd>
+          <dt>Pricing</dt><dd>Per-document API pricing (similar shape to Staple.ai) plus enterprise SaaS for full workflow.</dd>
+          <dt>Financials</dt><dd>VC-backed; specific funding / ARR not verified in this session.</dd>
+          <dt>Customer evidence</dt><dd>European mid-market customer base; expense management and AP automation use cases predominate. Specific customer names not verified in this session.</dd>
+          <dt>vs Neoflo</dt><dd><strong>What Klippa does better:</strong> EU mid-market presence, document AI primitives (similar to where Staple.ai sits relative to us). <strong>What Neoflo does better:</strong> full workflow vs API primitive, SEA presence, multi-process. Klippa is closer to a complement than a competitor in our segment — could partner.</dd>
+        </dl>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Topkey</h3>
+        <dl class="stage-grid">
+          <dt>Model</dt><dd>Back-office finance with humans-in-the-loop. Vertical-skewed (hospitality / property management cited).</dd>
+          <dt>Pricing</dt><dd>Hybrid managed services + SaaS; not extensively documented.</dd>
+          <dt>Financials</dt><dd>Less well-documented in training data; recommend live-web check on funding / customer count.</dd>
+          <dt>vs Neoflo</dt><dd>Likely a smaller-scale, vertical-specific player. Unlikely to be a direct competitor in our segment. Mention only for completeness of the cohort.</dd>
+        </dl>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Aegis Group → Teleperformance <span style="font-size: 13px; color: var(--text-default-caption); font-weight: 400;">— exit precedent, not a competitor</span></h3>
+        <dl class="stage-grid">
+          <dt>Why this matters</dt><dd>Acquired by Teleperformance in 2014 (~$610M reported). The canonical exit-narrative comp for managed-services-with-tech-overlay companies. Sandip Sen advisory connection in our internal corpus references this deal as a strategic exit pattern.</dd>
+          <dt>Use in pitch</dt><dd>When investors push on services-vs-product framing (the Antler Elevate / Betatron objection in our investor briefs), Aegis → Teleperformance is the precedent that says "managed-services-with-tech is venture-fundable AND venture-exitable."</dd>
+        </dl>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">BPO disruption shadow — Genpact, WNS, Sutherland</h3>
+        <dl class="stage-grid">
+          <dt>Why we mention them</dt><dd>The traditional BPO incumbents (Genpact: NYSE:G, $4.4B revenue; WNS: NYSE:WNS; Sutherland: private) are increasingly layering AI on top of their existing FTE-priced delivery. Per Voice-of-Customer Pattern 4: "they layered AI on a 30-year labor model. We started with AI, added humans where needed." The framing wins because it's true — they cannot cannibalize their own FTE revenue, so the AI overlay never actually replaces the headcount-priced contract underneath.</dd>
+          <dt>Specific accounts in our corpus</dt><dd>14 enterprises in our competitive intel are flagged as "stuck in BPO lock-in" — Wesco/Genpact, AVEVA/Cognizant, Coca-Cola Bottlers/Genpact. These are warm targets when their BPO contract renewal cycles open.</dd>
+          <dt>vs Neoflo</dt><dd><strong>What BPOs do better:</strong> distribution (Big-4 advisory + Fortune 1000 procurement relationships), scale of delivery teams, regulatory geographies they already operate in. <strong>What Neoflo does better:</strong> AI-native architecture (not retrofitted), unit economics that scale sub-linearly with volume (vs FTE pricing), specificity to FinOps (vs full BPO surface). <strong>Tactical:</strong> we win when buyers explicitly want to escape FTE pricing — pilot is the wedge.</dd>
+        </dl>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-400); background: var(--surface-primary-background); border-color: var(--border-primary-default);">
+        <h4 style="margin-top: 0;">Cross-cutting reads on this cohort</h4>
+        <ol style="font-size: 14px; line-height: 1.7; padding-left: 20px;">
+          <li><strong>Yarken is the closest pattern-match for our pitch.</strong> Use the language directly: "AI platform (80%) + managed delivery (20% shrinking) + outcome contract." Avoid the word "BPO" (per investor-briefing guidance — see prospect-briefs.ts).</li>
+          <li><strong>Auditoria.ai is the closest US-FinOps-vertical pattern-match.</strong> If they push into SEA via the Workday partnership, we lose a structural advantage — watch for this.</li>
+          <li><strong>The BPO disruption story works because the BPOs cannot cannibalize themselves.</strong> Conversation Pattern 4 is more durable than it looks — every BPO that adds AI as an overlay confirms the framing.</li>
+          <li><strong>Aegis → Teleperformance is the exit pattern when investors push back on services-vs-product framing.</strong> Use it explicitly in investor conversations (Antler Elevate / Betatron objection-handling).</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="matrix">
+      <div class="eyebrow">Competitive deep-dive</div>
+      <h2 class="section-title">Feature matrix — capability vs vendor.</h2>
+      <div id="matrix-intro"></div>
+      <div id="matrix-legend" class="grid grid-3" style="margin-bottom: var(--scale-300);"></div>
+      <div id="matrix-table" style="overflow-x: auto;"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="matrix-summary"></div>
+    </section>
+
+    <section id="pipemap">
+      <div class="eyebrow">Competitive deep-dive</div>
+      <h2 class="section-title">Pipeline competitive map.</h2>
+      <div id="pm-intro"></div>
+      <div id="pm-list"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="pm-readout"></div>
+    </section>
+
+    <section id="moat-comparison" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">Competitive · Moat by workflow</div>
+      <h2 class="section-title">Where the moats actually sit — by workflow.</h2>
+      <p class="lede">Read this by workflow, not by logo. For each of P2P, O2C, and R2R: who holds a real moat, how durable it is, and the specific opening it leaves us. The punchline is at the bottom — the one moat no single-workflow vendor has.</p>
+      <p style="font-size: 12px; color: var(--text-default-caption); font-style: italic; margin-bottom: var(--scale-300);">Per-competitor vision wording and sources live in the Head-to-head profiles section above. Funding/valuation figures should be re-pulled live before external use.</p>
+
+      <h3 style="margin-top: var(--scale-400);">📦 P2P — Procure-to-Pay</h3>
+      <div style="overflow-x: auto;">
+      <table style="font-size: 13px;">
+        <thead><tr><th>Player</th><th>Where the moat is real</th><th>Durable?</th><th>The opening for us</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Stampli</strong></td><td>Conversation-on-the-invoice UX; 12+ months of in-thread approval history + 70+ ERP integrations compound into switching cost</td><td>High — workflow lock-in</td><td>Match stickiness with one master-data view across AP+AR+close, not AP alone</td></tr>
+          <tr><td><strong>Tipalti</strong></td><td>196-country mass payments + KPMG-validated tax-form handling</td><td>High where global suppliers exist</td><td>Most mid-market doesn't need 196 countries — win on time-to-live + price</td></tr>
+          <tr><td><strong>Coupa</strong></td><td>Enterprise S2P depth + $6T+ community-spend dataset</td><td>Very high (enterprise)</td><td>Too heavy for mid-market; "considered Coupa, too heavy" is an entry trigger</td></tr>
+          <tr><td><strong>SAP VIM</strong></td><td>Pre-installed in every SAP shop; bundled licensing, zero CAC</td><td>Inertia-high, product mediocre</td><td>The real fight is "Neoflo vs do nothing" — beat it on first-pass automation + AR coverage</td></tr>
+          <tr><td><strong>Vic.ai</strong></td><td>Autonomy-first architecture — the only AP tool measuring a touch-ratio SLA</td><td>Architectural pacer</td><td>Don't preclude an autonomy-first mode; not a pipeline threat today</td></tr>
+          <tr><td><strong>Bill</strong></td><td>SMB distribution via the CPA channel + 481K-business network</td><td>High in SMB</td><td>They sell SMB, we sell mid-market — a referral target, not a battlecard</td></tr>
+          <tr><td><strong>Airbase (Paylocity)</strong></td><td>HCM distribution — ~40K Paylocity payroll clients are warm in-platform AP prospects</td><td>Emerging, distribution-led</td><td>AP+spend only; no AR, no R2R — flank on platform breadth</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 style="margin-top: var(--scale-400);">💰 O2C — Order-to-Cash</h3>
+      <div style="overflow-x: auto;">
+      <table style="font-size: 13px;">
+        <thead><tr><th>Player</th><th>Where the moat is real</th><th>Durable?</th><th>The opening for us</th></tr></thead>
+        <tbody>
+          <tr><td><strong>HighRadius</strong></td><td>Deepest enterprise O2C (credit → cash app → deductions) + Fortune-1000 reference book</td><td>Very high (enterprise)</td><td>Enterprise pricing prices out enterprise-mid — a rejected-by-HighRadius account is a warm lead by definition</td></tr>
+          <tr><td><strong>Peakflo</strong></td><td>Multi-channel collections including voice-AI agents</td><td>Medium — collections data is replicable</td><td>No R2R; invoice/collections-centric data model — flank on full-platform breadth</td></tr>
+          <tr><td><strong>Serrala</strong></td><td>SAP-native O2C — effectively "the VIM of AR" inside SAP shops</td><td>High in SAP shops</td><td>Same VIM-displacement logic, applied on the AR side</td></tr>
+          <tr><td><strong>Esker</strong></td><td>P2P <em>and</em> O2C on one platform — the closest structural analogue to us</td><td>Medium-high</td><td>No R2R — we extend to close; that's the breadth they can't yet match</td></tr>
+          <tr><td><strong>Stuut · Kolleno · Tabs</strong></td><td>AI-native speed — days-to-go-live in AR</td><td>Low — easy in, easy out</td><td>Architectural pacers; they compress the whole category's sales cycle (incl. ours)</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3 style="margin-top: var(--scale-400);">📊 R2R — Record-to-Report</h3>
+      <div style="overflow-x: auto;">
+      <table style="font-size: 13px;">
+        <thead><tr><th>Player</th><th>Where the moat is real</th><th>Durable?</th><th>The opening for us</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BlackLine</strong></td><td>Created the close-management category + SAP resell partnership; F500 controller penetration</td><td>Very high (enterprise)</td><td>Compete at upper-mid on price + the integrated AP+AR+close bundle they can't match without rebuilding</td></tr>
+          <tr><td><strong>FloQast</strong></td><td>Mid-market close — Excel-native and NetSuite-native, fast deploy</td><td>High in mid-market</td><td>Switching-cost play only for accounts already running our P2P+O2C — we don't chase R2R-only deals</td></tr>
+          <tr><td><strong>Trintech · Numeric · Maxima</strong></td><td>Enterprise + AI-native "agentic close" execution</td><td>Mixed; AI-native is the pacer</td><td>The architectural frontier in R2R — keep the close engine agent-ready</td></tr>
+          <tr><td><strong>FinAlyzer · HighRadius R2R</strong></td><td>India-origin consolidation/close depth at aggressive pricing</td><td>Medium</td><td>Price-competitive for India-parent groups; watch as they expand</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-400); background: var(--surface-primary-background); border-color: var(--border-primary-default);">
+        <h4 style="margin-top: 0;">The cross-workflow moat — what none of them have</h4>
+        <p style="margin-bottom: var(--scale-200);">Every player above runs a <strong>process-specific data model</strong>: Stampli is invoice-centric, HighRadius is AR-centric, BlackLine is GL-centric. The only other multi-process player is <strong>Esker</strong> (P2P + O2C) — and even Esker has no R2R.</p>
+        <p style="margin-bottom: var(--scale-200);"><strong>Neoflo's moat is the seam they can't cross:</strong> P2P + O2C + R2R on one engine, against one vendor master, one customer master, and one immutable audit trail. A customer running all three on Neoflo has integrated data across the entire cash cycle — a switching cost a single-workflow vendor cannot replicate without rebuilding their data layer.</p>
+        <p style="margin-bottom: 0;"><strong>Where it's still being built:</strong> reference depth (early book), the compounding data/extraction loop (real but young), and R2R coverage (the third module). The defensible position is "first to all three on one data layer" — the window is real but not permanent.</p>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="eyebrow">Deep insights</div>
+      <h2 class="section-title">What competitors charge. What we should.</h2>
+      <div id="pricing-intro"></div>
+      <div id="pricing-table"></div>
+      <h3>Proposed Neoflo price ladder</h3>
+      <div class="grid grid-3" id="pricing-tiers"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="pricing-logic"></div>
+    </section>
+
+    <section id="about-neoflo" style="margin-bottom: var(--scale-800);">
+      <div class="eyebrow">Basics · Read this first</div>
+      <h2 class="section-title">What Neoflo is.</h2>
+      <p class="lede">Neoflo is the multi-workflow FinOps platform for US mid-market finance teams — <strong>AP, AR, and close on a single AI-native engine</strong>, against one vendor master, one customer master, and one audit trail. We're not an automation tool you have to operate yourself — we're the managed outcome. AI does the work; our team owns the SLA.</p>
+
+      <h3 style="margin-top: var(--scale-500);">The 60-second pitch (for GTM)</h3>
+      <div class="card" style="font-size: 14px; line-height: 1.7;">
+        <p style="margin-top: 0;"><strong>What we replace:</strong> the 3–5 disconnected systems a mid-market finance team runs today — ERP + an AP point tool + an AR / collections tool + spreadsheet reconciliations + email / Slack approvals.</p>
+        <p><strong>How we differ from the AP-only crowd</strong> (Stampli, Peakflo, Tipalti, Bill): we run AP <em>and</em> AR <em>and</em> close on the same engine, against the same masters and the same audit trail. Single platform, one source of truth.</p>
+        <p><strong>How we differ from OCR commodity</strong> (Nanonets, Cogniquest, Staple): we use <strong>contextual extraction trained on real invoices</strong>, not rule-based OCR — and the system has <strong>memory: accuracy compounds on your data over time</strong>, vendor by vendor and format by format.</p>
+        <p><strong>How we differ from "agentic" US tools</strong> (Vic.ai, Stuut, Brex Bill Pay): we don't drop an autonomous agent on you and walk away. We're outcome-as-a-service — managed delivery + AI + humans where the work demands it. SLA-backed. Pilot fee credited to Year 1.</p>
+        <p style="margin-bottom: 0;"><strong>What buyers actually pay for:</strong> close days saved, AP team hours back, DSO compressed, audit-prep that takes a day instead of a week. Lead with the outcome, not the tool.</p>
+      </div>
+
+      <h3 style="margin-top: var(--scale-500);">The capabilities map</h3>
+      <div class="grid grid-3" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h4 style="margin-top: 0;">AI we built</h4>
+          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>Contextual invoice extraction</strong> — outperforms rule-based OCR; handles handwritten, multilingual, and complex-format invoices</li>
+            <li><strong>Memory that compounds</strong> — accuracy improves on your data; vendor-by-vendor, GL-line-by-line learning</li>
+            <li><strong>GL coding suggestions</strong> with confidence scoring</li>
+            <li><strong>Anomaly detection</strong> on invoice patterns and vendor behaviour</li>
+            <li><strong>Match logic across PO / GR / invoice</strong> — handles the messy 30–40% that incumbent OCR misses</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">Workflows we run</h4>
+          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>P2P</strong> — vendor onboarding · requisition · PO · GR · invoice receipt · 3-way match · payment</li>
+            <li><strong>O2C</strong> — invoice generation · dunning · cash application · deductions</li>
+            <li><strong>R2R</strong> — close orchestration · JE workflow · recs · intercompany</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">Compliance &amp; trust</h4>
+          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>SOC 2 Type II + ISO</strong> + AES-256 at rest + TLS 1.2+ in transit</li>
+            <li><strong>Cross-process audit trail</strong> — one immutable evidence chain: PO → invoice → approval → payment → JE → reconciliation</li>
+            <li><strong>Integrates with all major ERPs</strong> — SAP, Oracle, NetSuite, Zoho, etc.</li>
+            <li><strong>Deployment</strong>: shadow layer alongside your ERP — does not replace it</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: var(--scale-500);">Who it's for</h3>
+      <div class="card">
+        <p style="font-size: 14px; line-height: 1.7; margin-top: 0;">Mid-market companies — <strong>$50M–$500M revenue, 10–50 finance staff, multi-entity, ERP-connected</strong> (NetSuite / SAP S/4 / Oracle Fusion / Dynamics) — currently stitched together on Excel + email + ERP + bandaid SaaS.</p>
+        <p style="font-size: 14px; line-height: 1.7; margin-bottom: 0;">Target geography: <strong>US mid-market</strong> — both SAP-shop enterprise (via warm CPA-partner channels) and the broader US mid-market. Out of scope: India domestic mid-market (sub-$5 / invoice OCR commodity destroys SaaS unit economics) and EU mid-market (no warm channel today).</p>
+      </div>
+
+      <h3 style="margin-top: var(--scale-500);">Lead the conversation with this</h3>
+      <div class="evidence" style="margin-top: var(--scale-200); background: var(--surface-primary-background); border-left-color: var(--border-primary-default);">
+        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Talk track for first meetings</strong>
+        <div style="margin-top: var(--scale-100); font-size: 14px; line-height: 1.7;">
+          "Most finance teams your size are running AP, AR, and close across 3–5 tools that don't talk to each other. We unify all three on one engine, with one vendor master, one customer master, and one audit trail. The AI handles invoice extraction, GL coding, reconciliations, and exception routing — and it gets smarter on your data over time. Our team owns the outcome SLA. Pilot is 4–6 weeks, fee credited to Year 1 — so risk is close to zero. Most automation vendors won't guarantee SLAs on outcomes. We do."
+        </div>
+      </div>
+    </section>
+
+    <section id="product" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">Neoflo · What we do</div>
+      <h2 class="section-title">What Neoflo does.</h2>
+      <p class="lede">Five modules, all on one engine against one vendor master, one customer master, and one audit trail. Each maps to one of the three core workflows — there's no separate product taxonomy to learn.</p>
+      <div class="grid grid-3" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h4 style="margin-top: 0;">📦 P2P — pay suppliers</h4>
+          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>Invoice Processing &amp; Straight-Through Processing (STP)</strong></li>
+            <li><strong>Spend Analytics &amp; Working Capital Intelligence</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">💰 O2C — collect from customers</h4>
+          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>Collections, Dunning, Dispute Management &amp; Customer Self-Service</strong></li>
+            <li><strong>Cash Application &amp; Payment Matching</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">📊 R2R — close &amp; report</h4>
+          <ul style="font-size: 13.5px; line-height: 1.6; padding-left: 18px;">
+            <li><strong>Financial Close Management</strong></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note" style="margin-top: var(--scale-300);">The more granular "workflows" you'll see in the competitive and workflow-map sections are simply the individual <strong>stages within P2P, O2C, and R2R</strong> (e.g. 3-way match, cash application, reconciliations) — not a separate set of products.</p>
+    </section>
+
+    <section id="defensibility">
+      <div class="eyebrow">Deep insights</div>
+      <h2 class="section-title">What stops a competitor from copying us.</h2>
+      <div id="def-intro"></div>
+      <div id="def-table"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="def-summary"></div>
+    </section>
+
+    <section id="gap">
+      <div class="eyebrow">Strategy</div>
+      <h2 class="section-title">Where nobody is winning yet.</h2>
+      <div id="gap-intro"></div>
+      <div class="gap-grid" id="gap-grid"></div>
+      <div style="margin-top: var(--scale-400);" id="gap-takeaways"></div>
+    </section>
+
+    <section id="tldr">
+      <div class="eyebrow">Strategy</div>
+      <h2 class="section-title">The bet, in one paragraph.</h2>
+      <div id="tldr-body"></div>
+    </section>
+
+    <section id="market">
+      <div class="eyebrow">Strategy</div>
+      <h2 class="section-title">Three categories. Different shapes.</h2>
+      <div id="market-intro"></div>
+      <div class="grid grid-3" id="market-stats"></div>
+      <div id="market-table"></div>
+      <div class="card" id="market-headline"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="market-segment"></div>
+    </section>
+
+    <section id="regulatory">
+      <div class="eyebrow">Deep insights</div>
+      <h2 class="section-title">ASEAN e-invoicing is forced buying.</h2>
+      <div id="reg-intro"></div>
+      <div id="reg-list"></div>
+      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default); border-left: 3px solid var(--border-warning-default);" id="reg-headline"></div>
+    </section>
+
+    <section id="einv-roadmap" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">Market · E-invoicing</div>
+      <h2 class="section-title">E-invoicing roadmap by country.</h2>
+      <p class="lede">Mandate calendar by jurisdiction × Neoflo support status. The Tax Director persona's first question: "Which mandates do you support natively today, and what's your roadmap by country and date?" — this page is the answer.</p>
+      <div class="card" style="background: var(--surface-warning-subtle); border-color: var(--border-warning-default);">
+        <strong style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">[TBD — Wave 3 input needed]</strong>
+        <p style="margin-top: var(--scale-100); font-size: 14px;">Awaiting product-team confirmation. Planned table — for each mandate: jurisdiction · platform · authority · phase calendar (B2G → large B2B → mid-market → all) · current Neoflo status (Live / In dev / On roadmap / Not on roadmap):</p>
+        <ul style="font-size: 14px; line-height: 1.6;">
+          <li><strong>Malaysia · MyInvois</strong> (LHDN) — phased mandate 2024–2026</li>
+          <li><strong>Singapore · InvoiceNow / PEPPOL</strong> (IMDA) — rolling 2025–2026</li>
+          <li><strong>Indonesia · e-Faktur</strong> (DGT) — mandatory</li>
+          <li><strong>Philippines · EIS</strong> (BIR) — phased</li>
+          <li><strong>Vietnam · e-Invoice</strong> (GDT) — mandatory</li>
+          <li><strong>Thailand · e-Tax</strong> (RD) — incentive-based</li>
+          <li><strong>Saudi Arabia · FATOORAH</strong> (ZATCA) — mandatory</li>
+          <li><strong>India · GST IRN</strong> — mandatory above turnover threshold</li>
+          <li><strong>EU · PEPPOL / national variants</strong> — varies by member state</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="personas">
+      <div class="eyebrow">Personas &amp; targeting</div>
+      <h2 class="section-title">Who we sell to.</h2>
+      <div id="personas-intro"></div>
+      <div id="personas-list"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="buying-committee"></div>
+    </section>
+
+    <section id="jobmap">
+      <div class="eyebrow">Deep insights</div>
+      <h2 class="section-title">What the buyer is actually doing.</h2>
+      <div id="jm-intro"></div>
+      <div id="jm-list"></div>
+    </section>
+
+    <section id="target-rec">
+      <div class="eyebrow">Personas &amp; targeting</div>
+      <h2 class="section-title" id="target-rec-headline"></h2>
+      <div class="grid grid-2" id="target-rec-time"></div>
+      <div class="card" style="margin-top: var(--scale-400); background: var(--surface-error-subtle); border-left: 3px solid var(--border-error-default);" id="target-rec-pitfalls"></div>
+    </section>
+
+    <section id="geo-targeting">
+      <div class="eyebrow">Personas &amp; targeting</div>
+      <h2 class="section-title">Where we sell — and where we deliberately don't.</h2>
+      <div id="geo-list"></div>
+    </section>
+
+    <section id="disqualifiers" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">Targeting · Boundaries</div>
+      <h2 class="section-title">Disqualifiers — when we say no.</h2>
+      <p class="lede">Consolidated rules for "we don't pursue this." If a deal trips one of these, walk — politely. Time saved here funds the deals we're built to win.</p>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">Hard disqualifiers (walk immediately)</h4>
+        <ul style="font-size: 14px; line-height: 1.7;">
+          <li><strong>"Our CTO wants to build it in-house."</strong> Per our ICP definition this is a deal-killer; CTO budget control means cycles burned for no win. Walk; revisit if dynamic changes.</li>
+          <li><strong>India domestic mid-market AP.</strong> Sub-$5 / invoice OCR commodity (Cogniquest, Nanonets, Kosh.ai, ClearTax) destroys SaaS unit economics. Flipkart loss to Uttara at ₹15 / RO is the canonical proof. Decline; refer to commodity vendors.</li>
+          <li><strong>US tech / SaaS / DTC scale-ups.</strong> Brex / Ramp own the segment via card distribution; cold outbound is dead per Pattern 1; CAC would be 5–10× SEA. Refer to Stampli / Bill / Vic.ai if asked.</li>
+          <li><strong>EU mid-market</strong> (until 2028 reassessment). No warm channel; GDPR is a heavy lift; regional incumbents (Yooz, Esker, Medius, Sidetrade) are entrenched.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">Yellow flags (qualify carefully, may still close)</h4>
+        <ul style="font-size: 14px; line-height: 1.7;">
+          <li><strong>Single-product ask only.</strong> Hitachi walked because we were AP-only when they wanted cash app. Re-frame to multi-product platform; if buyer insists single-product, scope a pilot but flag platform expansion as the goal.</li>
+          <li><strong>On-prem hard requirement.</strong> Welspun-style. Possible but heavy delivery; only with scope and price reflecting it.</li>
+          <li><strong>"Free" alternative dominant.</strong> Cards-bundled bill-pay (Brex / Ramp) or ERP-native AP (SAP VIM, Oracle Fusion AP). Win only if the buyer has explicitly named pain with the incumbent.</li>
+          <li><strong>No multi-entity, no multi-currency.</strong> Workflow-engine generality is our moat; if neither applies, we have less differentiation.</li>
+          <li><strong>Sub-$25K ARR realistic deal size.</strong> Below the floor for our gross-margin profile. Refer to Bill.com / Stampli SMB tier if the customer fits there.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">Geography rules (pre-cleared yes / no)</h4>
+        <ul style="font-size: 14px; line-height: 1.7;">
+          <li><strong>Yes — primary:</strong> US mid-market — SAP-shop enterprise (via warm CPA partners: Rehmann, KPMG alumni) and the broader US mid-market</li>
+          <li><strong>No:</strong> India domestic; US tech / SaaS scale-ups; EU mid-market</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="recommendation">
+      <div class="eyebrow">Strategy</div>
+      <h2 class="section-title" id="rec-headline"></h2>
+      <div class="grid grid-3" id="rec-phases"></div>
+      <div style="margin-top: var(--scale-400);" id="rec-rest"></div>
+    </section>
+
+    <section id="risks">
+      <div class="eyebrow">Strategy</div>
+      <h2 class="section-title">What could break the bet.</h2>
+      <div id="risks-list"></div>
+    </section>
+
+    <section id="gtm">
+      <div class="eyebrow">Deep insights</div>
+      <h2 class="section-title">Segment × geography × channel.</h2>
+      <div id="gtm-intro"></div>
+      <div id="gtm-table"></div>
+      <div class="card" style="margin-top: var(--scale-300);" id="gtm-sequencing"></div>
+    </section>
+
+    <section id="actions">
+      <div class="eyebrow">Deep insights</div>
+      <h2 class="section-title">What to do in the next quarter.</h2>
+      <div id="actions-list"></div>
+    </section>
+
+    <section id="voc-intro">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">What buyers actually say.</h2>
+      <div id="voc-intro-body"></div>
+    </section>
+
+    <section id="voc-questions">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">Top questions clients ask.</h2>
+      <div id="voc-questions-body"></div>
+    </section>
+
+    <section id="voc-objections">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">Live objections — and what worked.</h2>
+      <div id="voc-objections-body"></div>
+    </section>
+
+    <section id="voc-patterns">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">Conversation patterns across deals.</h2>
+      <div id="voc-patterns-body"></div>
+    </section>
+
+    <section id="voc-displacement">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">Displacement patterns — 117 competitor customers.</h2>
+      <div id="voc-displacement-body"></div>
+    </section>
+
+    <section id="voc-demo">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">Demo aha moments.</h2>
+      <div id="voc-demo-body"></div>
+    </section>
+
+    <section id="voc-replacement">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">The 8-task AP replacement checklist.</h2>
+      <div id="voc-replacement-body"></div>
+    </section>
+
+    <section id="voc-actions">
+      <div class="eyebrow">Voice of customer</div>
+      <h2 class="section-title">P0 actions from client feedback.</h2>
+      <div id="voc-actions-body"></div>
+    </section>
+
+    <section id="signals">
+      <div class="eyebrow">Customer evidence v2</div>
+      <h2 class="section-title">What 12+ buyers actually told us.</h2>
+      <div id="signals-intro"></div>
+      <div id="signals-list"></div>
+    </section>
+
+    <section id="patterns">
+      <div class="eyebrow">Customer evidence</div>
+      <h2 class="section-title">Cross-cutting patterns.</h2>
+      <div id="patterns-list"></div>
+    </section>
+
     <section id="battlecards" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Toolkit · Battlecards</div>
       <h2 class="section-title">Battlecards.</h2>
@@ -1628,19 +1587,19 @@
     </section>
 
     <section id="changemymind">
-      <div class="eyebrow">Section 37 · Reference</div>
+      <div class="eyebrow">Reference</div>
       <h2 class="section-title">What would flip this thesis.</h2>
       <div id="cmm-list"></div>
     </section>
 
     <section id="openquestions">
-      <div class="eyebrow">Section 38 · Reference</div>
+      <div class="eyebrow">Reference</div>
       <h2 class="section-title">Where evidence is still thin.</h2>
       <ul id="oq-list"></ul>
     </section>
 
     <section id="appendix">
-      <div class="eyebrow">Section 39 · Reference</div>
+      <div class="eyebrow">Reference</div>
       <h2 class="section-title">Sources &amp; gaps.</h2>
       <div id="appendix-body"></div>
     </section>
@@ -1654,6 +1613,7 @@
         Internal · do not distribute externally
       </div>
     </footer>
+
   </main>
 </div>
 
@@ -1679,7 +1639,6 @@ DATA.workflowPersonas = window.WORKFLOW_PERSONAS;
 DATA.stageDeep = window.STAGE_DEEP;
 DATA.personas = window.PERSONAS_DATA;
 DATA.voc = window.VOC_DATA;
-DATA.prospectBriefs = window.PROSPECT_BRIEFS;
 
 // ───────── Markdown-lite rendering ─────────
 function md(s) {
@@ -1703,8 +1662,7 @@ function mdInline(s) {
 }
 
 // ───────── Render: Hero & TL;DR ─────────
-const tldrFirstLine = DATA.strategy.tldr.split('.')[0] + '.';
-document.getElementById('hero-lede').innerHTML = mdInline(tldrFirstLine);
+// Hero lede is static orientation copy (set in the markup); the TL;DR thesis lives in its own section.
 document.getElementById('tldr-body').innerHTML = `<div class="card" style="font-size: 16px; line-height: 1.65;">${md(DATA.strategy.tldr)}</div>`;
 
 // ───────── Render: Market ─────────
@@ -1882,6 +1840,7 @@ document.getElementById('patterns-list').innerHTML = patternsHtml;
 
 // ───────── Render: Process explainers ─────────
 function renderProcess(data, prefix) {
+  const numberWord = (n) => ({ 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten' }[n] || String(n));
   document.getElementById(prefix + '-title').innerHTML = `${data.emoji} ${data.title}`;
   const flowHtml = `
     <div class="flow">
@@ -1935,7 +1894,7 @@ function renderProcess(data, prefix) {
     <div class="card"><h4>Running example</h4>${md(data.runningExample)}</div>
     <h3>Happy path</h3>
     ${flowHtml}
-    <h3>The seven stages</h3>
+    <h3>The ${numberWord(data.stages.length)} stages</h3>
     ${stagesHtml}
     <div class="card"><h4>Loops &amp; connections</h4>${md(data.loopsAndConnections)}</div>
     <div class="card" style="background: var(--surface-primary-background); border-color: var(--border-primary-default);"><h4>Why it matters for Neoflo</h4>${md(data.whyItMattersForNeoflo)}</div>
@@ -2673,10 +2632,24 @@ document.querySelectorAll('.nav-part a').forEach(a => {
 
 // ───────── Comment system — Figma-style anchored pins ─────────
 const commentToggle = document.getElementById('commentToggle');
+const pinVisibilityToggle = document.getElementById('pinVisibilityToggle');
 const pinLayer = document.getElementById('pinLayer');
 let commentMode = false;
+let pinsHidden = false;
 let pins = []; // { number, sectionId, xPct, yPct, text, section, from, createdAt, htmlUrl, el, popover }
 let draftEl = null;
+
+function setPinsHidden(hidden) {
+  pinsHidden = hidden;
+  document.body.classList.toggle('pins-hidden', hidden);
+  pinVisibilityToggle.setAttribute('aria-pressed', String(hidden));
+  pinVisibilityToggle.title = hidden ? 'Show comment pins' : 'Hide comment pins';
+  pinVisibilityToggle.textContent = hidden ? '🙈' : '👁️';
+}
+pinVisibilityToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  setPinsHidden(!pinsHidden);
+});
 
 function escapeHtml(s) {
   return String(s == null ? '' : s)
@@ -2860,6 +2833,8 @@ function refreshNavCounts() {
     ctCount.textContent = total;
     ctCount.hidden = total === 0;
   }
+  // Only offer the hide/show control once there are pins to hide.
+  if (pinVisibilityToggle) pinVisibilityToggle.hidden = pins.length === 0;
 }
 
 async function loadExistingComments() {
@@ -2880,6 +2855,8 @@ async function loadExistingComments() {
 
 function setCommentMode(on) {
   commentMode = on;
+  // Entering comment mode reveals pins so the new draft pin is visible.
+  if (on && pinsHidden) setPinsHidden(false);
   document.body.classList.toggle('comment-mode', on);
   commentToggle.classList.toggle('active', on);
   commentToggle.setAttribute('aria-pressed', String(on));

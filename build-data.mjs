@@ -14,7 +14,6 @@ const files = [
   { src: 'content/process-stages-deep.ts', exp: 'stageDeepDives', global: 'STAGE_DEEP' },
   { src: 'content/personas.ts', exp: 'personasData', global: 'PERSONAS_DATA' },
   { src: 'content/voice-of-customer.ts', exp: 'voiceOfCustomerData', global: 'VOC_DATA' },
-  { src: 'content/prospect-briefs.ts', exp: 'prospectBriefsData', global: 'PROSPECT_BRIEFS' },
 ];
 
 let out = '// Auto-generated from content/*.ts — do not edit\n';

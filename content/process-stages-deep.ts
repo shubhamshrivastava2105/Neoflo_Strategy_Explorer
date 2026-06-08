@@ -88,6 +88,40 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
   },
 
   P2P_3: {
+    howItReallyHappens: `The PO turns an approved requisition into a *binding commitment* to the vendor. In mature shops it auto-generates from the approved PR against a catalog or contract price, dispatches to the vendor electronically (email / EDI / portal), and gets acknowledged. The classic failure modes: "PO-flipping" (the PO is raised only after the invoice arrives, defeating the control), maverick / off-contract buying with no PO at all, and POs that are never closed — so open commitments and month-end accruals quietly drift from reality.`,
+    whoDoesWhat: [
+      { actor: 'Procurement / Buyer', responsibility: 'Converts approved PR to PO, applies contract / catalog pricing, issues to vendor' },
+      { actor: 'Budget owner', responsibility: 'Confirms the commitment lands against the right cost center / budget line' },
+      { actor: 'Vendor', responsibility: 'Acknowledges PO terms, quantities, and delivery dates (order confirmation)' },
+      { actor: 'AP / Finance', responsibility: 'Relies on the open PO as the control anchor for downstream 3-way match and accruals' },
+    ],
+    howSuccessIsMeasured: [
+      'PO cycle time (approved PR → issued PO; target <24h)',
+      '% spend under PO (PO coverage) vs maverick / no-PO spend (target >85%)',
+      'PO acknowledgement rate from vendors',
+      'Open / un-closed PO aging — drives accrual accuracy at close',
+      'Catalog / contract price-match rate on the PO line',
+    ],
+    howItVaries: [
+      'Catalog / punchout buying (indirect, repeatable): near-fully automated PO',
+      'Project / capex POs: milestone-based, partial releases, change orders common',
+      'Services: framework / blanket POs with call-offs against a cap',
+      'Drop-ship / direct: PO issued to vendor but delivery is to the customer site',
+    ],
+    regulatoryAndCompliance: [
+      'SOX: the PO and its approval are core procurement-control evidence; segregation of duties between requestor and PO issuer',
+      'GST / VAT: PO terms drive correct downstream tax treatment and input-credit eligibility',
+      'Public sector / regulated: competitive-bid / tender thresholds may be legally required before a PO can issue',
+    ],
+    keyJudgmentCalls: [
+      'When to issue a blanket / framework PO vs discrete POs',
+      'When to allow an emergency (or retroactive) PO vs enforce PR-first',
+      'How tight to set PO-to-invoice tolerance at issue time',
+      'When to close vs leave a partially-received PO open',
+    ],
+  },
+
+  P2P_4: {
     howItReallyHappens: `Goods receipt is operationally simple but financially critical — it is the trigger for AP. In product businesses it's a barcode scan at the dock; in services businesses it's a service-completion confirmation, which is much messier. The classic failure mode: the warehouse posts GRN late (or in batches) and the invoice arrives at AP with no matching GRN, causing automatic blocking. Best-in-class operations post GRN within hours of physical receipt via mobile scanner.`,
     whoDoesWhat: [
       { actor: 'Warehouse / Receiving team', responsibility: 'Physically receives, counts, inspects quality, posts GRN' },
@@ -120,7 +154,7 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
     ],
   },
 
-  P2P_4: {
+  P2P_5: {
     howItReallyHappens: `Invoice receipt is no longer one channel — it's a fan-in problem. A typical mid-market AP team handles invoices from email (60–70%), supplier portal (15–25%), EDI (5–15%), and paper/scan (still 5–10% in many markets). Each channel has different format conventions, different metadata fidelity, and different OCR challenges. Modern AP automation normalizes across channels and applies AI to extract structured data. Touch-ratio (the % of invoices auto-posted with no human touch) is the headline metric — Vic.ai claims 80–95%, Stampli 65–80%, SAP VIM <60%.`,
     whoDoesWhat: [
       { actor: 'Supplier', responsibility: 'Sends invoice via preferred channel (email / portal / EDI)' },
@@ -156,14 +190,15 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
     ],
   },
 
-  P2P_5: {
-    howItReallyHappens: `The 3-way match itself is mechanical — system compares three numbers within tolerance. Reality is that 30–40% of invoices fail clean match the first time, and the *exception handling* is where AP teams burn their week. Each exception takes 15–30 minutes of detective work: pull up the PO, look at the GRN, message the warehouse, message the buyer, message the vendor, post a credit note, retry. Best-in-class operations have an exception queue UX that loads all the context on one screen and an in-product chat directly with the vendor (Stampli's wedge).`,
+  P2P_6: {
+    howItReallyHappens: `The 3-way match itself is mechanical — system compares three numbers within tolerance. Reality is that 30–40% of invoices fail clean match the first time, and the *exception handling* is where AP teams burn their week. Each exception takes 15–30 minutes of detective work: pull up the PO, look at the GRN, message the warehouse, message the buyer, message the vendor, post a credit note, retry. Best-in-class operations have an exception queue UX that loads all the context on one screen and an in-product chat directly with the vendor (Stampli's wedge). Once matched, the invoice hits the **approval gate** before money moves — mature operations route by amount, GL, vendor risk and anomaly score so high-confidence, low-risk invoices auto-approve and humans only see judgment calls. The twin failure modes are slow exception detective-work on one side and "rubber-stamp" approve-all on the other (where a fraud invoice slips through unread).`,
     whoDoesWhat: [
       { actor: 'AP Clerk', responsibility: 'Works the exception queue — investigates and resolves' },
       { actor: 'Buyer / Procurement', responsibility: 'Resolves PO-side issues (price variance, change orders)' },
       { actor: 'Warehouse', responsibility: 'Resolves GRN-side issues (missing/late GRN, partial delivery)' },
       { actor: 'Vendor (via portal / email)', responsibility: 'Issues credit notes, revised invoices, or accepts variances' },
-      { actor: 'Controller', responsibility: 'Approves overrides on out-of-tolerance items above threshold' },
+      { actor: 'Cost-center / department owner', responsibility: 'Approval gate — reviews matched invoice against budget before payment' },
+      { actor: 'Controller / CFO', responsibility: 'Approves overrides on out-of-tolerance items; reviews anomaly-flagged and top-end items' },
     ],
     howSuccessIsMeasured: [
       'First-pass match rate (target >80%; mid-market typical 50–70%)',
@@ -171,6 +206,8 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
       'Exception aging (no item should sit >5 days)',
       'Exception-to-vendor-call ratio (lower = more in-product resolution)',
       'Reason-code distribution — concentrates effort where it matters',
+      'Approval cycle time (matched → approved; target <8h, weak ops 1–3 days)',
+      'Anomaly catches per period — unusual items surfaced and reviewed deeper',
     ],
     howItVaries: [
       'Tolerance settings: tight (₹100/2%) for high-volume catalog; loose (₹1000/10%) for services',
@@ -188,39 +225,8 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
       'When to issue a debit memo vs reject the invoice',
       'When to override tolerance for a strategic vendor relationship',
       'How aggressively to chase the warehouse for missing GRN',
-    ],
-  },
-
-  P2P_6: {
-    howItReallyHappens: `Approval workflow looks the same as PR/PO approval but the stakes are different — this is the gate before money moves. Mature operations route by amount, GL, vendor risk, and anomaly score; high-confidence low-risk invoices auto-approve, and humans only see the items that need human judgment. The failure mode is "rubber stamp" approvals where 200 invoices land in someone's inbox, they click approve-all without reading, and a fraud invoice slips through. Anomaly detection (10x normal amount, new vendor, weekend timing) is the modern AP control to layer on top.`,
-    whoDoesWhat: [
-      { actor: 'Cost-center owner', responsibility: 'First-line approval; reviews vs budget' },
-      { actor: 'Department head', responsibility: 'Above-threshold approval' },
-      { actor: 'Controller / CFO', responsibility: 'Top-end approvals; anomaly review' },
-      { actor: 'AP team', responsibility: 'Configures approval rules; handles routing exceptions' },
-    ],
-    howSuccessIsMeasured: [
-      'Approval cycle time (target <8h; weak ops 1–3 days)',
-      'SLA breach rate',
-      'Anomaly catches per period — surfaced unusual items reviewed deeper',
-      'Out-of-office routing failures (auto-delegation working?)',
-    ],
-    howItVaries: [
-      'Hierarchical orgs: deep approval chains (5+ levels)',
-      'Flat orgs: lighter approval; risk-based instead of hierarchical',
-      'Public sector: legally mandated chains, less flexible',
-      'Multi-entity: approval routing by entity, not by amount alone',
-    ],
-    regulatoryAndCompliance: [
-      'SOX delegation-of-authority documentation required',
-      'Segregation of duties: same person cannot raise PR + approve PO + post invoice',
-      'Audit trail must be immutable and time-stamped',
-    ],
-    keyJudgmentCalls: [
-      'When approval is rubber-stamped, intervene with anomaly flagging?',
-      'How to handle out-of-office (delegate vs hold)?',
-      'How to surface anomalies without crying-wolf fatigue?',
-      'When to require dual approval vs single?',
+      'When to require dual approval vs single; how to surface anomalies without crying-wolf fatigue',
+      'How to handle out-of-office approvers (auto-delegate vs hold)',
     ],
   },
 
