@@ -29,6 +29,29 @@ Three businesses, a 10% VAT, one final consumer:
 
 The government collects **$50 — exactly 10% of the final $500 price** — but in *three pieces*, each business paying tax only on the value it added ($100, then $200, then $200). The consumer bears all $50 and reclaims nothing. **That input-credit chain is the entire point of VAT** — it's what stops tax cascading (tax-on-tax) at every step.
 
+### Follow the money — who actually pays whom
+
+Each business hands the *next* one the full price **plus** VAT; then, separately, each forwards the government only the VAT on the value *it* added.
+
+**1 — Payments down the chain:**
+
+| Who pays whom | Goods | + VAT (10%) | = Total handed over |
+|---|---|---|---|
+| Roaster → Farmer | $100 | $10 | **$110** |
+| Café → Roaster | $300 | $30 | **$330** |
+| Consumer → Café | $500 | $50 | **$550** |
+
+**2 — VAT each one then sends the government:**
+
+| Who → Government | VAT collected | − VAT already paid | = Sends govt |
+|---|---|---|---|
+| Farmer | $10 | $0 | **$10** |
+| Roaster | $30 | $10 | **$20** |
+| Café | $50 | $30 | **$20** |
+| **Total** | | | **$50** |
+
+So the Café takes in **$550** from the consumer but keeps **$500** — the extra $50 was always the government's. Every business is just a **middleman for the tax**: it collects VAT from its buyer, subtracts the VAT it already paid its supplier, and forwards the difference. Only the final consumer actually bears the $50.
+
 ### Line-item level vs entity level — the part most guides skip
 
 **At the line-item level**, VAT is decided *per line of an invoice*:
