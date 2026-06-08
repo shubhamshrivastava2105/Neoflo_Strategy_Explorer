@@ -230,7 +230,7 @@ export const insightsData: InsightsData = {
         layer: 'Localized regulatory compliance (MyInvois, InvoiceNow, Coretax)',
         description: 'Native integration with each ASEAN jurisdiction\'s e-invoicing regime — built once per country, mandatory for compliance, becomes table stakes for that geography.',
         durability: 'High',
-        howToReinforce: 'A durable layer in the **SEA market** (the US has no equivalent national e-invoicing mandate). In SEA it is genuinely defensible — each jurisdiction is months of work nobody outside SEA bothers with — so build MY/SG/ID compliance for the SEA motion. It is **not** a US moat, so it doesn\\'t help the US motion.',
+        howToReinforce: 'A durable layer in the **SEA market** (the US has no equivalent national e-invoicing mandate). In SEA it is genuinely defensible — each jurisdiction is months of work nobody outside SEA bothers with — so build MY/SG/ID compliance for the SEA motion. It is **not** a US moat, so it doesn\'t help the US motion.',
       },
       {
         layer: 'Multi-entity / multi-currency / intercompany',

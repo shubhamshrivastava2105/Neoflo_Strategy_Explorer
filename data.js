@@ -1,7 +1,7 @@
 // Auto-generated from content/*.ts — do not edit
 
 window.STRATEGY_DATA = {
-  "tldr": "**The bet, in one line:** Neoflo runs FinOps as a **done-for-you, AI + human managed service** — AP, AR, and close on a single AI-native engine, against one vendor master, one customer master, and one audit trail — for **US mid-market** finance teams. We are not software you operate; we **own the outcome, SLA-backed**. We land with **P2P + cash application** and expand across the cash cycle. Five claims behind the bet, each with proof and the \"why now\":\n\n**1. We sell an outcome, not a tool.** *Claim:* the wedge is owning the work — *including the exceptions* — not shipping features a team has to run. *Proof:* buyers reject AP-alone software (Hitachi walked when we were AP-only and they wanted cash app); the exception-heavy 20% is exactly what costs finance teams headcount, and a tool hands that part back to the customer. *Why now:* AI extraction is racing to parity by 2027 — \"who runs it and owns the result\" is the durable differentiator, not accuracy.\n\n**2. Land with P2P + cash application, then expand to full O2C and R2R.** *Claim:* P2P-only loses — it is the most contested, fastest-commoditizing segment, and buyers want the bundle; the minimum viable entry is invoice processing + cash application. *Proof:* Hitachi (AP-only → walked), Spectrum (rejected a $1.2–1.5M HighRadius quote precisely because they wanted AP + AR + deductions + cash app bundled), Anahita Arora framed the multi-process need explicitly. *Why now:* standalone OCR + workflow tools are squeezed from above (Brex/Ramp free interchange-bundled bill-pay) and below (commodity OCR).\n\n**3. The moat is the cross-workflow data layer + the exception flywheel — not the AI.** *Claim:* one vendor master, one customer master, one audit trail across AP + AR + close — the things every controller manages today across 3–5 disconnected systems — that single-workflow vendors cannot match without a rebuild; and because we *run* the work, **every human-resolved exception trains the AI, so each client's touchless % climbs over time** — a compounding advantage software-you-operate cannot copy. *Proof:* every \"did not buy\" (Hitachi, Spectrum, Anahita) framed the need as unified / multi-process, not \"better AI.\" *Why now:* AI capability is racing to parity by 2027; the unified-data + exception-flywheel compounding is what survives commoditization of the AI layer.\n\n**4. The US competitive ring is workflow-specific, and we compete on \"operation vs tool.\"** *Claim:* the players that actually show up are P2P (Stampli, Bill, Ramp, Vic.ai), O2C (HighRadius, Esker), and R2R (BlackLine, FloQast) — all software you run; Neoflo is the operation. We do not fight Ramp on cards or compete on a longer feature list. *Proof:* HighRadius prices out enterprise-mid ($1.2M+ → a Spectrum-style reject is a warm lead by definition); Stampli and Bill are AP-only / SMB-anchored; SAP VIM is the silent default in SAP shops (the \"vs do nothing\" deal). *Why now:* the managed-service frame sidesteps the \"will my team adopt the AI\" objection that stalls software demos.\n\n**5. Trust + warm distribution is the go-to-market lever.** *Claim:* a sub-2-year-old vendor asking to run a customer's entire AP needs a **trust ramp** (shadow-mode → parallel-run → cutover; SOC 2 + ISO; VPC option) and **warm entry** (CPA / advisor partners, founder network) — cold outbound is dead. *Proof:* every documented win came warm (Spectrum via Big-4 alumni, Boomerang via the Rehmann CPA channel); zero conversions came from cold outbound. *Why now:* warm channels plus a credible trust ramp are the only scalable path into US mid-market, where handing over the whole process is a bigger trust ask than buying a tool.\n\n**Beachhead, in one sentence:** $50–250M-revenue US mid-market companies, multi-entity, on NetSuite or SAP, where the Controller owns the close and an acute AP + cash-application pain exists today — landed via a warm CPA / advisor intro and de-risked with a shadow-mode pilot.\n\n**Secondary motion (not primary):** SEA mid-market remains a real but secondary, opportunistic motion — Peakflo is the credible incumbent there, and PSG / MyInvois / e-invoicing mandates are the SEA-specific levers. It is not where US GTM resources go.\n\n**Existential dependency, 12-month version:** convert Spectrum plus 2 more US mid-market accounts to live, SLA-backed references by Q4 2026. Until then, a thin reference book is a deal-killing risk in every new conversation.",
+  "tldr": "**The bet, in one line:** Neoflo runs FinOps as a **done-for-you, AI + human managed service** — AP, AR, and close on a single AI-native engine, against one vendor master, one customer master, and one audit trail — for **US and SEA mid-market** finance teams. We are not software you operate; we **own the outcome, SLA-backed**. We land with **P2P + cash application** and expand across the cash cycle. Five claims behind the bet, each with proof and the \"why now\":\n\n**1. We sell an outcome, not a tool.** *Claim:* the wedge is owning the work — *including the exceptions* — not shipping features a team has to run. *Proof:* buyers reject AP-alone software (Hitachi walked when we were AP-only and they wanted cash app); the exception-heavy 20% is exactly what costs finance teams headcount, and a tool hands that part back to the customer. *Why now:* AI extraction is racing to parity by 2027 — \"who runs it and owns the result\" is the durable differentiator, not accuracy.\n\n**2. Land with P2P + cash application, then expand to full O2C and R2R.** *Claim:* P2P-only loses — it is the most contested, fastest-commoditizing segment, and buyers want the bundle; the minimum viable entry is invoice processing + cash application. *Proof:* Hitachi (AP-only → walked), Spectrum (rejected a $1.2–1.5M HighRadius quote precisely because they wanted AP + AR + deductions + cash app bundled), Anahita Arora framed the multi-process need explicitly. *Why now:* standalone OCR + workflow tools are squeezed from above (Brex/Ramp free interchange-bundled bill-pay) and below (commodity OCR).\n\n**3. The moat is the cross-workflow data layer + the exception flywheel — not the AI.** *Claim:* one vendor master, one customer master, one audit trail across AP + AR + close — the things every controller manages today across 3–5 disconnected systems — that single-workflow vendors cannot match without a rebuild; and because we *run* the work, **every human-resolved exception trains the AI, so each client's touchless % climbs over time** — a compounding advantage software-you-operate cannot copy. *Proof:* every \"did not buy\" (Hitachi, Spectrum, Anahita) framed the need as unified / multi-process, not \"better AI.\" *Why now:* AI capability is racing to parity by 2027; the unified-data + exception-flywheel compounding is what survives commoditization of the AI layer.\n\n**4. The US competitive ring is workflow-specific, and we compete on \"operation vs tool.\"** *Claim:* the players that actually show up are P2P (Stampli, Bill, Ramp, Vic.ai), O2C (HighRadius, Esker), and R2R (BlackLine, FloQast) — all software you run; Neoflo is the operation. We do not fight Ramp on cards or compete on a longer feature list. *Proof:* HighRadius prices out enterprise-mid ($1.2M+ → a Spectrum-style reject is a warm lead by definition); Stampli and Bill are AP-only / SMB-anchored; SAP VIM is the silent default in SAP shops (the \"vs do nothing\" deal). *Why now:* the managed-service frame sidesteps the \"will my team adopt the AI\" objection that stalls software demos.\n\n**5. Trust + warm distribution is the go-to-market lever.** *Claim:* a sub-2-year-old vendor asking to run a customer's entire AP needs a **trust ramp** (shadow-mode → parallel-run → cutover; SOC 2 + ISO; VPC option) and **warm entry** (CPA / advisor partners, founder network) — cold outbound is dead. *Proof:* every documented win came warm (Spectrum via Big-4 alumni, Boomerang via the Rehmann CPA channel); zero conversions came from cold outbound. *Why now:* warm channels plus a credible trust ramp are the only scalable path into US mid-market, where handing over the whole process is a bigger trust ask than buying a tool.\n\n**Beachhead, in one sentence:** $50–250M-revenue US mid-market companies, multi-entity, on NetSuite or SAP, where the Controller owns the close and an acute AP + cash-application pain exists today — landed via a warm CPA / advisor intro and de-risked with a shadow-mode pilot.\n\n**Two primary markets, two motions:** we target **both US and SEA mid-market**. US runs via a warm CPA / advisor channel; SEA via direct sales, where Peakflo is the incumbent and PSG / MyInvois / Coretax are the local levers. Neither is \"secondary\" — they are two GTM motions for the same product.\n\n**Existential dependency, 12-month version:** convert Spectrum plus 2 more US mid-market accounts to live, SLA-backed references by Q4 2026. Until then, a thin reference book is a deal-killing risk in every new conversation.",
   "marketSizing": {
     "intro": "Three things matter for sizing: how big the global category is, how fast it's growing, and where the dollars actually concentrate. *Sources: the P2P (~$6.9B) and O2C (~$3.8B) figures track Mordor Intelligence (2026) closely; the R2R figure is an internal blend — published \"financial close software\" estimates vary widely ($1.5B–$8.8B) by scope, so treat ~$5.8B as a midpoint, not a single-sourced number.*",
     "rows": [
@@ -28,7 +28,7 @@ window.STRATEGY_DATA = {
       }
     ],
     "headline": "**The headline:** P2P is the biggest market but also the most fragmented and most price-pressured. O2C is smaller but has more pricing power per customer (DSO impact → cash → CFO will pay). R2R is enterprise-priced — BlackLine charges $40K–$300K+ ARR for mid-market, which means there's room for a serious mid-market disruptor if you can match capability at 1/3 the price.",
-    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **US mid-market: $50M–$250M revenue, 10–50 finance staff, multi-entity, ERP-connected (NetSuite / SAP), currently running on Excel + email + ERP + bandaid SaaS** — and we run it for them as a managed service rather than handing them another tool. SEA mid-market is a secondary, opportunistic motion, not the primary target.\n\n**How much of the TAM is US mid-market?** A rough cut: the three categories total ~$16–17B globally today (P2P ~$6.9B + O2C ~$3.8B + R2R ~$5.8B). North America is ~37–40% of that (~$6–6.6B), and the mid-market band ($50–250M revenue) is roughly a third of the US spend once you strip out enterprise and SMB — so **US mid-market TAM across P2P+O2C+R2R is on the order of ~$2–2.5B today**, growing ~12% CAGR. *Treat this as a back-of-envelope estimate from analyst category sizing + NA-share splits — verify with a bottoms-up (US firms in band × ACV) before using it externally.*\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2025, $2.2B), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See \"The gap\" for the full grid with sources.\n\n**The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.\n\n**Southeast Asia is a secondary, opportunistic motion.** There the vendor count is even thinner — at most 2–3 per category, with only Peakflo spanning multiple workflows (and no full R2R) — so the right-to-win is high, but it is not where US GTM resources go."
+    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **US and SEA mid-market: $50M–$250M revenue, 10–50 finance staff, multi-entity, ERP-connected (NetSuite / SAP), currently running on Excel + email + ERP + bandaid SaaS** — and we run it for them as a managed service rather than handing them another tool. Both are primary: US is a warm CPA / advisor-channel motion, SEA is direct sales (Peakflo is the incumbent).\n\n**How much of the TAM is US mid-market?** A rough cut: the three categories total ~$16–17B globally today (P2P ~$6.9B + O2C ~$3.8B + R2R ~$5.8B). North America is ~37–40% of that (~$6–6.6B), and the mid-market band ($50–250M revenue) is roughly a third of the US spend once you strip out enterprise and SMB — so **US mid-market TAM across P2P+O2C+R2R is on the order of ~$2–2.5B today**, growing ~12% CAGR. *Treat this as a back-of-envelope estimate from analyst category sizing + NA-share splits — verify with a bottoms-up (US firms in band × ACV) before using it externally.*\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2025, $2.2B), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See \"The gap\" for the full grid with sources.\n\n**The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.\n\n**Southeast Asia is our other primary market — and structurally even more open.** There the vendor count is even thinner — at most 2–3 per category, with only Peakflo spanning multiple workflows (and no full R2R) — so the right-to-win is especially high. SEA runs as a direct-sales motion alongside the US warm-channel motion."
   },
   "landscapes": {
     "p2p": {
@@ -193,7 +193,7 @@ window.STRATEGY_DATA = {
               "pricing": "Quote-based; PSG cap S$30K means net cost to Singapore SMB is ~S$15K. Real ARR for mid-market believed $25–60K.",
               "whereTheyWin": "PSG distribution moat in SG (we genuinely cannot match this without becoming PSG-approved — months of paperwork). Voice AI for collections is category-defining for SEA where phone collections are culturally normal. Marketplace seller commission reconciliation. Multi-currency native (SGD/MYR/IDR/THB/PHP/VND/USD/EUR). Localization for IRAS/LHDN tax filing.",
               "whereTheyAreWeak": "No R2R / close management — biggest scope gap. Workflow customization is narrower (their data model is invoice + collection-centric, less flexible for entity-scoped multi-process workflows). Brand and pricing tilt SME more than enterprise mid-market — Zalora-scale buyers question whether Peakflo can scale to multi-entity multi-jurisdiction. No flagship enterprise customer of Zalora's scale.",
-              "whyItMatters": "**The SEA incumbent (secondary motion).** Same multi-product thesis and multi-currency reality, AI-forward, well-funded, with a head start in Southeast Asia. In our **primary US market** Peakflo is rarely a head-to-head — they are SEA-focused. They matter in the secondary SEA motion, where PSG-subsidized pricing is their structural lever; if we pursue SEA opportunistically, PSG Pre-Approved status is the gap to close there."
+              "whyItMatters": "**The incumbent in our SEA market.** Same multi-product thesis and multi-currency reality, AI-forward, well-funded, with a head start in Southeast Asia. SEA is one of our two primary markets, so Peakflo is a frequent, direct head-to-head there (in the US ring the competitors are workflow-specific instead). PSG-subsidized pricing is their structural lever; PSG Pre-Approved status is the gap for us to close in SEA."
             },
             {
               "name": "Aspire",
@@ -232,7 +232,7 @@ window.STRATEGY_DATA = {
               "whyItMatters": "**Different competitive frame than Peakflo.** Staple is a horizontal OCR layer that could be used by us, by Peakflo, or by an enterprise building their own. The strategic question is: **build vs partner vs compete on extraction quality**. If our SEA invoice extraction accuracy lags Staple, customers will route documents through Staple before they hit our workflow — which weakens our data moat. **Action: benchmark our SEA-format extraction accuracy against Staple on Zalora's actual invoice volume; decide build/partner within 60 days.**"
             }
           ],
-          "read": "**Peakflo is the incumbent in the secondary SEA motion — not the primary US ring.** In Southeast Asia they share our multi-product thesis and multi-currency reality and have a head start; if we pursue SEA opportunistically, three actions matter *there*: (1) **apply for PSG Pre-Approved Vendor status** — their structural pricing lever; (2) **define differentiation in customer language**, not architecture language (\"one vendor master across AP+AR+close\" beats \"shared workflow primitives\"); (3) **price-test against the PSG-net price point** — we can't be 3x for the same scope. Our genuine advantages over them: full R2R, enterprise-grade references, and the **managed-service model itself** (we own the outcome; they ship software the customer runs). **In our primary US market the competitive ring is workflow-specific — Stampli / Bill / Ramp / Vic.ai (P2P), HighRadius / Esker (O2C), BlackLine / FloQast (R2R) — and we compete on operation-vs-tool, not on a longer feature list.** Banking-led players (Aspire, Airwallex) sell finance ops as a banking add-on; Spenmo and Volopay are going downmarket.",
+          "read": "**Peakflo is the incumbent in our SEA market (one of our two primary markets); in the US ring the competitors are workflow-specific instead.** In Southeast Asia they share our multi-product thesis and multi-currency reality and have a head start, so three actions matter there: (1) **apply for PSG Pre-Approved Vendor status** — their structural pricing lever; (2) **define differentiation in customer language**, not architecture language (\"one vendor master across AP+AR+close\" beats \"shared workflow primitives\"); (3) **price-test against the PSG-net price point** — we can't be 3x for the same scope. Our genuine advantages over them: full R2R, enterprise-grade references, and the **managed-service model itself** (we own the outcome; they ship software the customer runs). **In our primary US market the competitive ring is workflow-specific — Stampli / Bill / Ramp / Vic.ai (P2P), HighRadius / Esker (O2C), BlackLine / FloQast (R2R) — and we compete on operation-vs-tool, not on a longer feature list.** Banking-led players (Aspire, Airwallex) sell finance ops as a banking add-on; Spenmo and Volopay are going downmarket.",
           "columns": [
             "name",
             "positioning",
@@ -625,15 +625,15 @@ window.STRATEGY_DATA = {
     ],
     "takeaways": [
       "**The opening is the empty multi-process + managed-service cell.** A US mid-market controller has **19–25 viable single-workflow *tools*** across the three workflows — but the **multi-process platform** cell has **0–1 credible players**, and **none run it as a managed outcome.** The US is over-served on tools and price-compressing (Coupa take-private, AvidXchange take-private, Bill mid-market deceleration); it is empty exactly where we sit — multi-process, done-for-you.",
-      "**A multi-process FinOps platform, run as a managed service, for US mid-market** — nobody credibly occupies that cell today. That is the Neoflo opportunity. (In the secondary SEA motion, Peakflo is the lone multi-workflow incumbent and has no R2R — a smaller, opportunistic opening.)",
+      "**A multi-process FinOps platform, run as a managed service, for US + SEA mid-market** — nobody credibly occupies that cell today. That is the Neoflo opportunity. (In SEA — our other primary market — Peakflo is the lone multi-workflow incumbent and has no R2R, an even more open opening.)",
       "**R2R for SEA mid-market is structurally empty.** No SEA-native mid-market close vendor of meaningful scale exists. BlackLine and FloQast sell in via APAC enterprise teams (too heavy / too expensive). Sage Intacct close is the do-nothing alternative. AI-native ERPs (Rillet, Campfire) are a future threat but not present-day competitors.",
       "**O2C for SEA mid-market is functionally a single-vendor segment.** Peakflo is the only credible play. Growfin is Singapore-HQ but its customer base is US-heavy and skews lower-mid; not a structural alternative for SEA buyers today. Chaser, Sidetrade have light SEA footprint. This is closer to \"uncontested\" than the broader market thinks.",
-      "**Workflow generality is the moat that survives commoditization.** Every competitor above runs a process-specific data model: Stampli is invoice-centric, HighRadius is AR-centric, BlackLine is GL-centric. **Nobody has a generalized workflow engine running P2P, O2C, and R2R on shared primitives.** That is the Neoflo platform thesis, and it's what we should defend.",
+      "**Full-spectrum coverage + managed delivery is the moat that survives commoditization.** Most competitors run a process-specific data model (Stampli invoice-centric, HighRadius AR-centric, BlackLine GL-centric), and **no one credibly runs P2P + O2C + R2R on one platform** — Esker stops at O2C, HighRadius has no real P2P. *Caveat (June 2026):* the \"only unified data layer\" framing is now contested — AI-native ERPs **Rillet** and **Campfire** own a native general ledger and **Numeric** is building toward a unified finance platform. So the defensible thesis is **full-spectrum coverage run as a managed outcome (the exception flywheel)**, not \"one data layer\" in the abstract.",
       "**There's a separate competitive frame we shouldn't miss: the Human + AI hybrid cohort.** Yarken, Auditoria, Klippa, Topkey, Aegis (acquired by Teleperformance) — and increasingly the BPO incumbents (Genpact, WNS, Sutherland) layering AI on top — operate the same managed-outcome model we do, but mostly outside the FinOps category. They're not in this gap grid because they cross-cut categories rather than slot into one. Conversation Pattern 4 (\"BPO disruption window is open NOW\") is partly a response to this cohort moving into our space. See \"Human + AI hybrid cohort\" in Part 3 for the deep dive."
     ]
   },
   "recommendation": {
-    "headline": "**Land US mid-market \"multi-entity, multi-process\" finance teams with P2P + cash application, run as a managed service; expand P2P → O2C → R2R on one engine. Treat SEA as a secondary, opportunistic motion. Refuse to compromise on workflow-engine generality.**",
+    "headline": "**Land US + SEA mid-market \"multi-entity, multi-process\" finance teams with P2P + cash application, run as a managed service; expand P2P → O2C → R2R on one engine. Run two motions — US warm-channel and SEA direct (vs Peakflo). Refuse to compromise on workflow-engine generality.**",
     "sequencing": [
       {
         "phase": "Phase 1 — Lock the wedge",
@@ -652,7 +652,7 @@ window.STRATEGY_DATA = {
       }
     ],
     "nonNegotiable": "Every shortcut that hardcodes assumptions about \"this is an AP workflow\" or \"this is an AR-specific data model\" will cost us 3x the time when we expand. **The platform thesis is the moat. Without it, we're just another AP tool with mid-market features.** Stage definitions, role mappings, entity scoping, audit trail, integrations, exception handling — these all stay generic. Domain logic lives at the workflow definition layer, not the engine layer.",
-    "geography": "**US mid-market is the primary target market.** Two US sub-segments behave differently and the analysis treats them separately. **US SAP-shop / NetSuite enterprise mid-market** has shown warm-channel traction (Spectrum / Boomerang / Rehmann CPA) and is the structurally best fit for the managed-service, multi-process model. **US scale-ups** (venture-backed tech / SaaS / DTC) are larger by count but cards-led incumbents (Brex / Ramp) own them, there are no warm-channel assets yet, and single-entity / single-currency reality thins our differentiation — so they are out of primary scope. **SEA mid-market** remains a real but secondary, opportunistic motion: a strong right-to-win by vendor-density inversion (see \"The gap\"), but not where US GTM resources go. Sequencing: land US mid-market via the warm CPA / advisor channel with **P2P + cash application**, expand across the cash cycle to full O2C and R2R, and treat SEA opportunistically.",
+    "geography": "**US and SEA mid-market are both primary target markets**, run as two motions. **US** (SAP-shop / NetSuite enterprise mid-market) goes via the warm CPA / advisor channel (Spectrum / Boomerang / Rehmann) — the best fit for the managed-service, multi-process model. **SEA mid-market** is direct sales, where Peakflo is the incumbent and the vendor-density inversion gives a strong right-to-win (see \"The gap\"). **US scale-ups** (venture-backed tech / SaaS / DTC) stay out of primary scope — cards-led incumbents (Brex / Ramp) own them and single-entity / single-currency reality thins our differentiation. Sequencing in both markets: land with **P2P + cash application**, then expand across the cash cycle to O2C and R2R.",
     "futureVision": "The Brex / Ramp / Rillet / Stuut wave tells us where buyer expectations are heading: **\"AI agents do the work, humans review exceptions.\"** Our 2026 roadmap is workflow-first. Our 2027–2028 roadmap should be agent-first — not as a feature, but as the operating model. We don't need to ship that now, but the architecture decisions we make this year should not preclude it."
   },
   "risks": [
@@ -1263,7 +1263,7 @@ window.INSIGHTS_DATA = {
       "wedge": "$25–45K/yr for managed P2P (invoice processing + cash application; 5–10 users, sub-50K invoices/yr) — priced on the outcome, not seats; undercuts Stampli's AP-only software.",
       "platform": "$60–120K/yr for the managed P2P + O2C operation (10–25 users, multi-entity, multi-currency) — below HighRadius+Stampli combined, and run for you rather than handed over.",
       "perTransactionFloor": "Price on outcomes (per resolved exception, % DSO reduction, close-days saved) and tiered volume; avoid a published per-invoice sticker that invites a commodity-OCR comparison. Introduce explicit per-transaction tiers only at scale (>250K invoices/yr) to protect unit economics.",
-      "logic": "Three constraints: (1) Stampli ($30–100K AP-only **software**) sets the upper bound for AP-only positioning — but we sell a service, not a cheaper tool. (2) HighRadius reject-quote ($1.2M+) sets the platform ceiling — don't price like a HighRadius replacement. (3) Because we **run** the work, the value frame is \"a finance hire or two replaced, outcome-guaranteed,\" not \"a cheaper license.\" (In the secondary SEA motion, Peakflo PSG-net ~S$15K is the local floor.)"
+      "logic": "Three constraints: (1) Stampli ($30–100K AP-only **software**) sets the upper bound for AP-only positioning — but we sell a service, not a cheaper tool. (2) HighRadius reject-quote ($1.2M+) sets the platform ceiling — don't price like a HighRadius replacement. (3) Because we **run** the work, the value frame is \"a finance hire or two replaced, outcome-guaranteed,\" not \"a cheaper license.\" (In SEA, Peakflo PSG-net ~S$15K is the local floor.)"
     }
   },
   "regulatory": {
@@ -1318,7 +1318,7 @@ window.INSIGHTS_DATA = {
         "ourPlay": "P2 — wait for mandate clarity before building."
       }
     ],
-    "headline": "**In the secondary SEA motion, three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois four-phase rollout is complete (final band Jan 2026; sub-RM1M permanently exempt); Indonesia runs on Coretax; Singapore's InvoiceNow phases in through 2031. Where we pursue SEA, the pitch becomes \"compliance is a free side effect of using us,\" which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it is not part of the primary US thesis. Peakflo and ClearTax are already in motion here."
+    "headline": "**In SEA (one of our two primary markets), three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois four-phase rollout is complete (final band Jan 2026; sub-RM1M permanently exempt); Indonesia runs on Coretax; Singapore's InvoiceNow phases in through 2031. In SEA the pitch becomes \"compliance is a free side effect of using us,\" which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it powers the SEA motion, not the US one. Peakflo and ClearTax are already in motion here."
   },
   "defensibility": {
     "intro": "The v1 memo asserts \"platform thesis is the moat\" without analyzing what competitors would have to do to neutralize it. Layered defensibility analysis: what we have, how durable each layer is, and how to reinforce.",
@@ -1333,7 +1333,7 @@ window.INSIGHTS_DATA = {
         "layer": "Localized regulatory compliance (MyInvois, InvoiceNow, Coretax)",
         "description": "Native integration with each ASEAN jurisdiction's e-invoicing regime — built once per country, mandatory for compliance, becomes table stakes for that geography.",
         "durability": "High",
-        "howToReinforce": "Relevant to the **secondary SEA motion**, not the primary US market (the US has no equivalent national e-invoicing mandate). In SEA it is a genuinely durable layer — each jurisdiction is months of work nobody outside SEA bothers with — so pursue MY/SG/ID compliance only if we commit to SEA. It is **not** a US moat."
+        "howToReinforce": "A durable layer in the **SEA market** (the US has no equivalent national e-invoicing mandate). In SEA it is genuinely defensible — each jurisdiction is months of work nobody outside SEA bothers with — so build MY/SG/ID compliance for the SEA motion. It is **not** a US moat, so it doesn't help the US motion."
       },
       {
         "layer": "Multi-entity / multi-currency / intercompany",
@@ -1366,7 +1366,7 @@ window.INSIGHTS_DATA = {
         "howToReinforce": "This becomes a moat only if we lock in a small number of mid-market CPAs (5–10) with revenue-share agreements that are exclusive in geography or vertical. Right now it's a trickle. Either invest in the partnership motion deliberately or treat it as opportunistic and don't over-claim."
       }
     ],
-    "summary": "**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/Coretax) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating \"workflow engine generality\" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**"
+    "summary": "**The durable layers** for the US + SEA managed-service model are: (1) **full-spectrum coverage** — P2P + O2C + R2R against one vendor master, one customer master, one audit trail; no competitor credibly runs all three (Esker has no R2R; HighRadius has no real P2P; the rest are single-process); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve; (4) regulatory localization (MyInvois/InvoiceNow/Coretax) — durable **in the SEA market**, no US equivalent. **Honest caveat (June 2026):** \"we're the only *unified data layer*\" no longer lands cleanly — AI-native ERPs (**Rillet, Campfire**) own a native general ledger, **Numeric** is building a unified finance data platform, and **BlackLine's Studio360** is its own one-data-layer pitch. So the moat is **not** \"one data layer\" in the abstract — it's **full-spectrum coverage + the managed-outcome flywheel** (we own the result under SLA). **The single biggest mistake we can make is treating \"workflow engine generality\" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: the full cash cycle, operated as an outcome.**"
   },
   "buyerJobMap": {
     "intro": "The v1 memo describes processes (P2P/O2C/R2R) but not the buying job itself — what the buyer is actually doing when they evaluate us, what they're asking, and what wins each step. Mapping this from the customer evidence we have.",
@@ -1493,14 +1493,14 @@ window.INSIGHTS_DATA = {
         "evidence": "Apparel Group (Dubai HQ) is in pipeline. FATOORAH is structurally similar to MyInvois — same e-invoicing mandate dynamic. Worth tracking for 2027–2028."
       }
     ],
-    "sequencing": "**For the next 12 months, focus is on US mid-market via the warm CPA / advisor channel** — land with P2P + cash application, run as a managed service, expand across the cash cycle. SEA (the former Plays 1 + 2) and India-HQ multinationals (Play 5) become **secondary, opportunistic** — take warm inbound, don't let it become roadmap-defining. Play 4 (India direct) stays disabled; Play 6 (GCC) logged for later. **The single most important GTM action this quarter is standing up the US warm channel: 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot offer.**"
+    "sequencing": "**For the next 12 months, run two primary motions: US mid-market via the warm CPA / advisor channel, and SEA mid-market via direct sales (vs Peakflo)** — both land with P2P + cash application, run as a managed service, then expand across the cash cycle. India-HQ multinationals (Play 5) and GCC (Play 6) are opportunistic; India direct (Play 4) stays disabled. **The two most important GTM actions this quarter: (US) stand up 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot; (SEA) sharpen the Peakflo differentiation and pursue PSG Pre-Approved status.**"
   },
   "ninetyDayActions": [
     {
       "number": 1,
       "action": "Stand up the warm US channel: 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot offer",
       "owner": "Founders + GTM lead",
-      "why": "US mid-market is the primary market and every documented win came warm (cold outbound is dead). The managed-service trust ask needs a shadow → parallel-run → cutover pilot to de-risk. This is the volume lever. (PSG Pre-Approved Vendor status is the equivalent lever in the secondary SEA motion — pursue only if we commit to SEA.)",
+      "why": "US mid-market is the primary market and every documented win came warm (cold outbound is dead). The managed-service trust ask needs a shadow → parallel-run → cutover pilot to de-risk. This is the US volume lever. (In the SEA market, PSG Pre-Approved Vendor status is the equivalent structural lever.)",
       "successMetric": "2–3 signed referral partners and a documented shadow-mode pilot offer within 60 days."
     },
     {
@@ -2627,6 +2627,73 @@ window.COMPARISONS_DATA = {
           "Implementation speed"
         ],
         "ourCounterPlay": "(1) Compete on market, not features — own US mid-market where they're absent. (2) Reframe from reporting tool to managed operation: we run the work. (3) Bundle transactional AP+AR+close their consolidation layer never touches. (4) Lead with managed delivery + outcome SLA vs self-configured software. (5) Avoid price-only fights in their home regions; differentiate on done-for-you and unified data."
+      },
+      {
+        "vendor": "Medius",
+        "category": "AI-native AP / SAP-VIM displacement (Nordic)",
+        "threatLevel": "Medium",
+        "hq": "Stockholm, Sweden",
+        "founded": "2001",
+        "funding": "PE-owned (Marlin Equity Partners); scaled AP vendor",
+        "customers": "4,000+ customers globally; strong in manufacturing / distribution",
+        "pricing": "Quote-based, mid-market ARR",
+        "implementation": "8–16 weeks",
+        "whereTheyWin": [
+          "AI-native AP with strong fraud / controls (Medius Detect)",
+          "Credible SAP-VIM-displacement story in North America + Europe",
+          "Mature, scaled AP product with deep ERP integrations",
+          "Spend management + AP suite breadth on the buy side"
+        ],
+        "whereTheyLose": [
+          "AP-centric — limited O2C, no R2R",
+          "Software you operate, not a managed outcome",
+          "Heavier implementation than AI-native upstarts",
+          "Less US mid-market brand than Stampli"
+        ],
+        "howWeBeatThem": "Medius is a strong AP tool and a real VIM-displacement option — but it stops at AP and is software the customer runs. We win on full cash-cycle breadth (AR + close) and the managed-service model, and on time-to-live vs their 8–16 week implementations.",
+        "howTheyBeatUs": "Honest read: for an AP-only deal where the buyer wants a proven, scaled product with strong fraud controls and is happy to operate it, Medius has 4,000+ references and Nordic / North-American credibility we lack — they out-depth us on AP.",
+        "typicalDealFrame": "An SAP / ERP shop replacing VIM or a legacy AP tool, wanting AI-native AP with fraud controls.",
+        "buyerDecisionCriteria": [
+          "AP automation + fraud-control depth",
+          "ERP / VIM-displacement fit",
+          "Implementation effort",
+          "AR / close breadth (we win)",
+          "Run-it-yourself vs managed"
+        ],
+        "ourCounterPlay": "(1) Reframe AP-tool vs full-cash-cycle managed operation. (2) Use AR + close breadth + the exception flywheel. (3) Win on time-to-live and zero operating burden. (4) Concede AP-only deals where the buyer wants to self-operate at scale."
+      },
+      {
+        "vendor": "ChatFin",
+        "category": "AI-agent R2R — reconciliation matching & anomaly detection",
+        "threatLevel": "Low",
+        "hq": "United States",
+        "founded": "2023",
+        "funding": "Early-stage",
+        "customers": "Early mid-market",
+        "pricing": "Mid-market subscription",
+        "implementation": "4–8 weeks",
+        "whereTheyWin": [
+          "AI agents for reconciliation matching + anomaly detection",
+          "Modern, fast deploy",
+          "Focused, clean R2R automation story",
+          "Lower cost than legacy close suites"
+        ],
+        "whereTheyLose": [
+          "Very early; thin reference base",
+          "R2R / recs-focused — no P2P, no O2C, no unified data layer",
+          "Software you operate, not a managed outcome",
+          "Narrow scope; unproven at scale"
+        ],
+        "howWeBeatThem": "ChatFin is an early AI-agent recs tool; we win on full-spectrum coverage + managed delivery. Their recs/anomaly agents are a feature inside our broader managed operation, fed by the same data as our AP and AR.",
+        "howTheyBeatUs": "Honest read: in a pure recs / anomaly-automation evaluation, an early-adopter buyer wanting a cheap, modern point tool they run themselves may prefer ChatFin's focus.",
+        "typicalDealFrame": "A finance team automating reconciliations / anomaly detection with AI agents, as a point solution.",
+        "buyerDecisionCriteria": [
+          "Recs / anomaly automation quality",
+          "Cost and speed",
+          "Breadth beyond recs (we win)",
+          "Run-it-yourself vs managed"
+        ],
+        "ourCounterPlay": "(1) Bundle recs into the full AP+AR+close managed outcome. (2) Lead with breadth + the exception flywheel. (3) Target buyers who want done-for-you, not another point tool."
       }
     ]
   },
@@ -2656,11 +2723,11 @@ window.COMPARISONS_DATA = {
     ],
     "rows": [
       {
-        "capability": "Invoice OCR — SEA-format accuracy",
+        "capability": "Invoice extraction accuracy (incl. SEA + complex formats)",
         "category": "P2P",
         "neoflo": {
           "score": "Strong",
-          "note": "Trained on Zalora invoice corpus; SEA-format-native"
+          "note": "Trained on a real invoice corpus (Zalora); strong on SEA + complex formats"
         },
         "peakflo": {
           "score": "Strong",
@@ -2992,7 +3059,7 @@ window.COMPARISONS_DATA = {
         }
       },
       {
-        "capability": "e-Faktur (Indonesia)",
+        "capability": "Coretax (Indonesia) e-invoicing native",
         "category": "Localization",
         "neoflo": {
           "score": "Gap",
@@ -4912,6 +4979,38 @@ window.COMPARISONS_DATA = {
         "o2cCoverage": "None",
         "r2rCoverage": "1, 2, 3 (recs), 4 (close, JE, variance) + tax & audit (out of our scope)",
         "primaryMonetization": "SaaS to accounting firms; firm staff supervise the agents"
+      },
+      {
+        "vendor": "Medius",
+        "category": "AI-native AP / VIM-displacement (Nordic)",
+        "p2pCoverage": "4, 5, 6, 7 (AP automation + fraud controls)",
+        "o2cCoverage": "None",
+        "r2rCoverage": "None",
+        "primaryMonetization": "Quote-based ARR"
+      },
+      {
+        "vendor": "ChatFin",
+        "category": "AI-agent R2R (recs + anomaly)",
+        "p2pCoverage": "None",
+        "o2cCoverage": "None",
+        "r2rCoverage": "3 (recs), 4 (anomaly / flux)",
+        "primaryMonetization": "Subscription"
+      },
+      {
+        "vendor": "Rillet",
+        "category": "AI-native ERP (native GL) — watch-item",
+        "p2pCoverage": "4 (AP sync, BILL partnership)",
+        "o2cCoverage": "3, 4 (billing, rev-rec)",
+        "r2rCoverage": "1, 2, 3, 7 (real-time \"zero-day\" close on a native ledger)",
+        "primaryMonetization": "ERP subscription"
+      },
+      {
+        "vendor": "Campfire",
+        "category": "AI-native ERP — watch-item",
+        "p2pCoverage": "4 (AP recon)",
+        "o2cCoverage": "4 (AR recon, rev-rec)",
+        "r2rCoverage": "1, 2, 3, 5 (continuous close + consolidation on a native ledger)",
+        "primaryMonetization": "ERP subscription"
       }
     ],
     "summary": "**Reading the workflow map gives three concrete strategic conclusions that don't show up in the per-competitor profiles:**\n\n1. **The single workflow with the most competitive density is P2P #4 (Invoice Receipt & Extraction)** — 11+ vendors actively monetize on it, including OCR primitives (Staple, Nanonets) underneath workflow products. This is the most commoditized layer in our roadmap. Our defense is **not** OCR accuracy alone — it's the combination of SEA-format-trained extraction + downstream workflow + cross-process audit trail.\n\n2. **Voice AI for Collections (O2C #6) is structurally Peakflo-defined.** Sidetrade and Stuut are present but English/EU-centric. **For SEA mid-market, Peakflo is the only Core player.** Our build/partner decision here directly affects our O2C win rate against them.\n\n3. **Two workflow gaps in the entire vendor landscape are interesting strategic openings:** (a) **multi-process audit trail** — no vendor has a single audit trail across AP, AR, and close. Even BlackLine (close-leader) bolted on cash app and intercompany via acquisition. Our entity-scoped workflow engine is architected for this from day one. (b) **R2R + e-invoicing convergence** — as MyInvois / PEPPOL data flows in real-time, the line between \"compliance reporting\" (ClearTax/Sovos) and \"statutory close\" (BlackLine/Workiva) collapses. Whoever owns the unified data layer here owns a category that doesn't exist yet.\n\n**Practical takeaway for the roadmap:** prioritize Phase 2 P0 workflows (O2C 3, 4, 5, 7, 8) by ship date because each one closes a gap that costs us specific named deals (Hitachi for cash app; Spectrum for deductions). Phase 3 P0 in R2R should be ruthlessly scoped to 1–4 + 8 (cutoff, JE, recs, flux, intercompany) — leave consolidation, statutory reporting, and management reporting to V2 and partners."
@@ -7789,7 +7888,7 @@ window.PERSONAS_DATA = {
   "geographyDecisions": [
     {
       "geography": "Southeast Asia mid-market (Singapore, Indonesia, Malaysia, Vietnam, Thailand, Philippines)",
-      "decision": "TARGET — secondary",
+      "decision": "TARGET — primary",
       "marketSize": "Smaller in absolute dollars than US ($500M–$1.5B addressable for our segment), but right-to-win is dramatically higher.",
       "buyerProfile": "CFO / Controller at $50M–$500M revenue companies, multi-entity (SG HQ + ID/MY/VN subsidiaries), multi-currency, ERP-connected (NetSuite, SAP S/4, Oracle Fusion), currently running on Excel + email + ERP + bandaid SaaS. **Stakeholder pattern by sub-segment:** at single-HQ mid-market the Controller / VP Finance is the primary buyer with the Accounting Manager as day-1 user. At multi-entity SEA conglomerates the **Shared Services / GBS Director** often replaces the entity Controller as primary buyer. For e-invoicing-mandate-driven evaluations (MyInvois / InvoiceNow / e-Faktur) the **Tax Director** comes in as a co-buyer in the first conversation, not late.",
       "whyOrWhyNot": [
@@ -7806,7 +7905,7 @@ window.PERSONAS_DATA = {
         "Apparel Group active",
         "4 of 4 SAP-shop conversations (Coca-Cola, Spectrum, Welspun, Hitachi) had SEA / cross-border ops in scope"
       ],
-      "resourceCommitment": "**Secondary, opportunistic (~15%).** Take warm SEA inbound; don't build a dedicated SEA motion. PSG approval and a local accounting-firm partner program (BDO, RSM, Crowe in MY/ID) only if we deliberately commit to SEA."
+      "resourceCommitment": "**Primary — a direct-sales motion, co-equal with US.** Founder-led + SEA GTM, PSG Pre-Approved status as a structural priority, and a local accounting-firm partner program (BDO, RSM, Crowe in MY/ID). Anchor reference: Zalora."
     },
     {
       "geography": "India-headquartered multinationals with SEA operations",
@@ -7843,7 +7942,7 @@ window.PERSONAS_DATA = {
         "Rehmann CPA opening",
         "Boomerang Catapult relationship"
       ],
-      "resourceCommitment": "**Primary — the majority of GTM resources for the next 12 months.** Founder-led + warm CPA / advisor referral partnerships, a packaged shadow-mode pilot, and the first US mid-market references. Land with P2P + cash application, run as a managed service."
+      "resourceCommitment": "**Primary — a co-equal motion with SEA.** Founder-led + warm CPA / advisor referral partnerships, a packaged shadow-mode pilot, and the first US mid-market references. Land with P2P + cash application, run as a managed service."
     },
     {
       "geography": "GCC / Middle East (UAE, Saudi)",
