@@ -1039,7 +1039,15 @@
     <section id="vendor-coverage">
       <div class="eyebrow">Competitive deep-dive</div>
       <h2 class="section-title">Vendor coverage — who plays where.</h2>
-      <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape.</p>
+      <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape. The numbers in each cell are the workflow stages below — expand the legend to decode them.</p>
+      <details style="margin-bottom: var(--scale-300);">
+        <summary style="cursor: pointer; font-size: 13px; color: var(--text-default-caption);">Stage legend — what the workflow numbers mean</summary>
+        <div class="grid grid-3" style="margin-top: var(--scale-200); font-size: 12px; line-height: 1.6;">
+          <div class="card"><strong>📦 P2P stages</strong><br>1 Vendor onboarding · 2 Requisition / PO · 3 Goods receipt · 4 Invoice receipt &amp; extraction · 5 3-way match · 6 Approval · 7 Payment · 8 Vendor portal · 9 Spend analytics · 10 T&amp;E</div>
+          <div class="card"><strong>💰 O2C stages</strong><br>1 Customer onboarding / credit · 2 Order mgmt · 3 Billing / e-invoicing · 4 Validation · 5 Collections / AR · 6 Voice AI · 7 Cash application · 8 Deductions / disputes · 9 Forecasting · 10 Portal / EIPP</div>
+          <div class="card"><strong>📊 R2R stages</strong><br>1 Cutoff · 2 Journal entries · 3 Reconciliations · 4 Review / flux · 5 Consolidation · 6 Statutory · 7 Mgmt reporting · 8 Intercompany</div>
+        </div>
+      </details>
       <div id="vc-table" style="overflow-x: auto;"></div>
       <div class="card" style="margin-top: var(--scale-300);" id="workflow-summary"></div>
     </section>

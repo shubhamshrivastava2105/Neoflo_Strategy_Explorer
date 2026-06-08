@@ -28,7 +28,7 @@ window.STRATEGY_DATA = {
       }
     ],
     "headline": "**The headline:** P2P is the biggest market but also the most fragmented and most price-pressured. O2C is smaller but has more pricing power per customer (DSO impact → cash → CFO will pay). R2R is enterprise-priced — BlackLine charges $40K–$300K+ ARR for mid-market, which means there's room for a serious mid-market disruptor if you can match capability at 1/3 the price.",
-    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **US mid-market: $50M–$250M revenue, 10–50 finance staff, multi-entity, ERP-connected (NetSuite / SAP), currently running on Excel + email + ERP + bandaid SaaS** — and we run it for them as a managed service rather than handing them another tool. SEA mid-market is a secondary, opportunistic motion, not the primary target.\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2024), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See \"The gap\" for the full grid with sources.\n\n**The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.\n\n**Southeast Asia is a secondary, opportunistic motion.** There the vendor count is even thinner — at most 2–3 per category, with only Peakflo spanning multiple workflows (and no full R2R) — so the right-to-win is high, but it is not where US GTM resources go."
+    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **US mid-market: $50M–$250M revenue, 10–50 finance staff, multi-entity, ERP-connected (NetSuite / SAP), currently running on Excel + email + ERP + bandaid SaaS** — and we run it for them as a managed service rather than handing them another tool. SEA mid-market is a secondary, opportunistic motion, not the primary target.\n\n**How much of the TAM is US mid-market?** A rough cut: the three categories total ~$16–17B globally today (P2P ~$6.9B + O2C ~$3.8B + R2R ~$5.8B). North America is ~37–40% of that (~$6–6.6B), and the mid-market band ($50–250M revenue) is roughly a third of the US spend once you strip out enterprise and SMB — so **US mid-market TAM across P2P+O2C+R2R is on the order of ~$2–2.5B today**, growing ~12% CAGR. *Treat this as a back-of-envelope estimate from analyst category sizing + NA-share splits — verify with a bottoms-up (US firms in band × ACV) before using it externally.*\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2024), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See \"The gap\" for the full grid with sources.\n\n**The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.\n\n**Southeast Asia is a secondary, opportunistic motion.** There the vendor count is even thinner — at most 2–3 per category, with only Peakflo spanning multiple workflows (and no full R2R) — so the right-to-win is high, but it is not where US GTM resources go."
   },
   "landscapes": {
     "p2p": {
@@ -1262,10 +1262,10 @@ window.INSIGHTS_DATA = {
       {
         "jurisdiction": "Malaysia — MyInvois (LHDN)",
         "mandate": "Mandatory B2B e-invoicing through the IRBM portal with PEPPOL interop",
-        "status": "Phase 1 (>RM100M revenue) live since Aug 2024; Phase 2 (>RM25M) since Jan 2025; full rollout to all taxpayers through 2026",
+        "status": "Phase 1 (>RM100M) live since Aug 2024; Phase 2 (>RM25M) since Jan 2025; Phase 3 (>RM5M) since Jul 2025; Phase 4 since Jan 2026; remaining smaller taxpayers phased in **through 2031** (not 2026)",
         "whoMustComply": "Every Malaysian-incorporated business sequentially by revenue band",
         "whatItForces": "Real-time invoice submission to LHDN, structured data (UBL 2.1), QR-coded receipts, validation latency <3s. Manual / Excel / paper invoicing becomes legally non-compliant.",
-        "ourPlay": "**P0 — ship native MyInvois validation + submission inside our P2P module before mid-2026 Phase 3.** Becomes a forced-buy trigger for every Malaysian mid-market customer. Position as: \"we keep you compliant from day 1, no separate e-invoicing tool needed.\""
+        "ourPlay": "**P0 — the mandate is here now, not coming: Phases 1–4 are already live (Jul 2025 / Jan 2026), with smaller bands phasing through 2031.** Native MyInvois validation + submission inside our P2P module is a present-day forced-buy trigger for Malaysian mid-market. Position as: \"we keep you compliant from day 1, no separate e-invoicing tool needed.\""
       },
       {
         "jurisdiction": "Singapore — InvoiceNow (PEPPOL)",
@@ -1276,12 +1276,12 @@ window.INSIGHTS_DATA = {
         "ourPlay": "PEPPOL access point + InvoiceNow integration must be standard in our SG offering. Apply for PSG Pre-Approved status simultaneously — these solve as one bundle for SG buyers."
       },
       {
-        "jurisdiction": "Indonesia — e-Faktur (DJP / DGT)",
-        "mandate": "Mandatory e-invoicing through the DGT portal for VAT-registered businesses",
-        "status": "In effect since 2016; ongoing modernization (e-Faktur 4.0)",
+        "jurisdiction": "Indonesia — Coretax (DJP), formerly e-Faktur",
+        "mandate": "Mandatory tax administration + e-invoicing through the DJP Coretax system for VAT-registered businesses",
+        "status": "e-Faktur regime since 2016, now **superseded by the Coretax system** (DJP) — live from Jan 2025 and the enforceable regime going forward",
         "whoMustComply": "All VAT-registered Indonesian businesses (PKP)",
-        "whatItForces": "XML-format invoices submitted to DGT, NPWP validation, real-time tax authority sync.",
-        "ourPlay": "Already-mandatory mature regime. Native e-Faktur is **non-negotiable for any Indonesian customer** (and Indonesia is the largest by population in our target geography). Without it, we can't pitch in Jakarta at all."
+        "whatItForces": "Invoices and tax data submitted through Coretax, NPWP validation, real-time tax-authority sync.",
+        "ourPlay": "Already-mandatory mature regime. Native **Coretax (ex-e-Faktur)** support is **non-negotiable for any Indonesian customer** (Indonesia is the largest by population in the SEA geography). Without it, you can't pitch in Jakarta at all."
       },
       {
         "jurisdiction": "Philippines — BIR EIS",
@@ -1308,7 +1308,7 @@ window.INSIGHTS_DATA = {
         "ourPlay": "P2 — wait for mandate clarity before building."
       }
     ],
-    "headline": "**Three of our six target jurisdictions (MY, SG, ID) require structured e-invoicing right now or by mid-2026.** This is not \"nice to have\" — it is the most leverageable GTM trigger we have. Every mid-market CFO in Kuala Lumpur, Jakarta, and Singapore is being told by their accountants to get compliant. **The pitch becomes: \"compliance is a free side effect of using us.\" That sells before the AP/AR features do.** Failing to ship MyInvois + PEPPOL + e-Faktur native by mid-2026 is the strategic cost of not doing this — Peakflo and ClearTax are already in motion."
+    "headline": "**In the secondary SEA motion, three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois is rolling through bands to 2031; Indonesia runs on Coretax; Singapore's InvoiceNow is phasing in. Where we pursue SEA, the pitch becomes \"compliance is a free side effect of using us,\" which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it is not part of the primary US thesis. Peakflo and ClearTax are already in motion here."
   },
   "defensibility": {
     "intro": "The v1 memo asserts \"platform thesis is the moat\" without analyzing what competitors would have to do to neutralize it. Layered defensibility analysis: what we have, how durable each layer is, and how to reinforce.",
@@ -1320,7 +1320,7 @@ window.INSIGHTS_DATA = {
         "howToReinforce": "A well-funded competitor with a workflow engine (FloQast, even Stampli) can replicate the *architecture* in 18–24 months. The moat isn't the engine — it's being **first to run all three (P2P + O2C + R2R) as a single managed outcome for US mid-market**, plus the **exception flywheel** that compounds as we operate it (every human-resolved exception trains the AI, so each client's touchless % climbs). Reinforce by accelerating O2C + R2R and instrumenting the flywheel. Lose this if we slip the platform proof past Q2 2027."
       },
       {
-        "layer": "Localized regulatory compliance (MyInvois, InvoiceNow, e-Faktur)",
+        "layer": "Localized regulatory compliance (MyInvois, InvoiceNow, Coretax)",
         "description": "Native integration with each ASEAN jurisdiction's e-invoicing regime — built once per country, mandatory for compliance, becomes table stakes for that geography.",
         "durability": "High",
         "howToReinforce": "Relevant to the **secondary SEA motion**, not the primary US market (the US has no equivalent national e-invoicing mandate). In SEA it is a genuinely durable layer — each jurisdiction is months of work nobody outside SEA bothers with — so pursue MY/SG/ID compliance only if we commit to SEA. It is **not** a US moat."
@@ -1356,7 +1356,7 @@ window.INSIGHTS_DATA = {
         "howToReinforce": "This becomes a moat only if we lock in a small number of mid-market CPAs (5–10) with revenue-share agreements that are exclusive in geography or vertical. Right now it's a trickle. Either invest in the partnership motion deliberately or treat it as opportunistic and don't over-claim."
       }
     ],
-    "summary": "**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/e-Faktur) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating \"workflow engine generality\" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**"
+    "summary": "**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/Coretax) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating \"workflow engine generality\" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**"
   },
   "buyerJobMap": {
     "intro": "The v1 memo describes processes (P2P/O2C/R2R) but not the buying job itself — what the buyer is actually doing when they evaluate us, what they're asking, and what wins each step. Mapping this from the customer evidence we have.",
@@ -1562,6 +1562,7 @@ window.COMPARISONS_DATA = {
         "whereTheyWin": [
           "PSG Pre-Approved Vendor distribution moat in Singapore (50% subsidy, S$30K cap) — structural ~50% pricing advantage we cannot match without our own PSG approval",
           "Voice AI for collections in 12+ languages (Mandarin, Bahasa, Vietnamese, Thai) — category-defining for SEA where phone collections are culturally normal",
+          "Launched **Peakflo 20X** (2026) — an agentic-AI orchestrator across back-office finance ops, deepening their automation story and resetting buyer expectations on AI autonomy",
           "Marketplace seller commission reconciliation — productized for Lazada/Bukalapak-style customers",
           "4-year head start on SEA buyer trust, sales motion, integrations",
           "PDPA, ISO 27001, SOC 2 — security/compliance posture matched",

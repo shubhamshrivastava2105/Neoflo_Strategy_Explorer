@@ -168,10 +168,10 @@ export const insightsData: InsightsData = {
       {
         jurisdiction: 'Malaysia — MyInvois (LHDN)',
         mandate: 'Mandatory B2B e-invoicing through the IRBM portal with PEPPOL interop',
-        status: 'Phase 1 (>RM100M revenue) live since Aug 2024; Phase 2 (>RM25M) since Jan 2025; full rollout to all taxpayers through 2026',
+        status: 'Phase 1 (>RM100M) live since Aug 2024; Phase 2 (>RM25M) since Jan 2025; Phase 3 (>RM5M) since Jul 2025; Phase 4 since Jan 2026; remaining smaller taxpayers phased in **through 2031** (not 2026)',
         whoMustComply: 'Every Malaysian-incorporated business sequentially by revenue band',
         whatItForces: 'Real-time invoice submission to LHDN, structured data (UBL 2.1), QR-coded receipts, validation latency <3s. Manual / Excel / paper invoicing becomes legally non-compliant.',
-        ourPlay: '**P0 — ship native MyInvois validation + submission inside our P2P module before mid-2026 Phase 3.** Becomes a forced-buy trigger for every Malaysian mid-market customer. Position as: "we keep you compliant from day 1, no separate e-invoicing tool needed."',
+        ourPlay: '**P0 — the mandate is here now, not coming: Phases 1–4 are already live (Jul 2025 / Jan 2026), with smaller bands phasing through 2031.** Native MyInvois validation + submission inside our P2P module is a present-day forced-buy trigger for Malaysian mid-market. Position as: "we keep you compliant from day 1, no separate e-invoicing tool needed."',
       },
       {
         jurisdiction: 'Singapore — InvoiceNow (PEPPOL)',
@@ -182,12 +182,12 @@ export const insightsData: InsightsData = {
         ourPlay: 'PEPPOL access point + InvoiceNow integration must be standard in our SG offering. Apply for PSG Pre-Approved status simultaneously — these solve as one bundle for SG buyers.',
       },
       {
-        jurisdiction: 'Indonesia — e-Faktur (DJP / DGT)',
-        mandate: 'Mandatory e-invoicing through the DGT portal for VAT-registered businesses',
-        status: 'In effect since 2016; ongoing modernization (e-Faktur 4.0)',
+        jurisdiction: 'Indonesia — Coretax (DJP), formerly e-Faktur',
+        mandate: 'Mandatory tax administration + e-invoicing through the DJP Coretax system for VAT-registered businesses',
+        status: 'e-Faktur regime since 2016, now **superseded by the Coretax system** (DJP) — live from Jan 2025 and the enforceable regime going forward',
         whoMustComply: 'All VAT-registered Indonesian businesses (PKP)',
-        whatItForces: 'XML-format invoices submitted to DGT, NPWP validation, real-time tax authority sync.',
-        ourPlay: 'Already-mandatory mature regime. Native e-Faktur is **non-negotiable for any Indonesian customer** (and Indonesia is the largest by population in our target geography). Without it, we can\'t pitch in Jakarta at all.',
+        whatItForces: 'Invoices and tax data submitted through Coretax, NPWP validation, real-time tax-authority sync.',
+        ourPlay: 'Already-mandatory mature regime. Native **Coretax (ex-e-Faktur)** support is **non-negotiable for any Indonesian customer** (Indonesia is the largest by population in the SEA geography). Without it, you can\'t pitch in Jakarta at all.',
       },
       {
         jurisdiction: 'Philippines — BIR EIS',
@@ -214,7 +214,7 @@ export const insightsData: InsightsData = {
         ourPlay: 'P2 — wait for mandate clarity before building.',
       },
     ],
-    headline: `**Three of our six target jurisdictions (MY, SG, ID) require structured e-invoicing right now or by mid-2026.** This is not "nice to have" — it is the most leverageable GTM trigger we have. Every mid-market CFO in Kuala Lumpur, Jakarta, and Singapore is being told by their accountants to get compliant. **The pitch becomes: "compliance is a free side effect of using us." That sells before the AP/AR features do.** Failing to ship MyInvois + PEPPOL + e-Faktur native by mid-2026 is the strategic cost of not doing this — Peakflo and ClearTax are already in motion.`,
+    headline: `**In the secondary SEA motion, three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois is rolling through bands to 2031; Indonesia runs on Coretax; Singapore's InvoiceNow is phasing in. Where we pursue SEA, the pitch becomes "compliance is a free side effect of using us," which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it is not part of the primary US thesis. Peakflo and ClearTax are already in motion here.`,
   },
 
   defensibility: {
@@ -227,7 +227,7 @@ export const insightsData: InsightsData = {
         howToReinforce: 'A well-funded competitor with a workflow engine (FloQast, even Stampli) can replicate the *architecture* in 18–24 months. The moat isn\'t the engine — it\'s being **first to run all three (P2P + O2C + R2R) as a single managed outcome for US mid-market**, plus the **exception flywheel** that compounds as we operate it (every human-resolved exception trains the AI, so each client\'s touchless % climbs). Reinforce by accelerating O2C + R2R and instrumenting the flywheel. Lose this if we slip the platform proof past Q2 2027.',
       },
       {
-        layer: 'Localized regulatory compliance (MyInvois, InvoiceNow, e-Faktur)',
+        layer: 'Localized regulatory compliance (MyInvois, InvoiceNow, Coretax)',
         description: 'Native integration with each ASEAN jurisdiction\'s e-invoicing regime — built once per country, mandatory for compliance, becomes table stakes for that geography.',
         durability: 'High',
         howToReinforce: 'Relevant to the **secondary SEA motion**, not the primary US market (the US has no equivalent national e-invoicing mandate). In SEA it is a genuinely durable layer — each jurisdiction is months of work nobody outside SEA bothers with — so pursue MY/SG/ID compliance only if we commit to SEA. It is **not** a US moat.',
@@ -263,7 +263,7 @@ export const insightsData: InsightsData = {
         howToReinforce: 'This becomes a moat only if we lock in a small number of mid-market CPAs (5–10) with revenue-share agreements that are exclusive in geography or vertical. Right now it\'s a trickle. Either invest in the partnership motion deliberately or treat it as opportunistic and don\'t over-claim.',
       },
     ],
-    summary: `**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/e-Faktur) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating "workflow engine generality" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**`,
+    summary: `**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/Coretax) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating "workflow engine generality" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**`,
   },
 
   buyerJobMap: {

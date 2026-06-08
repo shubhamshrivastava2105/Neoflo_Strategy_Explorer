@@ -124,6 +124,7 @@ export const comparisonsData: ComparisonsData = {
         whereTheyWin: [
           'PSG Pre-Approved Vendor distribution moat in Singapore (50% subsidy, S$30K cap) — structural ~50% pricing advantage we cannot match without our own PSG approval',
           'Voice AI for collections in 12+ languages (Mandarin, Bahasa, Vietnamese, Thai) — category-defining for SEA where phone collections are culturally normal',
+          'Launched **Peakflo 20X** (2026) — an agentic-AI orchestrator across back-office finance ops, deepening their automation story and resetting buyer expectations on AI autonomy',
           'Marketplace seller commission reconciliation — productized for Lazada/Bukalapak-style customers',
           '4-year head start on SEA buyer trust, sales motion, integrations',
           'PDPA, ISO 27001, SOC 2 — security/compliance posture matched',
