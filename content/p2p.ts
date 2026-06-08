@@ -26,13 +26,13 @@ export const p2pData: ProcessExplainerData = {
       whatItIs:
         'Setting up a new supplier in your systems before you can buy from them.',
       whatHappens:
-        'You collect KYC info (PAN, GST, bank account, registration certificate), verify the bank account (penny drop or API check), check for duplicates against your existing vendor master, run any required compliance checks (sanctions, vendor blacklist), and route through approval. Once approved, the vendor record is created in the ERP with payment terms, currency, default GL coding, and tax setup. This is the **first** step and a one-time prerequisite at the start of the relationship — not a per-transaction step. It is also where the exchange channel is set up: if the vendor will send documents and invoices via EDI or a supplier portal, that connection (and the IT/API access behind it) is established here — so all the later stages that receive vendor documents via EDI depend on onboarding being completed first.',
+        'You collect KYC info (W-9 / TIN, bank account, registration certificate), verify the bank account (ACH micro-deposit or API check), check for duplicates against your existing vendor master, run any required compliance checks (sanctions, vendor blacklist), and route through approval. Once approved, the vendor record is created in the ERP with payment terms, currency, default GL coding, and tax setup. This is the **first** step and a one-time prerequisite at the start of the relationship — not a per-transaction step. It is also where the exchange channel is set up: if the vendor will send documents and invoices via EDI or a supplier portal, that connection (and the IT/API access behind it) is established here — so all the later stages that receive vendor documents via EDI depend on onboarding being completed first.',
       example:
-        'PackRight submits their PAN, GST, and bank details. Your AP team verifies the GST is active, does a ₹1 penny drop to confirm the bank account is real, checks they\'re not already in the system under a different name, and creates them in the ERP with Net 45 terms.',
+        'PackRight submits their W-9 (legal name + EIN) and bank details. Your AP team verifies the EIN, runs an ACH micro-deposit to confirm the bank account is real, checks they\'re not already in the system under a different name, and creates them in the ERP with Net 45 terms.',
       analogy:
         'A new employee filling out joining paperwork before they can be paid.',
       whereItBreaks:
-        'Onboarding takes 2–4 weeks manually. Duplicate vendors get created when the same supplier registers under slightly different names. Bank details are sometimes entered wrong (a single digit) and the first payment fails. Documents expire (GST, MSME certificates) and nobody notices until a payment is blocked.',
+        'Onboarding takes 2–4 weeks manually. Duplicate vendors get created when the same supplier registers under slightly different names. Bank details are sometimes entered wrong (a single digit) and the first payment fails. Documents expire (tax-registration / W-9 / compliance certificates) and nobody notices until a payment is blocked.',
     },
     {
       number: 2,
@@ -42,7 +42,7 @@ export const p2pData: ProcessExplainerData = {
       whatHappens:
         'A requestor (warehouse manager, ops lead, anyone with budget authority) raises a Purchase Requisition (PR) — what\'s needed, quantity, GL code, cost center, suggested vendor, expected price. The system checks budget availability, then routes through an approval matrix (department head, finance, CFO if above threshold).',
       example:
-        'Your packaging manager raises a PR for 10,000 bags @ ₹8 each = ₹80,000, charged to "Cost of Goods Sold — Packaging." The PR routes to the Ops Head (auto-approved under ₹1L) and posts to the procurement queue.',
+        'Your packaging manager raises a PR for 10,000 bags @ $0.80 each = $8,000, charged to "Cost of Goods Sold — Packaging." The PR routes to the Ops Head (auto-approved under $10K) and posts to the procurement queue.',
       analogy:
         'Asking your manager for permission before booking an expensive flight on the company card.',
       whereItBreaks:
@@ -55,7 +55,7 @@ export const p2pData: ProcessExplainerData = {
       whatHappens:
         'Once the PR is approved, a PO is generated — a numbered, legally binding document that locks in price, quantity, delivery terms, and payment terms. It\'s sent to the vendor (email, EDI, supplier portal) and posted to the ERP as a commitment against the budget.',
       example:
-        'PO-2026-0142 goes out to PackRight: 10,000 bags @ ₹8, delivery in 14 days, Net 45 payment terms, deliver to Bengaluru warehouse. PackRight acknowledges and the PO is now an open commitment in your ERP.',
+        'PO-2026-0142 goes out to PackRight: 10,000 bags @ $0.80, delivery in 14 days, Net 45 payment terms, deliver to your Columbus warehouse. PackRight acknowledges and the PO is now an open commitment in your ERP.',
       analogy:
         'Pressing "Place Order" on Amazon — the price is locked, the seller is committed, and your card is now reserved against the amount.',
       whereItBreaks:
@@ -68,7 +68,7 @@ export const p2pData: ProcessExplainerData = {
       whatHappens:
         'When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for the **3-way match** — the invoice itself arrives on the supplier\'s own schedule; the GRN is what lets you match it and post it. For services, this is service entry sheet (SES) confirmation.',
       example:
-        'Truck arrives at your Bengaluru warehouse. Your team counts: 9,800 bags received, 200 short. They post a GRN for 9,800 bags against PO-2026-0142.',
+        'Truck arrives at your Columbus warehouse. Your team counts: 9,800 bags received, 200 short. They post a GRN for 9,800 bags against PO-2026-0142.',
       analogy:
         'Signing for a courier package — you\'re confirming you got what was shipped, in the condition described.',
       whereItBreaks:
@@ -79,9 +79,9 @@ export const p2pData: ProcessExplainerData = {
       title: 'Invoice Receipt & Processing',
       whatItIs: 'Capturing the supplier invoice into your AP system.',
       whatHappens:
-        'Invoice arrives via email, supplier portal, EDI, or paper. OCR extracts header data (vendor, invoice number, date, amount, tax) and line items. AI suggests the matching PO and GL coding. The system checks for duplicates (same invoice number, same amount, same vendor) and validates tax (GST input credit eligibility, TDS applicability).',
+        'Invoice arrives via email, supplier portal, EDI, or paper. OCR extracts header data (vendor, invoice number, date, amount, tax) and line items. AI suggests the matching PO and GL coding. The system checks for duplicates (same invoice number, same amount, same vendor) and validates tax treatment (sales/use tax, 1099 / withholding applicability).',
       example:
-        'PackRight emails Invoice INV-PR-887: 9,800 bags @ ₹8 + 18% GST = ₹92,512. Your AP system extracts the data, links it to PO-2026-0142, suggests GL code 5021 (COGS-Packaging), confirms GST is eligible for input credit, and flags it for matching.',
+        'PackRight emails Invoice INV-PR-887: 9,800 bags @ $0.80 = $7,840. Your AP system extracts the data, links it to PO-2026-0142, suggests GL code 5021 (COGS-Packaging), and flags it for matching.',
       analogy:
         'Your phone scanning a restaurant bill and auto-filling the expense report — except now there are 800 bills a month and three of them are duplicates from the same vendor in different formats.',
       whereItBreaks:
@@ -95,7 +95,7 @@ export const p2pData: ProcessExplainerData = {
       whatHappens:
         'The system compares three documents — what you ordered (PO), what you received (GRN), and what you\'re being billed for (invoice). If quantity, price, and tax line up within tolerance, it\'s a clean match and goes straight through. If anything\'s off — short delivery, price variance, tax mismatch — it goes to an exception queue for human review.',
       example:
-        'PO says 10,000 bags @ ₹8 = ₹80,000. GRN says 9,800 received. Invoice says 9,800 bags @ ₹8 + GST = ₹92,512. Math checks out. The invoice clears 3-way match and is approved for payment.',
+        'PO says 10,000 bags @ $0.80 = $8,000. GRN says 9,800 received. Invoice says 9,800 bags @ $0.80 = $7,840. The invoice is matched to the *received* quantity (9,800), not the ordered 10,000 — so it clears the 3-way match and is approved for payment; the 200-unit shortfall stays open on the PO.',
       analogy:
         'Comparing your Swiggy order screen, the delivery person\'s bill, and your card statement — all three need to agree before you mark the transaction as fine.',
       whereItBreaks:
@@ -106,9 +106,9 @@ export const p2pData: ProcessExplainerData = {
       title: 'Payment & Reconciliation',
       whatItIs: 'Actually paying the vendor and closing the loop in your books.',
       whatHappens:
-        'Approved invoices go into a payment run — usually weekly. The system selects invoices by due date, applies any early payment discounts, generates a bank file (NEFT/RTGS/ACH/SWIFT format), routes through dual approval (treasury + CFO for large runs), and releases payment. Once the bank confirms, the invoice is marked paid in AP, the GL is updated, and a remittance advice goes to the vendor.',
+        'Approved invoices go into a payment run — usually weekly. The system selects invoices by due date, applies any early payment discounts, generates a bank file (ACH / wire / SWIFT format), routes through dual approval (treasury + CFO for large runs), and releases payment. Once the bank confirms, the invoice is marked paid in AP, the GL is updated, and a remittance advice goes to the vendor.',
       example:
-        'Friday\'s payment run includes PackRight\'s ₹92,512. The bank file is generated, you and the CFO approve, the bank confirms NEFT successful by 4pm, the AP ledger is updated, and PackRight gets an automated email: "Invoice INV-PR-887 paid ₹92,512, UTR ABC123XYZ."',
+        'Friday\'s payment run includes PackRight\'s $7,840. The bank file is generated, you and the CFO approve, the bank confirms the ACH payment by 4pm, the AP ledger is updated, and PackRight gets an automated email: "Invoice INV-PR-887 paid $7,840, trace # ABC123XYZ."',
       analogy:
         'Setting up an auto-pay for your credit card bill — the system handles the actual transfer, but somebody has to make sure the money\'s there and approve the run.',
       whereItBreaks:

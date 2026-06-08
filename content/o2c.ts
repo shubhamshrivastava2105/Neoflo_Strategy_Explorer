@@ -28,9 +28,9 @@ export const o2cData: ProcessExplainerData = {
       whatItIs:
         'Setting up a new customer in your systems and deciding how much credit to extend them.',
       whatHappens:
-        'You collect KYC info, verify they\'re a real business, check their credit history (via Experian, D&B, CIBIL, or internal scoring), and assign them a credit limit and payment terms.',
+        'You collect KYC info, verify they\'re a real business, check their credit history (via Experian, D&B, or internal scoring), and assign them a credit limit and payment terms.',
       example:
-        'Brew & Co submits their details. You check their credit, decide they\'re good for ₹2 lakh of credit, and set payment terms at Net 30.',
+        'Brew & Co submits their details. You check their credit, decide they\'re good for $200,000 of credit, and set payment terms at Net 30.',
       analogy: 'A bank deciding your credit card limit before issuing the card.',
       whereItBreaks:
         'Onboarding takes 2–4 weeks manually. Credit data is stale by the time it\'s used. Risk profiles aren\'t updated as customers\' payment behavior changes.',
@@ -42,7 +42,7 @@ export const o2cData: ProcessExplainerData = {
       whatHappens:
         'Order arrives (via email, EDI, portal, rep). You check: Is inventory available? Is pricing correct? Does this order fit within the customer\'s approved credit limit? If yes, you confirm the order and push it to fulfillment.',
       example:
-        'Brew & Co orders 50 kg of beans worth ₹50,000. You confirm stock, check that ₹50,000 fits within their ₹2 lakh limit, and accept the order.',
+        'Brew & Co places a wholesale order of beans worth $50,000. You confirm stock, check that $50,000 fits within their $200,000 limit, and accept the order.',
       analogy:
         'Amazon checking your cart, payment method, and stock before you click "Place Order."',
       whereItBreaks:
@@ -66,9 +66,9 @@ export const o2cData: ProcessExplainerData = {
       title: 'Billing',
       whatItIs: 'Generating the invoice.',
       whatHappens:
-        'You take the delivered quantity, apply contract pricing, taxes (GST, VAT, sales tax), discounts, and any customer-specific terms. Invoice gets sent to the customer via email, portal, EDI, or e-invoicing.',
+        'You take the delivered quantity, apply contract pricing, taxes (sales/use tax in the US, or VAT/GST abroad), discounts, and any customer-specific terms. Invoice gets sent to the customer via email, portal, EDI, or e-invoicing.',
       example:
-        'You create an invoice: ₹50,000 + 18% GST = ₹59,000, due in 30 days. Email it to Brew & Co.',
+        'You create an invoice: $50,000, due in 30 days. Email it to Brew & Co.',
       analogy:
         'The restaurant bill — except the customer has 30 days to pay, not 30 seconds.',
       whereItBreaks:
@@ -82,7 +82,7 @@ export const o2cData: ProcessExplainerData = {
       whatHappens:
         'Finance validates the invoice against the sales order, the proof of delivery, and the contract / price list, then applies revenue-recognition rules and any approval routing. (This is the sell-side mirror of the AP 3-way match — but here you are checking your *own* invoice before it goes out, not a supplier\'s.)',
       example:
-        'Your finance team confirms the $59,000 invoice matches the sales order and the delivery to Brew & Co, the tax is right, and signs it off.',
+        'Your finance team confirms the $50,000 invoice matches the sales order and the delivery to Brew & Co, the pricing is right, and signs it off.',
       analogy:
         'A second person at the restaurant double-checking the bill they are about to hand you against what you actually ordered.',
       whereItBreaks:
@@ -95,7 +95,7 @@ export const o2cData: ProcessExplainerData = {
       whatHappens:
         'The invoice now lives as a receivable on your books. You track it through aging buckets — 0–30 days, 31–60, 61–90, 90+. You monitor DSO (Days Sales Outstanding) — the average time it takes to collect cash.',
       example:
-        'The ₹59,000 sits in your "money owed" list. Day 10, day 20, day 25 — still not paid, but not late yet.',
+        'The $50,000 sits in your "money owed" list. Day 10, day 20, day 25 — still not paid, but not late yet.',
       analogy:
         'Your phone showing "EMI due in 5 days" reminders — you\'re just watching what\'s owed.',
       whereItBreaks:
@@ -110,7 +110,7 @@ export const o2cData: ProcessExplainerData = {
       example:
         'Day 31: polite reminder email to Brew & Co. Day 45: firmer email. Day 60: collections person calls. Day 90: threat to stop future orders.',
       analogy:
-        'How your credit card company first texts you, then calls, then threatens to report you to CIBIL.',
+        'How your credit card company first texts you, then calls, then threatens to report you to the credit bureau.',
       whereItBreaks:
         'Reminders are ad hoc. Collectors work from spreadsheets. Promise-to-pay isn\'t tracked. Customers in dispute still get dunned, which damages the relationship.',
     },
@@ -122,9 +122,9 @@ export const o2cData: ProcessExplainerData = {
       whatHappens:
         'Payment lands in your bank. You need to figure out: which customer, which invoice(s), full payment or partial? Then you update the AR ledger to mark those invoices as paid.',
       example:
-        'Brew & Co transfers ₹59,000 — but the reference just says "payment." You have to look up the customer and the open invoices to figure out what it\'s paying for.',
+        'Brew & Co transfers $50,000 — but the reference just says "payment." You have to look up the customer and the open invoices to figure out what it\'s paying for.',
       analogy:
-        'Your mom sends you ₹5,000 via UPI with no note, and you have to remember if it was for rent, groceries, or your birthday.',
+        'Your friend sends you $50 via Venmo with no note, and you have to remember if it was for rent, your share of dinner, or a concert ticket.',
       whereItBreaks:
         'Customers pay lump sums across multiple invoices. Short-pay (paying less than the invoice amount). Wrong reference numbers. Multi-currency payments. Manual matching consumes 20–30% of AR team time.',
     },
@@ -135,7 +135,7 @@ export const o2cData: ProcessExplainerData = {
       whatHappens:
         'Customer disputes the invoice — wrong price, short delivery, bad quality, tax error, billing error. You investigate: sales handles pricing disputes, ops handles quality/delivery, finance handles billing errors. If the dispute is valid, you issue a credit note. If not, you push for payment.',
       example:
-        'Brew & Co says 10 kg of beans were stale. They\'re only paying ₹47,000, not ₹59,000. You investigate, agree, issue a ₹12,000 credit note.',
+        'Brew & Co says part of the shipment was stale. They\'re only paying $40,000, not $50,000. You investigate, agree, issue a $10,000 credit note.',
       analogy:
         'Ordered a pizza, half was burnt, and you\'re arguing with Zomato support about a partial refund.',
       whereItBreaks:

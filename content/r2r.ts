@@ -17,7 +17,7 @@ export const r2rData: ProcessExplainerData = {
     'Reporting',
   ],
   runningExample:
-    "It's **April 1st, 2026**. **Brew & Co** — the wholesale coffee bean business — needs to close the books for **March 2026**. Two entities (India HQ + Singapore subsidiary), three bank accounts, ~800 invoices in AP, ~400 invoices in AR, payroll of ₹18L, and a CFO who has promised the board the close lands by **April 8th**.",
+    "It's **April 1st, 2026**. **Brew & Co** — the wholesale coffee bean business — needs to close the books for **March 2026**. Two entities (US HQ + UK subsidiary), three bank accounts, ~800 invoices in AP, ~400 invoices in AR, monthly payroll of $180K, and a CFO who has promised the board the close lands by **April 8th**.",
   stages: [
     {
       number: 1,
@@ -27,11 +27,11 @@ export const r2rData: ProcessExplainerData = {
       whatHappens:
         'Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get "frozen" at period-end. Outstanding items that belong to March but haven\'t hit the GL yet get accrued: goods or services received from suppliers but not yet invoiced (the GR/IR or GRNI accrual — Goods Received, Not Invoiced), supplier invoices that arrived but aren\'t keyed yet, bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, and intercompany transactions between entities.',
       example:
-        'Your AP team confirms all March invoices are entered. The warehouse confirms all March deliveries are recorded. Payroll for the last week of March is accrued at ₹4.5L. Depreciation runs on fixed assets: ₹1.2L for the month. The Singapore office confirms all intercompany transactions with India for March.',
+        'Your AP team confirms all March invoices are entered. The warehouse confirms all March deliveries are recorded. Payroll for the last week of March is accrued at $45K. Depreciation runs on fixed assets: $12K for the month. The UK office confirms all intercompany transactions with the US for March.',
       analogy:
         'Calling "time!" on a board game — nothing more counts toward this round, anything that happens after the buzzer is the next round.',
       whereItBreaks:
-        'Sub-ledgers don\'t all freeze at the same time. AP keeps posting March invoices into early April "because they came in late." GRNI accruals are based on stale data. Intercompany transactions don\'t match (India says it sent S$10,000, Singapore received S$9,995 due to FX or fees). Payroll accrual gets re-stated three times.',
+        'Sub-ledgers don\'t all freeze at the same time. AP keeps posting March invoices into early April "because they came in late." GRNI accruals are based on stale data. Intercompany transactions don\'t match (US says it sent £10,000, the UK received £9,995 due to FX or fees). Payroll accrual gets re-stated three times.',
     },
     {
       number: 2,
@@ -41,7 +41,7 @@ export const r2rData: ProcessExplainerData = {
       whatHappens:
         'Each JE has a preparer (usually a senior accountant), a reviewer, and an approver. The preparer pulls supporting evidence (lease schedule, FX rates, accrual workings), calculates the entry, drafts the JE in the ERP or a JE workflow tool, attaches the support, and submits for review. The reviewer checks math, GL coding, and reasonableness. The approver signs off. The JE posts to the GL.',
       example:
-        'Brew & Co posts ~40 JEs for March: rent accrual ₹6L for unbilled March rent; utilities accrual ₹85K estimated; bonus accrual ₹12L (3 months of FY accrual); prepaid insurance amortization ₹1.5L; ROU asset amortization (lease) ₹4.2L; FX revaluation on Singapore AR ₹1.8L gain; bad debt provision (1.5% of AR over 90 days) ₹65K; depreciation ₹1.2L; deferred tax true-up ₹2.8L; and 30 more.',
+        'Brew & Co posts ~40 JEs for March: rent accrual $60K for unbilled March rent; utilities accrual $8.5K estimated; bonus accrual $120K (3 months of FY accrual); prepaid insurance amortization $15K; ROU asset amortization (lease) $42K; FX revaluation on UK AR $18K gain; bad debt provision (1.5% of AR over 90 days) $6.5K; depreciation $12K; deferred tax true-up $28K; and 30 more.',
       analogy:
         'Filing your annual tax return — you\'re not making new transactions, you\'re recording the *implications* of transactions that already happened, plus estimates for things you owe but haven\'t been billed for yet.',
       whereItBreaks:
@@ -55,7 +55,7 @@ export const r2rData: ProcessExplainerData = {
       whatHappens:
         'For every balance sheet account, somebody on the finance team prepares a reconciliation. Bank account: GL balance vs bank statement, with a list of reconciling items (deposits in transit, outstanding cheques). AR sub-ledger to GL: total of all open invoices = AR control account. Same for AP, fixed assets, inventory, prepaids, accruals, deferred revenue, lease liability, payroll liability, intercompany balances. Each rec needs a preparer, reviewer, and supporting documentation.',
       example:
-        'Brew & Co\'s AR reconciliation: GL says ₹1.8 Cr in AR, sub-ledger total of 412 open invoices = ₹1.798 Cr. ₹20K difference. Investigation: a credit note posted to GL but not to sub-ledger. Fix it. Now reconciles. Multiply this by ~25 reconciliations across two entities.',
+        'Brew & Co\'s AR reconciliation: GL says $1.8M in AR, sub-ledger total of 412 open invoices = $1.798M. $2K difference. Investigation: a credit note posted to GL but not to sub-ledger. Fix it. Now reconciles. Multiply this by ~25 reconciliations across two entities.',
       analogy:
         'Reconciling your bank statement against your spending tracker app at month-end — except now you have 25 different accounts, each with its own "app," and any unexplained difference becomes an audit finding.',
       whereItBreaks:
@@ -69,7 +69,7 @@ export const r2rData: ProcessExplainerData = {
       whatHappens:
         'Once all JEs are posted and recs are done, the trial balance is locked. The controller runs **flux analysis** — comparing every P&L and BS line to prior month, prior year, and budget, and explaining any movement above a threshold. Each variance gets a written explanation. The controller reviews balance sheet accounts line by line, signs off on the financials. The CFO does a final review, asks questions, requests adjustments, signs off.',
       example:
-        'Brew & Co\'s flux analysis flags: "Marketing spend +42% vs Feb (₹3.2L vs ₹2.25L). Driver: International Coffee Day campaign in March, budgeted ₹3L, came in ₹2.8L plus ₹40K unbudgeted Instagram ads." Controller adds the commentary, CFO accepts. After 3 rounds of CFO questions and 2 top-side adjustments (₹1L bonus accrual revision, ₹85K reclass from OpEx to COGS), the books are signed off on April 7th.',
+        'Brew & Co\'s flux analysis flags: "Marketing spend +42% vs Feb ($32K vs $22.5K). Driver: International Coffee Day campaign in March, budgeted $30K, came in $28K plus $4K unbudgeted Instagram ads." Controller adds the commentary, CFO accepts. After 3 rounds of CFO questions and 2 top-side adjustments ($10K bonus accrual revision, $8.5K reclass from OpEx to COGS), the books are signed off on April 7th.',
       analogy:
         'Your senior reviewing your code before merging to main — they\'re looking for the things you might have missed, the patterns that smell wrong, the assumptions you didn\'t surface.',
       whereItBreaks:
@@ -83,7 +83,7 @@ export const r2rData: ProcessExplainerData = {
       whatHappens:
         'Each entity has its own trial balance, in its own currency, possibly under its own GAAP. Consolidation: translate all entities to the group reporting currency at appropriate FX rates (closing rate for BS, average rate for P&L, historical rate for equity). Eliminate intercompany transactions and balances. Calculate minority interest if applicable. Generate consolidated P&L, BS, and cash flow.',
       example:
-        'Brew & Co India: revenue ₹12 Cr, expenses ₹10 Cr, profit ₹2 Cr. Brew & Co Singapore: revenue S$200K, expenses S$170K, profit S$30K. After translation (1 SGD = ₹62): Singapore revenue ₹1.24 Cr, expenses ₹1.05 Cr. Intercompany elimination: India sold raw beans worth ₹15L to Singapore, Singapore booked it as inventory — eliminate ₹15L from both sides. Consolidated revenue: ₹12 Cr + ₹1.24 Cr - ₹15L = ₹13.09 Cr.',
+        'Brew & Co US: revenue $12M, expenses $10M, profit $2M. Brew & Co UK: revenue £200K, expenses £170K, profit £30K. After translation (1 GBP = $1.27): UK revenue $254K, expenses $216K. Intercompany elimination: the US sold raw beans worth $150K to the UK entity, which booked it as inventory — eliminate $150K from both sides. Consolidated revenue: $12M + $254K − $150K = $12.1M.',
       analogy:
         'Combining household finances when two earners file jointly — you don\'t double-count the rent one paid the other, and you have to translate everyone\'s contributions into one combined view.',
       whereItBreaks:
@@ -95,9 +95,9 @@ export const r2rData: ProcessExplainerData = {
       whatItIs:
         'Turning the closed numbers into the artifacts that stakeholders actually consume.',
       whatHappens:
-        '**Statutory reporting** — the formal P&L, Balance Sheet, Cash Flow Statement, and notes for filing. **Management reporting** — the board pack with executive summary, KPI dashboards, variance commentary, and forward-looking commentary. **Departmental reporting** — cost center P&Ls, budget-vs-actuals dashboards for each function head. **Regulatory filings** — GST returns, TDS, withholding, country-specific returns.',
+        '**Statutory reporting** — the formal P&L, Balance Sheet, Cash Flow Statement, and notes for filing. **Management reporting** — the board pack with executive summary, KPI dashboards, variance commentary, and forward-looking commentary. **Departmental reporting** — cost center P&Ls, budget-vs-actuals dashboards for each function head. **Regulatory filings** — sales-tax returns, 1099 filings, payroll-tax returns, state and country-specific returns.',
       example:
-        'April 8th: Brew & Co\'s board pack is published. P&L, BS, CF for India + Singapore + Consolidated. KPI dashboard with revenue growth (28% YoY), gross margin (42%, down from 44% — commentary explains green coffee price spike), DSO (52 days), DPO (38 days), cash position (₹4.2 Cr). Variance commentary on every line above 5% deviation. Distributed to 8 board members via secure portal.',
+        'April 8th: Brew & Co\'s board pack is published. P&L, BS, CF for US + UK + Consolidated. KPI dashboard with revenue growth (28% YoY), gross margin (42%, down from 44% — commentary explains green coffee price spike), DSO (52 days), DPO (38 days), cash position ($4.2M). Variance commentary on every line above 5% deviation. Distributed to 8 board members via secure portal.',
       analogy:
         'A photographer\'s edit — the raw shots are done, now you\'re picking the best frames, captioning them, and arranging them for an audience that won\'t see the 200 raw images you didn\'t include.',
       whereItBreaks:

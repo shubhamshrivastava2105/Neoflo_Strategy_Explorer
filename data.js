@@ -710,17 +710,17 @@ window.P2P_DATA = {
       "number": 1,
       "title": "Vendor Onboarding & Master Data Management",
       "whatItIs": "Setting up a new supplier in your systems before you can buy from them.",
-      "whatHappens": "You collect KYC info (PAN, GST, bank account, registration certificate), verify the bank account (penny drop or API check), check for duplicates against your existing vendor master, run any required compliance checks (sanctions, vendor blacklist), and route through approval. Once approved, the vendor record is created in the ERP with payment terms, currency, default GL coding, and tax setup. This is the **first** step and a one-time prerequisite at the start of the relationship — not a per-transaction step. It is also where the exchange channel is set up: if the vendor will send documents and invoices via EDI or a supplier portal, that connection (and the IT/API access behind it) is established here — so all the later stages that receive vendor documents via EDI depend on onboarding being completed first.",
-      "example": "PackRight submits their PAN, GST, and bank details. Your AP team verifies the GST is active, does a ₹1 penny drop to confirm the bank account is real, checks they're not already in the system under a different name, and creates them in the ERP with Net 45 terms.",
+      "whatHappens": "You collect KYC info (W-9 / TIN, bank account, registration certificate), verify the bank account (ACH micro-deposit or API check), check for duplicates against your existing vendor master, run any required compliance checks (sanctions, vendor blacklist), and route through approval. Once approved, the vendor record is created in the ERP with payment terms, currency, default GL coding, and tax setup. This is the **first** step and a one-time prerequisite at the start of the relationship — not a per-transaction step. It is also where the exchange channel is set up: if the vendor will send documents and invoices via EDI or a supplier portal, that connection (and the IT/API access behind it) is established here — so all the later stages that receive vendor documents via EDI depend on onboarding being completed first.",
+      "example": "PackRight submits their W-9 (legal name + EIN) and bank details. Your AP team verifies the EIN, runs an ACH micro-deposit to confirm the bank account is real, checks they're not already in the system under a different name, and creates them in the ERP with Net 45 terms.",
       "analogy": "A new employee filling out joining paperwork before they can be paid.",
-      "whereItBreaks": "Onboarding takes 2–4 weeks manually. Duplicate vendors get created when the same supplier registers under slightly different names. Bank details are sometimes entered wrong (a single digit) and the first payment fails. Documents expire (GST, MSME certificates) and nobody notices until a payment is blocked."
+      "whereItBreaks": "Onboarding takes 2–4 weeks manually. Duplicate vendors get created when the same supplier registers under slightly different names. Bank details are sometimes entered wrong (a single digit) and the first payment fails. Documents expire (tax-registration / W-9 / compliance certificates) and nobody notices until a payment is blocked."
     },
     {
       "number": 2,
       "title": "Requisition & Approval",
       "whatItIs": "An internal request to buy something, routed for approval before any money is committed.",
       "whatHappens": "A requestor (warehouse manager, ops lead, anyone with budget authority) raises a Purchase Requisition (PR) — what's needed, quantity, GL code, cost center, suggested vendor, expected price. The system checks budget availability, then routes through an approval matrix (department head, finance, CFO if above threshold).",
-      "example": "Your packaging manager raises a PR for 10,000 bags @ ₹8 each = ₹80,000, charged to \"Cost of Goods Sold — Packaging.\" The PR routes to the Ops Head (auto-approved under ₹1L) and posts to the procurement queue.",
+      "example": "Your packaging manager raises a PR for 10,000 bags @ $0.80 each = $8,000, charged to \"Cost of Goods Sold — Packaging.\" The PR routes to the Ops Head (auto-approved under $10K) and posts to the procurement queue.",
       "analogy": "Asking your manager for permission before booking an expensive flight on the company card.",
       "whereItBreaks": "Approval routing lives in email or Slack, not the system. People raise PRs after the purchase is already made (back-dated, defeating the control). Budget checks are manual or skipped. The same approver becomes a bottleneck and slows everything down."
     },
@@ -729,7 +729,7 @@ window.P2P_DATA = {
       "title": "Purchase Order (PO)",
       "whatItIs": "The formal commitment to buy, sent to the vendor.",
       "whatHappens": "Once the PR is approved, a PO is generated — a numbered, legally binding document that locks in price, quantity, delivery terms, and payment terms. It's sent to the vendor (email, EDI, supplier portal) and posted to the ERP as a commitment against the budget.",
-      "example": "PO-2026-0142 goes out to PackRight: 10,000 bags @ ₹8, delivery in 14 days, Net 45 payment terms, deliver to Bengaluru warehouse. PackRight acknowledges and the PO is now an open commitment in your ERP.",
+      "example": "PO-2026-0142 goes out to PackRight: 10,000 bags @ $0.80, delivery in 14 days, Net 45 payment terms, deliver to your Columbus warehouse. PackRight acknowledges and the PO is now an open commitment in your ERP.",
       "analogy": "Pressing \"Place Order\" on Amazon — the price is locked, the seller is committed, and your card is now reserved against the amount.",
       "whereItBreaks": "POs get raised after the invoice arrives (\"PO-flipping\") which destroys the control purpose. Vendors deliver against email confirmations, not POs, and pricing drifts. Multi-line POs with partial deliveries get tracked in spreadsheets."
     },
@@ -738,7 +738,7 @@ window.P2P_DATA = {
       "title": "Goods Receipt (GRN)",
       "whatItIs": "Confirming the goods (or services) actually arrived.",
       "whatHappens": "When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for the **3-way match** — the invoice itself arrives on the supplier's own schedule; the GRN is what lets you match it and post it. For services, this is service entry sheet (SES) confirmation.",
-      "example": "Truck arrives at your Bengaluru warehouse. Your team counts: 9,800 bags received, 200 short. They post a GRN for 9,800 bags against PO-2026-0142.",
+      "example": "Truck arrives at your Columbus warehouse. Your team counts: 9,800 bags received, 200 short. They post a GRN for 9,800 bags against PO-2026-0142.",
       "analogy": "Signing for a courier package — you're confirming you got what was shipped, in the condition described.",
       "whereItBreaks": "GRNs are posted late or in batches, so invoices arrive before the GRN exists and get blocked. Partial deliveries aren't tracked cleanly. Quality rejections happen but never make it back to the GL as a claim against the vendor."
     },
@@ -746,8 +746,8 @@ window.P2P_DATA = {
       "number": 5,
       "title": "Invoice Receipt & Processing",
       "whatItIs": "Capturing the supplier invoice into your AP system.",
-      "whatHappens": "Invoice arrives via email, supplier portal, EDI, or paper. OCR extracts header data (vendor, invoice number, date, amount, tax) and line items. AI suggests the matching PO and GL coding. The system checks for duplicates (same invoice number, same amount, same vendor) and validates tax (GST input credit eligibility, TDS applicability).",
-      "example": "PackRight emails Invoice INV-PR-887: 9,800 bags @ ₹8 + 18% GST = ₹92,512. Your AP system extracts the data, links it to PO-2026-0142, suggests GL code 5021 (COGS-Packaging), confirms GST is eligible for input credit, and flags it for matching.",
+      "whatHappens": "Invoice arrives via email, supplier portal, EDI, or paper. OCR extracts header data (vendor, invoice number, date, amount, tax) and line items. AI suggests the matching PO and GL coding. The system checks for duplicates (same invoice number, same amount, same vendor) and validates tax treatment (sales/use tax, 1099 / withholding applicability).",
+      "example": "PackRight emails Invoice INV-PR-887: 9,800 bags @ $0.80 = $7,840. Your AP system extracts the data, links it to PO-2026-0142, suggests GL code 5021 (COGS-Packaging), and flags it for matching.",
       "analogy": "Your phone scanning a restaurant bill and auto-filling the expense report — except now there are 800 bills a month and three of them are duplicates from the same vendor in different formats.",
       "whereItBreaks": "Invoices come in 12 different formats from one vendor. OCR confidence is uneven. Duplicate detection misses near-duplicates (same invoice resubmitted with a one-character change). GL coding is inconsistent because three different AP clerks code the same vendor differently."
     },
@@ -756,7 +756,7 @@ window.P2P_DATA = {
       "title": "3-Way Match & Approval",
       "whatItIs": "The control check that confirms PO, GRN, and invoice all agree before payment is approved.",
       "whatHappens": "The system compares three documents — what you ordered (PO), what you received (GRN), and what you're being billed for (invoice). If quantity, price, and tax line up within tolerance, it's a clean match and goes straight through. If anything's off — short delivery, price variance, tax mismatch — it goes to an exception queue for human review.",
-      "example": "PO says 10,000 bags @ ₹8 = ₹80,000. GRN says 9,800 received. Invoice says 9,800 bags @ ₹8 + GST = ₹92,512. Math checks out. The invoice clears 3-way match and is approved for payment.",
+      "example": "PO says 10,000 bags @ $0.80 = $8,000. GRN says 9,800 received. Invoice says 9,800 bags @ $0.80 = $7,840. The invoice is matched to the *received* quantity (9,800), not the ordered 10,000 — so it clears the 3-way match and is approved for payment; the 200-unit shortfall stays open on the PO.",
       "analogy": "Comparing your Swiggy order screen, the delivery person's bill, and your card statement — all three need to agree before you mark the transaction as fine.",
       "whereItBreaks": "This is where most P2P pain lives. 30–40% of invoices fail clean match the first time — wrong price, missing GRN, partial delivery, tax variance, currency mismatch. Each exception takes 15–30 minutes of human investigation. Invoices sit in exception queues for days. Vendors call asking why they haven't been paid."
     },
@@ -764,8 +764,8 @@ window.P2P_DATA = {
       "number": 7,
       "title": "Payment & Reconciliation",
       "whatItIs": "Actually paying the vendor and closing the loop in your books.",
-      "whatHappens": "Approved invoices go into a payment run — usually weekly. The system selects invoices by due date, applies any early payment discounts, generates a bank file (NEFT/RTGS/ACH/SWIFT format), routes through dual approval (treasury + CFO for large runs), and releases payment. Once the bank confirms, the invoice is marked paid in AP, the GL is updated, and a remittance advice goes to the vendor.",
-      "example": "Friday's payment run includes PackRight's ₹92,512. The bank file is generated, you and the CFO approve, the bank confirms NEFT successful by 4pm, the AP ledger is updated, and PackRight gets an automated email: \"Invoice INV-PR-887 paid ₹92,512, UTR ABC123XYZ.\"",
+      "whatHappens": "Approved invoices go into a payment run — usually weekly. The system selects invoices by due date, applies any early payment discounts, generates a bank file (ACH / wire / SWIFT format), routes through dual approval (treasury + CFO for large runs), and releases payment. Once the bank confirms, the invoice is marked paid in AP, the GL is updated, and a remittance advice goes to the vendor.",
+      "example": "Friday's payment run includes PackRight's $7,840. The bank file is generated, you and the CFO approve, the bank confirms the ACH payment by 4pm, the AP ledger is updated, and PackRight gets an automated email: \"Invoice INV-PR-887 paid $7,840, trace # ABC123XYZ.\"",
       "analogy": "Setting up an auto-pay for your credit card bill — the system handles the actual transfer, but somebody has to make sure the money's there and approve the run.",
       "whereItBreaks": "Bank files in the wrong format get rejected. Payment failures (closed account, wrong IFSC) aren't flagged in real time. Remittance advice doesn't go out, so vendors call AP asking \"did you pay me?\" Cash application on the vendor's side fails because there's no remittance reference. Multi-currency payments add FX complexity that breaks reconciliation."
     }
@@ -797,8 +797,8 @@ window.O2C_DATA = {
       "number": 1,
       "title": "Customer Onboarding & Credit Management",
       "whatItIs": "Setting up a new customer in your systems and deciding how much credit to extend them.",
-      "whatHappens": "You collect KYC info, verify they're a real business, check their credit history (via Experian, D&B, CIBIL, or internal scoring), and assign them a credit limit and payment terms.",
-      "example": "Brew & Co submits their details. You check their credit, decide they're good for ₹2 lakh of credit, and set payment terms at Net 30.",
+      "whatHappens": "You collect KYC info, verify they're a real business, check their credit history (via Experian, D&B, or internal scoring), and assign them a credit limit and payment terms.",
+      "example": "Brew & Co submits their details. You check their credit, decide they're good for $200,000 of credit, and set payment terms at Net 30.",
       "analogy": "A bank deciding your credit card limit before issuing the card.",
       "whereItBreaks": "Onboarding takes 2–4 weeks manually. Credit data is stale by the time it's used. Risk profiles aren't updated as customers' payment behavior changes."
     },
@@ -807,7 +807,7 @@ window.O2C_DATA = {
       "title": "Order Management",
       "whatItIs": "Taking in a customer order, validating it, and booking it.",
       "whatHappens": "Order arrives (via email, EDI, portal, rep). You check: Is inventory available? Is pricing correct? Does this order fit within the customer's approved credit limit? If yes, you confirm the order and push it to fulfillment.",
-      "example": "Brew & Co orders 50 kg of beans worth ₹50,000. You confirm stock, check that ₹50,000 fits within their ₹2 lakh limit, and accept the order.",
+      "example": "Brew & Co places a wholesale order of beans worth $50,000. You confirm stock, check that $50,000 fits within their $200,000 limit, and accept the order.",
       "analogy": "Amazon checking your cart, payment method, and stock before you click \"Place Order.\"",
       "whereItBreaks": "Orders come in via too many channels. Credit checks are manual or skipped. Pricing errors are common."
     },
@@ -824,8 +824,8 @@ window.O2C_DATA = {
       "number": 4,
       "title": "Billing",
       "whatItIs": "Generating the invoice.",
-      "whatHappens": "You take the delivered quantity, apply contract pricing, taxes (GST, VAT, sales tax), discounts, and any customer-specific terms. Invoice gets sent to the customer via email, portal, EDI, or e-invoicing.",
-      "example": "You create an invoice: ₹50,000 + 18% GST = ₹59,000, due in 30 days. Email it to Brew & Co.",
+      "whatHappens": "You take the delivered quantity, apply contract pricing, taxes (sales/use tax in the US, or VAT/GST abroad), discounts, and any customer-specific terms. Invoice gets sent to the customer via email, portal, EDI, or e-invoicing.",
+      "example": "You create an invoice: $50,000, due in 30 days. Email it to Brew & Co.",
       "analogy": "The restaurant bill — except the customer has 30 days to pay, not 30 seconds.",
       "whereItBreaks": "Invoice errors (wrong pricing, wrong tax) cause disputes downstream. E-invoicing compliance varies by country. Manual invoice generation is slow."
     },
@@ -834,7 +834,7 @@ window.O2C_DATA = {
       "title": "Validation & Approval",
       "whatItIs": "Internal checks before the invoice is recognized as revenue.",
       "whatHappens": "Finance validates the invoice against the sales order, the proof of delivery, and the contract / price list, then applies revenue-recognition rules and any approval routing. (This is the sell-side mirror of the AP 3-way match — but here you are checking your *own* invoice before it goes out, not a supplier's.)",
-      "example": "Your finance team confirms the $59,000 invoice matches the sales order and the delivery to Brew & Co, the tax is right, and signs it off.",
+      "example": "Your finance team confirms the $50,000 invoice matches the sales order and the delivery to Brew & Co, the pricing is right, and signs it off.",
       "analogy": "A second person at the restaurant double-checking the bill they are about to hand you against what you actually ordered.",
       "whereItBreaks": "Validation is done manually. Approval chains are slow. Revenue-recognition errors create audit issues."
     },
@@ -843,7 +843,7 @@ window.O2C_DATA = {
       "title": "Accounts Receivable Management",
       "whatItIs": "Tracking the money customers owe you.",
       "whatHappens": "The invoice now lives as a receivable on your books. You track it through aging buckets — 0–30 days, 31–60, 61–90, 90+. You monitor DSO (Days Sales Outstanding) — the average time it takes to collect cash.",
-      "example": "The ₹59,000 sits in your \"money owed\" list. Day 10, day 20, day 25 — still not paid, but not late yet.",
+      "example": "The $50,000 sits in your \"money owed\" list. Day 10, day 20, day 25 — still not paid, but not late yet.",
       "analogy": "Your phone showing \"EMI due in 5 days\" reminders — you're just watching what's owed.",
       "whereItBreaks": "AR data lives in ERP exports. Dashboards are built in Excel monthly. CFOs have no real-time view of cash exposure."
     },
@@ -853,7 +853,7 @@ window.O2C_DATA = {
       "whatItIs": "Chasing customers who haven't paid.",
       "whatHappens": "A sequence of reminders — polite, firm, then escalating — goes out by email, SMS, and phone call. Collectors prioritize by value × days overdue × risk. Promise-to-pay commitments are tracked. In extreme cases, accounts go to legal or collections agencies.",
       "example": "Day 31: polite reminder email to Brew & Co. Day 45: firmer email. Day 60: collections person calls. Day 90: threat to stop future orders.",
-      "analogy": "How your credit card company first texts you, then calls, then threatens to report you to CIBIL.",
+      "analogy": "How your credit card company first texts you, then calls, then threatens to report you to the credit bureau.",
       "whereItBreaks": "Reminders are ad hoc. Collectors work from spreadsheets. Promise-to-pay isn't tracked. Customers in dispute still get dunned, which damages the relationship."
     },
     {
@@ -861,8 +861,8 @@ window.O2C_DATA = {
       "title": "Cash Application & Reconciliation",
       "whatItIs": "Matching an incoming payment to the invoice(s) it's paying for.",
       "whatHappens": "Payment lands in your bank. You need to figure out: which customer, which invoice(s), full payment or partial? Then you update the AR ledger to mark those invoices as paid.",
-      "example": "Brew & Co transfers ₹59,000 — but the reference just says \"payment.\" You have to look up the customer and the open invoices to figure out what it's paying for.",
-      "analogy": "Your mom sends you ₹5,000 via UPI with no note, and you have to remember if it was for rent, groceries, or your birthday.",
+      "example": "Brew & Co transfers $50,000 — but the reference just says \"payment.\" You have to look up the customer and the open invoices to figure out what it's paying for.",
+      "analogy": "Your friend sends you $50 via Venmo with no note, and you have to remember if it was for rent, your share of dinner, or a concert ticket.",
       "whereItBreaks": "Customers pay lump sums across multiple invoices. Short-pay (paying less than the invoice amount). Wrong reference numbers. Multi-currency payments. Manual matching consumes 20–30% of AR team time."
     },
     {
@@ -870,7 +870,7 @@ window.O2C_DATA = {
       "title": "Dispute Resolution",
       "whatItIs": "Resolving why a customer is refusing to pay.",
       "whatHappens": "Customer disputes the invoice — wrong price, short delivery, bad quality, tax error, billing error. You investigate: sales handles pricing disputes, ops handles quality/delivery, finance handles billing errors. If the dispute is valid, you issue a credit note. If not, you push for payment.",
-      "example": "Brew & Co says 10 kg of beans were stale. They're only paying ₹47,000, not ₹59,000. You investigate, agree, issue a ₹12,000 credit note.",
+      "example": "Brew & Co says part of the shipment was stale. They're only paying $40,000, not $50,000. You investigate, agree, issue a $10,000 credit note.",
       "analogy": "Ordered a pizza, half was burnt, and you're arguing with Zomato support about a partial refund.",
       "whereItBreaks": "Disputes sit in email threads for weeks. No shared system of record between sales, ops, and finance. Credit notes are issued slowly or incorrectly. Unresolved disputes = aged receivables = bad DSO."
     }
@@ -893,23 +893,23 @@ window.R2R_DATA = {
     "Consolidation",
     "Reporting"
   ],
-  "runningExample": "It's **April 1st, 2026**. **Brew & Co** — the wholesale coffee bean business — needs to close the books for **March 2026**. Two entities (India HQ + Singapore subsidiary), three bank accounts, ~800 invoices in AP, ~400 invoices in AR, payroll of ₹18L, and a CFO who has promised the board the close lands by **April 8th**.",
+  "runningExample": "It's **April 1st, 2026**. **Brew & Co** — the wholesale coffee bean business — needs to close the books for **March 2026**. Two entities (US HQ + UK subsidiary), three bank accounts, ~800 invoices in AP, ~400 invoices in AR, monthly payroll of $180K, and a CFO who has promised the board the close lands by **April 8th**.",
   "stages": [
     {
       "number": 1,
       "title": "Pre-Close Cutoff",
       "whatItIs": "Drawing the line on the period — deciding what counts as a March transaction and what counts as April.",
       "whatHappens": "Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get \"frozen\" at period-end. Outstanding items that belong to March but haven't hit the GL yet get accrued: goods or services received from suppliers but not yet invoiced (the GR/IR or GRNI accrual — Goods Received, Not Invoiced), supplier invoices that arrived but aren't keyed yet, bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, and intercompany transactions between entities.",
-      "example": "Your AP team confirms all March invoices are entered. The warehouse confirms all March deliveries are recorded. Payroll for the last week of March is accrued at ₹4.5L. Depreciation runs on fixed assets: ₹1.2L for the month. The Singapore office confirms all intercompany transactions with India for March.",
+      "example": "Your AP team confirms all March invoices are entered. The warehouse confirms all March deliveries are recorded. Payroll for the last week of March is accrued at $45K. Depreciation runs on fixed assets: $12K for the month. The UK office confirms all intercompany transactions with the US for March.",
       "analogy": "Calling \"time!\" on a board game — nothing more counts toward this round, anything that happens after the buzzer is the next round.",
-      "whereItBreaks": "Sub-ledgers don't all freeze at the same time. AP keeps posting March invoices into early April \"because they came in late.\" GRNI accruals are based on stale data. Intercompany transactions don't match (India says it sent S$10,000, Singapore received S$9,995 due to FX or fees). Payroll accrual gets re-stated three times."
+      "whereItBreaks": "Sub-ledgers don't all freeze at the same time. AP keeps posting March invoices into early April \"because they came in late.\" GRNI accruals are based on stale data. Intercompany transactions don't match (US says it sent £10,000, the UK received £9,995 due to FX or fees). Payroll accrual gets re-stated three times."
     },
     {
       "number": 2,
       "title": "Journal Entries (JEs)",
       "whatItIs": "All the manual accounting entries that don't come automatically from sub-ledgers — accruals, prepaid amortization, lease accounting, FX revaluation, provisions, deferred tax, and one-off adjustments.",
       "whatHappens": "Each JE has a preparer (usually a senior accountant), a reviewer, and an approver. The preparer pulls supporting evidence (lease schedule, FX rates, accrual workings), calculates the entry, drafts the JE in the ERP or a JE workflow tool, attaches the support, and submits for review. The reviewer checks math, GL coding, and reasonableness. The approver signs off. The JE posts to the GL.",
-      "example": "Brew & Co posts ~40 JEs for March: rent accrual ₹6L for unbilled March rent; utilities accrual ₹85K estimated; bonus accrual ₹12L (3 months of FY accrual); prepaid insurance amortization ₹1.5L; ROU asset amortization (lease) ₹4.2L; FX revaluation on Singapore AR ₹1.8L gain; bad debt provision (1.5% of AR over 90 days) ₹65K; depreciation ₹1.2L; deferred tax true-up ₹2.8L; and 30 more.",
+      "example": "Brew & Co posts ~40 JEs for March: rent accrual $60K for unbilled March rent; utilities accrual $8.5K estimated; bonus accrual $120K (3 months of FY accrual); prepaid insurance amortization $15K; ROU asset amortization (lease) $42K; FX revaluation on UK AR $18K gain; bad debt provision (1.5% of AR over 90 days) $6.5K; depreciation $12K; deferred tax true-up $28K; and 30 more.",
       "analogy": "Filing your annual tax return — you're not making new transactions, you're recording the *implications* of transactions that already happened, plus estimates for things you owe but haven't been billed for yet.",
       "whereItBreaks": "JEs live in Excel templates with no version control. The same JE gets re-prepared every month from scratch instead of as a template + numbers refresh. Reviewers don't have time to check workings, so they approve based on trust. Last-minute JEs from the controller bypass the workflow entirely. Anomalous entries (10x the normal amount, unusual GL combinations) sail through because nobody's pattern-matching."
     },
@@ -918,7 +918,7 @@ window.R2R_DATA = {
       "title": "Reconciliations",
       "whatItIs": "Proving that what's in the GL matches what's in the underlying source — bank statements, sub-ledgers, schedules, third-party confirmations.",
       "whatHappens": "For every balance sheet account, somebody on the finance team prepares a reconciliation. Bank account: GL balance vs bank statement, with a list of reconciling items (deposits in transit, outstanding cheques). AR sub-ledger to GL: total of all open invoices = AR control account. Same for AP, fixed assets, inventory, prepaids, accruals, deferred revenue, lease liability, payroll liability, intercompany balances. Each rec needs a preparer, reviewer, and supporting documentation.",
-      "example": "Brew & Co's AR reconciliation: GL says ₹1.8 Cr in AR, sub-ledger total of 412 open invoices = ₹1.798 Cr. ₹20K difference. Investigation: a credit note posted to GL but not to sub-ledger. Fix it. Now reconciles. Multiply this by ~25 reconciliations across two entities.",
+      "example": "Brew & Co's AR reconciliation: GL says $1.8M in AR, sub-ledger total of 412 open invoices = $1.798M. $2K difference. Investigation: a credit note posted to GL but not to sub-ledger. Fix it. Now reconciles. Multiply this by ~25 reconciliations across two entities.",
       "analogy": "Reconciling your bank statement against your spending tracker app at month-end — except now you have 25 different accounts, each with its own \"app,\" and any unexplained difference becomes an audit finding.",
       "whereItBreaks": "Reconciliations are the single biggest time sink in close. They're done in Excel templates that get emailed around. Discrepancies are explained as \"timing differences\" and ignored, then compound month over month. Fixed asset and lease recs are particularly painful — the schedules live in separate spreadsheets that don't auto-tie to the GL. \"Reconciled\" often means \"the controller signed it off\" not \"every line was actually checked.\""
     },
@@ -927,7 +927,7 @@ window.R2R_DATA = {
       "title": "Review & Sign-Off",
       "whatItIs": "The controller and CFO reviewing the draft financials before they're considered \"closed.\"",
       "whatHappens": "Once all JEs are posted and recs are done, the trial balance is locked. The controller runs **flux analysis** — comparing every P&L and BS line to prior month, prior year, and budget, and explaining any movement above a threshold. Each variance gets a written explanation. The controller reviews balance sheet accounts line by line, signs off on the financials. The CFO does a final review, asks questions, requests adjustments, signs off.",
-      "example": "Brew & Co's flux analysis flags: \"Marketing spend +42% vs Feb (₹3.2L vs ₹2.25L). Driver: International Coffee Day campaign in March, budgeted ₹3L, came in ₹2.8L plus ₹40K unbudgeted Instagram ads.\" Controller adds the commentary, CFO accepts. After 3 rounds of CFO questions and 2 top-side adjustments (₹1L bonus accrual revision, ₹85K reclass from OpEx to COGS), the books are signed off on April 7th.",
+      "example": "Brew & Co's flux analysis flags: \"Marketing spend +42% vs Feb ($32K vs $22.5K). Driver: International Coffee Day campaign in March, budgeted $30K, came in $28K plus $4K unbudgeted Instagram ads.\" Controller adds the commentary, CFO accepts. After 3 rounds of CFO questions and 2 top-side adjustments ($10K bonus accrual revision, $8.5K reclass from OpEx to COGS), the books are signed off on April 7th.",
       "analogy": "Your senior reviewing your code before merging to main — they're looking for the things you might have missed, the patterns that smell wrong, the assumptions you didn't surface.",
       "whereItBreaks": "Flux analysis is done by the controller manually pulling data into Excel and writing comments by hand for 60+ lines. CFO questions trigger another round of reconciliation work. Top-side adjustments at the eleventh hour bypass controls. The \"close\" gets pushed by a day, then two, then four — and now it's late for the board pack."
     },
@@ -936,7 +936,7 @@ window.R2R_DATA = {
       "title": "Consolidation",
       "whatItIs": "Combining the financials of multiple entities into a single set of group financial statements.",
       "whatHappens": "Each entity has its own trial balance, in its own currency, possibly under its own GAAP. Consolidation: translate all entities to the group reporting currency at appropriate FX rates (closing rate for BS, average rate for P&L, historical rate for equity). Eliminate intercompany transactions and balances. Calculate minority interest if applicable. Generate consolidated P&L, BS, and cash flow.",
-      "example": "Brew & Co India: revenue ₹12 Cr, expenses ₹10 Cr, profit ₹2 Cr. Brew & Co Singapore: revenue S$200K, expenses S$170K, profit S$30K. After translation (1 SGD = ₹62): Singapore revenue ₹1.24 Cr, expenses ₹1.05 Cr. Intercompany elimination: India sold raw beans worth ₹15L to Singapore, Singapore booked it as inventory — eliminate ₹15L from both sides. Consolidated revenue: ₹12 Cr + ₹1.24 Cr - ₹15L = ₹13.09 Cr.",
+      "example": "Brew & Co US: revenue $12M, expenses $10M, profit $2M. Brew & Co UK: revenue £200K, expenses £170K, profit £30K. After translation (1 GBP = $1.27): UK revenue $254K, expenses $216K. Intercompany elimination: the US sold raw beans worth $150K to the UK entity, which booked it as inventory — eliminate $150K from both sides. Consolidated revenue: $12M + $254K − $150K = $12.1M.",
       "analogy": "Combining household finances when two earners file jointly — you don't double-count the rent one paid the other, and you have to translate everyone's contributions into one combined view.",
       "whereItBreaks": "Consolidation lives in massive Excel models that one person owns and nobody else understands. Intercompany doesn't match (one side booked it, the other didn't). FX rates are pulled manually and applied inconsistently. Entity-level top-side adjustments after consolidation breaks the reconciliation between entity TB and consolidated TB. Auditors hate this stage and always find issues here."
     },
@@ -944,8 +944,8 @@ window.R2R_DATA = {
       "number": 6,
       "title": "Reporting",
       "whatItIs": "Turning the closed numbers into the artifacts that stakeholders actually consume.",
-      "whatHappens": "**Statutory reporting** — the formal P&L, Balance Sheet, Cash Flow Statement, and notes for filing. **Management reporting** — the board pack with executive summary, KPI dashboards, variance commentary, and forward-looking commentary. **Departmental reporting** — cost center P&Ls, budget-vs-actuals dashboards for each function head. **Regulatory filings** — GST returns, TDS, withholding, country-specific returns.",
-      "example": "April 8th: Brew & Co's board pack is published. P&L, BS, CF for India + Singapore + Consolidated. KPI dashboard with revenue growth (28% YoY), gross margin (42%, down from 44% — commentary explains green coffee price spike), DSO (52 days), DPO (38 days), cash position (₹4.2 Cr). Variance commentary on every line above 5% deviation. Distributed to 8 board members via secure portal.",
+      "whatHappens": "**Statutory reporting** — the formal P&L, Balance Sheet, Cash Flow Statement, and notes for filing. **Management reporting** — the board pack with executive summary, KPI dashboards, variance commentary, and forward-looking commentary. **Departmental reporting** — cost center P&Ls, budget-vs-actuals dashboards for each function head. **Regulatory filings** — sales-tax returns, 1099 filings, payroll-tax returns, state and country-specific returns.",
+      "example": "April 8th: Brew & Co's board pack is published. P&L, BS, CF for US + UK + Consolidated. KPI dashboard with revenue growth (28% YoY), gross margin (42%, down from 44% — commentary explains green coffee price spike), DSO (52 days), DPO (38 days), cash position ($4.2M). Variance commentary on every line above 5% deviation. Distributed to 8 board members via secure portal.",
       "analogy": "A photographer's edit — the raw shots are done, now you're picking the best frames, captioning them, and arranging them for an audience that won't see the 200 raw images you didn't include.",
       "whereItBreaks": "Board packs are assembled in PowerPoint by hand, with charts copy-pasted from Excel. Numbers don't match between slides because someone updated one source and not the other. Commentary is written from memory, not from a structured variance analysis. Statutory and management reporting are produced from different data sets, so they don't reconcile to each other. Last-minute changes to the close (top-side adjustments) don't propagate to all the downstream reports."
     }
