@@ -779,7 +779,7 @@ window.O2C_DATA = {
   "title": "Order-to-Cash (O2C)",
   "shortName": "O2C",
   "emoji": "💰",
-  "oneLiner": "The end-to-end process a B2B company runs to turn a customer order into cash in the bank.",
+  "oneLiner": "If P2P was cash going *out* (paying suppliers), O2C is the mirror image — cash coming *in*: the end-to-end process a B2B company runs to turn a customer order into cash in the bank.",
   "stageOrder": [
     "Customer Onboarding",
     "Order Management",
@@ -884,7 +884,7 @@ window.R2R_DATA = {
   "title": "Record-to-Report (R2R)",
   "shortName": "R2R",
   "emoji": "📊",
-  "oneLiner": "The end-to-end process a finance team runs every month, quarter, and year to close the books and produce financial statements.",
+  "oneLiner": "Once the money has moved out (P2P) and in (O2C), R2R is where you make sense of it all: the end-to-end process a finance team runs every month, quarter, and year to close the books and produce financial statements.",
   "stageOrder": [
     "Pre-Close Cutoff",
     "Journal Entries",

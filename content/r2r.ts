@@ -7,7 +7,7 @@ export const r2rData: ProcessExplainerData = {
   shortName: 'R2R',
   emoji: '📊',
   oneLiner:
-    'The end-to-end process a finance team runs every month, quarter, and year to close the books and produce financial statements.',
+    'Once the money has moved out (P2P) and in (O2C), R2R is where you make sense of it all: the end-to-end process a finance team runs every month, quarter, and year to close the books and produce financial statements.',
   stageOrder: [
     'Pre-Close Cutoff',
     'Journal Entries',

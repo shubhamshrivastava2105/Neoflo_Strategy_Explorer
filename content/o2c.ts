@@ -7,7 +7,7 @@ export const o2cData: ProcessExplainerData = {
   shortName: 'O2C',
   emoji: '💰',
   oneLiner:
-    'The end-to-end process a B2B company runs to turn a customer order into cash in the bank.',
+    'If P2P was cash going *out* (paying suppliers), O2C is the mirror image — cash coming *in*: the end-to-end process a B2B company runs to turn a customer order into cash in the bank.',
   stageOrder: [
     'Customer Onboarding',
     'Order Management',

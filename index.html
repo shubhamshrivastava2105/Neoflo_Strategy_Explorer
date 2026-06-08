@@ -799,8 +799,10 @@
 
     <section id="glossary" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Start here · The basics</div>
-      <h2 class="section-title">What FinOps is.</h2>
+      <h2 class="section-title">What FinOps is — and why it matters.</h2>
       <p class="lede">FinOps (finance operations) is how a company runs the money-in / money-out / close-the-books machinery: <strong>P2P</strong> (paying suppliers), <strong>O2C</strong> (collecting from customers), and <strong>R2R</strong> (closing and reporting). Everything else on this page refers back to these terms — so start here, then read on.</p>
+      <p style="font-size: 14.5px; line-height: 1.7;"><strong>Why it matters:</strong> when these run badly, real money leaks — suppliers get paid late (or twice), customers take 70+ days to pay and cash dries up, and the month-end close drags for weeks or fails an audit. Good FinOps means cash is collected faster, the books close in days, and every payment has an audit trail. That's the pain Neoflo exists to remove.</p>
+      <p style="font-size: 13px; color: var(--text-default-caption); font-style: italic;">Note: we use <strong>FinOps</strong> to mean <em>finance operations</em> (AP / AR / close) — not the cloud-cost-management discipline of the same name.</p>
 
       <div class="card">
         <h4 style="margin-top: 0;">Process abbreviations</h4>
@@ -813,6 +815,12 @@
           <dt>GL</dt><dd>General Ledger — the master record of accounting transactions.</dd>
           <dt>FX</dt><dd>Foreign exchange — multi-currency reality.</dd>
           <dt>PR / PO / GR</dt><dd>Purchase Requisition / Purchase Order / Goods Receipt — the three procurement records P2P chains together.</dd>
+          <dt>KYC</dt><dd>Know Your Customer/Vendor — identity & tax verification done before you transact with a new party.</dd>
+          <dt>STP</dt><dd>Straight-Through Processing — an item flows end-to-end with no human touch.</dd>
+          <dt>GRNI / GR-IR</dt><dd>Goods Received, Not Invoiced — accrual for goods/services received before the supplier invoice arrives.</dd>
+          <dt>Flux analysis</dt><dd>Explaining period-over-period swings in an account (the "why did this move?" review at close).</dd>
+          <dt>Top-side adjustment</dt><dd>A manual entry posted above the sub-ledgers at close — convenient, but a control risk to minimize.</dd>
+          <dt>ROU asset</dt><dd>Right-of-Use asset — the leased-asset value capitalized on the balance sheet under lease accounting.</dd>
         </dl>
       </div>
 
@@ -1892,12 +1900,12 @@ function renderProcess(data, prefix) {
   document.getElementById(prefix + '-body').innerHTML = `
     <p class="lede">${mdInline(data.oneLiner)}</p>
     <div class="card"><h4>Running example</h4>${md(data.runningExample)}</div>
-    <h3>Happy path</h3>
+    <h3>Happy path <span style="font-weight: 400; font-size: 14px; color: var(--text-default-caption);">(the version where nothing goes wrong)</span></h3>
     ${flowHtml}
     <h3>The ${numberWord(data.stages.length)} stages</h3>
     ${stagesHtml}
     <div class="card"><h4>Loops &amp; connections</h4>${md(data.loopsAndConnections)}</div>
-    <div class="card" style="background: var(--surface-primary-background); border-color: var(--border-primary-default);"><h4>Why it matters for Neoflo</h4>${md(data.whyItMattersForNeoflo)}</div>
+    <div class="card" style="background: var(--surface-primary-background); border-color: var(--border-primary-default);"><div class="eyebrow" style="margin-bottom: var(--scale-100);">Strategy aside · skip if you're just learning the workflow</div><h4 style="margin-top: 0;">Why this workflow matters for Neoflo</h4>${md(data.whyItMattersForNeoflo)}</div>
   `;
 }
 renderProcess(DATA.p2p, 'p2p');
