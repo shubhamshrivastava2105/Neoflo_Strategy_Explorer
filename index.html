@@ -727,7 +727,7 @@
         <a href="#p2p">P2P — Procure-to-Pay</a>
         <a href="#o2c">O2C — Order-to-Cash</a>
         <a href="#r2r">R2R — Record-to-Report</a>
-        <a href="#vat-wht">VAT &amp; WHT explained</a>
+        <a href="#vat-wht">Sales tax &amp; withholding (US)</a>
       </details>
       <details class="nav-part">
         <summary class="nav-section">3 · The players</summary>
@@ -914,165 +914,106 @@
     </section>
 
     <section id="vat-wht">
-      <div class="eyebrow">Process explainer · Reference</div>
-      <h2 class="section-title">VAT &amp; WHT — a plain-English guide.</h2>
-      <p class="lede">A non-finance walkthrough of two taxes the team will keep running into across P2P and O2C — what they are, when they apply, and how they flow through an invoice. Worked example uses GST (India's VAT) at 12% to make the math concrete.</p>
+      <div class="eyebrow">Reference · Taxes you'll hit</div>
+      <h2 class="section-title">Sales tax &amp; withholding — a plain-English guide (US).</h2>
+      <p class="lede">The two taxes a US finance team keeps running into across P2P and O2C: <strong>sales &amp; use tax</strong> (on what you buy and sell) and <strong>1099 / backup withholding</strong> (on what you pay vendors). VAT — the international cousin — is at the end, because overseas entities and e-invoicing mandates still use it. Worked example uses a 9% combined sales-tax rate to make the math concrete.</p>
 
       <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">What is VAT?</h3>
-        <p>VAT stands for <strong>Value Added Tax</strong>. Think of it as a tax that gets added to the price of a product or service every time it changes hands — from manufacturer to business to end consumer.</p>
-        <p>The important thing to understand: <strong>VAT follows the product, not the person.</strong> Every line on an invoice can have its own VAT rate — a luxury item might be taxed at 20%, a basic food item at 5%, some essential items at 0%. It depends on <em>what</em> is being sold, not <em>who</em> is selling it.</p>
+        <h3 style="margin-top: 0;">What is sales tax?</h3>
+        <p><strong>Sales &amp; use tax</strong> is a US consumption tax collected <strong>once, at the final retail sale</strong>, and remitted to the state (often plus a county/city). The seller collects it from the buyer and sends it to the state.</p>
+        <p>It is <strong>single-stage</strong> — unlike VAT, there is <strong>no chain of input credits</strong>. A business buying goods for resale hands the seller a <strong>resale / exemption certificate</strong> and pays no sales tax on that purchase. Rate depends on <em>what</em> is sold and <em>where</em> (~45 states + thousands of local jurisdictions, ~0–10%+).</p>
+        <p><strong>Use tax</strong> is the mirror: buy taxable goods where the seller didn't charge tax (e.g., out-of-state) and you self-assess use tax to your own state. <strong>Nexus</strong> (post-<em>Wayfair</em>, 2018): you can owe tax in states where you have economic nexus — sales-volume thresholds — not just physical presence. <strong>Sales tax follows the product and the location, not the person.</strong></p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300);">
-        <h3 style="margin-top: 0;">What is WHT?</h3>
-        <p>WHT stands for <strong>Withholding Tax</strong>. Unlike VAT, this has nothing to do with the product — it's entirely about <strong>who you're paying</strong>. When a company pays a vendor (especially for services), the government's instruction is:</p>
-        <blockquote style="border-left: 3px solid var(--border-default-default); padding-left: var(--scale-300); margin: var(--scale-200) 0; color: var(--text-default-caption); font-style: italic;">"Before you pay them, hold back a small percentage and send it directly to us."</blockquote>
-        <p>So instead of the vendor paying their own taxes later, the <em>buyer</em> takes a cut on the government's behalf at the time of payment. <strong>WHT follows the vendor, not the product.</strong></p>
+        <h3 style="margin-top: 0;">What is 1099 / backup withholding?</h3>
+        <p>The closest US analog to "withholding tax on vendor payments" — it's about <strong>who you're paying</strong>, not the product. When you pay a US vendor (especially for services):</p>
+        <ul style="font-size: 14px; line-height: 1.7;">
+          <li>You collect a <strong>W-9</strong> (legal name + TIN/EIN) <strong>before</strong> paying.</li>
+          <li>Pay them <strong>$600+</strong> in a year for services → you report it to the IRS on <strong>Form 1099-NEC</strong>.</li>
+          <li>Normally you withhold <strong>nothing</strong> — the vendor pays their own income tax.</li>
+          <li><strong>But</strong> if the vendor won't furnish a valid TIN (or the IRS flags a mismatch), you <strong>must apply 24% backup withholding</strong> and send it to the IRS.</li>
+        </ul>
+        <p><strong>Backup withholding follows the vendor's tax status, not the product.</strong> Missing/invalid W-9 → 24% withheld.</p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300);">
         <h3 style="margin-top: 0;">The key difference at a glance</h3>
         <table>
-          <thead><tr><th></th><th>VAT</th><th>WHT</th></tr></thead>
+          <thead><tr><th></th><th>Sales &amp; use tax</th><th>1099 / backup withholding</th></tr></thead>
           <tbody>
-            <tr><td><strong>What triggers it?</strong></td><td>The product / service being sold</td><td>The vendor being paid</td></tr>
-            <tr><td><strong>Calculated on?</strong></td><td>Line items on the invoice</td><td>Total amount payable to vendor</td></tr>
-            <tr><td><strong>Who collects it?</strong></td><td>Seller (from buyer)</td><td>Buyer (deducted before paying vendor)</td></tr>
-            <tr><td><strong>Who gets the money?</strong></td><td>Government (via seller)</td><td>Government (via buyer)</td></tr>
+            <tr><td><strong>What triggers it?</strong></td><td>A taxable sale, in a taxing jurisdiction</td><td>Paying a reportable vendor</td></tr>
+            <tr><td><strong>Calculated on?</strong></td><td>Sale price (product + location)</td><td>The payment to the vendor</td></tr>
+            <tr><td><strong>Who remits?</strong></td><td>Seller → state</td><td>Buyer (withholds only if TIN is bad)</td></tr>
+            <tr><td><strong>Default withholding?</strong></td><td>n/a — added to the price</td><td>0%, or <strong>24%</strong> if no valid W-9</td></tr>
+            <tr><td><strong>Multi-stage credit?</strong></td><td><strong>No</strong> (single-stage)</td><td>n/a</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h3 style="margin-top: var(--scale-500);">How VAT actually works — the Myntra example</h3>
-      <p style="font-size: 14px; line-height: 1.6;">Three players: <strong>UrbanThreads</strong> (clothing brand selling T-shirts to Myntra), <strong>Myntra</strong> (the marketplace), <strong>You</strong> (the end customer). GST rate = 12%.</p>
+      <h3 style="margin-top: var(--scale-500);">How it works — a worked US example</h3>
+      <p style="font-size: 14px; line-height: 1.6;">Three players: a <strong>US clothing brand</strong> selling to a <strong>US retailer</strong> selling to a <strong>consumer</strong>. Combined sales-tax rate = 9%.</p>
 
       <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Step 1 · UrbanThreads sells to Myntra for ₹100</h4>
+        <h4 style="margin-top: 0;">Step 1 · Brand sells to Retailer (for resale) — $100</h4>
         <table>
           <tbody>
-            <tr><td>Base price</td><td style="text-align: right;">₹100</td></tr>
-            <tr><td>GST (12%)</td><td style="text-align: right;">₹12</td></tr>
-            <tr><td><strong>Myntra pays UrbanThreads</strong></td><td style="text-align: right;"><strong>₹112</strong></td></tr>
+            <tr><td>Price (for resale)</td><td style="text-align: right;">$100</td></tr>
+            <tr><td>Sales tax</td><td style="text-align: right;">$0 (resale certificate)</td></tr>
+            <tr><td><strong>Retailer pays Brand</strong></td><td style="text-align: right;"><strong>$100</strong></td></tr>
           </tbody>
         </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200);">UrbanThreads now holds ₹12 of tax money — that belongs to the government. But UrbanThreads also <em>paid</em> ₹6 GST on raw materials, so they tell the government: <em>"I collected ₹12 but already paid ₹6 — I'm sending the difference."</em></p>
-        <p style="font-size: 14px;">✅ <strong>UrbanThreads pays government: ₹6</strong></p>
+        <p style="font-size: 14px; margin-top: var(--scale-200);">The Retailer is buying to resell, so it hands the Brand a <strong>resale certificate</strong> — no sales tax on a B2B-for-resale purchase.</p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Step 2 · Myntra sells to You for ₹200</h4>
+        <h4 style="margin-top: 0;">Step 2 · Retailer sells to Consumer — $200</h4>
         <table>
           <tbody>
-            <tr><td>Base price</td><td style="text-align: right;">₹200</td></tr>
-            <tr><td>GST (12%)</td><td style="text-align: right;">₹24</td></tr>
-            <tr><td><strong>You pay Myntra</strong></td><td style="text-align: right;"><strong>₹224</strong></td></tr>
+            <tr><td>Price</td><td style="text-align: right;">$200</td></tr>
+            <tr><td>Sales tax (9%)</td><td style="text-align: right;">$18</td></tr>
+            <tr><td><strong>Consumer pays Retailer</strong></td><td style="text-align: right;"><strong>$218</strong></td></tr>
           </tbody>
         </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200);">Myntra collected ₹24 but already paid ₹12 in GST to UrbanThreads, so they only owe the difference.</p>
-        <p style="font-size: 14px;">✅ <strong>Myntra pays government: ₹12</strong></p>
+        <p style="font-size: 14px; margin-top: var(--scale-200);">The Retailer collects $18 and remits it to the state.</p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Step 3 · You — the end customer</h4>
-        <p style="font-size: 14px;">You pay ₹224 and go home. You can't claim anything back. The tax stops with you.</p>
-        <p style="font-size: 14px;">✅ <strong>You pay: ₹24 in GST. Full stop.</strong></p>
+        <h4 style="margin-top: 0;">Step 3 · The Consumer (and the punchline)</h4>
+        <p style="font-size: 14px; margin-top: 0;">The Consumer can't reclaim anything — the tax stops with them. The state collected <strong>exactly $18 — 9% of the final $200 price — once, at the final sale.</strong> There's no multi-stage credit chain to reconcile. <strong>That single-stage simplicity is the key difference from VAT.</strong></p>
       </div>
 
-      <div class="card" style="margin-top: var(--scale-300); background: var(--surface-success-subtle); border-color: var(--border-success-default);">
-        <h4 style="margin-top: 0;">Where did the government's money come from?</h4>
-        <table>
-          <thead><tr><th>Who</th><th>Paid to govt</th><th>Why</th></tr></thead>
-          <tbody>
-            <tr><td>UrbanThreads' raw-material supplier</td><td>₹6</td><td>GST on materials sold to UrbanThreads</td></tr>
-            <tr><td>UrbanThreads</td><td>₹6</td><td>Collected ₹12, claimed back ₹6</td></tr>
-            <tr><td>Myntra</td><td>₹12</td><td>Collected ₹24, claimed back ₹12</td></tr>
-            <tr><td><strong>Total</strong></td><td><strong>₹24</strong></td><td><strong>Exactly 12% of the final ₹200</strong></td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200);">The government collected ₹24 — exactly 12% of the final price. It came in pieces throughout the chain, but it adds up perfectly. That's why it's called <strong>"Value Added"</strong> tax — each business only pays tax on the value <em>they</em> added (UrbanThreads added ₹50, Myntra added ₹100, you added ₹0 and bear the full tax).</p>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">Now where does WHT fit in?</h3>
-      <div class="card" style="margin-top: var(--scale-200);">
-        <p style="font-size: 14px;">WHT has nothing to do with the customer — it's purely a <strong>Myntra ↔ UrbanThreads</strong> thing. When Myntra pays UrbanThreads ₹112 (base + GST):</p>
-        <ul style="font-size: 14px;">
-          <li>WHT applies on the base amount (₹100) at, say, 2%</li>
-          <li>Myntra holds back ₹2</li>
-          <li>UrbanThreads receives ₹110 instead of ₹112</li>
-          <li>Myntra sends that ₹2 directly to the government</li>
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Where 1099 withholding fits</h3>
+        <p>Separate from sales tax — it's about paying vendors. Say the Retailer pays a <strong>freelance designer $5,000</strong> for services:</p>
+        <ul style="font-size: 14px; line-height: 1.7;">
+          <li><strong>Valid W-9</strong> → withhold nothing, pay the full <strong>$5,000</strong>, issue a <strong>1099-NEC</strong> at year end.</li>
+          <li><strong>Refuses / invalid TIN</strong> → apply <strong>24% backup withholding</strong>: hold <strong>$1,200</strong>, pay the designer <strong>$3,800</strong>, send <strong>$1,200</strong> to the IRS. The designer reconciles it on their return.</li>
         </ul>
-        <p style="font-size: 14px;">UrbanThreads isn't <em>losing</em> the ₹2 forever — it gets credited against their annual income-tax return. It's just <strong>prepaid tax</strong>, collected early through Myntra. The government's logic: <em>"You're a big, registered company. Make sure the vendor pays their income tax. You hold it for us."</em></p>
       </div>
 
-      <h3 style="margin-top: var(--scale-500);">What changes when the vendor is an individual?</h3>
-      <p style="font-size: 14px; line-height: 1.6;">Replace UrbanThreads with <strong>Ravi</strong>, a freelance T-shirt maker. Two scenarios depending on whether Ravi is GST-registered.</p>
-
-      <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Scenario 1 · Ravi is GST-registered</h4>
-        <p style="font-size: 14px;">Works almost exactly like UrbanThreads — Ravi charges GST, collects it, files returns, claims input credit on his materials. Myntra deducts WHT before paying him. Everything flows the same way. The only difference is Ravi is a one-man show doing it all himself.</p>
-      </div>
-
-      <div class="card" style="margin-top: var(--scale-200);">
-        <h4 style="margin-top: 0;">Scenario 2 · Ravi is NOT GST-registered</h4>
-        <p style="font-size: 14px;">Below the threshold (~₹20 lakhs/year in India), small vendors aren't required to register for GST — and if they're not registered, they <strong>cannot charge GST at all</strong>.</p>
-        <ul style="font-size: 14px;">
-          <li>Ravi sells T-shirts to Myntra for ₹100 — no GST on top</li>
-          <li>Myntra pays him flat ₹100 (no GST collected, no GST forwarded)</li>
-        </ul>
-        <p style="font-size: 14px;">Myntra's total outflow ends up the same either way — the difference is timing and paperwork. <strong>The real loser is Ravi himself</strong>, in two ways:</p>
-        <p style="font-size: 14px;"><strong>1. No input credit on his purchases.</strong> Ravi paid GST when he bought fabric — but as an unregistered vendor, he can't claim it back. Real cost out of his margin.</p>
-        <p style="font-size: 14px;"><strong>2. Higher WHT deduction.</strong> Government distrust of less-formal vendors maps directly to a higher withholding rate:</p>
-        <table style="margin-top: var(--scale-200);">
-          <thead><tr><th>Vendor type</th><th>WHT rate</th><th>Why</th></tr></thead>
-          <tbody>
-            <tr><td>Registered company</td><td>~2%</td><td>Files taxes properly, government trusts them</td></tr>
-            <tr><td>Individual / freelancer</td><td>~10%</td><td>Government isn't sure they'll file on their own</td></tr>
-            <tr><td>Foreign vendor</td><td>~15–20%</td><td>No jurisdiction; grab tax before money leaves the country</td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 14px; margin-top: var(--scale-200);">When Myntra pays Ravi ₹100 → holds back ₹10 (10% WHT) → Ravi receives ₹90, govt gets ₹10. The ₹10 still adjusts at year-end on his income tax — but he gets less cash in hand immediately.</p>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">Side-by-side comparison</h3>
-      <div class="card" style="margin-top: var(--scale-200);">
-        <table>
-          <thead><tr><th>Situation</th><th>GST on sale?</th><th>Input credit?</th><th>WHT rate</th><th>Net impact on vendor</th></tr></thead>
-          <tbody>
-            <tr><td>Registered company</td><td>✅ Yes</td><td>✅ Yes</td><td>~2%</td><td>Clean and efficient</td></tr>
-            <tr><td>Registered individual</td><td>✅ Yes</td><td>✅ Yes</td><td>~10%</td><td>More WHT upfront, adjusted at year end</td></tr>
-            <tr><td>Unregistered individual</td><td>❌ No</td><td>❌ No</td><td>~10%</td><td>Most expensive — squeezed from both ends</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 style="margin-top: var(--scale-500);">The one-page summary</h3>
-      <div class="card" style="margin-top: var(--scale-200);">
-        <table>
-          <thead><tr><th></th><th>VAT / GST</th><th>WHT</th></tr></thead>
-          <tbody>
-            <tr><td><strong>What is it?</strong></td><td>Tax on the sale of goods / services</td><td>Tax withheld from vendor payments</td></tr>
-            <tr><td><strong>Based on?</strong></td><td>The product (line item)</td><td>The vendor (who they are)</td></tr>
-            <tr><td><strong>Who pays?</strong></td><td>End consumer ultimately</td><td>Deducted by buyer before paying vendor</td></tr>
-            <tr><td><strong>Who collects for govt?</strong></td><td>Seller</td><td>Buyer</td></tr>
-            <tr><td><strong>Can it be claimed back?</strong></td><td>Yes — by registered businesses (input credit)</td><td>Yes — credited against vendor's income tax</td></tr>
-            <tr><td><strong>Individual vs company?</strong></td><td>Same rate — depends on product, not person</td><td>Higher for individuals, lower for companies</td></tr>
-          </tbody>
-        </table>
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Individual vs company vendor</h3>
+        <p><strong>Sales tax</strong> is the same regardless of who the seller is — it depends on the product + jurisdiction (and whether a valid exemption certificate is on file).</p>
+        <p><strong>1099 / backup withholding:</strong> payments to <strong>corporations are generally 1099-exempt</strong> (with exceptions like legal and medical); payments to <strong>individuals, LLCs, and partnerships for services are reportable</strong>. The <strong>24% backup withholding</strong> is triggered by a <strong>missing/invalid TIN</strong>, not by being an individual per se.</p>
       </div>
 
       <div class="card" style="margin-top: var(--scale-300); background: var(--surface-primary-background); border-color: var(--border-primary-default);">
-        <h4 style="margin-top: 0;">Key takeaways</h4>
-        <ol style="font-size: 14px; line-height: 1.6; padding-left: 20px;">
-          <li><strong>VAT / GST is about the product.</strong> Every line item on an invoice can have a different rate. The tax flows through the chain and the end customer bears it all.</li>
-          <li><strong>WHT is about the vendor.</strong> The more "informal" or "less trusted" the vendor (individual, unregistered, foreign), the higher the WHT rate.</li>
-          <li><strong>Registered businesses don't really lose money on VAT.</strong> They collect it, claim back what they paid, and pass the net amount to the government — they're a pipe the tax flows through.</li>
-          <li><strong>The real burden falls on unregistered individuals.</strong> No input credit on their purchases AND a higher WHT deduction.</li>
-          <li><strong>Both taxes ultimately protect the government's tax collection</strong> — VAT ensures tax is collected at every stage of sale; WHT ensures income tax is collected before money reaches vendors who might not file on their own.</li>
-        </ol>
+        <h3 style="margin-top: 0;">The international cousin: VAT</h3>
+        <p>Most of the world — EU, UK, India (GST), and dozens more — uses <strong>VAT</strong> instead of US-style sales tax. VAT is <strong>multi-stage</strong>: tax is added at every step and each business <strong>reclaims the VAT it paid</strong> (input credit), so the net burden lands on the end consumer. <strong>The US has no VAT and no input-credit chain.</strong></p>
+        <p style="margin-bottom: 0;">It still matters here: customers with <strong>overseas entities</strong> deal with VAT abroad, and <strong>e-invoicing mandates</strong> (PEPPOL and similar) are VAT-driven. But for US operations, it's sales &amp; use tax and 1099 withholding.</p>
       </div>
 
-      <p style="font-size: 12px; color: var(--text-default-caption); margin-top: var(--scale-400); font-style: italic;">Written for general understanding. Tax rates and rules vary by country and business type — always consult a tax professional for specific advice.</p>
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h3 style="margin-top: 0;">Key takeaways</h3>
+        <ol style="font-size: 14px; line-height: 1.7;">
+          <li><strong>US sales tax is single-stage</strong> — collected once at the final retail sale, no input-credit chain; B2B-for-resale is tax-free with a certificate.</li>
+          <li><strong>Use tax + economic nexus (Wayfair)</strong> can make you owe tax in states where you sell, even without physical presence.</li>
+          <li>The US "withholding" analog is <strong>1099 reporting + 24% backup withholding</strong> when a W-9/TIN is missing — not a flat rate on every vendor.</li>
+          <li><strong>Corporations are generally 1099-exempt;</strong> what matters is the $600 services threshold and a valid TIN.</li>
+          <li><strong>VAT is the international cousin</strong> — multi-stage with input credits — relevant only for overseas entities and e-invoicing mandates.</li>
+        </ol>
+      </div>
     </section>
 
     <section id="landscape">
