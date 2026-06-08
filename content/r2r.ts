@@ -25,7 +25,7 @@ export const r2rData: ProcessExplainerData = {
       whatItIs:
         'Drawing the line on the period — deciding what counts as a March transaction and what counts as April.',
       whatHappens:
-        'Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get "frozen" at period-end. Outstanding items that belong to March but haven\'t been booked yet get accrued: invoices received from suppliers but not yet posted (GRNI — Goods Received Not Invoiced), bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, intercompany transactions between entities.',
+        'Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get "frozen" at period-end. Outstanding items that belong to March but haven\'t hit the GL yet get accrued: goods or services received from suppliers but not yet invoiced (the GR/IR or GRNI accrual — Goods Received, Not Invoiced), supplier invoices that arrived but aren\'t keyed yet, bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, and intercompany transactions between entities.',
       example:
         'Your AP team confirms all March invoices are entered. The warehouse confirms all March deliveries are recorded. Payroll for the last week of March is accrued at ₹4.5L. Depreciation runs on fixed assets: ₹1.2L for the month. The Singapore office confirms all intercompany transactions with India for March.',
       analogy:

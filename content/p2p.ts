@@ -66,7 +66,7 @@ export const p2pData: ProcessExplainerData = {
       title: 'Goods Receipt (GRN)',
       whatItIs: 'Confirming the goods (or services) actually arrived.',
       whatHappens:
-        'When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for invoice processing. For services, this is service entry sheet (SES) confirmation.',
+        'When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for the **3-way match** — the invoice itself arrives on the supplier\'s own schedule; the GRN is what lets you match it and post it. For services, this is service entry sheet (SES) confirmation.',
       example:
         'Truck arrives at your Bengaluru warehouse. Your team counts: 9,800 bags received, 200 short. They post a GRN for 9,800 bags against PO-2026-0142.',
       analogy:

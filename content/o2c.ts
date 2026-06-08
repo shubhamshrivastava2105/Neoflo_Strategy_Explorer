@@ -80,13 +80,13 @@ export const o2cData: ProcessExplainerData = {
       whatItIs:
         'Internal checks before the invoice is recognized as revenue.',
       whatHappens:
-        'Finance verifies the invoice matches the purchase order and the proof of delivery (3-way match). Tax and pricing are checked. Revenue recognition rules are applied. Approval routing kicks in if needed.',
+        'Finance validates the invoice against the sales order, the proof of delivery, and the contract / price list, then applies revenue-recognition rules and any approval routing. (This is the sell-side mirror of the AP 3-way match — but here you are checking your *own* invoice before it goes out, not a supplier\'s.)',
       example:
-        'Your finance team confirms ₹59,000 matches the PO from Brew & Co, GST is right, and signs it off.',
+        'Your finance team confirms the $59,000 invoice matches the sales order and the delivery to Brew & Co, the tax is right, and signs it off.',
       analogy:
-        'A second person at the restaurant verifying your bill before it goes into their accounting system.',
+        'A second person at the restaurant double-checking the bill they are about to hand you against what you actually ordered.',
       whereItBreaks:
-        '3-way match is done manually. Approval chains are slow. Revenue recognition errors create audit issues.',
+        'Validation is done manually. Approval chains are slow. Revenue-recognition errors create audit issues.',
     },
     {
       number: 6,

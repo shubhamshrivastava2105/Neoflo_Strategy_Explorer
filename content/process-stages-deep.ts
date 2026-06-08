@@ -404,7 +404,7 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
   },
 
   O2C_5: {
-    howItReallyHappens: `The internal validation gate before invoices are recognized as revenue. Finance verifies the invoice against PO, POD, and contract — the AR-side equivalent of 3-way match. Tax and pricing are double-checked; revenue recognition rules applied (ASC-606 / IFRS-15 control-transfer, performance obligations). Approval routing kicks in for non-standard items. This is also where revenue recognition complexity lives — variable consideration, performance obligations, contract modifications.`,
+    howItReallyHappens: `The internal validation gate before invoices are recognized as revenue. Finance verifies the invoice against the sales order, POD, and contract / price list — the sell-side mirror of the AP 3-way match (here you are checking your *own* invoice before it goes out, not a supplier's). Tax and pricing are double-checked; revenue recognition rules applied (ASC-606 / IFRS-15 control-transfer, performance obligations). Approval routing kicks in for non-standard items. This is also where revenue recognition complexity lives — variable consideration, performance obligations, contract modifications.`,
     whoDoesWhat: [
       { actor: 'Billing team', responsibility: 'Initial invoice creation and submission' },
       { actor: 'Finance / AR Lead', responsibility: 'Validates against PO/POD/contract; checks tax and pricing' },
@@ -446,7 +446,7 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
     ],
     howSuccessIsMeasured: [
       'DSO (Days Sales Outstanding) — best in class <45; mid-market 60–90',
-      'CEI (Collections Effectiveness Index) — % of beginning AR + period AR collected; >85% best-in-class',
+      'CEI (Collections Effectiveness Index) = (beginning AR + credit sales − ending total AR) / (beginning AR + credit sales − ending current AR) × 100; >85% best-in-class',
       'Aging mix — <30 day % should be 80%+',
       '% AR over 90 days (target <2%)',
       'Bad debt as % of revenue',
@@ -517,7 +517,7 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
       { actor: 'Bank', responsibility: 'Provides payment feeds with available reference data' },
     ],
     howSuccessIsMeasured: [
-      'STP rate (% auto-applied, no human touch) — target >95%, mid-market typical 60–75%',
+      'STP rate (% auto-applied, no human touch) — realistic mid-market target ~85% (enterprise / HighRadius-grade reaches >95%); mid-market typical today 60–75%',
       'Days of unallocated cash sitting in clearing',
       'Same-day cash application rate',
       'Short-pay capture rate (deductions identified at receipt)',

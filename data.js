@@ -737,7 +737,7 @@ window.P2P_DATA = {
       "number": 4,
       "title": "Goods Receipt (GRN)",
       "whatItIs": "Confirming the goods (or services) actually arrived.",
-      "whatHappens": "When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for invoice processing. For services, this is service entry sheet (SES) confirmation.",
+      "whatHappens": "When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for the **3-way match** — the invoice itself arrives on the supplier's own schedule; the GRN is what lets you match it and post it. For services, this is service entry sheet (SES) confirmation.",
       "example": "Truck arrives at your Bengaluru warehouse. Your team counts: 9,800 bags received, 200 short. They post a GRN for 9,800 bags against PO-2026-0142.",
       "analogy": "Signing for a courier package — you're confirming you got what was shipped, in the condition described.",
       "whereItBreaks": "GRNs are posted late or in batches, so invoices arrive before the GRN exists and get blocked. Partial deliveries aren't tracked cleanly. Quality rejections happen but never make it back to the GL as a claim against the vendor."
@@ -833,10 +833,10 @@ window.O2C_DATA = {
       "number": 5,
       "title": "Validation & Approval",
       "whatItIs": "Internal checks before the invoice is recognized as revenue.",
-      "whatHappens": "Finance verifies the invoice matches the purchase order and the proof of delivery (3-way match). Tax and pricing are checked. Revenue recognition rules are applied. Approval routing kicks in if needed.",
-      "example": "Your finance team confirms ₹59,000 matches the PO from Brew & Co, GST is right, and signs it off.",
-      "analogy": "A second person at the restaurant verifying your bill before it goes into their accounting system.",
-      "whereItBreaks": "3-way match is done manually. Approval chains are slow. Revenue recognition errors create audit issues."
+      "whatHappens": "Finance validates the invoice against the sales order, the proof of delivery, and the contract / price list, then applies revenue-recognition rules and any approval routing. (This is the sell-side mirror of the AP 3-way match — but here you are checking your *own* invoice before it goes out, not a supplier's.)",
+      "example": "Your finance team confirms the $59,000 invoice matches the sales order and the delivery to Brew & Co, the tax is right, and signs it off.",
+      "analogy": "A second person at the restaurant double-checking the bill they are about to hand you against what you actually ordered.",
+      "whereItBreaks": "Validation is done manually. Approval chains are slow. Revenue-recognition errors create audit issues."
     },
     {
       "number": 6,
@@ -899,7 +899,7 @@ window.R2R_DATA = {
       "number": 1,
       "title": "Pre-Close Cutoff",
       "whatItIs": "Drawing the line on the period — deciding what counts as a March transaction and what counts as April.",
-      "whatHappens": "Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get \"frozen\" at period-end. Outstanding items that belong to March but haven't been booked yet get accrued: invoices received from suppliers but not yet posted (GRNI — Goods Received Not Invoiced), bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, intercompany transactions between entities.",
+      "whatHappens": "Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get \"frozen\" at period-end. Outstanding items that belong to March but haven't hit the GL yet get accrued: goods or services received from suppliers but not yet invoiced (the GR/IR or GRNI accrual — Goods Received, Not Invoiced), supplier invoices that arrived but aren't keyed yet, bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, and intercompany transactions between entities.",
       "example": "Your AP team confirms all March invoices are entered. The warehouse confirms all March deliveries are recorded. Payroll for the last week of March is accrued at ₹4.5L. Depreciation runs on fixed assets: ₹1.2L for the month. The Singapore office confirms all intercompany transactions with India for March.",
       "analogy": "Calling \"time!\" on a board game — nothing more counts toward this round, anything that happens after the buzzer is the next round.",
       "whereItBreaks": "Sub-ledgers don't all freeze at the same time. AP keeps posting March invoices into early April \"because they came in late.\" GRNI accruals are based on stale data. Intercompany transactions don't match (India says it sent S$10,000, Singapore received S$9,995 due to FX or fees). Payroll accrual gets re-stated three times."
@@ -1568,7 +1568,7 @@ window.COMPARISONS_DATA = {
           "Multi-currency native across SGD/MYR/IDR/THB/PHP/VND/USD/EUR"
         ],
         "whereTheyLose": [
-          "No R2R / close management — biggest scope gap",
+          "Thin R2R — partial close features (reconciliation, accruals, JE) shipped 2026, but no full consolidation / statutory close; still a scope gap vs a dedicated close tool",
           "Workflow customization narrower (invoice + collection-centric data model, less flexible for entity-scoped multi-process workflows)",
           "Brand and reference book tilts SME more than enterprise mid-market — no flagship customer at Zalora's scale",
           "Limited audit trail and approval routing depth for >5 entity group structures",
@@ -1682,7 +1682,7 @@ window.COMPARISONS_DATA = {
         "whereTheyLose": [
           "Pricing is the killer — Spectrum told us directly: \"$1.2–1.5M quote, couldn't justify the ROI, rejected\"",
           "3–9 month implementation is a non-starter for our segment",
-          "No P2P or R2R — pure O2C/AR play",
+          "No P2P — pure O2C/AR play (a growing R2R agent suite \"LiveCube\" exists, but P2P is absent)",
           "No SEA mid-market motion — Houston/India delivery, US/EU sales",
           "Heavy enterprise UX, hard to give to a 5-person AR team"
         ],
@@ -2010,8 +2010,8 @@ window.COMPARISONS_DATA = {
           "note": "Not available today — no R2R / close module"
         },
         "peakflo": {
-          "score": "N/A",
-          "note": "No R2R"
+          "score": "Gap",
+          "note": "Partial close features (accruals, JE) emerging 2026; no full close"
         },
         "stampli": {
           "score": "N/A",
@@ -2022,8 +2022,8 @@ window.COMPARISONS_DATA = {
           "note": "AP-only"
         },
         "highRadius": {
-          "score": "N/A",
-          "note": "O2C only"
+          "score": "Parity",
+          "note": "LiveCube R2R agents — close + intercompany"
         },
         "floQast": {
           "score": "Strong",
@@ -2038,8 +2038,8 @@ window.COMPARISONS_DATA = {
           "note": "Not available today"
         },
         "peakflo": {
-          "score": "N/A",
-          "note": "No R2R"
+          "score": "Parity",
+          "note": "Automated reconciliation shipped 2026"
         },
         "stampli": {
           "score": "N/A",
@@ -2050,8 +2050,8 @@ window.COMPARISONS_DATA = {
           "note": "AP-only"
         },
         "highRadius": {
-          "score": "N/A",
-          "note": "O2C only"
+          "score": "Parity",
+          "note": "LiveCube reconciliation agents"
         },
         "floQast": {
           "score": "Strong",
@@ -3834,10 +3834,10 @@ window.COMPARISONS_DATA = {
       },
       {
         "vendor": "Peakflo",
-        "category": "Multi-process SEA",
+        "category": "Multi-process",
         "p2pCoverage": "1, 4, 5, 6, 7 (light PR/PO)",
         "o2cCoverage": "3, 4, 5, 6 (voice AI), 7, 9",
-        "r2rCoverage": "None",
+        "r2rCoverage": "3 (recs); partial 1, 2 (accruals, JE) — emerging 2026",
         "primaryMonetization": "AP + AR ARR; payment per-transaction"
       },
       {
@@ -6191,7 +6191,7 @@ window.STAGE_DEEP = {
     ]
   },
   "O2C_5": {
-    "howItReallyHappens": "The internal validation gate before invoices are recognized as revenue. Finance verifies the invoice against PO, POD, and contract — the AR-side equivalent of 3-way match. Tax and pricing are double-checked; revenue recognition rules applied (ASC-606 / IFRS-15 control-transfer, performance obligations). Approval routing kicks in for non-standard items. This is also where revenue recognition complexity lives — variable consideration, performance obligations, contract modifications.",
+    "howItReallyHappens": "The internal validation gate before invoices are recognized as revenue. Finance verifies the invoice against the sales order, POD, and contract / price list — the sell-side mirror of the AP 3-way match (here you are checking your *own* invoice before it goes out, not a supplier's). Tax and pricing are double-checked; revenue recognition rules applied (ASC-606 / IFRS-15 control-transfer, performance obligations). Approval routing kicks in for non-standard items. This is also where revenue recognition complexity lives — variable consideration, performance obligations, contract modifications.",
     "whoDoesWhat": [
       {
         "actor": "Billing team",
@@ -6256,7 +6256,7 @@ window.STAGE_DEEP = {
     ],
     "howSuccessIsMeasured": [
       "DSO (Days Sales Outstanding) — best in class <45; mid-market 60–90",
-      "CEI (Collections Effectiveness Index) — % of beginning AR + period AR collected; >85% best-in-class",
+      "CEI (Collections Effectiveness Index) = (beginning AR + credit sales − ending total AR) / (beginning AR + credit sales − ending current AR) × 100; >85% best-in-class",
       "Aging mix — <30 day % should be 80%+",
       "% AR over 90 days (target <2%)",
       "Bad debt as % of revenue"
@@ -6352,7 +6352,7 @@ window.STAGE_DEEP = {
       }
     ],
     "howSuccessIsMeasured": [
-      "STP rate (% auto-applied, no human touch) — target >95%, mid-market typical 60–75%",
+      "STP rate (% auto-applied, no human touch) — realistic mid-market target ~85% (enterprise / HighRadius-grade reaches >95%); mid-market typical today 60–75%",
       "Days of unallocated cash sitting in clearing",
       "Same-day cash application rate",
       "Short-pay capture rate (deductions identified at receipt)",
