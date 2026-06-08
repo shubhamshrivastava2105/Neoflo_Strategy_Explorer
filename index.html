@@ -800,7 +800,25 @@
       <p style="font-size: 14.5px; line-height: 1.7;"><strong>Why it matters:</strong> when these run badly, real money leaks — suppliers get paid late (or twice), customers take 70+ days to pay and cash dries up, and the month-end close drags for weeks or fails an audit. Good FinOps means cash is collected faster, the books close in days, and every payment has an audit trail. That's the pain Neoflo exists to remove.</p>
       <p style="font-size: 13px; color: var(--text-default-caption); font-style: italic;">Note: we use <strong>FinOps</strong> to mean <em>finance operations</em> (AP / AR / close) — not the cloud-cost-management discipline of the same name.</p>
 
-      <div class="card">
+      <div class="grid grid-3" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h4 style="margin-top: 0;">💸 Money out — paying others</h4>
+          <p style="font-size: 14px; margin-bottom: 0;">You buy things to run the business (supplies, services) and you pay the people you bought from. Doing that neatly — right amount, right person, on time — is <strong>P2P (Procure-to-Pay)</strong>.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">💰 Money in — getting paid</h4>
+          <p style="font-size: 14px; margin-bottom: 0;">Customers buy from you, and you make sure they actually pay. Sending the bill and collecting the cash is <strong>O2C (Order-to-Cash)</strong>.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">🧾 Counting it all — the report</h4>
+          <p style="font-size: 14px; margin-bottom: 0;">Each month you add up everything that happened and write the "report cards" (did we make money? what do we own?). That's <strong>R2R (Record-to-Report)</strong>, a.k.a. "the close."</p>
+        </div>
+      </div>
+      <p style="font-size: 14px; line-height: 1.7; margin-top: var(--scale-300);">That's all FinOps is: <strong>money out (P2P), money in (O2C), and counting it (R2R).</strong> Everything else on this page is a closer look at these three — how they work, who makes software for them, and how Neoflo does them. New words pop up as you read; the full dictionary is right below — open it whenever you hit one.</p>
+
+      <details style="margin-top: var(--scale-300);">
+        <summary style="cursor: pointer; font-weight: 600; font-size: 15px; padding: var(--scale-200) 0;">📖 Glossary — every term in one place (open when you hit a word you don't know)</summary>
+      <div class="card" style="margin-top: var(--scale-200);">
         <h4 style="margin-top: 0;">Process abbreviations</h4>
         <dl class="stage-grid">
           <dt>P2P</dt><dd>Procure-to-Pay — the AP / accounts-payable pipeline from need-to-buy through paid-supplier-invoice.</dd>
@@ -889,6 +907,7 @@
           <dt>ITFM</dt><dd>IT Financial Management — Yarken's category; relevant cohort comparison.</dd>
         </dl>
       </div>
+      </details>
     </section>
 
     <section id="how-accounting-works" style="margin-bottom: var(--scale-700);">
