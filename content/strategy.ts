@@ -21,7 +21,7 @@ export const strategyData: StrategyData = {
 **Existential dependency, 12-month version:** convert Spectrum plus 2 more US mid-market accounts to live, SLA-backed references by Q4 2026. Until then, a thin reference book is a deal-killing risk in every new conversation.`,
 
   marketSizing: {
-    intro: `Three things matter for sizing: how big the global category is, how fast it's growing, and where the dollars actually concentrate.`,
+    intro: `Three things matter for sizing: how big the global category is, how fast it's growing, and where the dollars actually concentrate. *Sources: the P2P (~$6.9B) and O2C (~$3.8B) figures track Mordor Intelligence (2026) closely; the R2R figure is an internal blend — published "financial close software" estimates vary widely ($1.5B–$8.8B) by scope, so treat ~$5.8B as a midpoint, not a single-sourced number.*`,
     rows: [
       {
         process: 'P2P / AP Automation',
@@ -50,7 +50,7 @@ export const strategyData: StrategyData = {
 
 **How much of the TAM is US mid-market?** A rough cut: the three categories total ~$16–17B globally today (P2P ~$6.9B + O2C ~$3.8B + R2R ~$5.8B). North America is ~37–40% of that (~$6–6.6B), and the mid-market band ($50–250M revenue) is roughly a third of the US spend once you strip out enterprise and SMB — so **US mid-market TAM across P2P+O2C+R2R is on the order of ~$2–2.5B today**, growing ~12% CAGR. *Treat this as a back-of-envelope estimate from analyst category sizing + NA-share splits — verify with a bottoms-up (US firms in band × ACV) before using it externally.*
 
-**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2024), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See "The gap" for the full grid with sources.
+**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2025, $2.2B), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See "The gap" for the full grid with sources.
 
 **The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.
 
@@ -70,7 +70,7 @@ export const strategyData: StrategyData = {
           competitors: [
             {
               name: 'Tipalti',
-              positioning: 'Global mass payments, 196 countries, 120+ currencies, KPMG-validated tax compliance. 2,500+ customers (Roblox, GoDaddy, X). Last raise: $270M Series F at $8.3B (Dec 2021), reportedly down-round / layoffs in 2024.',
+              positioning: 'Global mass payments, 196 countries, 120+ currencies, KPMG-validated tax compliance. 4,000+ customers (Roblox, GoDaddy, Twitch). Last raise: $270M Series F at $8.3B (Dec 2021); secondary-market valuation marked down to ~$3.1B by 2024 (down-round / layoffs reported).',
               pricing: '~$1.5K/mo base + $4–5K implementation + per-transaction fees. Real ARR for mid-market typically $40–80K.',
               implementation: '6–18 months',
               notes: 'Heavy implementation, opinionated workflow, weakest area is mid-market UX speed. Strong wherever cross-border payment compliance is non-negotiable.',
@@ -115,7 +115,7 @@ export const strategyData: StrategyData = {
             },
             {
               name: 'Bill.com (BILL)',
-              positioning: 'SMB → lower mid-market AP+AR. NASDAQ:BILL. 460K+ customers. QuickBooks/Xero/NetSuite/Sage Intacct native. Plays a network/Venmo-for-business angle with the BILL Network.',
+              positioning: 'SMB → lower mid-market AP+AR. NASDAQ:BILL. ~494K customers (FY2025). QuickBooks/Xero/NetSuite/Sage Intacct native. Plays a network/Venmo-for-business angle with the BILL Network.',
               pricing: 'Per-transaction + per-user; ~$45–200/user/mo. Most customers <$25K ARR.',
               implementation: '4–8 weeks',
               g2: '4.4',
@@ -123,7 +123,7 @@ export const strategyData: StrategyData = {
             },
             {
               name: 'Ramp Bill Pay',
-              positioning: 'AP bundled with Ramp\'s corporate cards + spend management. "Agentic" AI bill pay. $32B valuation. Aggressive go-to-market into mid-market via card displacement.',
+              positioning: 'AP bundled with Ramp\'s corporate cards + spend management. "Agentic" AI bill pay. $44B valuation (Series F, Jun 2026). Aggressive go-to-market into mid-market via card displacement.',
               pricing: 'Free tier; bundled with card interchange revenue',
               implementation: 'Days to weeks',
               g2: '4.7',
@@ -147,7 +147,7 @@ export const strategyData: StrategyData = {
             },
             {
               name: 'Vic.ai',
-              positioning: 'AI-first AP autonomous agent. Direct attack on traditional OCR-based workflow tools. ICONIQ-led $50M+ raise (2023).',
+              positioning: 'AI-first AP autonomous agent. Direct attack on traditional OCR-based workflow tools. ICONIQ-led $50M Series B (2021) + $52M Series C (2022); ~$115M total raised.',
               pricing: 'Per-transaction; touch ratio (autonomous %) is the key SLA.',
               implementation: '4–8 weeks',
               notes: '**Architectural threat:** Vic.ai\'s thesis is that an AI agent should auto-post 80–95% of invoices with no human touch. Stampli, Bill, AvidXchange all still assume human-in-loop. If Vic.ai\'s autonomy claim holds, the workflow layer becomes thinner and the value migrates to whoever has the highest autonomy %.',
@@ -176,7 +176,7 @@ export const strategyData: StrategyData = {
             },
             {
               name: 'Ramp',
-              positioning: '$32B valuation. Cards + bill pay + travel + accounting. Aggressive AI rollout.',
+              positioning: 'Cards + bill pay + travel + accounting. Acquired by Capital One for $5.15B (announced Jan 2026, completed Apr 2026) — well below its ~$12.3B 2022 peak. Aggressive AI rollout.',
               whyItMatters: 'Attacks legacy AP from above (the card spend layer) and pulls bill pay along with it.',
             },
             {
@@ -200,7 +200,7 @@ export const strategyData: StrategyData = {
           competitors: [
             {
               name: 'Peakflo',
-              positioning: 'YC W22, Singapore HQ, founded 2021. AP + AR + cashflow + collections (voice AI in 12+ languages incl. Mandarin/Bahasa/Vietnamese). PSG-approved Pre-Approved Vendor (50% subsidy, S$30K cap). Customers include Lazada, Tonik (Philippines digital bank), Bukalapak, FairPrice. ISO 27001, PDPA, SOC 2. Marketplace commission reconciliation built natively.',
+              positioning: 'YC W22, Singapore HQ, founded 2020. AP + AR + cashflow + collections (voice AI in 12+ languages incl. Mandarin/Bahasa/Vietnamese). PSG-approved Pre-Approved Vendor (50% subsidy, S$30K cap). Customers include Lazada, Tonik (Philippines digital bank), Bukalapak, FairPrice. ISO 27001, PDPA, SOC 2. Marketplace commission reconciliation built natively.',
               pricing: 'Quote-based; PSG cap S$30K means net cost to Singapore SMB is ~S$15K. Real ARR for mid-market believed $25–60K.',
               whereTheyWin: 'PSG distribution moat in SG (we genuinely cannot match this without becoming PSG-approved — months of paperwork). Voice AI for collections is category-defining for SEA where phone collections are culturally normal. Marketplace seller commission reconciliation. Multi-currency native (SGD/MYR/IDR/THB/PHP/VND/USD/EUR). Localization for IRAS/LHDN tax filing.',
               whereTheyAreWeak: 'No R2R / close management — biggest scope gap. Workflow customization is narrower (their data model is invoice + collection-centric, less flexible for entity-scoped multi-process workflows). Brand and pricing tilt SME more than enterprise mid-market — Zalora-scale buyers question whether Peakflo can scale to multi-entity multi-jurisdiction. No flagship enterprise customer of Zalora\'s scale.',
@@ -480,7 +480,7 @@ export const strategyData: StrategyData = {
             },
             {
               name: 'Workiva',
-              positioning: 'SEC filing + SOX + close. 75% of Fortune 500',
+              positioning: 'SEC filing + SOX + close. 85%+ of Fortune 1,000',
               pricing: 'Enterprise-priced',
               implementation: '4–8 months',
             },
@@ -495,7 +495,7 @@ export const strategyData: StrategyData = {
           competitors: [
             {
               name: 'FloQast',
-              positioning: '"Built by accountants." 2,800+ customers. Excel-native workflow. Best mid-market G2 satisfaction.',
+              positioning: '"Built by accountants." 2,600+ customers. Excel-native workflow. Best mid-market G2 satisfaction.',
               pricing: '$30–$80K ARR',
               implementation: '4–8 weeks',
               g2: '4.5',

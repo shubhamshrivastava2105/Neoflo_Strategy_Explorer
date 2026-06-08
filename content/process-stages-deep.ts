@@ -358,7 +358,7 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
     regulatoryAndCompliance: [
       'Customs / export documentation for cross-border',
       'Industry-specific delivery records (cold chain for pharma, hazardous materials)',
-      'Revenue recognition: POD is the trigger for ASC-606 / IFRS-15 control transfer',
+      'Revenue recognition: POD evidences delivery, but the actual ASC-606 / IFRS-15 control-transfer trigger depends on shipping terms — for FOB-shipping-point goods control (and revenue) transfers at shipment, not at delivery; for FOB-destination it transfers on delivery (POD)',
     ],
     keyJudgmentCalls: [
       'Allow POD-less billing for trusted customers (rare, risky)',
@@ -738,7 +738,7 @@ export const stageDeepDives: Record<string, StageDeepDive> = {
     ],
     regulatoryAndCompliance: [
       'IFRS / US GAAP consolidation rules (control, significant influence, joint arrangements)',
-      'FX translation: closing rate (BS), average rate (P&L), historical rate (equity)',
+      'FX translation: closing rate (BS), average rate (P&L), historical rate (equity); the resulting cumulative translation adjustment (CTA) goes to OCI / equity, not the P&L (ASC 830 / IAS 21)',
       'Multi-GAAP: parallel sets of books for local statutory + group reporting',
     ],
     keyJudgmentCalls: [

@@ -3,7 +3,7 @@
 window.STRATEGY_DATA = {
   "tldr": "**The bet, in one line:** Neoflo runs FinOps as a **done-for-you, AI + human managed service** — AP, AR, and close on a single AI-native engine, against one vendor master, one customer master, and one audit trail — for **US mid-market** finance teams. We are not software you operate; we **own the outcome, SLA-backed**. We land with **P2P + cash application** and expand across the cash cycle. Five claims behind the bet, each with proof and the \"why now\":\n\n**1. We sell an outcome, not a tool.** *Claim:* the wedge is owning the work — *including the exceptions* — not shipping features a team has to run. *Proof:* buyers reject AP-alone software (Hitachi walked when we were AP-only and they wanted cash app); the exception-heavy 20% is exactly what costs finance teams headcount, and a tool hands that part back to the customer. *Why now:* AI extraction is racing to parity by 2027 — \"who runs it and owns the result\" is the durable differentiator, not accuracy.\n\n**2. Land with P2P + cash application, then expand to full O2C and R2R.** *Claim:* P2P-only loses — it is the most contested, fastest-commoditizing segment, and buyers want the bundle; the minimum viable entry is invoice processing + cash application. *Proof:* Hitachi (AP-only → walked), Spectrum (rejected a $1.2–1.5M HighRadius quote precisely because they wanted AP + AR + deductions + cash app bundled), Anahita Arora framed the multi-process need explicitly. *Why now:* standalone OCR + workflow tools are squeezed from above (Brex/Ramp free interchange-bundled bill-pay) and below (commodity OCR).\n\n**3. The moat is the cross-workflow data layer + the exception flywheel — not the AI.** *Claim:* one vendor master, one customer master, one audit trail across AP + AR + close — the things every controller manages today across 3–5 disconnected systems — that single-workflow vendors cannot match without a rebuild; and because we *run* the work, **every human-resolved exception trains the AI, so each client's touchless % climbs over time** — a compounding advantage software-you-operate cannot copy. *Proof:* every \"did not buy\" (Hitachi, Spectrum, Anahita) framed the need as unified / multi-process, not \"better AI.\" *Why now:* AI capability is racing to parity by 2027; the unified-data + exception-flywheel compounding is what survives commoditization of the AI layer.\n\n**4. The US competitive ring is workflow-specific, and we compete on \"operation vs tool.\"** *Claim:* the players that actually show up are P2P (Stampli, Bill, Ramp, Vic.ai), O2C (HighRadius, Esker), and R2R (BlackLine, FloQast) — all software you run; Neoflo is the operation. We do not fight Ramp on cards or compete on a longer feature list. *Proof:* HighRadius prices out enterprise-mid ($1.2M+ → a Spectrum-style reject is a warm lead by definition); Stampli and Bill are AP-only / SMB-anchored; SAP VIM is the silent default in SAP shops (the \"vs do nothing\" deal). *Why now:* the managed-service frame sidesteps the \"will my team adopt the AI\" objection that stalls software demos.\n\n**5. Trust + warm distribution is the go-to-market lever.** *Claim:* a sub-2-year-old vendor asking to run a customer's entire AP needs a **trust ramp** (shadow-mode → parallel-run → cutover; SOC 2 + ISO; VPC option) and **warm entry** (CPA / advisor partners, founder network) — cold outbound is dead. *Proof:* every documented win came warm (Spectrum via Big-4 alumni, Boomerang via the Rehmann CPA channel); zero conversions came from cold outbound. *Why now:* warm channels plus a credible trust ramp are the only scalable path into US mid-market, where handing over the whole process is a bigger trust ask than buying a tool.\n\n**Beachhead, in one sentence:** $50–250M-revenue US mid-market companies, multi-entity, on NetSuite or SAP, where the Controller owns the close and an acute AP + cash-application pain exists today — landed via a warm CPA / advisor intro and de-risked with a shadow-mode pilot.\n\n**Secondary motion (not primary):** SEA mid-market remains a real but secondary, opportunistic motion — Peakflo is the credible incumbent there, and PSG / MyInvois / e-invoicing mandates are the SEA-specific levers. It is not where US GTM resources go.\n\n**Existential dependency, 12-month version:** convert Spectrum plus 2 more US mid-market accounts to live, SLA-backed references by Q4 2026. Until then, a thin reference book is a deal-killing risk in every new conversation.",
   "marketSizing": {
-    "intro": "Three things matter for sizing: how big the global category is, how fast it's growing, and where the dollars actually concentrate.",
+    "intro": "Three things matter for sizing: how big the global category is, how fast it's growing, and where the dollars actually concentrate. *Sources: the P2P (~$6.9B) and O2C (~$3.8B) figures track Mordor Intelligence (2026) closely; the R2R figure is an internal blend — published \"financial close software\" estimates vary widely ($1.5B–$8.8B) by scope, so treat ~$5.8B as a midpoint, not a single-sourced number.*",
     "rows": [
       {
         "process": "P2P / AP Automation",
@@ -28,7 +28,7 @@ window.STRATEGY_DATA = {
       }
     ],
     "headline": "**The headline:** P2P is the biggest market but also the most fragmented and most price-pressured. O2C is smaller but has more pricing power per customer (DSO impact → cash → CFO will pay). R2R is enterprise-priced — BlackLine charges $40K–$300K+ ARR for mid-market, which means there's room for a serious mid-market disruptor if you can match capability at 1/3 the price.",
-    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **US mid-market: $50M–$250M revenue, 10–50 finance staff, multi-entity, ERP-connected (NetSuite / SAP), currently running on Excel + email + ERP + bandaid SaaS** — and we run it for them as a managed service rather than handing them another tool. SEA mid-market is a secondary, opportunistic motion, not the primary target.\n\n**How much of the TAM is US mid-market?** A rough cut: the three categories total ~$16–17B globally today (P2P ~$6.9B + O2C ~$3.8B + R2R ~$5.8B). North America is ~37–40% of that (~$6–6.6B), and the mid-market band ($50–250M revenue) is roughly a third of the US spend once you strip out enterprise and SMB — so **US mid-market TAM across P2P+O2C+R2R is on the order of ~$2–2.5B today**, growing ~12% CAGR. *Treat this as a back-of-envelope estimate from analyst category sizing + NA-share splits — verify with a bottoms-up (US firms in band × ACV) before using it externally.*\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2024), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See \"The gap\" for the full grid with sources.\n\n**The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.\n\n**Southeast Asia is a secondary, opportunistic motion.** There the vendor count is even thinner — at most 2–3 per category, with only Peakflo spanning multiple workflows (and no full R2R) — so the right-to-win is high, but it is not where US GTM resources go."
+    "segmentNote": "We are not selling to **enterprises** (HighRadius / BlackLine territory) or **SMBs** (Bill.com / QuickBooks territory). We're selling to **US mid-market: $50M–$250M revenue, 10–50 finance staff, multi-entity, ERP-connected (NetSuite / SAP), currently running on Excel + email + ERP + bandaid SaaS** — and we run it for them as a managed service rather than handing them another tool. SEA mid-market is a secondary, opportunistic motion, not the primary target.\n\n**How much of the TAM is US mid-market?** A rough cut: the three categories total ~$16–17B globally today (P2P ~$6.9B + O2C ~$3.8B + R2R ~$5.8B). North America is ~37–40% of that (~$6–6.6B), and the mid-market band ($50–250M revenue) is roughly a third of the US spend once you strip out enterprise and SMB — so **US mid-market TAM across P2P+O2C+R2R is on the order of ~$2–2.5B today**, growing ~12% CAGR. *Treat this as a back-of-envelope estimate from analyst category sizing + NA-share splits — verify with a bottoms-up (US firms in band × ACV) before using it externally.*\n\n**USA mid-market is over-served — concretely, not as a slogan.** A US mid-market controller has **19–25 viable named vendors** spread across P2P / O2C / R2R, with **5–10 viable options per category**: P2P (Stampli, Tipalti, AvidXchange, Vic.ai, Coupa, Bill, Ottimate, Ramp / Brex Bill Pay), O2C (Versapay, HighRadius mid-market SKU, Billtrust, Esker, Quadient AR, Tesorio, Invoiced), R2R (FloQast, BlackLine mid-market SKU, Trintech Adra, Numeric, Vena, Workiva). Price compression is visible — Coupa was taken private (Thoma Bravo, 2023), AvidXchange was taken private (TPG / Corpay, 2025, $2.2B), Bill mid-market growth is decelerating. Buying decisions are crowded and CAC is rising. But note *what* the crowding is: **single-workflow tools a finance team still has to operate.** See \"The gap\" for the full grid with sources.\n\n**The opening is the empty cell, not the crowded ones.** Across all those US vendors, the **multi-process platform** column has **0–1 credible players** — and not one sells it as a *done-for-you managed outcome*. Every option above is software you run, in a single workflow. Our right-to-win is the intersection nobody occupies: **AP + AR + close on one engine, run as an SLA-backed managed service**, for US mid-market.\n\n**Southeast Asia is a secondary, opportunistic motion.** There the vendor count is even thinner — at most 2–3 per category, with only Peakflo spanning multiple workflows (and no full R2R) — so the right-to-win is high, but it is not where US GTM resources go."
   },
   "landscapes": {
     "p2p": {
@@ -43,7 +43,7 @@ window.STRATEGY_DATA = {
           "competitors": [
             {
               "name": "Tipalti",
-              "positioning": "Global mass payments, 196 countries, 120+ currencies, KPMG-validated tax compliance. 2,500+ customers (Roblox, GoDaddy, X). Last raise: $270M Series F at $8.3B (Dec 2021), reportedly down-round / layoffs in 2024.",
+              "positioning": "Global mass payments, 196 countries, 120+ currencies, KPMG-validated tax compliance. 4,000+ customers (Roblox, GoDaddy, Twitch). Last raise: $270M Series F at $8.3B (Dec 2021); secondary-market valuation marked down to ~$3.1B by 2024 (down-round / layoffs reported).",
               "pricing": "~$1.5K/mo base + $4–5K implementation + per-transaction fees. Real ARR for mid-market typically $40–80K.",
               "implementation": "6–18 months",
               "notes": "Heavy implementation, opinionated workflow, weakest area is mid-market UX speed. Strong wherever cross-border payment compliance is non-negotiable."
@@ -93,7 +93,7 @@ window.STRATEGY_DATA = {
             },
             {
               "name": "Bill.com (BILL)",
-              "positioning": "SMB → lower mid-market AP+AR. NASDAQ:BILL. 460K+ customers. QuickBooks/Xero/NetSuite/Sage Intacct native. Plays a network/Venmo-for-business angle with the BILL Network.",
+              "positioning": "SMB → lower mid-market AP+AR. NASDAQ:BILL. ~494K customers (FY2025). QuickBooks/Xero/NetSuite/Sage Intacct native. Plays a network/Venmo-for-business angle with the BILL Network.",
               "pricing": "Per-transaction + per-user; ~$45–200/user/mo. Most customers <$25K ARR.",
               "implementation": "4–8 weeks",
               "g2": "4.4",
@@ -101,7 +101,7 @@ window.STRATEGY_DATA = {
             },
             {
               "name": "Ramp Bill Pay",
-              "positioning": "AP bundled with Ramp's corporate cards + spend management. \"Agentic\" AI bill pay. $32B valuation. Aggressive go-to-market into mid-market via card displacement.",
+              "positioning": "AP bundled with Ramp's corporate cards + spend management. \"Agentic\" AI bill pay. $44B valuation (Series F, Jun 2026). Aggressive go-to-market into mid-market via card displacement.",
               "pricing": "Free tier; bundled with card interchange revenue",
               "implementation": "Days to weeks",
               "g2": "4.7",
@@ -125,7 +125,7 @@ window.STRATEGY_DATA = {
             },
             {
               "name": "Vic.ai",
-              "positioning": "AI-first AP autonomous agent. Direct attack on traditional OCR-based workflow tools. ICONIQ-led $50M+ raise (2023).",
+              "positioning": "AI-first AP autonomous agent. Direct attack on traditional OCR-based workflow tools. ICONIQ-led $50M Series B (2021) + $52M Series C (2022); ~$115M total raised.",
               "pricing": "Per-transaction; touch ratio (autonomous %) is the key SLA.",
               "implementation": "4–8 weeks",
               "notes": "**Architectural threat:** Vic.ai's thesis is that an AI agent should auto-post 80–95% of invoices with no human touch. Stampli, Bill, AvidXchange all still assume human-in-loop. If Vic.ai's autonomy claim holds, the workflow layer becomes thinner and the value migrates to whoever has the highest autonomy %."
@@ -161,7 +161,7 @@ window.STRATEGY_DATA = {
             },
             {
               "name": "Ramp",
-              "positioning": "$32B valuation. Cards + bill pay + travel + accounting. Aggressive AI rollout.",
+              "positioning": "Cards + bill pay + travel + accounting. Acquired by Capital One for $5.15B (announced Jan 2026, completed Apr 2026) — well below its ~$12.3B 2022 peak. Aggressive AI rollout.",
               "whyItMatters": "Attacks legacy AP from above (the card spend layer) and pulls bill pay along with it."
             },
             {
@@ -189,7 +189,7 @@ window.STRATEGY_DATA = {
           "competitors": [
             {
               "name": "Peakflo",
-              "positioning": "YC W22, Singapore HQ, founded 2021. AP + AR + cashflow + collections (voice AI in 12+ languages incl. Mandarin/Bahasa/Vietnamese). PSG-approved Pre-Approved Vendor (50% subsidy, S$30K cap). Customers include Lazada, Tonik (Philippines digital bank), Bukalapak, FairPrice. ISO 27001, PDPA, SOC 2. Marketplace commission reconciliation built natively.",
+              "positioning": "YC W22, Singapore HQ, founded 2020. AP + AR + cashflow + collections (voice AI in 12+ languages incl. Mandarin/Bahasa/Vietnamese). PSG-approved Pre-Approved Vendor (50% subsidy, S$30K cap). Customers include Lazada, Tonik (Philippines digital bank), Bukalapak, FairPrice. ISO 27001, PDPA, SOC 2. Marketplace commission reconciliation built natively.",
               "pricing": "Quote-based; PSG cap S$30K means net cost to Singapore SMB is ~S$15K. Real ARR for mid-market believed $25–60K.",
               "whereTheyWin": "PSG distribution moat in SG (we genuinely cannot match this without becoming PSG-approved — months of paperwork). Voice AI for collections is category-defining for SEA where phone collections are culturally normal. Marketplace seller commission reconciliation. Multi-currency native (SGD/MYR/IDR/THB/PHP/VND/USD/EUR). Localization for IRAS/LHDN tax filing.",
               "whereTheyAreWeak": "No R2R / close management — biggest scope gap. Workflow customization is narrower (their data model is invoice + collection-centric, less flexible for entity-scoped multi-process workflows). Brand and pricing tilt SME more than enterprise mid-market — Zalora-scale buyers question whether Peakflo can scale to multi-entity multi-jurisdiction. No flagship enterprise customer of Zalora's scale.",
@@ -501,7 +501,7 @@ window.STRATEGY_DATA = {
             },
             {
               "name": "Workiva",
-              "positioning": "SEC filing + SOX + close. 75% of Fortune 500",
+              "positioning": "SEC filing + SOX + close. 85%+ of Fortune 1,000",
               "pricing": "Enterprise-priced",
               "implementation": "4–8 months"
             }
@@ -521,7 +521,7 @@ window.STRATEGY_DATA = {
           "competitors": [
             {
               "name": "FloQast",
-              "positioning": "\"Built by accountants.\" 2,800+ customers. Excel-native workflow. Best mid-market G2 satisfaction.",
+              "positioning": "\"Built by accountants.\" 2,600+ customers. Excel-native workflow. Best mid-market G2 satisfaction.",
               "pricing": "$30–$80K ARR",
               "implementation": "4–8 weeks",
               "g2": "4.5"
@@ -1262,15 +1262,15 @@ window.INSIGHTS_DATA = {
       {
         "jurisdiction": "Malaysia — MyInvois (LHDN)",
         "mandate": "Mandatory B2B e-invoicing through the IRBM portal with PEPPOL interop",
-        "status": "Phase 1 (>RM100M) live since Aug 2024; Phase 2 (>RM25M) since Jan 2025; Phase 3 (>RM5M) since Jul 2025; Phase 4 since Jan 2026; remaining smaller taxpayers phased in **through 2031** (not 2026)",
-        "whoMustComply": "Every Malaysian-incorporated business sequentially by revenue band",
+        "status": "Phase 1 (>RM100M) live since Aug 2024; Phase 2 (>RM25M) since Jan 2025; Phase 3 (>RM5M) since Jul 2025; Phase 4 (up to RM5M) since Jan 2026 — the four-phase rollout is now complete. Businesses under RM1M turnover are permanently exempt (the planned fifth phase was cancelled, Dec 2025); the final RM1–5M band has a penalty-free transition to 31 Dec 2027",
+        "whoMustComply": "Malaysian businesses with >RM1M annual turnover, phased by revenue band (sub-RM1M permanently exempt, voluntary opt-in only)",
         "whatItForces": "Real-time invoice submission to LHDN, structured data (UBL 2.1), QR-coded receipts, validation latency <3s. Manual / Excel / paper invoicing becomes legally non-compliant.",
-        "ourPlay": "**P0 — the mandate is here now, not coming: Phases 1–4 are already live (Jul 2025 / Jan 2026), with smaller bands phasing through 2031.** Native MyInvois validation + submission inside our P2P module is a present-day forced-buy trigger for Malaysian mid-market. Position as: \"we keep you compliant from day 1, no separate e-invoicing tool needed.\""
+        "ourPlay": "**P0 — the mandate is live now, not coming: all four phases are in effect (final band Jan 2026).** Native MyInvois validation + submission inside our P2P module is a present-day forced-buy trigger for Malaysian mid-market in the RM1M+ bands. Position as: \"we keep you compliant from day 1, no separate e-invoicing tool needed.\""
       },
       {
         "jurisdiction": "Singapore — InvoiceNow (PEPPOL)",
         "mandate": "GST-registered businesses must transmit invoice data to IRAS via InvoiceNow",
-        "status": "Mandatory for newly incorporated GST-registered businesses from Nov 2025; expanded rollout 2026",
+        "status": "Soft launch May 2025; mandatory for newly-incorporated GST registrants from Nov 2025 and all new voluntary GST registrants from Apr 2026; existing GST businesses phased in from Apr 2028 (≤S$200k supplies) through Apr 2031 (>S$4M)",
         "whoMustComply": "All Singapore GST-registered entities sequentially",
         "whatItForces": "PEPPOL-formatted e-invoices via the IMDA InvoiceNow network. Buyer side must be able to receive structured PEPPOL invoices.",
         "ourPlay": "PEPPOL access point + InvoiceNow integration must be standard in our SG offering. Apply for PSG Pre-Approved status simultaneously — these solve as one bundle for SG buyers."
@@ -1286,15 +1286,15 @@ window.INSIGHTS_DATA = {
       {
         "jurisdiction": "Philippines — BIR EIS",
         "mandate": "Electronic invoicing through BIR Electronic Invoicing System",
-        "status": "Pilot 2022; phased mandatory rollout 2024–2026 for large taxpayers, expanding",
+        "status": "Pilot 2022, suspended 2023, resumed Feb 2025; Phase 1 mandatory by 31 Dec 2026 (per RR 26-2025) for large taxpayers, e-commerce, and exporters, expanding after",
         "whoMustComply": "Top 1,000 large taxpayers first; expanding to mid-market",
         "whatItForces": "Real-time BIR submission, JSON-format e-invoices, signed digital receipts.",
         "ourPlay": "P1 once Indonesia + Malaysia are shipped. Tonik (Peakflo customer) is in Philippines — they'll be feeling this pressure first."
       },
       {
-        "jurisdiction": "Vietnam — ISeBP",
+        "jurisdiction": "Vietnam — GDT e-invoicing (Decree 123/2020, amended by Decree 70/2025)",
         "mandate": "Mandatory electronic invoicing through GDT-certified providers",
-        "status": "Mandatory since Jul 2022",
+        "status": "Mandatory for all enterprises since Jul 2022; Decree 70/2025 (effective Jun 2025) adds mandatory POS / cash-register e-invoices for retail & hospitality above VND 1B revenue",
         "whoMustComply": "All Vietnamese enterprises",
         "whatItForces": "GDT-approved e-invoicing provider integration, signed e-invoices, 7-year retention.",
         "ourPlay": "Tactical priority. Probably best to partner with a GDT-certified Vietnamese provider rather than build native."
@@ -1302,13 +1302,13 @@ window.INSIGHTS_DATA = {
       {
         "jurisdiction": "Thailand — RD e-Tax Invoice",
         "mandate": "Voluntary e-Tax Invoice & e-Receipt; mandatory roadmap rolling",
-        "status": "Voluntary now; mandatory expansion expected 2026–2027",
+        "status": "Voluntary (e-Tax Invoice & e-Receipt), promoted via tax incentives; no B2B mandate date confirmed as of 2026",
         "whoMustComply": "Currently opt-in; will become mandatory by revenue band",
         "whatItForces": "Digital signature, RD format submission, integrated with VAT filing.",
         "ourPlay": "P2 — wait for mandate clarity before building."
       }
     ],
-    "headline": "**In the secondary SEA motion, three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois is rolling through bands to 2031; Indonesia runs on Coretax; Singapore's InvoiceNow is phasing in. Where we pursue SEA, the pitch becomes \"compliance is a free side effect of using us,\" which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it is not part of the primary US thesis. Peakflo and ClearTax are already in motion here."
+    "headline": "**In the secondary SEA motion, three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois four-phase rollout is complete (final band Jan 2026; sub-RM1M permanently exempt); Indonesia runs on Coretax; Singapore's InvoiceNow phases in through 2031. Where we pursue SEA, the pitch becomes \"compliance is a free side effect of using us,\" which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it is not part of the primary US thesis. Peakflo and ClearTax are already in motion here."
   },
   "defensibility": {
     "intro": "The v1 memo asserts \"platform thesis is the moat\" without analyzing what competitors would have to do to neutralize it. Layered defensibility analysis: what we have, how durable each layer is, and how to reinforce.",
@@ -1554,15 +1554,15 @@ window.COMPARISONS_DATA = {
         "category": "Direct overlap — SEA mid-market multi-product platform",
         "threatLevel": "Critical",
         "hq": "Singapore",
-        "founded": "2021 (YC W22)",
-        "funding": "Seed $4M+ disclosed; Series A reported but figure not public",
+        "founded": "2020 (YC W22)",
+        "funding": "Seed ~$4.6M (2022); no public Series A",
         "customers": "Lazada, Tonik (Philippines digital bank), Bukalapak, FairPrice, plus ~hundreds of SEA SMBs",
         "pricing": "Quote-based; PSG-net ~S$15K for SG SMB; mid-market believed $25–60K ARR",
         "implementation": "4–8 weeks",
         "whereTheyWin": [
           "PSG Pre-Approved Vendor distribution moat in Singapore (50% subsidy, S$30K cap) — structural ~50% pricing advantage we cannot match without our own PSG approval",
           "Voice AI for collections in 12+ languages (Mandarin, Bahasa, Vietnamese, Thai) — category-defining for SEA where phone collections are culturally normal",
-          "Launched **Peakflo 20X** (2026) — an agentic-AI orchestrator across back-office finance ops, deepening their automation story and resetting buyer expectations on AI autonomy",
+          "Launched **Peakflo 20X** (2026) — a self-improving AI agent orchestrator (desktop app) marketed for finance workflows, deepening their automation story and resetting buyer expectations on AI autonomy",
           "Marketplace seller commission reconciliation — productized for Lazada/Bukalapak-style customers",
           "4-year head start on SEA buyer trust, sales motion, integrations",
           "PDPA, ISO 27001, SOC 2 — security/compliance posture matched",
@@ -1632,7 +1632,7 @@ window.COMPARISONS_DATA = {
         "threatLevel": "High",
         "hq": "Mountain View, California",
         "founded": "2015",
-        "funding": "~$140M total raised; Series D 2023 at $720M valuation",
+        "funding": "~$148M total raised; Series D 2023 ($61M, led by Blackstone); valuation undisclosed",
         "customers": "1,500+",
         "pricing": "Quote-based, $30–100K ARR typical, implementation included",
         "implementation": "4–6 weeks (publicly committing to 30 days)",
@@ -1669,7 +1669,7 @@ window.COMPARISONS_DATA = {
         "threatLevel": "Medium",
         "hq": "Houston",
         "founded": "2006",
-        "funding": "$300M Series C 2022 at $3.1B valuation; persistent IPO rumors",
+        "funding": "$300M Series C 2021 at $3.1B valuation (~$485M total raised); persistent IPO rumors",
         "customers": "800+ enterprise (Fortune 1000-heavy)",
         "pricing": "Mid-market: $35K–100K+ ARR; enterprise: $200K–$1M+; six-figure implementation typical",
         "implementation": "3–9 months",
@@ -1705,8 +1705,8 @@ window.COMPARISONS_DATA = {
         "threatLevel": "Medium",
         "hq": "Los Angeles",
         "founded": "2013",
-        "funding": "Series E $100M 2022 at $1.6B valuation",
-        "customers": "2,800+",
+        "funding": "Series E $100M 2024 at $1.6B valuation",
+        "customers": "2,600+",
         "pricing": "$30–80K ARR typical",
         "implementation": "4–8 weeks",
         "whereTheyWin": [
@@ -1740,7 +1740,7 @@ window.COMPARISONS_DATA = {
         "threatLevel": "High",
         "hq": "New York / Norway origin",
         "founded": "2017",
-        "funding": "ICONIQ-led $50M+ raise (2023); ~$100M total raised",
+        "funding": "ICONIQ-led $50M Series B (2021) + $52M Series C (2022); ~$115M total raised",
         "customers": "Public roster includes US enterprises, growing fast",
         "pricing": "Per-transaction; touch ratio (% autonomous) is the key SLA",
         "implementation": "4–8 weeks",
@@ -1775,7 +1775,7 @@ window.COMPARISONS_DATA = {
         "threatLevel": "Medium",
         "hq": "San Francisco",
         "founded": "Brex 2017; Ramp 2019",
-        "funding": "Brex acquired by Capital One Jan 2026 for $5.15B; Ramp at $32B valuation",
+        "funding": "Brex acquired by Capital One for $5.15B (announced Jan 2026, completed Apr 2026); Ramp at $44B valuation (Series F, Jun 2026)",
         "customers": "Brex: OpenAI, DoorDash, Anthropic, 30K+ customers. Ramp: 25K+ customers.",
         "pricing": "Free or near-free; bundled with card interchange revenue",
         "implementation": "Days to weeks",
@@ -2336,7 +2336,7 @@ window.COMPARISONS_DATA = {
         },
         "floQast": {
           "score": "Strong",
-          "note": "2,800+ mid-market"
+          "note": "2,600+ mid-market"
         }
       }
     ],
@@ -6136,7 +6136,7 @@ window.STAGE_DEEP = {
     "regulatoryAndCompliance": [
       "Customs / export documentation for cross-border",
       "Industry-specific delivery records (cold chain for pharma, hazardous materials)",
-      "Revenue recognition: POD is the trigger for ASC-606 / IFRS-15 control transfer"
+      "Revenue recognition: POD evidences delivery, but the actual ASC-606 / IFRS-15 control-transfer trigger depends on shipping terms — for FOB-shipping-point goods control (and revenue) transfers at shipment, not at delivery; for FOB-destination it transfers on delivery (POD)"
     ],
     "keyJudgmentCalls": [
       "Allow POD-less billing for trusted customers (rare, risky)",
@@ -6648,7 +6648,7 @@ window.STAGE_DEEP = {
     ],
     "regulatoryAndCompliance": [
       "IFRS / US GAAP consolidation rules (control, significant influence, joint arrangements)",
-      "FX translation: closing rate (BS), average rate (P&L), historical rate (equity)",
+      "FX translation: closing rate (BS), average rate (P&L), historical rate (equity); the resulting cumulative translation adjustment (CTA) goes to OCI / equity, not the P&L (ASC 830 / IAS 21)",
       "Multi-GAAP: parallel sets of books for local statutory + group reporting"
     ],
     "keyJudgmentCalls": [
