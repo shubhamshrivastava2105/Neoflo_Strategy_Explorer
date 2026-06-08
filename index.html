@@ -732,15 +732,10 @@
       </details>
       <details class="nav-part">
         <summary class="nav-section">3 · The players</summary>
-        <a href="#landscape">Cohorts overview</a>
-        <a href="#workflow">Who competes, by workflow</a>
-        <a href="#vendor-coverage">Vendor coverage table</a>
-        <a href="#h2h">Head-to-head profiles</a>
+        <a href="#players-dashboard">Competitor Explorer</a>
         <a href="#human-ai-cohort">Human + AI hybrid cohort</a>
-        <a href="#matrix">Feature matrix</a>
         <a href="#pipemap">Pipeline competitive map</a>
         <a href="#moat-comparison">Moat &amp; vision</a>
-        <a href="#pricing">Competitor pricing</a>
       </details>
       <details class="nav-part">
         <summary class="nav-section">4 · Neoflo</summary>
@@ -793,7 +788,7 @@
       <p class="lede" id="hero-lede">New to the space? Read top to bottom — it builds from the basics (what FinOps is, how the P2P / O2C / R2R workflows work) to the players, to what Neoflo does, to the strategy. Already fluent? Jump to any section from the sidebar.</p>
       <div class="meta">
         <span>For newcomers &amp; the FinOps-fluent</span>
-        <span>Market: US mid-market</span>
+        <span>Market: US + SEA mid-market</span>
         <span>P2P · O2C · R2R</span>
       </div>
     </header>
@@ -1076,14 +1071,22 @@
     </section>
 
 
-    <section id="landscape">
+    <section id="players-dashboard" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">The players · Competitor Explorer</div>
+      <h2 class="section-title">Competitor Explorer.</h2>
+      <p class="lede">Every competitor in one place. Filter by workflow, threat level, or search; switch between <strong>Cards</strong>, the <strong>Coverage</strong> matrix, and the <strong>Capability</strong> matrix. Click any card for the full Neoflo-vs-them head-to-head.</p>
+      <div id="ce-controls"></div>
+      <div id="ce-body"></div>
+    </section>
+
+    <section id="landscape" hidden>
       <div class="eyebrow">Strategy</div>
       <h2 class="section-title">Four cohorts per category.</h2>
       <div class="tabs" id="landscape-tabs"></div>
       <div id="landscape-panels"></div>
     </section>
 
-    <section id="workflow">
+    <section id="workflow" hidden>
       <div class="eyebrow">Competitive deep-dive</div>
       <h2 class="section-title">Workflow-by-workflow map.</h2>
       <div id="workflow-intro"></div>
@@ -1096,7 +1099,7 @@
       <div id="workflow-panels"></div>
     </section>
 
-    <section id="vendor-coverage">
+    <section id="vendor-coverage" hidden>
       <div class="eyebrow">Competitive deep-dive</div>
       <h2 class="section-title">Vendor coverage — who plays where.</h2>
       <p class="lede">For each major vendor: which P2P / O2C / R2R workflows they cover and how they monetize. The fastest read of the competitive shape. The numbers in each cell are the workflow stages below — expand the legend to decode them.</p>
@@ -1112,7 +1115,7 @@
       <div class="card" style="margin-top: var(--scale-300);" id="workflow-summary"></div>
     </section>
 
-    <section id="h2h">
+    <section id="h2h" hidden>
       <div class="eyebrow">Competitive deep-dive</div>
       <h2 class="section-title">Head-to-head profiles.</h2>
       <div id="h2h-intro"></div>
@@ -1197,7 +1200,7 @@
       </div>
     </section>
 
-    <section id="matrix">
+    <section id="matrix" hidden>
       <div class="eyebrow">Competitive deep-dive</div>
       <h2 class="section-title">Feature matrix — capability vs vendor.</h2>
       <div id="matrix-intro"></div>
@@ -1271,7 +1274,7 @@
       </div>
     </section>
 
-    <section id="pricing">
+    <section id="pricing" hidden>
       <div class="eyebrow">Deep insights</div>
       <h2 class="section-title">What competitors charge. What we should.</h2>
       <div id="pricing-intro"></div>
@@ -3044,6 +3047,129 @@ document.getElementById('menuToggle').addEventListener('click', () => {
 document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => {
   document.getElementById('sidebar').classList.remove('open');
 }));
+
+// ───────── Competitor Explorer (consolidated players dashboard) ─────────
+(function () {
+  try {
+    const cmp = DATA.comparisons;
+    const controls = document.getElementById('ce-controls');
+    const body = document.getElementById('ce-body');
+    if (!cmp || !controls || !body) return;
+
+    const cov = cmp.workflowMap.vendorCoverage || [];
+    const profiles = cmp.headToHead.profiles || [];
+    const norm = (s) => (s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const profByName = {};
+    profiles.forEach((p) => { profByName[norm(p.vendor)] = p; });
+    const matchProfile = (name) => {
+      const n = norm(name);
+      return profByName[n] || profiles.find((p) => { const pn = norm(p.vendor); return pn && (pn.includes(n) || n.includes(pn)); });
+    };
+    const has = (v) => v && String(v).toLowerCase() !== 'none';
+
+    const list = cov.filter((v) => !/^neoflo/i.test(v.vendor)).map((v) => {
+      const prof = matchProfile(v.vendor);
+      return {
+        name: v.vendor,
+        category: (prof && prof.category) || v.category,
+        threat: (prof && prof.threatLevel) || 'Reference',
+        p2p: has(v.p2pCoverage), o2c: has(v.o2cCoverage), r2r: has(v.r2rCoverage),
+        coverage: v, profile: prof,
+      };
+    });
+    const torder = { Critical: 0, High: 1, Medium: 2, Low: 3, Reference: 4 };
+    list.sort((a, b) => (torder[a.threat] ?? 9) - (torder[b.threat] ?? 9) || a.name.localeCompare(b.name));
+
+    const state = { q: '', wf: new Set(), threat: new Set(), view: 'cards', open: null };
+    const tbadge = (t) => { const m = { Critical: 'badge-error', High: 'badge-error', Medium: 'badge-warning', Low: 'badge-info', Reference: 'badge-neutral' }; return `<span class="badge ${m[t] || 'badge-neutral'}">${t}</span>`; };
+    const wftag = (on, label) => `<span class="badge ${on ? 'badge-success' : 'badge-neutral'}" style="opacity:${on ? 1 : 0.35}">${label}</span>`;
+    const chip = (label, active) => `<button class="ce-chip" data-v="${label}" style="cursor:pointer;padding:5px 10px;border-radius:999px;border:1px solid var(--border-default-default);font:inherit;font-size:12px;background:${active ? 'var(--surface-primary-default)' : 'transparent'};color:${active ? '#fff' : 'inherit'}">${label}</button>`;
+    const toggle = (set, v) => { set.has(v) ? set.delete(v) : set.add(v); };
+
+    controls.innerHTML = `
+      <div class="card" style="position:sticky;top:0;z-index:20;margin-bottom:var(--scale-300);">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--scale-200);align-items:center;">
+          <input id="ce-q" type="search" placeholder="Search competitors…" style="flex:1;min-width:180px;padding:8px 12px;border:1px solid var(--border-default-default);border-radius:8px;font:inherit;">
+          <div id="ce-wf" style="display:flex;gap:6px;"></div>
+          <div id="ce-threat" style="display:flex;gap:6px;"></div>
+          <div id="ce-view" style="display:flex;gap:6px;margin-left:auto;"></div>
+        </div>
+        <div id="ce-count" style="font-size:12px;color:var(--text-default-caption);margin-top:var(--scale-150);"></div>
+      </div>`;
+
+    function renderControls() {
+      document.getElementById('ce-wf').innerHTML = ['P2P', 'O2C', 'R2R'].map((w) => chip(w, state.wf.has(w))).join('');
+      document.getElementById('ce-threat').innerHTML = ['Critical', 'High', 'Medium', 'Low'].map((t) => chip(t, state.threat.has(t))).join('');
+      document.getElementById('ce-view').innerHTML = ['Cards', 'Coverage', 'Matrix'].map((v) => chip(v, state.view === v.toLowerCase())).join('');
+      document.querySelectorAll('#ce-wf .ce-chip').forEach((b) => b.onclick = () => { toggle(state.wf, b.dataset.v); renderControls(); renderBody(); });
+      document.querySelectorAll('#ce-threat .ce-chip').forEach((b) => b.onclick = () => { toggle(state.threat, b.dataset.v); renderControls(); renderBody(); });
+      document.querySelectorAll('#ce-view .ce-chip').forEach((b) => b.onclick = () => { state.view = b.dataset.v.toLowerCase(); renderControls(); renderBody(); });
+    }
+    document.getElementById('ce-q').addEventListener('input', (e) => { state.q = e.target.value.toLowerCase(); renderBody(); });
+
+    function filtered() {
+      return list.filter((c) => {
+        if (state.q && !(c.name.toLowerCase().includes(state.q) || (c.category || '').toLowerCase().includes(state.q))) return false;
+        if (state.wf.size) { for (const w of state.wf) { if (w === 'P2P' && !c.p2p) return false; if (w === 'O2C' && !c.o2c) return false; if (w === 'R2R' && !c.r2r) return false; } }
+        if (state.threat.size && !state.threat.has(c.threat)) return false;
+        return true;
+      });
+    }
+    function profileHtml(p) {
+      if (!p) return `<p style="font-size:13px;color:var(--text-default-caption);">No full head-to-head profile yet — workflow coverage is shown above.</p>`;
+      const ul = (a) => `<ul style="font-size:13px;line-height:1.6;margin:4px 0;">${(a || []).map((x) => `<li>${mdInline(x)}</li>`).join('')}</ul>`;
+      const meta = [['HQ', p.hq], ['Founded', p.founded], ['Funding', p.funding], ['Customers', p.customers], ['Pricing', p.pricing], ['Implementation', p.implementation]].filter((x) => x[1]).map((x) => `<div><strong style="font-size:11px;text-transform:uppercase;color:var(--text-default-caption)">${x[0]}</strong><div style="font-size:13px;">${mdInline(x[1])}</div></div>`).join('');
+      return `
+        <div class="grid grid-3" style="gap:var(--scale-200);margin:var(--scale-200) 0;">${meta}</div>
+        <div class="grid grid-2" style="gap:var(--scale-300);">
+          <div><h5 style="margin:0;">Where they win</h5>${ul(p.whereTheyWin)}</div>
+          <div><h5 style="margin:0;">Where they lose</h5>${ul(p.whereTheyLose)}</div>
+        </div>
+        <p style="font-size:13.5px;"><strong>How we beat them:</strong> ${mdInline(p.howWeBeatThem || '')}</p>
+        <p style="font-size:13.5px;"><strong>How they beat us:</strong> ${mdInline(p.howTheyBeatUs || '')}</p>
+        <p style="font-size:13.5px;"><strong>Typical deal frame:</strong> ${mdInline(p.typicalDealFrame || '')}</p>
+        <h5 style="margin:var(--scale-200) 0 0;">Buyer decision criteria</h5>${ul(p.buyerDecisionCriteria)}
+        <p style="font-size:13.5px;"><strong>Our counter-play:</strong> ${mdInline(p.ourCounterPlay || '')}</p>`;
+    }
+    function cardHtml(c) {
+      const open = state.open === c.name;
+      const wf = `${wftag(c.p2p, 'P2P')} ${wftag(c.o2c, 'O2C')} ${wftag(c.r2r, 'R2R')}`;
+      return `<div class="ce-card card" data-n="${escapeHtml(c.name)}" style="grid-column:${open ? '1 / -1' : 'auto'};">
+        <div class="ce-card-head" style="cursor:pointer;">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:start;"><strong>${escapeHtml(c.name)}</strong>${tbadge(c.threat)}</div>
+          <div style="font-size:12px;color:var(--text-default-caption);margin:4px 0;">${escapeHtml(c.category || '')}</div>
+          <div style="margin-top:4px;">${wf}</div>
+          ${c.profile ? '<div style="font-size:11px;color:var(--text-default-caption);margin-top:6px;">' + (open ? '▾ hide head-to-head' : '▸ click for head-to-head') + '</div>' : ''}
+        </div>
+        ${open ? `<div style="margin-top:var(--scale-200);border-top:1px solid var(--border-default-default);padding-top:var(--scale-200);">${profileHtml(c.profile)}</div>` : ''}
+      </div>`;
+    }
+    function coverageTable(f) {
+      const rows = f.map((c) => `<tr><td><strong>${escapeHtml(c.name)}</strong></td><td>${escapeHtml(c.category || '')}</td><td>${mdInline(c.coverage.p2pCoverage)}</td><td>${mdInline(c.coverage.o2cCoverage)}</td><td>${mdInline(c.coverage.r2rCoverage)}</td><td>${mdInline(c.coverage.primaryMonetization)}</td></tr>`).join('');
+      return `<div style="overflow-x:auto;"><table style="font-size:12px;min-width:900px;"><thead><tr><th>Vendor</th><th>Category</th><th>P2P</th><th>O2C</th><th>R2R</th><th>Monetization</th></tr></thead><tbody>${rows}</tbody></table></div>
+        <details style="margin-top:var(--scale-200);"><summary style="cursor:pointer;font-size:13px;color:var(--text-default-caption)">Stage legend — what the numbers mean</summary><div class="grid grid-3" style="font-size:12px;margin-top:8px;line-height:1.6;"><div class="card"><strong>📦 P2P</strong><br>1 Vendor onboarding · 2 Req/PO · 3 GRN · 4 Invoice · 5 3-way match · 6 Approval · 7 Payment · 8 Vendor portal · 9 Spend analytics · 10 T&amp;E</div><div class="card"><strong>💰 O2C</strong><br>1 Onboarding/credit · 2 Order mgmt · 3 Billing/e-inv · 4 Validation · 5 Collections · 6 Voice AI · 7 Cash app · 8 Deductions · 9 Forecasting · 10 Portal</div><div class="card"><strong>📊 R2R</strong><br>1 Cutoff · 2 JE · 3 Recs · 4 Flux · 5 Consolidation · 6 Statutory · 7 Reporting · 8 Intercompany</div></div></details>`;
+    }
+    function matrixTable() {
+      const fm = cmp.featureMatrix; if (!fm) return '';
+      const sb = (s) => { const m = { Strong: 'badge-success', Parity: 'badge-info', Gap: 'badge-error', Roadmap: 'badge-warning', 'N/A': 'badge-neutral' }; return `<span class="badge ${m[s] || 'badge-neutral'}" style="font-size:10px;">${s}</span>`; };
+      const cols = ['neoflo', 'peakflo', 'stampli', 'sapVim', 'highRadius', 'floQast'];
+      const head = ['Capability', 'Neoflo', 'Peakflo', 'Stampli', 'SAP VIM', 'HighRadius', 'FloQast'];
+      const rows = fm.rows.map((r) => `<tr><td><strong>${r.capability}</strong><div style="font-size:10px;color:var(--text-default-caption);text-transform:uppercase">${r.category}</div></td>${cols.map((c) => `<td>${sb(r[c].score)}<div style="font-size:11px;color:var(--text-default-caption);margin-top:4px;">${mdInline(r[c].note)}</div></td>`).join('')}</tr>`).join('');
+      const legend = (fm.legend || []).map((l) => `${sb(l.score)} ${l.meaning}`).join(' · ');
+      return `<p style="font-size:13px;color:var(--text-default-caption);margin-bottom:var(--scale-200)">${legend}</p><div style="overflow-x:auto;"><table style="font-size:12px;min-width:1100px;"><thead><tr>${head.map((h) => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div><div class="card" style="margin-top:var(--scale-300)"><h4>Summary</h4>${md(fm.summary)}</div>`;
+    }
+    function renderBody() {
+      const f = filtered();
+      document.getElementById('ce-count').textContent = `${f.length} competitor${f.length === 1 ? '' : 's'} shown` + ((state.wf.size || state.threat.size || state.q) ? ' (filtered)' : '');
+      if (state.view === 'coverage') { body.innerHTML = coverageTable(f); return; }
+      if (state.view === 'matrix') { body.innerHTML = matrixTable(); return; }
+      body.innerHTML = `<div class="grid grid-3" style="gap:var(--scale-300);">${f.map(cardHtml).join('')}</div>`;
+      body.querySelectorAll('.ce-card').forEach((el) => { el.querySelector('.ce-card-head').onclick = () => { const n = el.dataset.n; state.open = state.open === n ? null : n; renderBody(); }; });
+    }
+    renderControls();
+    renderBody();
+  } catch (e) { console.error('Competitor Explorer failed:', e); }
+})();
 </script>
 
 </body>
