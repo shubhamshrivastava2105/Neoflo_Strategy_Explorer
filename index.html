@@ -3165,9 +3165,15 @@ document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () 
       </div>`;
     }
     function coverageTable(f) {
-      const rows = f.map((c) => `<tr><td><strong>${escapeHtml(c.name)}</strong></td><td>${escapeHtml(c.category || '')}</td><td>${mdInline(c.coverage.p2pCoverage)}</td><td>${mdInline(c.coverage.o2cCoverage)}</td><td>${mdInline(c.coverage.r2rCoverage)}</td><td>${mdInline(c.coverage.primaryMonetization)}</td></tr>`).join('');
-      return `<div style="overflow-x:auto;"><table style="font-size:12px;min-width:900px;"><thead><tr><th>Vendor</th><th>Category</th><th>P2P</th><th>O2C</th><th>R2R</th><th>Monetization</th></tr></thead><tbody>${rows}</tbody></table></div>
-        <details style="margin-top:var(--scale-200);"><summary style="cursor:pointer;font-size:13px;color:var(--text-default-caption)">Stage legend — what the numbers mean</summary><div class="grid grid-3" style="font-size:12px;margin-top:8px;line-height:1.6;"><div class="card"><strong>📦 P2P</strong><br>1 Vendor onboarding · 2 Req/PO · 3 GRN · 4 Invoice · 5 3-way match · 6 Approval · 7 Payment · 8 Vendor portal · 9 Spend analytics · 10 T&amp;E</div><div class="card"><strong>💰 O2C</strong><br>1 Onboarding/credit · 2 Order mgmt · 3 Billing/e-inv · 4 Validation · 5 Collections · 6 Voice AI · 7 Cash app · 8 Deductions · 9 Forecasting · 10 Portal</div><div class="card"><strong>📊 R2R</strong><br>1 Cutoff · 2 JE · 3 Recs · 4 Flux · 5 Consolidation · 6 Statutory · 7 Reporting · 8 Intercompany</div></div></details>`;
+      const P2P = { 1: 'Vendor onboarding', 2: 'Requisition/PO', 3: 'Goods receipt', 4: 'Invoice', 5: '3-way match', 6: 'Approval', 7: 'Payment', 8: 'Vendor portal', 9: 'Spend analytics', 10: 'T&E' };
+      const O2C = { 1: 'Onboarding/credit', 2: 'Order mgmt', 3: 'Billing/e-invoicing', 4: 'Validation', 5: 'Collections', 6: 'Voice AI', 7: 'Cash application', 8: 'Deductions', 9: 'Forecasting', 10: 'Portal' };
+      const R2R = { 1: 'Cutoff', 2: 'Journal entries', 3: 'Reconciliations', 4: 'Flux', 5: 'Consolidation', 6: 'Statutory', 7: 'Reporting', 8: 'Intercompany' };
+      const decode = (str, map) => {
+        if (!str || String(str).toLowerCase() === 'none') return '<span style="color:var(--text-default-caption)">—</span>';
+        return mdInline(String(str).replace(/\b(\d{1,2})\b/g, (m, n) => map[n] || n));
+      };
+      const rows = f.map((c) => `<tr><td><strong>${escapeHtml(c.name)}</strong></td><td>${escapeHtml(c.category || '')}</td><td>${decode(c.coverage.p2pCoverage, P2P)}</td><td>${decode(c.coverage.o2cCoverage, O2C)}</td><td>${decode(c.coverage.r2rCoverage, R2R)}</td><td>${mdInline(c.coverage.primaryMonetization)}</td></tr>`).join('');
+      return `<p style="font-size:12px;color:var(--text-default-caption);margin-bottom:var(--scale-200);">Cells list the workflow <strong>stages</strong> each vendor covers (named, in order). "—" = not covered.</p><div style="overflow-x:auto;"><table style="font-size:12px;min-width:1000px;"><thead><tr><th>Vendor</th><th>Category</th><th>P2P stages</th><th>O2C stages</th><th>R2R stages</th><th>Monetization</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     }
     function matrixTable() {
       const fm = cmp.featureMatrix; if (!fm) return '';
