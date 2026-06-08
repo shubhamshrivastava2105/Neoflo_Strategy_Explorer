@@ -1182,7 +1182,7 @@ window.CUSTOMER_DATA = {
 
 window.INSIGHTS_DATA = {
   "pricing": {
-    "intro": "Pricing is the most under-specified part of the v1 memo. A \"platform thesis\" without a price ladder is unfalsifiable. This section benchmarks what each cohort actually charges, and proposes a defensible Neoflo price ladder for SEA mid-market.",
+    "intro": "Pricing is the most under-specified part of the v1 memo. A \"platform thesis\" without a price ladder is unfalsifiable. This section benchmarks what each cohort actually charges, and proposes a defensible Neoflo price ladder for **US mid-market** — priced as a **managed service** (you pay for the outcome), with competitor ARR as the benchmark.",
     "benchmarks": [
       {
         "vendor": "Stampli",
@@ -1250,10 +1250,10 @@ window.INSIGHTS_DATA = {
       }
     ],
     "proposedNeoflo": {
-      "wedge": "$25–45K ARR for P2P invoice processing (5–10 users, sub-50K invoices/yr) — undercuts Stampli, matches Peakflo gross.",
-      "platform": "$60–120K ARR for P2P + O2C bundled (10–25 users, multi-entity, multi-currency) — sits below HighRadius+Stampli combined cost, justifies the platform pitch.",
-      "perTransactionFloor": "Avoid per-transaction pricing for the wedge; introduce only at scale (>250K invoices/yr) to protect unit economics. Never publish a per-invoice rate.",
-      "logic": "Three constraints: (1) Stampli ($30–100K AP-only) sets the upper bound for AP-only positioning; we have to be at-or-below for AP-only deals. (2) Peakflo PSG-net (~S$15K) sets the lower bound in Singapore; we cannot be more than ~2.5x without PSG approval. (3) HighRadius reject-quote ($1.2M+) sets the platform ceiling — anything that prices like a HighRadius-replacement loses the deal Spectrum just gave us. The platform price has to feel like a \"third tool replaced for free\" — buyers expect P2P + O2C + close to be priced like 1.5x the P2P, not 3x."
+      "wedge": "$25–45K/yr for managed P2P (invoice processing + cash application; 5–10 users, sub-50K invoices/yr) — priced on the outcome, not seats; undercuts Stampli's AP-only software.",
+      "platform": "$60–120K/yr for the managed P2P + O2C operation (10–25 users, multi-entity, multi-currency) — below HighRadius+Stampli combined, and run for you rather than handed over.",
+      "perTransactionFloor": "Price on outcomes (per resolved exception, % DSO reduction, close-days saved) and tiered volume; avoid a published per-invoice sticker that invites a commodity-OCR comparison. Introduce explicit per-transaction tiers only at scale (>250K invoices/yr) to protect unit economics.",
+      "logic": "Three constraints: (1) Stampli ($30–100K AP-only **software**) sets the upper bound for AP-only positioning — but we sell a service, not a cheaper tool. (2) HighRadius reject-quote ($1.2M+) sets the platform ceiling — don't price like a HighRadius replacement. (3) Because we **run** the work, the value frame is \"a finance hire or two replaced, outcome-guaranteed,\" not \"a cheaper license.\" (In the secondary SEA motion, Peakflo PSG-net ~S$15K is the local floor.)"
     }
   },
   "regulatory": {
@@ -1317,13 +1317,13 @@ window.INSIGHTS_DATA = {
         "layer": "Workflow engine generality (P2P + O2C + R2R on shared primitives)",
         "description": "Same engine runs invoice processing, billing, collections, JE workflow, reconciliations. Reduces internal cost of new modules. Surfaces to customer as one vendor master, one customer master, one audit trail across all finance ops.",
         "durability": "Medium",
-        "howToReinforce": "A well-funded competitor with a workflow engine (Peakflo, FloQast, even Stampli with $140M raised) can replicate the architecture in 18–24 months. The moat isn't the engine itself — it's being **first to ship 3 modules on it in SEA**. Reinforce by accelerating O2C ship date and R2R MVP scope. Lose this if we slip the platform proof past Q2 2027."
+        "howToReinforce": "A well-funded competitor with a workflow engine (FloQast, even Stampli) can replicate the *architecture* in 18–24 months. The moat isn't the engine — it's being **first to run all three (P2P + O2C + R2R) as a single managed outcome for US mid-market**, plus the **exception flywheel** that compounds as we operate it (every human-resolved exception trains the AI, so each client's touchless % climbs). Reinforce by accelerating O2C + R2R and instrumenting the flywheel. Lose this if we slip the platform proof past Q2 2027."
       },
       {
         "layer": "Localized regulatory compliance (MyInvois, InvoiceNow, e-Faktur)",
         "description": "Native integration with each ASEAN jurisdiction's e-invoicing regime — built once per country, mandatory for compliance, becomes table stakes for that geography.",
         "durability": "High",
-        "howToReinforce": "**The strongest defensible layer we can build right now.** Each jurisdiction is months of work; nobody outside SEA will bother. Peakflo has SG. We need to leapfrog on MY and ID — both are larger by enterprise count than SG. Reinforce by being the first non-Peakflo platform with full MY + SG + ID compliance."
+        "howToReinforce": "Relevant to the **secondary SEA motion**, not the primary US market (the US has no equivalent national e-invoicing mandate). In SEA it is a genuinely durable layer — each jurisdiction is months of work nobody outside SEA bothers with — so pursue MY/SG/ID compliance only if we commit to SEA. It is **not** a US moat."
       },
       {
         "layer": "Multi-entity / multi-currency / intercompany",
@@ -1356,7 +1356,7 @@ window.INSIGHTS_DATA = {
         "howToReinforce": "This becomes a moat only if we lock in a small number of mid-market CPAs (5–10) with revenue-share agreements that are exclusive in geography or vertical. Right now it's a trickle. Either invest in the partnership motion deliberately or treat it as opportunistic and don't over-claim."
       }
     ],
-    "summary": "**The three durable layers** we should compound on are: (1) **regulatory localization** (MyInvois/InvoiceNow/e-Faktur — competitors won't bother for SEA-only); (2) **multi-process platform proof in SEA** with 3+ live modules and 5+ flagship references by Q2 2027; (3) **multi-entity/intercompany handling** which Stampli/Peakflo wave at but don't solve. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating \"workflow engine generality\" as the moat. It isn't — it's a precondition. The moat is what we've done with it that nobody else has.**"
+    "summary": "**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/e-Faktur) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating \"workflow engine generality\" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**"
   },
   "buyerJobMap": {
     "intro": "The v1 memo describes processes (P2P/O2C/R2R) but not the buying job itself — what the buyer is actually doing when they evaluate us, what they're asking, and what wins each step. Mapping this from the customer evidence we have.",
@@ -1483,15 +1483,15 @@ window.INSIGHTS_DATA = {
         "evidence": "Apparel Group (Dubai HQ) is in pipeline. FATOORAH is structurally similar to MyInvois — same e-invoicing mandate dynamic. Worth tracking for 2027–2028."
       }
     ],
-    "sequencing": "**For the next 12 months, focus is entirely on Plays 1 + 2 (SEA enterprise + SEA scale-up) and Play 5 (India-HQ multinationals).** Play 3 (US CPA) is opportunistic — don't let any inbound become a roadmap-defining customer. Play 4 (India direct) stays disabled. Play 6 (GCC) gets logged for later. **The single most important GTM action this quarter is unlocking Play 2: PSG Pre-Approved Vendor application + 2 accounting firm referral partnerships in MY/ID.**"
+    "sequencing": "**For the next 12 months, focus is on US mid-market via the warm CPA / advisor channel** — land with P2P + cash application, run as a managed service, expand across the cash cycle. SEA (the former Plays 1 + 2) and India-HQ multinationals (Play 5) become **secondary, opportunistic** — take warm inbound, don't let it become roadmap-defining. Play 4 (India direct) stays disabled; Play 6 (GCC) logged for later. **The single most important GTM action this quarter is standing up the US warm channel: 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot offer.**"
   },
   "ninetyDayActions": [
     {
       "number": 1,
-      "action": "Submit PSG Pre-Approved Vendor application for Singapore",
-      "owner": "Founders + Eng lead (compliance pack)",
-      "why": "Single biggest distribution gap vs Peakflo. Without it, every SG SMB deal under S$2M revenue is structurally biased to Peakflo at ~S$15K net price.",
-      "successMetric": "Application submitted within 30 days; pre-approval status by month 6."
+      "action": "Stand up the warm US channel: 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot offer",
+      "owner": "Founders + GTM lead",
+      "why": "US mid-market is the primary market and every documented win came warm (cold outbound is dead). The managed-service trust ask needs a shadow → parallel-run → cutover pilot to de-risk. This is the volume lever. (PSG Pre-Approved Vendor status is the equivalent lever in the secondary SEA motion — pursue only if we commit to SEA.)",
+      "successMetric": "2–3 signed referral partners and a documented shadow-mode pilot offer within 60 days."
     },
     {
       "number": 2,
@@ -6988,7 +6988,7 @@ window.PERSONAS_DATA = {
   "geographyDecisions": [
     {
       "geography": "Southeast Asia mid-market (Singapore, Indonesia, Malaysia, Vietnam, Thailand, Philippines)",
-      "decision": "TARGET — primary",
+      "decision": "TARGET — secondary",
       "marketSize": "Smaller in absolute dollars than US ($500M–$1.5B addressable for our segment), but right-to-win is dramatically higher.",
       "buyerProfile": "CFO / Controller at $50M–$500M revenue companies, multi-entity (SG HQ + ID/MY/VN subsidiaries), multi-currency, ERP-connected (NetSuite, SAP S/4, Oracle Fusion), currently running on Excel + email + ERP + bandaid SaaS. **Stakeholder pattern by sub-segment:** at single-HQ mid-market the Controller / VP Finance is the primary buyer with the Accounting Manager as day-1 user. At multi-entity SEA conglomerates the **Shared Services / GBS Director** often replaces the entity Controller as primary buyer. For e-invoicing-mandate-driven evaluations (MyInvois / InvoiceNow / e-Faktur) the **Tax Director** comes in as a co-buyer in the first conversation, not late.",
       "whyOrWhyNot": [
@@ -7005,7 +7005,7 @@ window.PERSONAS_DATA = {
         "Apparel Group active",
         "4 of 4 SAP-shop conversations (Coca-Cola, Spectrum, Welspun, Hitachi) had SEA / cross-border ops in scope"
       ],
-      "resourceCommitment": "**80%+ of GTM resources for next 12 months.** Founder-led + 2–3 SEA-based GTM hires. PSG approval as a 90-day priority. Local accounting-firm partner program (BDO, RSM, Crowe in MY/ID)."
+      "resourceCommitment": "**Secondary, opportunistic (~15%).** Take warm SEA inbound; don't build a dedicated SEA motion. PSG approval and a local accounting-firm partner program (BDO, RSM, Crowe in MY/ID) only if we deliberately commit to SEA."
     },
     {
       "geography": "India-headquartered multinationals with SEA operations",
@@ -7026,8 +7026,8 @@ window.PERSONAS_DATA = {
       "resourceCommitment": "Capacity from existing founder network + the SEA-based GTM team. No new investment required."
     },
     {
-      "geography": "US enterprise via SAP-shop CPA channel (warm only)",
-      "decision": "TARGET — secondary",
+      "geography": "US mid-market (NetSuite / SAP shops, via warm CPA / advisor channel)",
+      "decision": "TARGET — primary",
       "marketSize": "~500–1500 SAP-shop mid-market enterprises that have rejected HighRadius/Tipalti enterprise quotes; ACV $80–300K",
       "buyerProfile": "Mid-to-upper mid-market US enterprise ($500M–$2B revenue), SAP shop, multi-entity, has evaluated HighRadius/Coupa/Tipalti and rejected on price. Spectrum is canonical. **Stakeholder additions vs SEA primary:** at $1B+ public or pre-IPO accounts, the **Chief Accounting Officer (CAO)** is the controls-and-audit gate that must sign off on the SOX-evidence pack and the auditor relationship before contract; deals close only after CAO approval, regardless of CFO enthusiasm. The Treasurer becomes a co-stakeholder when the deal includes payment-file orchestration or AR cash-app driving DSO.",
       "whyOrWhyNot": [
@@ -7042,7 +7042,7 @@ window.PERSONAS_DATA = {
         "Rehmann CPA opening",
         "Boomerang Catapult relationship"
       ],
-      "resourceCommitment": "**~15% of GTM resources.** Opportunistic — accept warm-channel leads, don't build US sales motion. CPA partner program is a 6-month learning agenda."
+      "resourceCommitment": "**Primary — the majority of GTM resources for the next 12 months.** Founder-led + warm CPA / advisor referral partnerships, a packaged shadow-mode pilot, and the first US mid-market references. Land with P2P + cash application, run as a managed service."
     },
     {
       "geography": "GCC / Middle East (UAE, Saudi)",
