@@ -158,7 +158,7 @@ export const insightsData: InsightsData = {
       wedge: '$25–45K/yr for managed P2P (invoice processing + cash application; 5–10 users, sub-50K invoices/yr) — priced on the outcome, not seats; undercuts Stampli\'s AP-only software.',
       platform: '$60–120K/yr for the managed P2P + O2C operation (10–25 users, multi-entity, multi-currency) — below HighRadius+Stampli combined, and run for you rather than handed over.',
       perTransactionFloor: 'Price on outcomes (per resolved exception, % DSO reduction, close-days saved) and tiered volume; avoid a published per-invoice sticker that invites a commodity-OCR comparison. Introduce explicit per-transaction tiers only at scale (>250K invoices/yr) to protect unit economics.',
-      logic: `Three constraints: (1) Stampli ($30–100K AP-only **software**) sets the upper bound for AP-only positioning — but we sell a service, not a cheaper tool. (2) HighRadius reject-quote ($1.2M+) sets the platform ceiling — don't price like a HighRadius replacement. (3) Because we **run** the work, the value frame is "a finance hire or two replaced, outcome-guaranteed," not "a cheaper license." (In the secondary SEA motion, Peakflo PSG-net ~S$15K is the local floor.)`,
+      logic: `Three constraints: (1) Stampli ($30–100K AP-only **software**) sets the upper bound for AP-only positioning — but we sell a service, not a cheaper tool. (2) HighRadius reject-quote ($1.2M+) sets the platform ceiling — don't price like a HighRadius replacement. (3) Because we **run** the work, the value frame is "a finance hire or two replaced, outcome-guaranteed," not "a cheaper license." (In SEA, Peakflo PSG-net ~S$15K is the local floor.)`,
     },
   },
 
@@ -214,7 +214,7 @@ export const insightsData: InsightsData = {
         ourPlay: 'P2 — wait for mandate clarity before building.',
       },
     ],
-    headline: `**In the secondary SEA motion, three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois four-phase rollout is complete (final band Jan 2026; sub-RM1M permanently exempt); Indonesia runs on Coretax; Singapore's InvoiceNow phases in through 2031. Where we pursue SEA, the pitch becomes "compliance is a free side effect of using us," which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it is not part of the primary US thesis. Peakflo and ClearTax are already in motion here.`,
+    headline: `**In SEA (one of our two primary markets), three jurisdictions (MY, SG, ID) require structured e-invoicing right now — the mandates are already live, not coming.** Malaysia's MyInvois four-phase rollout is complete (final band Jan 2026; sub-RM1M permanently exempt); Indonesia runs on Coretax; Singapore's InvoiceNow phases in through 2031. In SEA the pitch becomes "compliance is a free side effect of using us," which sells before the AP/AR features do — but this is a SEA-specific lever with **no US equivalent**, so it powers the SEA motion, not the US one. Peakflo and ClearTax are already in motion here.`,
   },
 
   defensibility: {
@@ -230,7 +230,7 @@ export const insightsData: InsightsData = {
         layer: 'Localized regulatory compliance (MyInvois, InvoiceNow, Coretax)',
         description: 'Native integration with each ASEAN jurisdiction\'s e-invoicing regime — built once per country, mandatory for compliance, becomes table stakes for that geography.',
         durability: 'High',
-        howToReinforce: 'Relevant to the **secondary SEA motion**, not the primary US market (the US has no equivalent national e-invoicing mandate). In SEA it is a genuinely durable layer — each jurisdiction is months of work nobody outside SEA bothers with — so pursue MY/SG/ID compliance only if we commit to SEA. It is **not** a US moat.',
+        howToReinforce: 'A durable layer in the **SEA market** (the US has no equivalent national e-invoicing mandate). In SEA it is genuinely defensible — each jurisdiction is months of work nobody outside SEA bothers with — so build MY/SG/ID compliance for the SEA motion. It is **not** a US moat, so it doesn\\'t help the US motion.',
       },
       {
         layer: 'Multi-entity / multi-currency / intercompany',
@@ -263,7 +263,7 @@ export const insightsData: InsightsData = {
         howToReinforce: 'This becomes a moat only if we lock in a small number of mid-market CPAs (5–10) with revenue-share agreements that are exclusive in geography or vertical. Right now it\'s a trickle. Either invest in the partnership motion deliberately or treat it as opportunistic and don\'t over-claim.',
       },
     ],
-    summary: `**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/Coretax) is a durable layer **only in the secondary SEA motion** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating "workflow engine generality" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**`,
+    summary: `**The three durable layers** for the US managed-service model are: (1) the **cross-workflow unified data layer + audit trail** (one vendor master, one customer master, one audit trail across AP+AR+close — single-workflow vendors can't match it without a rebuild); (2) the **exception flywheel** — because we *run* the work, every resolved exception trains the AI and each client's touchless % compounds, which software-you-operate structurally cannot copy; (3) **multi-entity / intercompany handling** which Stampli/Peakflo wave at but don't solve. Regulatory localization (MyInvois/InvoiceNow/Coretax) is a durable layer **in the SEA market** — there is no US equivalent. Everything else (engineering cost, switching cost, channel) is real but commodity. **The single biggest mistake we can make is treating "workflow engine generality" as the moat. It isn't — it's a precondition. The moat is what we run on it that nobody else does: integrated data + the exception flywheel.**`,
   },
 
   buyerJobMap: {
@@ -392,7 +392,7 @@ export const insightsData: InsightsData = {
         evidence: 'Apparel Group (Dubai HQ) is in pipeline. FATOORAH is structurally similar to MyInvois — same e-invoicing mandate dynamic. Worth tracking for 2027–2028.',
       },
     ],
-    sequencing: `**For the next 12 months, focus is on US mid-market via the warm CPA / advisor channel** — land with P2P + cash application, run as a managed service, expand across the cash cycle. SEA (the former Plays 1 + 2) and India-HQ multinationals (Play 5) become **secondary, opportunistic** — take warm inbound, don't let it become roadmap-defining. Play 4 (India direct) stays disabled; Play 6 (GCC) logged for later. **The single most important GTM action this quarter is standing up the US warm channel: 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot offer.**`,
+    sequencing: `**For the next 12 months, run two primary motions: US mid-market via the warm CPA / advisor channel, and SEA mid-market via direct sales (vs Peakflo)** — both land with P2P + cash application, run as a managed service, then expand across the cash cycle. India-HQ multinationals (Play 5) and GCC (Play 6) are opportunistic; India direct (Play 4) stays disabled. **The two most important GTM actions this quarter: (US) stand up 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot; (SEA) sharpen the Peakflo differentiation and pursue PSG Pre-Approved status.**`,
   },
 
   ninetyDayActions: [
@@ -400,7 +400,7 @@ export const insightsData: InsightsData = {
       number: 1,
       action: 'Stand up the warm US channel: 2–3 CPA / advisor referral partnerships + a packaged shadow-mode pilot offer',
       owner: 'Founders + GTM lead',
-      why: 'US mid-market is the primary market and every documented win came warm (cold outbound is dead). The managed-service trust ask needs a shadow → parallel-run → cutover pilot to de-risk. This is the volume lever. (PSG Pre-Approved Vendor status is the equivalent lever in the secondary SEA motion — pursue only if we commit to SEA.)',
+      why: 'US mid-market is the primary market and every documented win came warm (cold outbound is dead). The managed-service trust ask needs a shadow → parallel-run → cutover pilot to de-risk. This is the US volume lever. (In the SEA market, PSG Pre-Approved Vendor status is the equivalent structural lever.)',
       successMetric: '2–3 signed referral partners and a documented shadow-mode pilot offer within 60 days.',
     },
     {

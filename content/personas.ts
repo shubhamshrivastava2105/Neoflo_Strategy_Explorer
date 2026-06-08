@@ -325,7 +325,7 @@ export const personasData: PersonasData = {
   geographyDecisions: [
     {
       geography: 'Southeast Asia mid-market (Singapore, Indonesia, Malaysia, Vietnam, Thailand, Philippines)',
-      decision: 'TARGET — secondary',
+      decision: 'TARGET — primary',
       marketSize: 'Smaller in absolute dollars than US ($500M–$1.5B addressable for our segment), but right-to-win is dramatically higher.',
       buyerProfile: 'CFO / Controller at $50M–$500M revenue companies, multi-entity (SG HQ + ID/MY/VN subsidiaries), multi-currency, ERP-connected (NetSuite, SAP S/4, Oracle Fusion), currently running on Excel + email + ERP + bandaid SaaS. **Stakeholder pattern by sub-segment:** at single-HQ mid-market the Controller / VP Finance is the primary buyer with the Accounting Manager as day-1 user. At multi-entity SEA conglomerates the **Shared Services / GBS Director** often replaces the entity Controller as primary buyer. For e-invoicing-mandate-driven evaluations (MyInvois / InvoiceNow / e-Faktur) the **Tax Director** comes in as a co-buyer in the first conversation, not late.',
       whyOrWhyNot: [
@@ -338,7 +338,7 @@ export const personasData: PersonasData = {
       ],
       competitiveDynamics: 'Peakflo is the critical competitor. PSG approval is the structural distribution gap to close. Our R2R differentiation is the moat they can\'t match in 2027–2028. Aspire/Airwallex/Spenmo/Volopay are not core threats (banking-led or SMB).',
       proofPoints: ['Zalora live (P2P) → expanding to O2C', 'Apparel Group active', '4 of 4 SAP-shop conversations (Coca-Cola, Spectrum, Welspun, Hitachi) had SEA / cross-border ops in scope'],
-      resourceCommitment: '**Secondary, opportunistic (~15%).** Take warm SEA inbound; don\'t build a dedicated SEA motion. PSG approval and a local accounting-firm partner program (BDO, RSM, Crowe in MY/ID) only if we deliberately commit to SEA.',
+      resourceCommitment: '**Primary — a direct-sales motion, co-equal with US.** Founder-led + SEA GTM, PSG Pre-Approved status as a structural priority, and a local accounting-firm partner program (BDO, RSM, Crowe in MY/ID). Anchor reference: Zalora.',
     },
     {
       geography: 'India-headquartered multinationals with SEA operations',
@@ -368,7 +368,7 @@ export const personasData: PersonasData = {
       ],
       competitiveDynamics: 'Compete primarily against SAP VIM (incumbent), HighRadius (rejected), Stampli (mid-market AP-only). Win on the AP+AR+close bundle and price.',
       proofPoints: ['Spectrum Brands active', 'Rehmann CPA opening', 'Boomerang Catapult relationship'],
-      resourceCommitment: '**Primary — the majority of GTM resources for the next 12 months.** Founder-led + warm CPA / advisor referral partnerships, a packaged shadow-mode pilot, and the first US mid-market references. Land with P2P + cash application, run as a managed service.',
+      resourceCommitment: '**Primary — a co-equal motion with SEA.** Founder-led + warm CPA / advisor referral partnerships, a packaged shadow-mode pilot, and the first US mid-market references. Land with P2P + cash application, run as a managed service.',
     },
     {
       geography: 'GCC / Middle East (UAE, Saudi)',
