@@ -1547,7 +1547,7 @@ window.INSIGHTS_DATA = {
 
 window.COMPARISONS_DATA = {
   "headToHead": {
-    "intro": "Structured profiles of the eight competitors that actually show up in our deals or set the buyer's expectations. Each follows the same template: who they are, where they win, where they lose, how we beat them, **how they beat us** (the honest part), the typical deal frame, what the buyer is actually deciding on, and our counter-play.",
+    "intro": "Structured Neoflo-vs-them profiles. The first eight are the competitors that actually show up in our deals or set the buyer's expectations; the next four (Esker, Basis.ai, Airbase, Serrala) are the closest structural analogues worth a full head-to-head. Each follows the same template: who they are, where they win, where they lose, how we beat them, **how they beat us** (the honest part), the typical deal frame, what the buyer is actually deciding on, and our counter-play.",
     "profiles": [
       {
         "vendor": "Peakflo",
@@ -1834,7 +1834,143 @@ window.COMPARISONS_DATA = {
           "Bundled vs unbundled cost",
           "Audit trail across compliance + workflow"
         ],
-        "ourCounterPlay": "(1) Ship MyInvois + InvoiceNow + e-Faktur native by mid-2026 — close the compliance gap before ClearTax becomes the SEA default. (2) Where regulation forces it, partner with ClearTax (e.g., for Vietnam ISeBP where building native is hard); elsewhere, build native. (3) Position the integrated audit trail (compliance + workflow + close in one platform) as the buyer's win — ClearTax + Peakflo + FloQast is three vendors and three audit trails."
+        "ourCounterPlay": "(1) Ship MyInvois + InvoiceNow + Coretax native — close the compliance gap before ClearTax becomes the SEA default. (2) Where regulation forces it, partner with ClearTax; elsewhere, build native. (3) Position the integrated audit trail (compliance + workflow + close in one platform) as the buyer's win — ClearTax + Peakflo + FloQast is three vendors and three audit trails."
+      },
+      {
+        "vendor": "Esker",
+        "category": "Multi-process P2P + O2C — the closest structural analogue to us",
+        "threatLevel": "High",
+        "hq": "Lyon, France",
+        "founded": "1985",
+        "funding": "PE-owned — taken private by Bridgepoint + General Atlantic (~€1.6B; delisted from Euronext Paris, Mar 2025)",
+        "customers": "~2,000+ customers globally; mid-market to enterprise",
+        "pricing": "Quote-based; ~$80–300K ARR",
+        "implementation": "3–6 months",
+        "whereTheyWin": [
+          "The only established vendor running P2P AND O2C on one platform at scale — our multi-process thesis, already shipped",
+          "Deep, mature product across AP, procurement, order management, customer invoicing, cash application, collections, deductions",
+          "Global footprint, strong e-invoicing / compliance coverage, public reference book",
+          "Credible at enterprise scale where we are not yet"
+        ],
+        "whereTheyLose": [
+          "No R2R / close — same scope gap as Peakflo; the cash cycle stops at O2C",
+          "Software you operate, not a managed outcome — the customer still staffs and runs it",
+          "Heavier, longer implementation (3–6 months) vs our managed onboarding",
+          "Built for the AP/AR operator, not the \"done-for-you\" buyer"
+        ],
+        "howWeBeatThem": "Esker is the most important comparison we have because they prove the multi-process thesis is real — but they sell it as software the customer runs. We win on (1) the managed-service model — we operate it and own the SLA; (2) extending to R2R / close, which they don't have; (3) faster, lighter onboarding. Against Esker, \"platform breadth\" is parity — the wedge is operation-vs-tool.",
+        "howTheyBeatUs": "Honest read: where the buyer wants to own and run the software themselves, at enterprise scale, with a proven multi-year reference book, Esker wins — the maturity, global compliance, and logos we don't have yet. If the frame is \"best multi-process software,\" not \"done-for-you outcome,\" we're the riskier pick.",
+        "typicalDealFrame": "A US mid-market / upper-mid CFO who has decided they want AP + AR on one platform and is evaluating \"real\" multi-process vendors. Esker is the incumbent answer; we are the managed-service alternative.",
+        "buyerDecisionCriteria": [
+          "Platform breadth across AP + AR (parity)",
+          "Run-it-yourself vs done-for-you",
+          "Time-to-live and onboarding effort",
+          "R2R / close on the roadmap",
+          "Enterprise references and global compliance"
+        ],
+        "ourCounterPlay": "(1) Lead with operation-vs-tool: \"Esker gives you the platform; we run the outcome.\" (2) Use R2R as the breadth differentiator they can't match. (3) Win on time-to-live and the exception flywheel. (4) Concede enterprise self-operate deals; target the buyer who wants the work taken off their plate."
+      },
+      {
+        "vendor": "Basis.ai",
+        "category": "AI agents for accounting firms — competitor at the CAS / close layer",
+        "threatLevel": "High",
+        "hq": "New York, US",
+        "founded": "2023",
+        "funding": "$1.15B valuation (Series B, Feb 2026, led by Accel + Google Ventures); ~$138M raised; backers incl. Khosla, Lloyd Blankfein",
+        "customers": "Used by ~30% of the Top 25 US accounting firms",
+        "pricing": "SaaS to accounting firms; firm staff supervise the agents",
+        "implementation": "48-hour onboarding claimed (QuickBooks, Xero, NetSuite, SAP)",
+        "whereTheyWin": [
+          "Dominant in tax prep, audit testing, and workpaper generation — entirely out of our scope",
+          "Goal-oriented agents that plan multi-step accounting work and ask for review only on low confidence",
+          "Unicorn brand + top-firm adoption — feels safer on paper than a seed-stage vendor",
+          "Covers reconciliation, document extraction, and GL coding — real overlap with our P2P extraction and R2R recs"
+        ],
+        "whereTheyLose": [
+          "It is a productivity tool — the firm still staffs, supervises, and owns the outcome for every client",
+          "No collections / DSO management; cash application is reconciliation-level, not remittance-context",
+          "No vendor-exception-resolution or vendor-comms layer — agents flag, humans resolve",
+          "No SLA / delivery accountability — software delivers, the firm owns the result"
+        ],
+        "howWeBeatThem": "Different proposition, not just different features. Basis makes a firm's accountants faster; Neoflo takes the transactional work off the firm entirely, under SLA. At scale (50–200 CAS clients) the supervision burden with Basis doesn't go away — it changes shape. Frame as complementary: Basis for the firm's internal tax / audit / close, Neoflo for CAS client transactional operations.",
+        "howTheyBeatUs": "Honest read: on brand, scale, and capital Basis is far ahead, and at tax / audit / close-automation they're genuinely strong and not our game. If a firm decides \"we'll just use Basis for everything including CAS bookkeeping\" and keeps staffing the supervision, they may not see why they need us — until that supervision burden bites at scale.",
+        "typicalDealFrame": "A US accounting firm (a Rehmann-style CAS practice) deciding how to scale client operations. Basis is the AI tool for their staff; we are the managed operator for their CAS clients — the risk is the firm conflating the two.",
+        "buyerDecisionCriteria": [
+          "Tool to make staff faster vs service that removes the work",
+          "Who owns the outcome (firm vs vendor SLA)",
+          "Supervision burden at 50–200 clients",
+          "Collections / cash-application depth",
+          "Vertical complexity (construction, healthcare)"
+        ],
+        "ourCounterPlay": "(1) Position complementary, not competitive: \"Basis makes your accountants faster; Neoflo makes your CAS clients operationally independent.\" (2) Make the pilot Neoflo-vs-current-state (manual), not Neoflo-vs-Basis. (3) Lock multi-year + build vertical depth before Basis moves toward managed services. (4) Lead with delivery accountability — no delivery, no payment — which a software tool structurally can't offer."
+      },
+      {
+        "vendor": "Airbase (Paylocity)",
+        "category": "US mid-market unified P2P + spend — HCM-distributed",
+        "threatLevel": "Medium",
+        "hq": "San Francisco, US",
+        "founded": "2017",
+        "funding": "Acquired by Paylocity (NASDAQ: PCTY) for ~$325M (Oct 2024)",
+        "customers": "US mid-market; ~$40–100K ARR",
+        "pricing": "Platform ARR + card interchange",
+        "implementation": "Weeks",
+        "whereTheyWin": [
+          "HCM distribution moat — ~40,000 Paylocity payroll clients are warm, in-platform AP prospects no one else reaches the same way",
+          "Unified AP automation + guided procurement + expense + corporate cards in one product",
+          "Named a Visionary in the 2025 Gartner MQ for AP Applications; strong G2",
+          "Fast onboarding and a polished spend-control story"
+        ],
+        "whereTheyLose": [
+          "AP + spend only — no AR / collections, no R2R / close",
+          "Software you operate; no managed-outcome model",
+          "US-only; single-entity-friendly, weaker on complex multi-entity",
+          "Interchange-led model favors card-friendly spend, not complex non-card payables"
+        ],
+        "howWeBeatThem": "Airbase is a strong AP + spend tool with a unique HCM distribution channel — but it stops at AP + spend. We win on cash-cycle breadth (AR + close) and the managed-service model. Where Paylocity's payroll base makes them the default, we don't fight the channel — we target the multi-process, exception-heavy buyer they can't serve.",
+        "howTheyBeatUs": "Honest read: for a Paylocity payroll customer that wants AP + cards bundled into a tool they already trust, weeks-to-live with spend controls, Airbase is the easy yes — the distribution advantage is real. We lose the simple AP-plus-cards deal.",
+        "typicalDealFrame": "A US mid-market company (often a Paylocity payroll client) wanting AP automation + corporate cards + expense in one tool.",
+        "buyerDecisionCriteria": [
+          "AP + spend + cards bundle",
+          "Existing Paylocity / HCM relationship",
+          "AR + close breadth (we win)",
+          "Run-it-yourself vs managed",
+          "Multi-entity depth"
+        ],
+        "ourCounterPlay": "(1) Don't fight the Paylocity channel on AP + cards; lead with full cash-cycle + managed delivery. (2) Use AR / collections and R2R as the breadth wedge. (3) Target multi-entity, exception-heavy operations where a spend tool isn't enough."
+      },
+      {
+        "vendor": "Serrala",
+        "category": "Enterprise SAP-native O2C + payments — the \"VIM of AR\"",
+        "threatLevel": "Low",
+        "hq": "Hamburg, Germany",
+        "founded": "1984",
+        "funding": "PE-owned (Hg Capital since 2021)",
+        "customers": "Enterprise; Lindt, ABB, thyssenkrupp cited",
+        "pricing": "Enterprise module ARR ($200K–$1M+)",
+        "implementation": "4–9 months",
+        "whereTheyWin": [
+          "Deep SAP-native O2C — credit, collections, cash application, deductions — embedded in SAP shops",
+          "QKS SPARK 2025 named them a Leader / top-three in AR applications",
+          "Enterprise-grade scale, global payments, mature compliance",
+          "For an SAP-locked enterprise, the low-friction \"stay in the SAP world\" choice"
+        ],
+        "whereTheyLose": [
+          "Enterprise-only — not our mid-market segment; heavy and expensive",
+          "O2C + payments focus; not a multi-process AP + AR + close platform",
+          "Software you operate, long implementation",
+          "SAP-centric — weaker fit outside SAP shops"
+        ],
+        "howWeBeatThem": "Serrala is the AR-side analogue to SAP VIM — the silent SAP-native default. We rarely meet them in mid-market; when we do, it's the same VIM-displacement logic on the O2C side: lighter, faster, AP + AR + close in one managed service vs a heavy SAP-bolted module.",
+        "howTheyBeatUs": "Honest read: in a large SAP enterprise that wants AR to live inside its SAP estate, Serrala wins on native depth and enterprise references — we're not credible at that scale or SAP-nativeness today.",
+        "typicalDealFrame": "A large SAP enterprise evaluating AR / collections automation inside its SAP landscape — mostly above our segment; a reference benchmark more than a deal competitor.",
+        "buyerDecisionCriteria": [
+          "SAP-native depth",
+          "Enterprise scale + references",
+          "Run-it-yourself vs managed",
+          "Cash-cycle breadth (we win)",
+          "Cost and time-to-live"
+        ],
+        "ourCounterPlay": "(1) Treat as an enterprise reference benchmark, not a mid-market battlecard. (2) Where they appear, reuse the VIM-displacement frame on the AR side. (3) Don't chase SAP-locked enterprise AR-only deals."
       }
     ]
   },
