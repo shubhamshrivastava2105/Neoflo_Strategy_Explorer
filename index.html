@@ -721,6 +721,7 @@
       <details class="nav-part">
         <summary class="nav-section">1 · The problem</summary>
         <a href="#glossary">What FinOps is</a>
+        <a href="#how-accounting-works">How accounting works</a>
       </details>
       <details class="nav-part">
         <summary class="nav-section">2 · The space</summary>
@@ -892,6 +893,43 @@
           <dt>BPO</dt><dd>Business Process Outsourcing — the FTE-priced incumbent we displace via outcome pricing.</dd>
           <dt>ITFM</dt><dd>IT Financial Management — Yarken's category; relevant cohort comparison.</dd>
         </dl>
+      </div>
+    </section>
+
+    <section id="how-accounting-works" style="margin-bottom: var(--scale-700);">
+      <div class="eyebrow">Start here · The basics</div>
+      <h2 class="section-title">How accounting works — in 5 minutes.</h2>
+      <p class="lede">Before the workflows, here's the minimal model of how accounting itself works — enough that the rest of this page makes sense even if you've never read a balance sheet. Five ideas: the equation, double-entry, the flow, cash vs accrual, and the three statements.</p>
+
+      <div class="grid grid-2" style="margin-top: var(--scale-300);">
+        <div class="card">
+          <h4 style="margin-top: 0;">1 · The one equation everything balances around</h4>
+          <p style="font-size: 14px;"><strong>Assets = Liabilities + Equity.</strong> What the company <em>owns</em> equals what it <em>owes</em> plus what the <em>owners</em> put in / earned. This never breaks — every transaction keeps it balanced.</p>
+          <p style="font-size: 13.5px; margin-bottom: 0;">Five account types: <strong>Assets</strong> (cash, receivables, inventory), <strong>Liabilities</strong> (payables, loans), <strong>Equity</strong> (owner capital + retained earnings), <strong>Revenue</strong> (sales), <strong>Expenses</strong> (costs). Revenue and expenses flow into equity at period end as profit.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">2 · Double-entry: every transaction hits two sides</h4>
+          <p style="font-size: 14px;">Each transaction is recorded in <strong>at least two accounts</strong> — a <strong>debit</strong> and an equal <strong>credit</strong> — so the books always balance.</p>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><em>Example:</em> you buy $1,000 of inventory on credit → <strong>Inventory (asset) +$1,000</strong> (debit) and <strong>Accounts Payable (liability) +$1,000</strong> (credit). Later you pay the supplier → <strong>Cash −$1,000</strong>, <strong>AP −$1,000</strong>. Always balanced.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">3 · The flow: transaction → statements</h4>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Transaction</strong> (an invoice, a payment) → recorded as a <strong>journal entry (JE)</strong> → posted to the <strong>general ledger (GL)</strong> (the master list of all accounts) → summarized in a <strong>trial balance</strong> (all account balances, debits = credits) → rolled into the <strong>financial statements</strong>. That last step — turning the ledger into statements — is the <strong>R2R / close</strong> workflow on this page.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top: 0;">4 · Cash vs accrual (why timing matters)</h4>
+          <p style="font-size: 13.5px; margin-bottom: 0;"><strong>Cash basis:</strong> record revenue/expense when money actually moves. <strong>Accrual basis</strong> (what most companies and GAAP use): record them when they're <em>earned / incurred</em>, regardless of when cash moves. Accrual is why you book a March expense in March even if you pay it in April — and why "accruals" and "cutoff" exist in the close.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: var(--scale-300);">
+        <h4 style="margin-top: 0;">5 · The three financial statements (the output of it all)</h4>
+        <div class="grid grid-3" style="margin-top: var(--scale-200);">
+          <div><strong>📈 Income Statement (P&amp;L)</strong><br><span style="font-size: 13px;">Revenue − expenses = profit, <em>over a period</em>. "Did we make money?"</span></div>
+          <div><strong>⚖️ Balance Sheet</strong><br><span style="font-size: 13px;">Assets, liabilities, equity <em>at a point in time</em>. "What do we own and owe?"</span></div>
+          <div><strong>💵 Cash Flow Statement</strong><br><span style="font-size: 13px;">Where cash came from and went, <em>over a period</em>. "Where did the money go?"</span></div>
+        </div>
+        <p style="font-size: 13.5px; color: var(--text-default-caption); margin-top: var(--scale-200); margin-bottom: 0;">These three are what the month-end <strong>close (R2R)</strong> produces. The <strong>P2P</strong> and <strong>O2C</strong> workflows below are where most of the underlying transactions (bills you owe, money owed to you) actually originate.</p>
       </div>
     </section>
 

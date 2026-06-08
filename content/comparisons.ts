@@ -1242,6 +1242,7 @@ export const comparisonsData: ComparisonsData = {
       { vendor: 'Kolleno', category: 'AI-native O2C (agentic)', p2pCoverage: 'None', o2cCoverage: '5, 7 (agentic collections + reconciliation)', r2rCoverage: 'None', primaryMonetization: 'Subscription' },
       { vendor: 'Maxima', category: 'AI-native R2R (agentic close)', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '1, 2, 3, 4 (agentic close + flux)', primaryMonetization: 'Subscription' },
       { vendor: 'FinAlyzer (BeyondSquare)', category: 'India-origin R2R consolidation + reporting', p2pCoverage: 'None', o2cCoverage: 'None', r2rCoverage: '5 (consolidation), 6 (statutory), 7 (reporting)', primaryMonetization: 'Subscription' },
+      { vendor: 'Basis.ai', category: 'AI agents for accounting firms (CAS / close)', p2pCoverage: '4 (document extraction, GL coding)', o2cCoverage: 'None', r2rCoverage: '1, 2, 3 (recs), 4 (close, JE, variance) + tax & audit (out of our scope)', primaryMonetization: 'SaaS to accounting firms; firm staff supervise the agents' },
     ],
     summary: `**Reading the workflow map gives three concrete strategic conclusions that don't show up in the per-competitor profiles:**
 

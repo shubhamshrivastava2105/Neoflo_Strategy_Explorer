@@ -4112,6 +4112,14 @@ window.COMPARISONS_DATA = {
         "o2cCoverage": "None",
         "r2rCoverage": "5 (consolidation), 6 (statutory), 7 (reporting)",
         "primaryMonetization": "Subscription"
+      },
+      {
+        "vendor": "Basis.ai",
+        "category": "AI agents for accounting firms (CAS / close)",
+        "p2pCoverage": "4 (document extraction, GL coding)",
+        "o2cCoverage": "None",
+        "r2rCoverage": "1, 2, 3 (recs), 4 (close, JE, variance) + tax & audit (out of our scope)",
+        "primaryMonetization": "SaaS to accounting firms; firm staff supervise the agents"
       }
     ],
     "summary": "**Reading the workflow map gives three concrete strategic conclusions that don't show up in the per-competitor profiles:**\n\n1. **The single workflow with the most competitive density is P2P #4 (Invoice Receipt & Extraction)** — 11+ vendors actively monetize on it, including OCR primitives (Staple, Nanonets) underneath workflow products. This is the most commoditized layer in our roadmap. Our defense is **not** OCR accuracy alone — it's the combination of SEA-format-trained extraction + downstream workflow + cross-process audit trail.\n\n2. **Voice AI for Collections (O2C #6) is structurally Peakflo-defined.** Sidetrade and Stuut are present but English/EU-centric. **For SEA mid-market, Peakflo is the only Core player.** Our build/partner decision here directly affects our O2C win rate against them.\n\n3. **Two workflow gaps in the entire vendor landscape are interesting strategic openings:** (a) **multi-process audit trail** — no vendor has a single audit trail across AP, AR, and close. Even BlackLine (close-leader) bolted on cash app and intercompany via acquisition. Our entity-scoped workflow engine is architected for this from day one. (b) **R2R + e-invoicing convergence** — as MyInvois / PEPPOL data flows in real-time, the line between \"compliance reporting\" (ClearTax/Sovos) and \"statutory close\" (BlackLine/Workiva) collapses. Whoever owns the unified data layer here owns a category that doesn't exist yet.\n\n**Practical takeaway for the roadmap:** prioritize Phase 2 P0 workflows (O2C 3, 4, 5, 7, 8) by ship date because each one closes a gap that costs us specific named deals (Hitachi for cash app; Spectrum for deductions). Phase 3 P0 in R2R should be ruthlessly scoped to 1–4 + 8 (cutoff, JE, recs, flux, intercompany) — leave consolidation, statutory reporting, and management reporting to V2 and partners."
