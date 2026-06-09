@@ -324,6 +324,19 @@
   details.wf-finance[open] > summary::before { transform: rotate(90deg); }
   details.wf-finance > summary:hover { color: var(--text-primary-hover, var(--text-primary-default)); }
 
+  /* strategy: consolidated chapter accordions */
+  details.strat-group { border: 1px solid var(--border-pagecard-card-1); border-radius: var(--radius-md, 12px); margin-bottom: var(--scale-250); background: var(--surface-pagecard-card-1); overflow: hidden; }
+  details.strat-group > summary { cursor: pointer; list-style: none; padding: var(--scale-300) var(--scale-400); position: relative; display: flex; flex-direction: column; gap: 3px; }
+  details.strat-group > summary::-webkit-details-marker { display: none; }
+  details.strat-group > summary::after { content: "▸"; position: absolute; right: var(--scale-400); top: var(--scale-300); color: var(--text-default-placeholder); font-size: 14px; transition: transform .15s; }
+  details.strat-group[open] > summary::after { transform: rotate(90deg); }
+  details.strat-group > summary:hover { background: var(--grey-50, var(--surface-pagecard-card-1)); }
+  details.strat-group > summary .sg-title { font-family: var(--font-family-plus-jakarta-sans, inherit); font-weight: 700; font-size: var(--scale-350, 19px); color: var(--text-default-heading); padding-right: var(--scale-500); }
+  details.strat-group > summary .sg-sub { font-size: 13px; line-height: 1.5; color: var(--text-default-caption); padding-right: var(--scale-500); }
+  details.strat-group[open] > summary { border-bottom: 1px solid var(--border-pagecard-card-1); margin-bottom: var(--scale-300); }
+  details.strat-group > section { padding-left: var(--scale-400); padding-right: var(--scale-400); }
+  details.strat-group > section:last-of-type { margin-bottom: var(--scale-300); }
+
   /* gap grid */
   .gap-grid { display: grid; grid-template-columns: 200px repeat(4, 1fr); gap: 1px; background: var(--border-pagecard-card-1); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-pagecard-card-1); }
   .gap-cell { background: var(--surface-pagecard-card-1); padding: var(--scale-250); font-size: 13px; }
@@ -762,31 +775,11 @@
       <details class="nav-part">
         <summary class="nav-section">5 · The strategy</summary>
         <a href="#strategy-hub">Strategy at a glance</a>
-        <a href="#tldr">TL;DR — the bet</a>
-        <a href="#market">Market sizing</a>
-        <a href="#regulatory">Regulatory tailwinds</a>
-        <a href="#einv-roadmap">E-invoicing roadmap</a>
-        <a href="#personas">Buyer personas</a>
-        <a href="#jobmap">Buyer job map</a>
-        <a href="#target-rec">Target ICP</a>
-        <a href="#geo-targeting">Geography decisions</a>
-        <a href="#disqualifiers">Disqualifiers</a>
-        <a href="#recommendation">Recommendation</a>
-        <a href="#risks">Risks</a>
-        <a href="#gtm">GTM playbook</a>
-        <a href="#actions">90-day actions</a>
-        <a href="#voc-questions">Questions clients ask</a>
-        <a href="#voc-objections">Live objections</a>
-        <a href="#voc-patterns">Conversation patterns</a>
-        <a href="#voc-displacement">Displacement patterns</a>
-        <a href="#voc-demo">Demo aha moments</a>
-        <a href="#voc-replacement">AP replacement checklist</a>
-        <a href="#voc-actions">P0 actions from clients</a>
-        <a href="#signals">Customer-evidence signals</a>
-        <a href="#patterns">Customer-evidence patterns</a>
-        <a href="#changemymind">Change my mind</a>
-        <a href="#openquestions">Open questions</a>
-        <a href="#appendix">Appendix &amp; provenance</a>
+        <a href="#tldr">① Market &amp; the opening</a>
+        <a href="#personas">② Who we sell to</a>
+        <a href="#recommendation">③ The plan &amp; risks</a>
+        <a href="#voc-intro">④ What buyers tell us</a>
+        <a href="#battlecards">⑤ Battlecards &amp; sources</a>
       </details>
             <div class="nav-section">Account</div>
       <a href="/api/logout" style="color: var(--text-on-colour-caption);">Sign out</a>
@@ -1450,6 +1443,11 @@
       </div>
     </section>
 
+    <h2 class="section-title" style="margin: var(--scale-500) 0 var(--scale-200);">The detail — in five chapters.</h2>
+    <p class="lede" style="margin-bottom: var(--scale-400);">The hub above is the whole bet on one screen. Open a chapter only when you want the evidence and depth behind a card — nothing here repeats the hub, it backs it up.</p>
+
+    <details class="strat-group">
+      <summary><span class="sg-title">📈 Market &amp; the opening</span><span class="sg-sub">How big the prize is, the regulatory tailwind, and the empty cell we aim at — TL;DR · market sizing · regulatory · e-invoicing roadmap.</span></summary>
     <section id="tldr">
       <div class="eyebrow">Strategy</div>
       <h2 class="section-title">The bet, in one paragraph.</h2>
@@ -1495,6 +1493,10 @@
       </div>
     </section>
 
+    </details>
+
+    <details class="strat-group">
+      <summary><span class="sg-title">🎯 Who we sell to</span><span class="sg-sub">The Controller-owned, multi-entity ICP, the job they hire us for, and who we deliberately walk from — personas · job map · target ICP · geography · disqualifiers.</span></summary>
     <section id="personas">
       <div class="eyebrow">Personas &amp; targeting</div>
       <h2 class="section-title">Who we sell to.</h2>
@@ -1559,6 +1561,10 @@
       </div>
     </section>
 
+    </details>
+
+    <details class="strat-group">
+      <summary><span class="sg-title">🚀 The plan &amp; what could break it</span><span class="sg-sub">Sequencing, the two GTM motions, the next 90 days, and the risks that would flip the bet — recommendation · risks · GTM · 90-day actions.</span></summary>
     <section id="recommendation">
       <div class="eyebrow">Strategy</div>
       <h2 class="section-title" id="rec-headline"></h2>
@@ -1586,6 +1592,10 @@
       <div id="actions-list"></div>
     </section>
 
+    </details>
+
+    <details class="strat-group">
+      <summary><span class="sg-title">🗣️ What buyers actually tell us</span><span class="sg-sub">Lost deals, live objections, displacement and evidence patterns that validate the bundle — voice of customer · signals · cross-cutting patterns.</span></summary>
     <section id="voc-intro">
       <div class="eyebrow">Voice of customer</div>
       <h2 class="section-title">What buyers actually say.</h2>
@@ -1647,6 +1657,10 @@
       <div id="patterns-list"></div>
     </section>
 
+    </details>
+
+    <details class="strat-group">
+      <summary><span class="sg-title">📎 Battlecards, honesty &amp; sources</span><span class="sg-sub">Counter-arguments, open questions, provenance, and where the evidence is still thin — battlecards · change-my-mind · open questions · appendix.</span></summary>
     <section id="battlecards" style="margin-bottom: var(--scale-700);">
       <div class="eyebrow">Toolkit · Battlecards</div>
       <h2 class="section-title">Battlecards.</h2>
@@ -1685,6 +1699,7 @@
       <h2 class="section-title">Sources &amp; gaps.</h2>
       <div id="appendix-body"></div>
     </section>
+    </details>
 
     <footer style="margin-top: var(--scale-1125); padding-top: var(--scale-500); border-top: 1px solid var(--border-pagecard-card-1); font-size: 12px; color: var(--text-default-caption); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--scale-300);">
       <div>
@@ -2715,6 +2730,30 @@ document.querySelectorAll('.nav-part a').forEach(a => {
     if (parent) parent.open = true;
   });
 });
+
+// ───────── Reveal anchors inside collapsed <details> (strategy chapters etc.) ─────────
+// Any in-page link (#foo) whose target lives inside one or more collapsed <details>
+// (the consolidated strategy chapters, workflow expanders, …) opens its ancestors
+// before the browser jumps, so deep links from the hub cards / sidebar always land.
+function openAncestorDetails(el) {
+  let d = el && el.closest('details');
+  while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+}
+function revealHashTarget() {
+  if (!location.hash || location.hash.length < 2) return;
+  const t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (t) { openAncestorDetails(t); requestAnimationFrame(() => t.scrollIntoView({ behavior: 'smooth', block: 'start' })); }
+}
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute('href').slice(1);
+  if (!id) return;
+  const t = document.getElementById(id);
+  if (t) openAncestorDetails(t); // expand before the native jump so layout exists
+}, true);
+window.addEventListener('hashchange', revealHashTarget);
+revealHashTarget();
 
 // ───────── Comment system — Figma-style anchored pins ─────────
 const commentToggle = document.getElementById('commentToggle');

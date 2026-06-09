@@ -58,7 +58,8 @@
       "Bash(curl -s -o /dev/null -w \"localhost -> %{http_code}\\\\n\" http://localhost:8745/index.html)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8745/design_tokens.css)",
       "Bash(awk '{print $5, $9}')",
-      "Bash(awk '/\\\\.stage[ ,{]/{f=1} f{print NR\": \"$0} /\\\\}/{if\\(f\\)c++; if\\(c>8\\)f=0}' index.html)"
+      "Bash(awk '/\\\\.stage[ ,{]/{f=1} f{print NR\": \"$0} /\\\\}/{if\\(f\\)c++; if\\(c>8\\)f=0}' index.html)",
+      "Bash(curl -s http://localhost:8745/index.html)"
     ]
   }
 }
