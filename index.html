@@ -310,6 +310,20 @@
   .stage-grid dd { margin: 0; font-size: 14px; }
   @media (max-width: 600px) { .stage-grid { grid-template-columns: 1fr; gap: 4px; } }
 
+  /* stage: plain-English (ELI5) lead layer, shown before the finance detail */
+  .stage-simple { margin-top: var(--scale-200); font-size: var(--scale-300); line-height: var(--doc-leading-body, 1.6); color: var(--text-default-body); }
+  .stage-simple > :first-child { margin-top: 0; }
+  .stage-simple p { margin: 0 0 var(--scale-200); }
+  .stage-simple ul { margin: var(--scale-100) 0; padding-left: var(--scale-400); }
+  .stage-simple li { margin-bottom: var(--scale-100); }
+  .stage-simple-tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-success-default, var(--text-primary-default)); margin-bottom: var(--scale-150); }
+  details.wf-finance { margin-top: var(--scale-250); border-top: 1px dashed var(--border-default-default); padding-top: var(--scale-150); }
+  details.wf-finance > summary { cursor: pointer; list-style: none; font-size: 12px; font-weight: 600; letter-spacing: .3px; color: var(--text-primary-default); display: inline-flex; align-items: center; gap: 6px; }
+  details.wf-finance > summary::-webkit-details-marker { display: none; }
+  details.wf-finance > summary::before { content: "▸"; font-size: 10px; transition: transform .15s; }
+  details.wf-finance[open] > summary::before { transform: rotate(90deg); }
+  details.wf-finance > summary:hover { color: var(--text-primary-hover, var(--text-primary-default)); }
+
   /* gap grid */
   .gap-grid { display: grid; grid-template-columns: 200px repeat(4, 1fr); gap: 1px; background: var(--border-pagecard-card-1); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-pagecard-card-1); }
   .gap-cell { background: var(--surface-pagecard-card-1); padding: var(--scale-250); font-size: 13px; }
@@ -1946,13 +1960,17 @@ function renderProcess(data, prefix) {
   const stagesHtml = data.stages.map(s => `
     <div class="stage" data-num="${s.number}">
       <h3>${s.title}</h3>
-      <dl class="stage-grid">
-        <dt>What it is</dt><dd>${mdInline(s.whatItIs)}</dd>
-        <dt>What happens</dt><dd>${mdInline(s.whatHappens)}</dd>
-        <dt>Example</dt><dd>${mdInline(s.example)}</dd>
-        <dt>Analogy</dt><dd><em>${mdInline(s.analogy)}</em></dd>
-        <dt>Where it breaks</dt><dd>${mdInline(s.whereItBreaks)}</dd>
-      </dl>
+      ${s.simple ? `<div class="stage-simple"><span class="stage-simple-tag">In plain English</span>${md(s.simple)}</div>` : ''}
+      <details class="wf-finance">
+        <summary>Now in real finance terms</summary>
+        <dl class="stage-grid">
+          <dt>What it is</dt><dd>${mdInline(s.whatItIs)}</dd>
+          <dt>What happens</dt><dd>${mdInline(s.whatHappens)}</dd>
+          <dt>Example</dt><dd>${mdInline(s.example)}</dd>
+          <dt>Analogy</dt><dd><em>${mdInline(s.analogy)}</em></dd>
+          <dt>Where it breaks</dt><dd>${mdInline(s.whereItBreaks)}</dd>
+        </dl>
+      </details>
       ${stageDeepBlock(data.slug, s.number)}
     </div>
   `).join('');

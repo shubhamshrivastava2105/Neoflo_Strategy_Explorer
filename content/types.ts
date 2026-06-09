@@ -4,6 +4,7 @@
 export type ProcessStage = {
   number: number;
   title: string;
+  simple: string;        // ELI5 lemonade-stand story — the plain-English layer shown first
   whatItIs: string;
   whatHappens: string;
   example: string;

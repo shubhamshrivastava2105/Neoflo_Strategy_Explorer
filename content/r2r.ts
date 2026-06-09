@@ -21,6 +21,7 @@ export const r2rData: ProcessExplainerData = {
   stages: [
     {
       number: 1,
+      simple: `At the end of the month you want to add up how the stand did. But first you blow the whistle: *"STOP! Anything that happened in March counts for March. Anything from April is next month's story."* You also have to remember the things that already happened but you *haven't written down yet* — like the lemons you already used but haven't paid for. You count those in too, so the month's story is **complete**. ⏱️`,
       title: 'Pre-Close Cutoff',
       whatItIs:
         'Drawing the line on the period — deciding what counts as a March transaction and what counts as April.',
@@ -35,6 +36,7 @@ export const r2rData: ProcessExplainerData = {
     },
     {
       number: 2,
+      simple: `Some things aren't a simple *"I bought cups."* Like: you paid for a whole *year* of a fancy sign, so each month you should only count one little slice of it. Or you owe your helper a bonus you haven't handed over yet. These are the careful little notes you add **by hand** so the month tells the true story — not just the cash that happened to move. One person writes each note, and another person checks it. 📝`,
       title: 'Journal Entries (JEs)',
       whatItIs:
         'All the manual accounting entries that don\'t come automatically from sub-ledgers — accruals, prepaid amortization, lease accounting, FX revaluation, provisions, deferred tax, and one-off adjustments.',
@@ -49,6 +51,7 @@ export const r2rData: ProcessExplainerData = {
     },
     {
       number: 3,
+      simple: `This is the big *"do my two lists agree?"* check. Your notebook says you have $50 in the piggy bank — so you open the piggy bank and **count**. Is it really $50? If it's only $48, you don't just shrug — you hunt for the missing $2 until you know exactly why. And you do this for *every* pile of money you keep track of. 🐷🔍`,
       title: 'Reconciliations',
       whatItIs:
         'Proving that what\'s in the GL matches what\'s in the underlying source — bank statements, sub-ledgers, schedules, third-party confirmations.',
@@ -63,6 +66,7 @@ export const r2rData: ProcessExplainerData = {
     },
     {
       number: 4,
+      simple: `Now a grown-up checks your work before it's official. They look for things that seem weird: *"Whoa — why did you spend twice as much on lemons this month?"* You explain (*"there was a giant party order!"*). Once they're happy with all your explanations, they sign their name: *"Yes, this is correct."* ✍️`,
       title: 'Review & Sign-Off',
       whatItIs:
         'The controller and CFO reviewing the draft financials before they\'re considered "closed."',
@@ -77,6 +81,7 @@ export const r2rData: ProcessExplainerData = {
     },
     {
       number: 5,
+      simple: `Imagine you have **two** lemonade stands — one on your street, and one at Grandma's in another town that uses different money. To see how you ALL did together, you first turn Grandma's money into *your* kind of money, then add the two stands up. And if one stand sold lemons to the *other* stand, you don't count that — it was just moving things between your own two pockets. 🏘️`,
       title: 'Consolidation',
       whatItIs:
         'Combining the financials of multiple entities into a single set of group financial statements.',
@@ -91,6 +96,7 @@ export const r2rData: ProcessExplainerData = {
     },
     {
       number: 6,
+      simple: `Finally, you turn all those tidy numbers into a neat **report card** for the grown-ups (and anyone who helped pay for the stand): *"Here's how much we sold, how much we spent, and how much we have left."* Clear and simple, with little notes explaining the interesting bits — so nobody has to dig through all your messy scratch paper. 📊`,
       title: 'Reporting',
       whatItIs:
         'Turning the closed numbers into the artifacts that stakeholders actually consume.',

@@ -709,6 +709,7 @@ window.P2P_DATA = {
   "stages": [
     {
       "number": 1,
+      "simple": "Before you buy lemons and cups from a new shop, you want to be sure the shop is real and you know exactly where to send the money. So the very first time, you write everything about them in your special notebook: their name, where their shop is, and which piggy bank (bank account) their money goes to. You check it's a real shop, not a made-up one, and that you didn't already write them down before. You only do this **once** — after that, you can just buy from them whenever you need to. 📒",
       "title": "Vendor Onboarding & Master Data Management",
       "whatItIs": "Setting up a new supplier in your systems before you can buy from them.",
       "whatHappens": "You collect KYC info (W-9 / TIN, bank account, registration certificate), verify the bank account (ACH micro-deposit or API check), check for duplicates against your existing vendor master, run any required compliance checks (sanctions, vendor blacklist), and route through approval. Once approved, the vendor record is created in the ERP with payment terms, currency, default GL coding, and tax setup. This is the **first** step and a one-time prerequisite at the start of the relationship — not a per-transaction step. It is also where the exchange channel is set up: if the vendor will send documents and invoices via EDI or a supplier portal, that connection (and the IT/API access behind it) is established here — so all the later stages that receive vendor documents via EDI depend on onboarding being completed first.",
@@ -718,6 +719,7 @@ window.P2P_DATA = {
     },
     {
       "number": 2,
+      "simple": "You're not allowed to spend the stand's money all by yourself. So when you need something — say, 100 cups — you first put your hand up and ask the grown-up in charge: *\"Can I please buy 100 cups? They cost this much.\"* If they say yes, you're allowed to go buy it. If it's something really expensive, an even bigger grown-up has to say yes too. This way nobody spends the stand's money on silly things. 🙋",
       "title": "Requisition & Approval",
       "whatItIs": "An internal request to buy something, routed for approval before any money is committed.",
       "whatHappens": "A requestor (warehouse manager, ops lead, anyone with budget authority) raises a Purchase Requisition (PR) — what's needed, quantity, GL code, cost center, suggested vendor, expected price. The system checks budget availability, then routes through an approval matrix (department head, finance, CFO if above threshold).",
@@ -727,6 +729,7 @@ window.P2P_DATA = {
     },
     {
       "number": 3,
+      "simple": "Now that you're allowed to buy, you send the shop a clear note: *\"Please send me 100 cups, at this price, by Friday.\"* Now it's a promise — they promise to send those cups, and you promise to pay that exact price. No surprises later. It's just like clicking **\"Place Order\"**: the price is locked in. 🧾",
       "title": "Purchase Order (PO)",
       "whatItIs": "The formal commitment to buy, sent to the vendor.",
       "whatHappens": "Once the PR is approved, a PO is generated — a numbered, legally binding document that locks in price, quantity, delivery terms, and payment terms. It's sent to the vendor (email, EDI, supplier portal) and posted to the ERP as a commitment against the budget.",
@@ -736,6 +739,7 @@ window.P2P_DATA = {
     },
     {
       "number": 4,
+      "simple": "When the box of cups finally shows up, you don't just toss it in the corner. You open it and **count**: did all 100 cups come? Are any broken? Then you tick it off in your notebook — *\"Yes, the cups arrived.\"* That little tick matters a lot, because later it's how you'll prove you really got the stuff. 📦✅",
       "title": "Goods Receipt (GRN)",
       "whatItIs": "Confirming the goods (or services) actually arrived.",
       "whatHappens": "When the delivery shows up, your warehouse or receiving team checks it against the PO — right item, right quantity, acceptable quality. They post a Goods Receipt Note (GRN) in the system, which becomes the trigger for the **3-way match** — the invoice itself arrives on the supplier's own schedule; the GRN is what lets you match it and post it. For services, this is service entry sheet (SES) confirmation.",
@@ -745,6 +749,7 @@ window.P2P_DATA = {
     },
     {
       "number": 5,
+      "simple": "A few days later the shop sends you their **bill** — a piece of paper that says *\"You owe us this much for the cups.\"* You take that bill and tidily write it into your notebook, right next to the order it belongs to. And if the very same bill sneakily shows up twice, you catch it — so you never pay for the same cups twice. 🧾",
       "title": "Invoice Receipt & Processing",
       "whatItIs": "Capturing the supplier invoice into your AP system.",
       "whatHappens": "Invoice arrives via email, supplier portal, EDI, or paper. OCR extracts header data (vendor, invoice number, date, amount, tax) and line items. AI suggests the matching PO and GL coding. The system checks for duplicates (same invoice number, same amount, same vendor) and validates tax treatment (sales/use tax, 1099 / withholding applicability).",
@@ -754,6 +759,7 @@ window.P2P_DATA = {
     },
     {
       "number": 6,
+      "simple": "Now you play **matching detective** with three things: (1) what you *ordered*, (2) what actually *showed up* in the box, and (3) what the *bill* says. If all three agree — you ordered 100, got 100, and the bill is for 100 — great, you're allowed to pay. But if they DON'T agree — you got only 95, yet the bill says 100 — you **stop** and ask questions before paying a single penny. 🔍",
       "title": "3-Way Match & Approval",
       "whatItIs": "The control check that confirms PO, GRN, and invoice all agree before payment is approved.",
       "whatHappens": "The system compares three documents — what you ordered (PO), what you received (GRN), and what you're being billed for (invoice). If quantity, price, and tax line up within tolerance, it's a clean match and goes straight through. If anything's off — short delivery, price variance, tax mismatch — it goes to an exception queue for human review.",
@@ -763,6 +769,7 @@ window.P2P_DATA = {
     },
     {
       "number": 7,
+      "simple": "Everything matches, so now you actually pay. You take the money out of the piggy bank and send it to the shop. Then you cross that bill off your list — *\"paid!\"* — and the shop gets a little note saying *\"here's your money.\"* Done. That whole lemons-and-cups story is finished and closed. 💸",
       "title": "Payment & Reconciliation",
       "whatItIs": "Actually paying the vendor and closing the loop in your books.",
       "whatHappens": "Approved invoices go into a payment run — usually weekly. The system selects invoices by due date, applies any early payment discounts, generates a bank file (ACH / wire / SWIFT format), routes through dual approval (treasury + CFO for large runs), and releases payment. Once the bank confirms, the invoice is marked paid in AP, the GL is updated, and a remittance advice goes to the vendor.",
@@ -772,6 +779,7 @@ window.P2P_DATA = {
     },
     {
       "number": 8,
+      "simple": "Shops get worried and keep asking *\"Did you get my bill? When will you pay me?\"* Instead of answering the same questions on the phone all day, you give every shop a little **\"track your money\" window** they can peek at themselves — just like the \"Track your order\" page for a package. They look it up, see *\"paying you Friday,\"* and stop bugging you. Everyone's happier. 🪟",
       "title": "Vendor Self-Service & Query Resolution",
       "whatItIs": "The supporting layer that lets vendors submit invoices and check status themselves — and gives AP one place to answer \"did you get my invoice?\" and \"when am I paid?\" This isn't a sequential step; it runs alongside the whole cycle.",
       "whatHappens": "Vendors submit invoices and tax/bank documents through a portal instead of email, and see real-time status of every invoice (received → matched → approved → scheduled → paid). They raise queries in-thread, and AP resolves exceptions and vendor questions in one place with the full PO / GRN / invoice context attached — instead of digging through inboxes. Done well, most \"where's my payment?\" questions are answered before the vendor even asks.",
@@ -805,6 +813,7 @@ window.O2C_DATA = {
   "stages": [
     {
       "number": 1,
+      "simple": "A new friend wants to drink your lemonade *now* and pay you *later*. Smart move before you say yes: check — is this friend good for it? Do they usually pay people back? You decide how much you'll let them owe at any one time (say, up to $20), and when they have to pay you back (within 30 days). Now they're officially a **\"pay-later\" friend**. 🤝",
       "title": "Customer Onboarding & Credit Management",
       "whatItIs": "Setting up a new customer in your systems and deciding how much credit to extend them.",
       "whatHappens": "You collect KYC info, verify they're a real business, check their credit history (via Experian, D&B, or internal scoring), and assign them a credit limit and payment terms.",
@@ -814,6 +823,7 @@ window.O2C_DATA = {
     },
     {
       "number": 2,
+      "simple": "Your friend says *\"I want 10 cups of lemonade!\"* Before you start pouring, you do a quick think: Do I even *have* 10 cups right now? Is my **price** right? And does this push them over the $20 they're allowed to owe? If everything checks out, you say *\"Deal!\"* and start pouring. 🍋",
       "title": "Order Management",
       "whatItIs": "Taking in a customer order, validating it, and booking it.",
       "whatHappens": "Order arrives (via email, EDI, portal, rep). You check: Is inventory available? Is pricing correct? Does this order fit within the customer's approved credit limit? If yes, you confirm the order and push it to fulfillment.",
@@ -823,6 +833,7 @@ window.O2C_DATA = {
     },
     {
       "number": 3,
+      "simple": "You actually hand over the 10 cups. And — really important — your friend says *\"Yep, got them!\"* (maybe with a thumbs up). That little *\"got it!\"* is the thing that tells you it's now okay to ask for the money. No handover, no asking. 🥤",
       "title": "Order Delivery Fulfillment",
       "whatItIs": "Physically delivering the goods (or completing the service).",
       "whatHappens": "Warehouse picks and packs. Goods ship. Customer signs proof of delivery (POD). POD flows back into the system and becomes the trigger for billing.",
@@ -832,6 +843,7 @@ window.O2C_DATA = {
     },
     {
       "number": 4,
+      "simple": "Now you make the note that says how much they owe: *\"10 cups = $10, please pay me within 30 days.\"* You hand them that note. Grown-ups have a fancy word for this friendly little \"you-owe-me\" slip — they call it an **invoice**. ✉️",
       "title": "Billing",
       "whatItIs": "Generating the invoice.",
       "whatHappens": "You take the delivered quantity, apply contract pricing, taxes (sales/use tax in the US, or VAT/GST abroad), discounts, and any customer-specific terms. Invoice gets sent to the customer via email, portal, EDI, or e-invoicing.",
@@ -841,6 +853,7 @@ window.O2C_DATA = {
     },
     {
       "number": 5,
+      "simple": "Before you hand over that \"you owe me\" note, you double-check your *own* note: did I write 10 cups (what they really got) and the right price? It would be embarrassing — and start a fight — to ask for the wrong amount. So you check your own homework *first*. ✔️",
       "title": "Validation & Approval",
       "whatItIs": "Internal checks before the invoice is recognized as revenue.",
       "whatHappens": "Finance validates the invoice against the sales order, the proof of delivery, and the contract / price list, then applies revenue-recognition rules and any approval routing. (This is the sell-side mirror of the AP 3-way match — but here you are checking your *own* invoice before it goes out, not a supplier's.)",
@@ -850,6 +863,7 @@ window.O2C_DATA = {
     },
     {
       "number": 6,
+      "simple": "Now you keep a list on the fridge of every friend who owes you money, and for how long: *\"Tommy owes $10 — it's been 10 days… 20 days… 25 days.\"* You're just watching the clock. Not chasing anyone yet — just keeping a careful eye on who owes what. 📋",
       "title": "Accounts Receivable Management",
       "whatItIs": "Tracking the money customers owe you.",
       "whatHappens": "The invoice now lives as a receivable on your books. You track it through aging buckets — 0–30 days, 31–60, 61–90, 90+. You monitor DSO (Days Sales Outstanding) — the average time it takes to collect cash.",
@@ -859,6 +873,7 @@ window.O2C_DATA = {
     },
     {
       "number": 7,
+      "simple": "A friend hasn't paid, and the 30 days are up. So you start reminding them — nicely at first (*\"hey, don't forget!\"*), then more firmly, and finally you go knock on their door. And you chase the friends who owe the **most**, first. 🏃",
       "title": "Dunning & Collection",
       "whatItIs": "Chasing customers who haven't paid.",
       "whatHappens": "A sequence of reminders — polite, firm, then escalating — goes out by email, SMS, and phone call. Collectors prioritize by value × days overdue × risk. Promise-to-pay commitments are tracked. In extreme cases, accounts go to legal or collections agencies.",
@@ -868,6 +883,7 @@ window.O2C_DATA = {
     },
     {
       "number": 8,
+      "simple": "Lots of friends owe you money for lemonade. Each one has a little *\"you owe me $5\"* note — that's the **invoice**. But your friends pay in a messy, sneaky way: they drop coins into your piggy bank and run off without saying who they are or what it's for! 🐷\n\nSo every morning you open the piggy bank, find money, and play **detective**:\n\n- 🕵️ **Who** gave me this? Even with no name, you might go *\"Aha — Tommy always pays in sticky nickels!\"* And if you truly *can't* tell, you do **not** guess — you put it in a \"figure-out-later\" box so the money is never, ever lost.\n- 🕵️ **Which** lemonade was it paying for? One coin might pay for one cup; a big handful might pay for five at once.\n- 🕵️ **Why** is it sometimes *less* than they owed? Maybe a grown-up took a little as \"tax\" (you'll get that back later — okay). Maybe you gave them a discount (okay). Or maybe they're shorting you (uh-oh — time to chase!).\n\nThe one golden rule: **the money is never lost.** Even on the messiest day, you at least know *whose* it is, and you tuck it somewhere safe until you figure out the rest. 💰",
       "title": "Cash Application & Reconciliation",
       "whatItIs": "Matching an incoming payment to the invoice(s) it's paying for.",
       "whatHappens": "Payment lands in your bank. You need to figure out: which customer, which invoice(s), full payment or partial? Then you update the AR ledger to mark those invoices as paid.",
@@ -877,6 +893,7 @@ window.O2C_DATA = {
     },
     {
       "number": 9,
+      "simple": "Sometimes a friend says *\"I'm NOT paying full price — half my lemonade was warm and yucky!\"* Now you have to figure out: are they right? If yes, you say *\"fair enough\"* and knock some money off (grown-ups call that a **credit note**). If they're just being sneaky, you stand your ground and ask for the rest. Either way, you sort it out so the argument doesn't drag on for weeks. 🤔",
       "title": "Dispute Resolution",
       "whatItIs": "Resolving why a customer is refusing to pay.",
       "whatHappens": "Customer disputes the invoice — wrong price, short delivery, bad quality, tax error, billing error. You investigate: sales handles pricing disputes, ops handles quality/delivery, finance handles billing errors. If the dispute is valid, you issue a credit note. If not, you push for payment.",
@@ -907,6 +924,7 @@ window.R2R_DATA = {
   "stages": [
     {
       "number": 1,
+      "simple": "At the end of the month you want to add up how the stand did. But first you blow the whistle: *\"STOP! Anything that happened in March counts for March. Anything from April is next month's story.\"* You also have to remember the things that already happened but you *haven't written down yet* — like the lemons you already used but haven't paid for. You count those in too, so the month's story is **complete**. ⏱️",
       "title": "Pre-Close Cutoff",
       "whatItIs": "Drawing the line on the period — deciding what counts as a March transaction and what counts as April.",
       "whatHappens": "Sub-ledgers (AP, AR, payroll, fixed assets, inventory) get \"frozen\" at period-end. Outstanding items that belong to March but haven't hit the GL yet get accrued: goods or services received from suppliers but not yet invoiced (the GR/IR or GRNI accrual — Goods Received, Not Invoiced), supplier invoices that arrived but aren't keyed yet, bills you owe for utilities/rent/services consumed in March, payroll for hours worked in late March but paid in April, depreciation for the month, and intercompany transactions between entities.",
@@ -916,6 +934,7 @@ window.R2R_DATA = {
     },
     {
       "number": 2,
+      "simple": "Some things aren't a simple *\"I bought cups.\"* Like: you paid for a whole *year* of a fancy sign, so each month you should only count one little slice of it. Or you owe your helper a bonus you haven't handed over yet. These are the careful little notes you add **by hand** so the month tells the true story — not just the cash that happened to move. One person writes each note, and another person checks it. 📝",
       "title": "Journal Entries (JEs)",
       "whatItIs": "All the manual accounting entries that don't come automatically from sub-ledgers — accruals, prepaid amortization, lease accounting, FX revaluation, provisions, deferred tax, and one-off adjustments.",
       "whatHappens": "Each JE has a preparer (usually a senior accountant), a reviewer, and an approver. The preparer pulls supporting evidence (lease schedule, FX rates, accrual workings), calculates the entry, drafts the JE in the ERP or a JE workflow tool, attaches the support, and submits for review. The reviewer checks math, GL coding, and reasonableness. The approver signs off. The JE posts to the GL.",
@@ -925,6 +944,7 @@ window.R2R_DATA = {
     },
     {
       "number": 3,
+      "simple": "This is the big *\"do my two lists agree?\"* check. Your notebook says you have $50 in the piggy bank — so you open the piggy bank and **count**. Is it really $50? If it's only $48, you don't just shrug — you hunt for the missing $2 until you know exactly why. And you do this for *every* pile of money you keep track of. 🐷🔍",
       "title": "Reconciliations",
       "whatItIs": "Proving that what's in the GL matches what's in the underlying source — bank statements, sub-ledgers, schedules, third-party confirmations.",
       "whatHappens": "For every balance sheet account, somebody on the finance team prepares a reconciliation. Bank account: GL balance vs bank statement, with a list of reconciling items (deposits in transit, outstanding cheques). AR sub-ledger to GL: total of all open invoices = AR control account. Same for AP, fixed assets, inventory, prepaids, accruals, deferred revenue, lease liability, payroll liability, intercompany balances. Each rec needs a preparer, reviewer, and supporting documentation.",
@@ -934,6 +954,7 @@ window.R2R_DATA = {
     },
     {
       "number": 4,
+      "simple": "Now a grown-up checks your work before it's official. They look for things that seem weird: *\"Whoa — why did you spend twice as much on lemons this month?\"* You explain (*\"there was a giant party order!\"*). Once they're happy with all your explanations, they sign their name: *\"Yes, this is correct.\"* ✍️",
       "title": "Review & Sign-Off",
       "whatItIs": "The controller and CFO reviewing the draft financials before they're considered \"closed.\"",
       "whatHappens": "Once all JEs are posted and recs are done, the trial balance is locked. The controller runs **flux analysis** — comparing every P&L and BS line to prior month, prior year, and budget, and explaining any movement above a threshold. Each variance gets a written explanation. The controller reviews balance sheet accounts line by line, signs off on the financials. The CFO does a final review, asks questions, requests adjustments, signs off.",
@@ -943,6 +964,7 @@ window.R2R_DATA = {
     },
     {
       "number": 5,
+      "simple": "Imagine you have **two** lemonade stands — one on your street, and one at Grandma's in another town that uses different money. To see how you ALL did together, you first turn Grandma's money into *your* kind of money, then add the two stands up. And if one stand sold lemons to the *other* stand, you don't count that — it was just moving things between your own two pockets. 🏘️",
       "title": "Consolidation",
       "whatItIs": "Combining the financials of multiple entities into a single set of group financial statements.",
       "whatHappens": "Each entity has its own trial balance, in its own currency, possibly under its own GAAP. Consolidation: translate all entities to the group reporting currency at appropriate FX rates (closing rate for BS, average rate for P&L, historical rate for equity). Eliminate intercompany transactions and balances. Calculate minority interest if applicable. Generate consolidated P&L, BS, and cash flow.",
@@ -952,6 +974,7 @@ window.R2R_DATA = {
     },
     {
       "number": 6,
+      "simple": "Finally, you turn all those tidy numbers into a neat **report card** for the grown-ups (and anyone who helped pay for the stand): *\"Here's how much we sold, how much we spent, and how much we have left.\"* Clear and simple, with little notes explaining the interesting bits — so nobody has to dig through all your messy scratch paper. 📊",
       "title": "Reporting",
       "whatItIs": "Turning the closed numbers into the artifacts that stakeholders actually consume.",
       "whatHappens": "**Statutory reporting** — the formal P&L, Balance Sheet, Cash Flow Statement, and notes for filing. **Management reporting** — the board pack with executive summary, KPI dashboards, variance commentary, and forward-looking commentary. **Departmental reporting** — cost center P&Ls, budget-vs-actuals dashboards for each function head. **Regulatory filings** — sales-tax returns, 1099 filings, payroll-tax returns, state and country-specific returns.",

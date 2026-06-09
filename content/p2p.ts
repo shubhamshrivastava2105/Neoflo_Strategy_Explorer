@@ -23,6 +23,7 @@ export const p2pData: ProcessExplainerData = {
   stages: [
     {
       number: 1,
+      simple: `Before you buy lemons and cups from a new shop, you want to be sure the shop is real and you know exactly where to send the money. So the very first time, you write everything about them in your special notebook: their name, where their shop is, and which piggy bank (bank account) their money goes to. You check it's a real shop, not a made-up one, and that you didn't already write them down before. You only do this **once** — after that, you can just buy from them whenever you need to. 📒`,
       title: 'Vendor Onboarding & Master Data Management',
       whatItIs:
         'Setting up a new supplier in your systems before you can buy from them.',
@@ -37,6 +38,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 2,
+      simple: `You're not allowed to spend the stand's money all by yourself. So when you need something — say, 100 cups — you first put your hand up and ask the grown-up in charge: *"Can I please buy 100 cups? They cost this much."* If they say yes, you're allowed to go buy it. If it's something really expensive, an even bigger grown-up has to say yes too. This way nobody spends the stand's money on silly things. 🙋`,
       title: 'Requisition & Approval',
       whatItIs:
         'An internal request to buy something, routed for approval before any money is committed.',
@@ -51,6 +53,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 3,
+      simple: `Now that you're allowed to buy, you send the shop a clear note: *"Please send me 100 cups, at this price, by Friday."* Now it's a promise — they promise to send those cups, and you promise to pay that exact price. No surprises later. It's just like clicking **"Place Order"**: the price is locked in. 🧾`,
       title: 'Purchase Order (PO)',
       whatItIs: 'The formal commitment to buy, sent to the vendor.',
       whatHappens:
@@ -64,6 +67,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 4,
+      simple: `When the box of cups finally shows up, you don't just toss it in the corner. You open it and **count**: did all 100 cups come? Are any broken? Then you tick it off in your notebook — *"Yes, the cups arrived."* That little tick matters a lot, because later it's how you'll prove you really got the stuff. 📦✅`,
       title: 'Goods Receipt (GRN)',
       whatItIs: 'Confirming the goods (or services) actually arrived.',
       whatHappens:
@@ -77,6 +81,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 5,
+      simple: `A few days later the shop sends you their **bill** — a piece of paper that says *"You owe us this much for the cups."* You take that bill and tidily write it into your notebook, right next to the order it belongs to. And if the very same bill sneakily shows up twice, you catch it — so you never pay for the same cups twice. 🧾`,
       title: 'Invoice Receipt & Processing',
       whatItIs: 'Capturing the supplier invoice into your AP system.',
       whatHappens:
@@ -90,6 +95,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 6,
+      simple: `Now you play **matching detective** with three things: (1) what you *ordered*, (2) what actually *showed up* in the box, and (3) what the *bill* says. If all three agree — you ordered 100, got 100, and the bill is for 100 — great, you're allowed to pay. But if they DON'T agree — you got only 95, yet the bill says 100 — you **stop** and ask questions before paying a single penny. 🔍`,
       title: '3-Way Match & Approval',
       whatItIs:
         'The control check that confirms PO, GRN, and invoice all agree before payment is approved.',
@@ -104,6 +110,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 7,
+      simple: `Everything matches, so now you actually pay. You take the money out of the piggy bank and send it to the shop. Then you cross that bill off your list — *"paid!"* — and the shop gets a little note saying *"here's your money."* Done. That whole lemons-and-cups story is finished and closed. 💸`,
       title: 'Payment & Reconciliation',
       whatItIs: 'Actually paying the vendor and closing the loop in your books.',
       whatHappens:
@@ -117,6 +124,7 @@ export const p2pData: ProcessExplainerData = {
     },
     {
       number: 8,
+      simple: `Shops get worried and keep asking *"Did you get my bill? When will you pay me?"* Instead of answering the same questions on the phone all day, you give every shop a little **"track your money" window** they can peek at themselves — just like the "Track your order" page for a package. They look it up, see *"paying you Friday,"* and stop bugging you. Everyone's happier. 🪟`,
       title: 'Vendor Self-Service & Query Resolution',
       whatItIs:
         'The supporting layer that lets vendors submit invoices and check status themselves — and gives AP one place to answer "did you get my invoice?" and "when am I paid?" This isn\'t a sequential step; it runs alongside the whole cycle.',

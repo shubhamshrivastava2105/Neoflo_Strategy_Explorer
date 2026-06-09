@@ -24,6 +24,7 @@ export const o2cData: ProcessExplainerData = {
   stages: [
     {
       number: 1,
+      simple: `A new friend wants to drink your lemonade *now* and pay you *later*. Smart move before you say yes: check — is this friend good for it? Do they usually pay people back? You decide how much you'll let them owe at any one time (say, up to $20), and when they have to pay you back (within 30 days). Now they're officially a **"pay-later" friend**. 🤝`,
       title: 'Customer Onboarding & Credit Management',
       whatItIs:
         'Setting up a new customer in your systems and deciding how much credit to extend them.',
@@ -37,6 +38,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 2,
+      simple: `Your friend says *"I want 10 cups of lemonade!"* Before you start pouring, you do a quick think: Do I even *have* 10 cups right now? Is my **price** right? And does this push them over the $20 they're allowed to owe? If everything checks out, you say *"Deal!"* and start pouring. 🍋`,
       title: 'Order Management',
       whatItIs: 'Taking in a customer order, validating it, and booking it.',
       whatHappens:
@@ -50,6 +52,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 3,
+      simple: `You actually hand over the 10 cups. And — really important — your friend says *"Yep, got them!"* (maybe with a thumbs up). That little *"got it!"* is the thing that tells you it's now okay to ask for the money. No handover, no asking. 🥤`,
       title: 'Order Delivery Fulfillment',
       whatItIs: 'Physically delivering the goods (or completing the service).',
       whatHappens:
@@ -63,6 +66,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 4,
+      simple: `Now you make the note that says how much they owe: *"10 cups = $10, please pay me within 30 days."* You hand them that note. Grown-ups have a fancy word for this friendly little "you-owe-me" slip — they call it an **invoice**. ✉️`,
       title: 'Billing',
       whatItIs: 'Generating the invoice.',
       whatHappens:
@@ -76,6 +80,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 5,
+      simple: `Before you hand over that "you owe me" note, you double-check your *own* note: did I write 10 cups (what they really got) and the right price? It would be embarrassing — and start a fight — to ask for the wrong amount. So you check your own homework *first*. ✔️`,
       title: 'Validation & Approval',
       whatItIs:
         'Internal checks before the invoice is recognized as revenue.',
@@ -90,6 +95,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 6,
+      simple: `Now you keep a list on the fridge of every friend who owes you money, and for how long: *"Tommy owes $10 — it's been 10 days… 20 days… 25 days."* You're just watching the clock. Not chasing anyone yet — just keeping a careful eye on who owes what. 📋`,
       title: 'Accounts Receivable Management',
       whatItIs: 'Tracking the money customers owe you.',
       whatHappens:
@@ -103,6 +109,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 7,
+      simple: `A friend hasn't paid, and the 30 days are up. So you start reminding them — nicely at first (*"hey, don't forget!"*), then more firmly, and finally you go knock on their door. And you chase the friends who owe the **most**, first. 🏃`,
       title: 'Dunning & Collection',
       whatItIs: 'Chasing customers who haven\'t paid.',
       whatHappens:
@@ -116,6 +123,15 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 8,
+      simple: `Lots of friends owe you money for lemonade. Each one has a little *"you owe me $5"* note — that's the **invoice**. But your friends pay in a messy, sneaky way: they drop coins into your piggy bank and run off without saying who they are or what it's for! 🐷
+
+So every morning you open the piggy bank, find money, and play **detective**:
+
+- 🕵️ **Who** gave me this? Even with no name, you might go *"Aha — Tommy always pays in sticky nickels!"* And if you truly *can't* tell, you do **not** guess — you put it in a "figure-out-later" box so the money is never, ever lost.
+- 🕵️ **Which** lemonade was it paying for? One coin might pay for one cup; a big handful might pay for five at once.
+- 🕵️ **Why** is it sometimes *less* than they owed? Maybe a grown-up took a little as "tax" (you'll get that back later — okay). Maybe you gave them a discount (okay). Or maybe they're shorting you (uh-oh — time to chase!).
+
+The one golden rule: **the money is never lost.** Even on the messiest day, you at least know *whose* it is, and you tuck it somewhere safe until you figure out the rest. 💰`,
       title: 'Cash Application & Reconciliation',
       whatItIs:
         'Matching an incoming payment to the invoice(s) it\'s paying for.',
@@ -130,6 +146,7 @@ export const o2cData: ProcessExplainerData = {
     },
     {
       number: 9,
+      simple: `Sometimes a friend says *"I'm NOT paying full price — half my lemonade was warm and yucky!"* Now you have to figure out: are they right? If yes, you say *"fair enough"* and knock some money off (grown-ups call that a **credit note**). If they're just being sneaky, you stand your ground and ask for the rest. Either way, you sort it out so the argument doesn't drag on for weeks. 🤔`,
       title: 'Dispute Resolution',
       whatItIs: 'Resolving why a customer is refusing to pay.',
       whatHappens:
